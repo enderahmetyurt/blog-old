@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+    
+    <url>
+      <loc>enderahmetyurt.github.io/2016/welcome-to-jekyll/</loc>
+      
+        <lastmod>2016-01-08T17:04:23+02:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+    
+  
+  
+    
+    <url>
+      <loc>enderahmetyurt.github.io/categories/</loc>
+      
+        <lastmod>2016-04-01T17:39:42+03:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.3</priority>
+      
+    </url>
+    
+  
+    
+    <url>
+      <loc>enderahmetyurt.github.io/feed.xml</loc>
+      
+        <lastmod>2016-04-01T17:39:42+03:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.3</priority>
+      
+    </url>
+    
+  
+    
+    <url>
+      <loc>enderahmetyurt.github.io/</loc>
+      
+        <lastmod>2016-04-01T17:39:42+03:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.3</priority>
+      
+    </url>
+    
+  
+    
+    <url>
+      <loc>enderahmetyurt.github.io/js/main.js</loc>
+      
+        <lastmod>2016-04-01T17:39:42+03:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.3</priority>
+      
+    </url>
+    
+  
+    
+  
+    
+    <url>
+      <loc>enderahmetyurt.github.io/tags/</loc>
+      
+        <lastmod>2016-04-01T17:39:42+03:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.3</priority>
+      
+    </url>
+    
+  
+</urlset>
