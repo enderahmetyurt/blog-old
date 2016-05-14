@@ -5,9 +5,97 @@
     <description>Full Stack Developer</description>
     <link>enderahmetyurt.github.io//</link>
     <atom:link href="enderahmetyurt.github.io//feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 06 May 2016 22:35:14 +0300</pubDate>
-    <lastBuildDate>Fri, 06 May 2016 22:35:14 +0300</lastBuildDate>
+    <pubDate>Sun, 15 May 2016 00:56:16 +0300</pubDate>
+    <lastBuildDate>Sun, 15 May 2016 00:56:16 +0300</lastBuildDate>
     <generator>Jekyll v3.0.2</generator>
+    
+      <item>
+        <title>Debugging with Pry</title>
+        <description>&lt;p&gt;Merhaba, Kod yazarken bir bir şeylerin yolunda gitmediği veya kod içinde neler olduğunu anlamak istediğimiz anlar oluyor. Bu gibi durumlarda debugging yapıyoruz. Ruby’de eğer IDE kullanıyorsunuz debugging yapmak bir nebze kolay olabiliyor. Ancak benim gibi Sublime vb bir text editör kullanıcısıysanız imdadımıza PRY yetişiyor.&lt;/p&gt;
+
+&lt;p&gt;Pry nedir? Pry, aslında IRB yani Interactive Ruby Shell alternatif olarak çıkmış bir runtime developer console’dur. Kendisi bir RubyGem’i olup, bilgisayarınıza kurmanızla IRB’nin bazı zamanlarda yeterli olmadığı bir çok özelliği size sunar. Ancak bugünün konusu PRY’dan çok PRY ile nasıl debugging yapılır o olacak.&lt;/p&gt;
+
+&lt;p&gt;Her şeyden önce PRY ile debugging yapabilmek için PRY RubyGem’nin makinemizinde kurulu olması gerekiyor.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;&amp;gt; &lt;/span&gt;gem install pry
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Sonrasında ise artık kodumuzda hangi noktada durmasını istiyorsak oraya &lt;code class=&quot;highlighter-rouge&quot;&gt;binding.pry&lt;/code&gt; komutu yazıyoruz. Örneğin,&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# person.rb&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;pry&#39;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Person&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;say_hello&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;binding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;pry&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hello &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;say_hello&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;ender&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;şeklinde bir Ruby kodu yazıyoruz ve konsoldan kodu çalıştırdığımızda ise&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;&amp;gt; &lt;/span&gt;ruby person.rb
+    4: def say_hello&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;name&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+ &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;gt; 5:   binding.pry
+    6:   puts &lt;span class=&quot;s2&quot;&gt;&quot;Hello #{name}&quot;&lt;/span&gt;
+    7: end
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;şeklinde bir çıktı alıyoruz. Bu anda artık &lt;code class=&quot;highlighter-rouge&quot;&gt;name&lt;/code&gt; değişkenini çağırabilir ve içinde ne olduğunu görebiliriz.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;1] pry&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;#&amp;lt;Person&amp;gt;)&amp;gt; name&lt;/span&gt;
+&lt;span class=&quot;gp&quot;&gt;=&amp;gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;ender&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Sonrasında ise &lt;code class=&quot;highlighter-rouge&quot;&gt;exit&lt;/code&gt; diyerek PRY’ı kapatıyoruz.&lt;/p&gt;
+
+&lt;p&gt;Debugging yaparken kod içinde ileri gitmek, bir metotudun içine girmek ya da onu atlamak isteyebiliriz. PRY kendi hali ile buna cevap vermiyor. Ancak &lt;a href=&quot;https://github.com/nixme/pry-debugger&quot;&gt;pry-debugger&lt;/a&gt; gem’i ile bunu da halledebiliyoruz.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;&amp;gt; &lt;/span&gt;gem install pry-debugger
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Yukardaki örnek üzerinden devam edecek olursak,&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;pry&#39;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Person&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;say_hello&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;binding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;pry&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hello &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Execution will stop here.&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Age: &quot;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Run &#39;step&#39; or &#39;next&#39; in the console to move here.&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;ask_age&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ask_age&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;How old are you? &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.capitalize&quot;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;say_hello&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;ender&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;next&lt;/code&gt; komudu ile kodun durduğu yer bir alt satıra inebiliriz. Pry-debugger gem’i bize &lt;code class=&quot;highlighter-rouge&quot;&gt;step&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;finish&lt;/code&gt; ve &lt;code class=&quot;highlighter-rouge&quot;&gt;continue&lt;/code&gt; gibi fonksiyonlar da sağlamaktadır. Daha fazla bilgiye Github’daki Readme’den ulaşabilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;Sevgiler.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 15 May 2016 00:00:00 +0300</pubDate>
+        <link>enderahmetyurt.github.io//2016/debugging-with-pry/</link>
+        <guid isPermaLink="true">enderahmetyurt.github.io//2016/debugging-with-pry/</guid>
+        
+        <category>ruby</category>
+        
+        
+      </item>
     
       <item>
         <title>Ruby Enumerable</title>
