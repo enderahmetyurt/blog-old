@@ -5,13 +5,13 @@
     <description>Full Stack Developer</description>
     <link>enderahmetyurt.github.io//</link>
     <atom:link href="enderahmetyurt.github.io//feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 15 May 2016 01:36:53 +0300</pubDate>
-    <lastBuildDate>Sun, 15 May 2016 01:36:53 +0300</lastBuildDate>
+    <pubDate>Sun, 15 May 2016 01:38:42 +0300</pubDate>
+    <lastBuildDate>Sun, 15 May 2016 01:38:42 +0300</lastBuildDate>
     <generator>Jekyll v3.0.2</generator>
     
       <item>
         <title>Debugging with Pry</title>
-        <description>&lt;p&gt;Merhaba, Kod yazarken bir bir şeylerin yolunda gitmediği veya kod içinde neler olduğunu anlamak istediğimiz anlar oluyor. Bu gibi durumlarda debugging yapıyoruz. Ruby’de eğer IDE kullanıyorsunuz debugging yapmak bir nebze kolay olabiliyor. Ancak benim gibi Sublime vb bir text editör kullanıcısıysanız imdadımıza PRY yetişiyor.&lt;/p&gt;
+        <description>&lt;p&gt;Merhaba! Kod yazarken bir bir şeylerin yolunda gitmediği veya kod içinde neler olduğunu anlamak istediğimiz anlar oluyor. Bu gibi durumlarda debugging yapıyoruz. Ruby’de eğer IDE kullanıyorsunuz debugging yapmak bir nebze kolay olabiliyor. Ancak benim gibi Sublime vb bir text editör kullanıcısıysanız imdadımıza PRY yetişiyor.&lt;/p&gt;
 
 &lt;p&gt;Pry nedir? Pry, aslında IRB yani Interactive Ruby Shell alternatif olarak çıkmış bir runtime developer console’dur. Kendisi bir RubyGem’i olup, bilgisayarınıza kurmanızla IRB’nin bazı zamanlarda yeterli olmadığı bir çok özelliği size sunar. Ancak bugünün konusu PRY’dan çok PRY ile nasıl debugging yapılır o olacak.&lt;/p&gt;
 
