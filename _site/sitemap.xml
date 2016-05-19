@@ -3,6 +3,21 @@
   
     
     <url>
+      <loc>enderahmetyurt.github.io/2016/block-proc-lambda/</loc>
+      
+        <lastmod>2016-05-19T00:00:00+03:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+    
+  
+    
+    <url>
       <loc>enderahmetyurt.github.io/2016/debugging-with-pry/</loc>
       
         <lastmod>2016-05-15T00:00:00+03:00</lastmod>
@@ -36,7 +51,7 @@
     <url>
       <loc>enderahmetyurt.github.io/categories/</loc>
       
-        <lastmod>2016-05-15T01:38:42+03:00</lastmod>
+        <lastmod>2016-05-19T19:56:24+03:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
@@ -51,7 +66,7 @@
     <url>
       <loc>enderahmetyurt.github.io/feed.xml</loc>
       
-        <lastmod>2016-05-15T01:38:42+03:00</lastmod>
+        <lastmod>2016-05-19T19:56:24+03:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
@@ -66,7 +81,7 @@
     <url>
       <loc>enderahmetyurt.github.io/</loc>
       
-        <lastmod>2016-05-15T01:38:42+03:00</lastmod>
+        <lastmod>2016-05-19T19:56:24+03:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
@@ -81,7 +96,7 @@
     <url>
       <loc>enderahmetyurt.github.io/js/main.js</loc>
       
-        <lastmod>2016-05-15T01:38:42+03:00</lastmod>
+        <lastmod>2016-05-19T19:56:24+03:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
@@ -98,7 +113,7 @@
     <url>
       <loc>enderahmetyurt.github.io/tags/</loc>
       
-        <lastmod>2016-05-15T01:38:42+03:00</lastmod>
+        <lastmod>2016-05-19T19:56:24+03:00</lastmod>
       
       
         <changefreq>monthly</changefreq>

@@ -5,9 +5,122 @@
     <description>Full Stack Developer</description>
     <link>enderahmetyurt.github.io//</link>
     <atom:link href="enderahmetyurt.github.io//feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 15 May 2016 01:38:42 +0300</pubDate>
-    <lastBuildDate>Sun, 15 May 2016 01:38:42 +0300</lastBuildDate>
+    <pubDate>Thu, 19 May 2016 19:56:24 +0300</pubDate>
+    <lastBuildDate>Thu, 19 May 2016 19:56:24 +0300</lastBuildDate>
     <generator>Jekyll v3.0.2</generator>
+    
+      <item>
+        <title>Block, Proc, Lambda</title>
+        <description>&lt;p&gt;Merhaba! Ruby’nin en güçlü özelliklerinden biri bloklardır. Diğer dillerin aksine Ruby’de blokları anlamak ve kullanmak kolay ve basittir.&lt;/p&gt;
+
+&lt;p&gt;Ruby’de bloklarını kullanmak için iki yöntemimiz var,&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;do&lt;/code&gt; ve &lt;code class=&quot;highlighter-rouge&quot;&gt;end&lt;/code&gt; arasına kodlarımızı yazmak.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;&lt;/code&gt; bu iki parantez arasına kodlarımızı yazmak.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Örnek vericek olursak,&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;&amp;gt; &lt;/span&gt;my_array &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;2,4,6]
+
+&lt;span class=&quot;gp&quot;&gt;&amp;gt; &lt;/span&gt;my_array.map! &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; |m|
+&lt;span class=&quot;gp&quot;&gt;&amp;gt;  &lt;/span&gt;m &lt;span class=&quot;k&quot;&gt;**&lt;/span&gt; 3
+&lt;span class=&quot;gp&quot;&gt;&amp;gt; &lt;/span&gt;end
+&lt;span class=&quot;gp&quot;&gt;=&amp;gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;8, 64, 216]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Bu işlemi tek satırda parantezler içinde de yapmak mümkündür.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;&amp;gt; &lt;/span&gt;my_array &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;2,4,6]
+&lt;span class=&quot;gp&quot;&gt;&amp;gt; &lt;/span&gt;my_array.map! &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; |m| m &lt;span class=&quot;k&quot;&gt;**&lt;/span&gt; 3 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;gp&quot;&gt;=&amp;gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;8, 64, 216]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Ruby’de hazır block’ların dışında kendi blocklarımızı da yazabiliriz.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;change&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+ &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;each_with_index&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+   &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;call&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+ &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;change&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;em&gt;Örnek, Sıktı Bağdat’ın Ruby kitabından alınmıştır.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Yukarıdaki örnekte &lt;code class=&quot;highlighter-rouge&quot;&gt;change&lt;/code&gt; metotuna block’u parametre olarak gönderiyoruz. Ruby’de bir metota block’un parametre olarak geçtiğini belirtmek için &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;amp;&lt;/code&gt; kullanıyoruz. Metot içinde ise gönderilen block’u kullanmak için &lt;code class=&quot;highlighter-rouge&quot;&gt;call&lt;/code&gt; metotunu çağırıyoruz.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;yield&lt;/code&gt; Ruby’de bir anahtar kelimedir ve kullanımı &lt;code class=&quot;highlighter-rouge&quot;&gt;block&lt;/code&gt; gibidir. Ancak aralarında ufak farklılıklar vardır. Bunlardan biri yield’i çağırırken call metotunu çağırmaya ihtiyacımız yoktur. Ayrıca yield, block’a göre performans olarak daha iyidir.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;name&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;ender&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ender&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Parametre geçirmek yield için de geçerlidir. Aynı block’da olduğu gibi yield da parametre alabilir.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;times&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)}&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;55&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;em&gt;Örnek, Sıktı Bağdat’ın Ruby kitabından alınmıştır.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Ruby’de block’ları birer nesne gibi kullanmak için &lt;code class=&quot;highlighter-rouge&quot;&gt;Proc&lt;/code&gt; nesnesinden yararlanıyoruz. &lt;code class=&quot;highlighter-rouge&quot;&gt;proc = Proc.new {}&lt;/code&gt; şeklinde çağırarak işlemlerimize başlıyoruz.&lt;/p&gt;
+
+&lt;p&gt;Proc nesnesini çağırmak için block’larda olduğu gibi call metotununu kullanabiliriz.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;&amp;gt; &lt;/span&gt;proc &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; Proc.new &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; puts &lt;span class=&quot;s2&quot;&gt;&quot;Hello from Proc.&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;gp&quot;&gt;&amp;gt; &lt;/span&gt;proc.call
+&lt;span class=&quot;gp&quot;&gt;=&amp;gt; &lt;/span&gt;Hello from Proc.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Lambda&lt;/code&gt; Proc sınıfından türeyen bir nesnedir. Lambda’yı oluşturmak için Ruby’de genellikle &lt;code class=&quot;highlighter-rouge&quot;&gt;my_lambda = -&amp;gt; {}&lt;/code&gt; kullanılır. Bu kullanım Lambda nesnesi oluşturmamıza yarar.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;&amp;gt; &lt;/span&gt;mult  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; lambda &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;|x,y| x &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; y &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;gp&quot;&gt;&amp;gt; &lt;/span&gt;mult.call&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;2,3&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;gp&quot;&gt;=&amp;gt; &lt;/span&gt;6
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;&amp;gt; &lt;/span&gt;wtp &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; -&amp;gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; puts &lt;span class=&quot;s2&quot;&gt;&quot;What&#39;s up?&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;gp&quot;&gt;&amp;gt; &lt;/span&gt;wtp.call
+&lt;span class=&quot;gp&quot;&gt;=&amp;gt; &lt;/span&gt;What&lt;span class=&quot;s1&quot;&gt;&#39;s up?
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Ruby’de Block, Yield, Proc ve Lambda kullanımları oldukça yaygın olduğunu unutmayalım. Özellikle kodları daha okunur ve kendini tekrar etmeyecek şekilde yazmak istediğimizde bu özellikleri kullanabiliriz.&lt;/p&gt;
+
+&lt;p&gt;Sevgiler.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 19 May 2016 00:00:00 +0300</pubDate>
+        <link>enderahmetyurt.github.io//2016/block-proc-lambda/</link>
+        <guid isPermaLink="true">enderahmetyurt.github.io//2016/block-proc-lambda/</guid>
+        
+        <category>ruby</category>
+        
+        
+      </item>
     
       <item>
         <title>Debugging with Pry</title>
