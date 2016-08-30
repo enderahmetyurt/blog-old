@@ -2,7 +2,7 @@
   <i class="icon icon-list btn-mobile-menu__icon"></i>
   <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
 </span>
-  
+
 <header class="panel-cover" style="background-image: url({{ "images/cover.jpg" | prepend: site.baseurl }})">
   <div class="panel-main">
 
@@ -26,7 +26,7 @@
 
           <nav class="cover-navigation navigation--social">
             <ul class="navigation">
-          
+
             {% if site.author.twitter_username %}
               <!-- Twitter -->
               <li class="navigation__item">
@@ -67,6 +67,16 @@
               </li>
             {% endif %}
 
+            {% if site.author.medium_username %}
+              <!-- Medium -->
+              <li class="navigation__item">
+                <a href="http://medium.com/@{{ site.author.medium_username }}" title="@{{ site.author.medium_username }} on Medium" target="_blank">
+                  <i class="icon icon-social-medium"></i>
+                  <span class="label">Medium</span>
+                </a>
+              </li>
+            {% endif %}
+
             {% if site.author.email %}
               <!-- Email -->
               <li class="navigation__item">
@@ -84,7 +94,7 @@
                 <span class="label">RSS</span>
               </a>
             </li>
-          
+
             </ul>
           </nav>
 
