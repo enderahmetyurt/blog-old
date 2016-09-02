@@ -1,1 +1,1 @@
-Hello Blog
+Eay Blog
