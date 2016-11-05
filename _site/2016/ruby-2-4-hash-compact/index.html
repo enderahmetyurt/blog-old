@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Tags</title>
+  <title>Ruby 2.4 Hash#compact</title>
   <meta name="description" content="Full Stack Developer">
   <meta name="author" content="Ender Ahmet Yurt">
   <meta name="HandheldFriendly" content="True">
@@ -43,7 +43,7 @@
   <meta name="theme-color" content="#ffffff">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="enderahmetyurt.github.io//tags/">
+  <link rel="canonical" href="enderahmetyurt.github.io//2016/ruby-2-4-hash-compact/">
   <link rel="alternate" type="application/rss+xml" title="Ender Ahmet Yurt" href="/feed.xml">
 </head>
 
@@ -154,59 +154,45 @@
 
     <div class="content-wrapper">
       <div class="content-wrapper__inner">
-        <h2>Tags:</h2>
-<div class="tags"> 
- 
-  <a href="#ruby">ruby</a>
+        <article class="post-container post-container--single">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="5 Nov 2016" class="post-meta__date date">5 Nov 2016</time> &#8226; <span class="post-meta__tags">on <a href="/tags/#ruby">ruby</a> </span>
+    </div>
+    <h1 class="post-title">Ruby 2.4 Hash#compact</h1>
+  </header>
 
+  <section class="post">
+    <p>Merhaba. Ruby 2.4 yazılarına devam ediyoruz.</p>
+
+<p>Ruby’de nil value’e sahip bir key ile hash oluşturduğunuzda Ruby bu değeri hash’den kaldırıyor.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="o">&gt;</span> <span class="nb">hash</span> <span class="o">=</span> <span class="p">{</span><span class="ss">:name</span><span class="o">=&gt;</span><span class="s2">"ender"</span><span class="p">,</span> <span class="ss">:age</span><span class="o">=&gt;</span><span class="kp">nil</span><span class="p">}</span>
+<span class="c1">#=&gt; {:name=&gt;"ender"}</span>
+</code></pre>
 </div>
 
-<!-- iterate through all tags on the site --> 
- 
-  <!-- for each tag, create an anchor by using the tag name as an id --> 
-  <div id="ruby">  
-    <h3> ruby </h3>  <!-- for create a heading --> 
+<p>Active Support ile value’su nil olan key’leri dönmesini Hash#compact ile sağlayabiliyorsuz. Bu özellik artık Ruby 2.4 ile birlikte geliyor.</p>
 
-    <ul> <!-- create the list of posts -->
-      <!-- iterate through all the posts on the site --> 
-       
-        <!-- list only those which contain the current tag --> 
-         
-            <li>
-              <a href="/2016/ruby-2-4-hash-compact/">Ruby 2.4 Hash#compact</a>
-            </li>
-        
-       
-        <!-- list only those which contain the current tag --> 
-         
-            <li>
-              <a href="/2016/ruby-2-4-enumerable-sum/">Ruby 2.4 Enumerable#sum</a>
-            </li>
-        
-       
-        <!-- list only those which contain the current tag --> 
-         
-            <li>
-              <a href="/2016/block-proc-lambda/">Block, Proc, Lambda</a>
-            </li>
-        
-       
-        <!-- list only those which contain the current tag --> 
-         
-            <li>
-              <a href="/2016/debugging-with-pry/">Debugging with Pry</a>
-            </li>
-        
-       
-        <!-- list only those which contain the current tag --> 
-         
-            <li>
-              <a href="/2016/ruby-enumerable/">Ruby Enumerable</a>
-            </li>
-        
-      
-    </ul>
-  </div>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="o">&gt;</span> <span class="nb">hash</span> <span class="o">=</span> <span class="p">{</span><span class="ss">:name</span><span class="o">=&gt;</span><span class="s2">"ender"</span><span class="p">,</span> <span class="ss">:age</span><span class="o">=&gt;</span><span class="kp">nil</span><span class="p">}</span>
+<span class="o">&gt;</span> <span class="nb">hash</span><span class="p">.</span><span class="nf">compact</span>
+<span class="c1">#=&gt; {:name=&gt;"ender", :age=&gt;nil}</span>
+</code></pre>
+</div>
+
+<p>Sevgiler.</p>
+
+<p><small><em>Referans</em></small></p>
+
+<ul>
+  <li><a href="http://blog.bigbinary.com/2016/10/24/hash-compact-and-hash-compact-now-part-of-ruby-2-4.html">http://blog.bigbinary.com/2016/10/24/hash-compact-and-hash-compact-now-part-of-ruby-2-4.html</a></li>
+</ul>
+
+  </section>
+  
+</article>
+
+
 
       </div>
 
