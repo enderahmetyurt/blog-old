@@ -5,9 +5,59 @@
     <description>Full Stack Developer</description>
     <link>enderahmetyurt.github.io//</link>
     <atom:link href="enderahmetyurt.github.io//feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 05 Nov 2016 10:40:52 +0300</pubDate>
-    <lastBuildDate>Sat, 05 Nov 2016 10:40:52 +0300</lastBuildDate>
+    <pubDate>Thu, 10 Nov 2016 10:52:54 +0300</pubDate>
+    <lastBuildDate>Thu, 10 Nov 2016 10:52:54 +0300</lastBuildDate>
     <generator>Jekyll v3.0.2</generator>
+    
+      <item>
+        <title>Ruby 2.4 Binding.irb</title>
+        <description>&lt;p&gt;Hello! &lt;a href=&quot;https://www.ruby-lang.org/en/news/2016/11/09/ruby-2-4-0-preview3-released/&quot;&gt;Ruby2.4.0.preview3&lt;/a&gt; was released yesterday. There are some really cool features in it. I will mention one of these. It is about debugging or open a REPL session. As you know before that release, Ruby developers use &lt;code class=&quot;highlighter-rouge&quot;&gt;p&lt;/code&gt; or other lovely gem &lt;a href=&quot;https://github.com/pry/pry&quot;&gt;pry&lt;/a&gt; to debug. For now &lt;a href=&quot;https://github.com/ruby/ruby/commit/493e48897421d176a8faf0f0820323d79ecdf94a&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;binding.irb&lt;/code&gt;&lt;/a&gt; provides to debug in your application.&lt;/p&gt;
+
+&lt;p&gt;First, we need to install lastes your version. With RVM we can do it!&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;rvm install 2.4.0-preview3
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Don’t forget to select right version.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;rvm use 2.4.0-preview3
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Now we can test that feature with a small Ruby program.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;irb&#39;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Test&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;hello&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;binding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;irb&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hello &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;hello&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;ender&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ruby&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ruby24p3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;rb&lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;preview3&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mo&quot;&gt;001&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; &quot;ender&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;That’s it. After Ruby 2.4 we won’t need to write &lt;code class=&quot;highlighter-rouge&quot;&gt;p&lt;/code&gt; we can open a REPL in anytime.&lt;/p&gt;
+
+&lt;p&gt;Cheers.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 10 Nov 2016 00:00:00 +0300</pubDate>
+        <link>enderahmetyurt.github.io//2016/ruby2-4-binding-irb/</link>
+        <guid isPermaLink="true">enderahmetyurt.github.io//2016/ruby2-4-binding-irb/</guid>
+        
+        <category>ruby</category>
+        
+        
+      </item>
     
       <item>
         <title>Ruby 2.4 String#concat, Array#concat and String#prepend Multiple Arguments</title>
