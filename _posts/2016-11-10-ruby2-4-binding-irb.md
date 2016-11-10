@@ -1,10 +1,10 @@
 ---
 layout: post
-title: Ruby 2.4 Binding.irb
+title: Ruby 2.4 Binding#irb
 tags: [ruby]
 ---
 
-Hello! [Ruby2.4.0.preview3](https://www.ruby-lang.org/en/news/2016/11/09/ruby-2-4-0-preview3-released/) was released yesterday. There are some really cool features in it. I will mention one of these. It is about debugging or open a REPL session. As you know before that release, Ruby developers use ```p``` or other lovely gem [pry](https://github.com/pry/pry) to debug. For now [```binding.irb```](https://github.com/ruby/ruby/commit/493e48897421d176a8faf0f0820323d79ecdf94a) provides to debug in your application.
+Hello! [Ruby2.4.0.preview3](https://www.ruby-lang.org/en/news/2016/11/09/ruby-2-4-0-preview3-released/) was released yesterday. There are some really cool features in it. I will mention one of these. It is about debugging or open a REPL session. As you know before that release, Ruby developers use ```p``` or other lovely gem [pry](https://github.com/pry/pry) to debug. For now [```binding#irb```](https://github.com/ruby/ruby/commit/493e48897421d176a8faf0f0820323d79ecdf94a) provides to debug in your application.
 
 First, we need to install lastes your version. With RVM we can do it!
 

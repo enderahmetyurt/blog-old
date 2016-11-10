@@ -5,13 +5,13 @@
     <description>Full Stack Developer</description>
     <link>enderahmetyurt.github.io//</link>
     <atom:link href="enderahmetyurt.github.io//feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 10 Nov 2016 10:52:54 +0300</pubDate>
-    <lastBuildDate>Thu, 10 Nov 2016 10:52:54 +0300</lastBuildDate>
+    <pubDate>Thu, 10 Nov 2016 10:54:50 +0300</pubDate>
+    <lastBuildDate>Thu, 10 Nov 2016 10:54:50 +0300</lastBuildDate>
     <generator>Jekyll v3.0.2</generator>
     
       <item>
-        <title>Ruby 2.4 Binding.irb</title>
-        <description>&lt;p&gt;Hello! &lt;a href=&quot;https://www.ruby-lang.org/en/news/2016/11/09/ruby-2-4-0-preview3-released/&quot;&gt;Ruby2.4.0.preview3&lt;/a&gt; was released yesterday. There are some really cool features in it. I will mention one of these. It is about debugging or open a REPL session. As you know before that release, Ruby developers use &lt;code class=&quot;highlighter-rouge&quot;&gt;p&lt;/code&gt; or other lovely gem &lt;a href=&quot;https://github.com/pry/pry&quot;&gt;pry&lt;/a&gt; to debug. For now &lt;a href=&quot;https://github.com/ruby/ruby/commit/493e48897421d176a8faf0f0820323d79ecdf94a&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;binding.irb&lt;/code&gt;&lt;/a&gt; provides to debug in your application.&lt;/p&gt;
+        <title>Ruby 2.4 Binding#irb</title>
+        <description>&lt;p&gt;Hello! &lt;a href=&quot;https://www.ruby-lang.org/en/news/2016/11/09/ruby-2-4-0-preview3-released/&quot;&gt;Ruby2.4.0.preview3&lt;/a&gt; was released yesterday. There are some really cool features in it. I will mention one of these. It is about debugging or open a REPL session. As you know before that release, Ruby developers use &lt;code class=&quot;highlighter-rouge&quot;&gt;p&lt;/code&gt; or other lovely gem &lt;a href=&quot;https://github.com/pry/pry&quot;&gt;pry&lt;/a&gt; to debug. For now &lt;a href=&quot;https://github.com/ruby/ruby/commit/493e48897421d176a8faf0f0820323d79ecdf94a&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;binding#irb&lt;/code&gt;&lt;/a&gt; provides to debug in your application.&lt;/p&gt;
 
 &lt;p&gt;First, we need to install lastes your version. With RVM we can do it!&lt;/p&gt;
 
