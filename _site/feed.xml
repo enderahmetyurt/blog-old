@@ -3,10 +3,10 @@
   <channel>
     <title>Ender Ahmet Yurt</title>
     <description>Full Stack Developer</description>
-    <link>enderahmetyurt.github.io//</link>
-    <atom:link href="enderahmetyurt.github.io//feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 26 Dec 2017 16:25:58 +0300</pubDate>
-    <lastBuildDate>Tue, 26 Dec 2017 16:25:58 +0300</lastBuildDate>
+    <link>enderahmetyurt.github.io/</link>
+    <atom:link href="enderahmetyurt.github.io/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Tue, 26 Dec 2017 16:43:26 +0300</pubDate>
+    <lastBuildDate>Tue, 26 Dec 2017 16:43:26 +0300</lastBuildDate>
     <generator>Jekyll v3.0.2</generator>
     
       <item>
@@ -51,8 +51,8 @@
 &lt;p&gt;Cheers.&lt;/p&gt;
 </description>
         <pubDate>Thu, 10 Nov 2016 00:00:00 +0300</pubDate>
-        <link>enderahmetyurt.github.io//2016/ruby2-4-binding-irb/</link>
-        <guid isPermaLink="true">enderahmetyurt.github.io//2016/ruby2-4-binding-irb/</guid>
+        <link>enderahmetyurt.github.io/2016/ruby2-4-binding-irb/</link>
+        <guid isPermaLink="true">enderahmetyurt.github.io/2016/ruby2-4-binding-irb/</guid>
         
         <category>ruby</category>
         
@@ -116,8 +116,8 @@
 &lt;/ul&gt;
 </description>
         <pubDate>Sat, 05 Nov 2016 00:00:00 +0300</pubDate>
-        <link>enderahmetyurt.github.io//2016/ruby-2-4-string-concat-array-concat-and-string-prepend-multiple-arguments/</link>
-        <guid isPermaLink="true">enderahmetyurt.github.io//2016/ruby-2-4-string-concat-array-concat-and-string-prepend-multiple-arguments/</guid>
+        <link>enderahmetyurt.github.io/2016/ruby-2-4-string-concat-array-concat-and-string-prepend-multiple-arguments/</link>
+        <guid isPermaLink="true">enderahmetyurt.github.io/2016/ruby-2-4-string-concat-array-concat-and-string-prepend-multiple-arguments/</guid>
         
         <category>ruby</category>
         
@@ -152,8 +152,8 @@
 &lt;/ul&gt;
 </description>
         <pubDate>Sat, 05 Nov 2016 00:00:00 +0300</pubDate>
-        <link>enderahmetyurt.github.io//2016/ruby-2-4-hash-compact/</link>
-        <guid isPermaLink="true">enderahmetyurt.github.io//2016/ruby-2-4-hash-compact/</guid>
+        <link>enderahmetyurt.github.io/2016/ruby-2-4-hash-compact/</link>
+        <guid isPermaLink="true">enderahmetyurt.github.io/2016/ruby-2-4-hash-compact/</guid>
         
         <category>ruby</category>
         
@@ -192,8 +192,8 @@
 &lt;/ul&gt;
 </description>
         <pubDate>Wed, 02 Nov 2016 00:00:00 +0300</pubDate>
-        <link>enderahmetyurt.github.io//2016/ruby-2-4-enumerable-sum/</link>
-        <guid isPermaLink="true">enderahmetyurt.github.io//2016/ruby-2-4-enumerable-sum/</guid>
+        <link>enderahmetyurt.github.io/2016/ruby-2-4-enumerable-sum/</link>
+        <guid isPermaLink="true">enderahmetyurt.github.io/2016/ruby-2-4-enumerable-sum/</guid>
         
         <category>ruby</category>
         
@@ -305,8 +305,8 @@
 &lt;p&gt;Sevgiler.&lt;/p&gt;
 </description>
         <pubDate>Thu, 19 May 2016 00:00:00 +0300</pubDate>
-        <link>enderahmetyurt.github.io//2016/block-proc-lambda/</link>
-        <guid isPermaLink="true">enderahmetyurt.github.io//2016/block-proc-lambda/</guid>
+        <link>enderahmetyurt.github.io/2016/block-proc-lambda/</link>
+        <guid isPermaLink="true">enderahmetyurt.github.io/2016/block-proc-lambda/</guid>
         
         <category>ruby</category>
         
@@ -393,8 +393,8 @@
 &lt;p&gt;Sevgiler.&lt;/p&gt;
 </description>
         <pubDate>Sun, 15 May 2016 00:00:00 +0300</pubDate>
-        <link>enderahmetyurt.github.io//2016/debugging-with-pry/</link>
-        <guid isPermaLink="true">enderahmetyurt.github.io//2016/debugging-with-pry/</guid>
+        <link>enderahmetyurt.github.io/2016/debugging-with-pry/</link>
+        <guid isPermaLink="true">enderahmetyurt.github.io/2016/debugging-with-pry/</guid>
         
         <category>ruby</category>
         
@@ -495,8 +495,8 @@
 &lt;p&gt;Sevgiler.&lt;/p&gt;
 </description>
         <pubDate>Fri, 06 May 2016 00:00:00 +0300</pubDate>
-        <link>enderahmetyurt.github.io//2016/ruby-enumerable/</link>
-        <guid isPermaLink="true">enderahmetyurt.github.io//2016/ruby-enumerable/</guid>
+        <link>enderahmetyurt.github.io/2016/ruby-enumerable/</link>
+        <guid isPermaLink="true">enderahmetyurt.github.io/2016/ruby-enumerable/</guid>
         
         <category>ruby</category>
         
