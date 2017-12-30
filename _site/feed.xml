@@ -3,12 +3,12 @@
   <channel>
     <title>Ender Ahmet Yurt</title>
     <description>Full Stack Developer</description>
-    <link>enderahmetyurt.github.io//</link>
-    <atom:link href="enderahmetyurt.github.io//feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 21 Jun 2017 11:49:34 +0300</pubDate>
-    <lastBuildDate>Wed, 21 Jun 2017 11:49:34 +0300</lastBuildDate>
+    <link>enderahmetyurt.github.io/</link>
+    <atom:link href="enderahmetyurt.github.io/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Tue, 26 Dec 2017 16:43:26 +0300</pubDate>
+    <lastBuildDate>Tue, 26 Dec 2017 16:43:26 +0300</lastBuildDate>
     <generator>Jekyll v3.0.2</generator>
-    
+
       <item>
         <title>Ruby 2.4 Binding#irb</title>
         <description>&lt;p&gt;Hello! &lt;a href=&quot;https://www.ruby-lang.org/en/news/2016/11/09/ruby-2-4-0-preview3-released/&quot;&gt;Ruby2.4.0.preview3&lt;/a&gt; was released yesterday. There are some really cool features in it. I will mention one of these. It is about debugging or open a REPL session. As you know before that release, Ruby developers use &lt;code class=&quot;highlighter-rouge&quot;&gt;p&lt;/code&gt; or other lovely gem &lt;a href=&quot;https://github.com/pry/pry&quot;&gt;pry&lt;/a&gt; to debug. For now &lt;a href=&quot;https://github.com/ruby/ruby/commit/493e48897421d176a8faf0f0820323d79ecdf94a&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;binding#irb&lt;/code&gt;&lt;/a&gt; provides to debug in your application.&lt;/p&gt;
@@ -51,14 +51,14 @@
 &lt;p&gt;Cheers.&lt;/p&gt;
 </description>
         <pubDate>Thu, 10 Nov 2016 00:00:00 +0300</pubDate>
-        <link>enderahmetyurt.github.io//2016/ruby2-4-binding-irb/</link>
-        <guid isPermaLink="true">enderahmetyurt.github.io//2016/ruby2-4-binding-irb/</guid>
-        
+        <link>enderahmetyurt.github.io/2016/ruby2-4-binding-irb/</link>
+        <guid isPermaLink="true">enderahmetyurt.github.io/2016/ruby2-4-binding-irb/</guid>
+
         <category>ruby</category>
-        
-        
+
+
       </item>
-    
+
       <item>
         <title>Ruby 2.4 String#concat, Array#concat and String#prepend Multiple Arguments</title>
         <description>&lt;p&gt;Merhaba. Ruby 2.4’den önceki sürümler String ve Array için tanımlı #concat metotu birleştirme işlemini parametre almadan yapıyor.&lt;/p&gt;
@@ -116,14 +116,14 @@
 &lt;/ul&gt;
 </description>
         <pubDate>Sat, 05 Nov 2016 00:00:00 +0300</pubDate>
-        <link>enderahmetyurt.github.io//2016/ruby-2-4-string-concat-array-concat-and-string-prepend-multiple-arguments/</link>
-        <guid isPermaLink="true">enderahmetyurt.github.io//2016/ruby-2-4-string-concat-array-concat-and-string-prepend-multiple-arguments/</guid>
-        
+        <link>enderahmetyurt.github.io/2016/ruby-2-4-string-concat-array-concat-and-string-prepend-multiple-arguments/</link>
+        <guid isPermaLink="true">enderahmetyurt.github.io/2016/ruby-2-4-string-concat-array-concat-and-string-prepend-multiple-arguments/</guid>
+
         <category>ruby</category>
-        
-        
+
+
       </item>
-    
+
       <item>
         <title>Ruby 2.4 Hash#compact</title>
         <description>&lt;p&gt;Merhaba. Ruby 2.4 yazılarına devam ediyoruz.&lt;/p&gt;
@@ -152,14 +152,14 @@
 &lt;/ul&gt;
 </description>
         <pubDate>Sat, 05 Nov 2016 00:00:00 +0300</pubDate>
-        <link>enderahmetyurt.github.io//2016/ruby-2-4-hash-compact/</link>
-        <guid isPermaLink="true">enderahmetyurt.github.io//2016/ruby-2-4-hash-compact/</guid>
-        
+        <link>enderahmetyurt.github.io/2016/ruby-2-4-hash-compact/</link>
+        <guid isPermaLink="true">enderahmetyurt.github.io/2016/ruby-2-4-hash-compact/</guid>
+
         <category>ruby</category>
-        
-        
+
+
       </item>
-    
+
       <item>
         <title>Ruby 2.4 Enumerable#sum</title>
         <description>&lt;p&gt;Merhaba! &lt;a href=&quot;https://www.ruby-lang.org/en/news/2016/09/08/ruby-2-4-0-preview2-released/&quot;&gt;Ruby 2.4 previewleri&lt;/a&gt; bundan yakın bir zaman önce çıktı ve bir takım yenilikler ile birlikte geldiler. Kısa kısa Ruby 2.4 ile gelen yeniliklerden ve değişikliklerden bahsedelim.&lt;/p&gt;
@@ -192,14 +192,14 @@
 &lt;/ul&gt;
 </description>
         <pubDate>Wed, 02 Nov 2016 00:00:00 +0300</pubDate>
-        <link>enderahmetyurt.github.io//2016/ruby-2-4-enumerable-sum/</link>
-        <guid isPermaLink="true">enderahmetyurt.github.io//2016/ruby-2-4-enumerable-sum/</guid>
-        
+        <link>enderahmetyurt.github.io/2016/ruby-2-4-enumerable-sum/</link>
+        <guid isPermaLink="true">enderahmetyurt.github.io/2016/ruby-2-4-enumerable-sum/</guid>
+
         <category>ruby</category>
-        
-        
+
+
       </item>
-    
+
       <item>
         <title>Block, Proc, Lambda</title>
         <description>&lt;p&gt;Merhaba! Ruby’nin en güçlü özelliklerinden biri bloklardır. Diğer dillerin aksine Ruby’de blokları anlamak ve kullanmak kolay ve basittir.&lt;/p&gt;
@@ -305,14 +305,14 @@
 &lt;p&gt;Sevgiler.&lt;/p&gt;
 </description>
         <pubDate>Thu, 19 May 2016 00:00:00 +0300</pubDate>
-        <link>enderahmetyurt.github.io//2016/block-proc-lambda/</link>
-        <guid isPermaLink="true">enderahmetyurt.github.io//2016/block-proc-lambda/</guid>
-        
+        <link>enderahmetyurt.github.io/2016/block-proc-lambda/</link>
+        <guid isPermaLink="true">enderahmetyurt.github.io/2016/block-proc-lambda/</guid>
+
         <category>ruby</category>
-        
-        
+
+
       </item>
-    
+
       <item>
         <title>Debugging with Pry</title>
         <description>&lt;p&gt;Merhaba! Kod yazarken bir bir şeylerin yolunda gitmediği veya kod içinde neler olduğunu anlamak istediğimiz anlar oluyor. Bu gibi durumlarda debugging yapıyoruz. Ruby’de eğer IDE kullanıyorsunuz debugging yapmak bir nebze kolay olabiliyor. Ancak benim gibi Sublime vb bir text editör kullanıcısıysanız imdadımıza PRY yetişiyor.&lt;/p&gt;
@@ -393,14 +393,14 @@
 &lt;p&gt;Sevgiler.&lt;/p&gt;
 </description>
         <pubDate>Sun, 15 May 2016 00:00:00 +0300</pubDate>
-        <link>enderahmetyurt.github.io//2016/debugging-with-pry/</link>
-        <guid isPermaLink="true">enderahmetyurt.github.io//2016/debugging-with-pry/</guid>
-        
+        <link>enderahmetyurt.github.io/2016/debugging-with-pry/</link>
+        <guid isPermaLink="true">enderahmetyurt.github.io/2016/debugging-with-pry/</guid>
+
         <category>ruby</category>
-        
-        
+
+
       </item>
-    
+
       <item>
         <title>Ruby Enumerable</title>
         <description>&lt;p&gt;Merhaba! Bugün Ruby’de hemen hemen her gün kullandığımız &lt;code class=&quot;highlighter-rouge&quot;&gt;Enumerable&lt;/code&gt; metotlarından bahsetmek istiyorum. Bu yazıda kullanılan örnekleri daha iyi anlayabilmek için öncelikle Ruby’de Array ve Hash kavramlarını biraz olsun bilmeniz gerekiyor.&lt;/p&gt;
@@ -495,13 +495,13 @@
 &lt;p&gt;Sevgiler.&lt;/p&gt;
 </description>
         <pubDate>Fri, 06 May 2016 00:00:00 +0300</pubDate>
-        <link>enderahmetyurt.github.io//2016/ruby-enumerable/</link>
-        <guid isPermaLink="true">enderahmetyurt.github.io//2016/ruby-enumerable/</guid>
-        
+        <link>enderahmetyurt.github.io/2016/ruby-enumerable/</link>
+        <guid isPermaLink="true">enderahmetyurt.github.io/2016/ruby-enumerable/</guid>
+
         <category>ruby</category>
-        
-        
+
+
       </item>
-    
+
   </channel>
 </rss>
