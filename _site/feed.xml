@@ -5,10 +5,123 @@
     <description>Full Stack Developer</description>
     <link>enderahmetyurt.github.io/</link>
     <atom:link href="enderahmetyurt.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 26 Dec 2017 16:43:26 +0300</pubDate>
-    <lastBuildDate>Tue, 26 Dec 2017 16:43:26 +0300</lastBuildDate>
+    <pubDate>Wed, 03 Jan 2018 08:49:14 +0300</pubDate>
+    <lastBuildDate>Wed, 03 Jan 2018 08:49:14 +0300</lastBuildDate>
     <generator>Jekyll v3.0.2</generator>
+    
+      <item>
+        <title>Ruby 2.5 ile Gelenler</title>
+        <description>&lt;p&gt;Merhaba, Ruby en son versiyonu olan 2.5 ile yeni yıla girmeden karşımıza çıktı. Bu versiyon ile ne gibi özellikler geldi kısaca bakalım.&lt;/p&gt;
 
+&lt;h3 id=&quot;beginende-gerek-kalmad&quot;&gt;Begin/End’e gerek kalmadı&lt;/h3&gt;
+
+&lt;p&gt;Bu özellik ile artık &lt;code class=&quot;highlighter-rouge&quot;&gt;begin end&lt;/code&gt; block’u yazmak zorunda kalmıyoruz.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# 2.4&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;begin&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;rescue&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;rescue&quot;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;else&quot;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;ensure&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;ensure&quot;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# 2.5&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;rescue&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;rescue&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;else&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;ensure&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;ensure&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;backtrace-ve-error-messagen-sralamas-deiti&quot;&gt;Backtrace ve error message’ın sıralaması değişti&lt;/h3&gt;
+&lt;p&gt;Hata masajları ve nerede hata olduğunu gösteren mesajlar artık tam tersi şekilde gelmeye başladı. Bu sanırım daha açıklayıcı olacak gibi geliyor bana. Sanırım bu özellikle 2.5 ile gelse bile daha çok deneysel bir özellik olduğu söyleniyor.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# 2.4&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;hello &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# NameError: undefined local variable or method `name&#39; for main:Object&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#   from (irb):1&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#   from /Users/ender/.rvm/rubies/ruby-2.4.2/bin/irb:11:in `&amp;lt;main&amp;gt;&#39;&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# 2.5&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;hello &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Traceback (most recent call last):&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#         2: from /Users/ender/.rvm/rubies/ruby-2.5.0/bin/irb:11:in `&amp;lt;main&amp;gt;&#39;&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#         1: from (irb):1&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# NameError (undefined local variable or method `name&#39; for main:Object)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;stringdeleteprefixdeletesuffix&quot;&gt;String#delete_prefix/delete_suffix&lt;/h3&gt;
+
+&lt;p&gt;String sınıfı için iki yeni metot geldi. Gerekli bir metot mu bilemiyorum ama zaman zaman işe yarayabilir gibi duruyor.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;ender&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;delete_prefix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;en&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# =&amp;gt; &quot;der&quot;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;minder&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;delete_prefix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;en&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# =&amp;gt; &quot;minder&quot;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;ender&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;delete_suffix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;er&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# =&amp;gt; &quot;end&quot;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;deriz&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;delete_suffix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;er&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# =&amp;gt; &quot;deriz&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;bir-baka-alias-daha&quot;&gt;Bir başka alias daha&lt;/h3&gt;
+&lt;p&gt;unshift/push’un alias’ı prepend/append artık bizlerle.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;array&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;prepend&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; [1, 2, 3, 4]&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;array&lt;/span&gt;               &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; [1, 2, 3, 4]&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;array&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; [1, 2, 3, 4]&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;array&lt;/span&gt;               &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; [1, 2, 3, 4]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;hashtransformkeystransformkeys&quot;&gt;Hash#transform_keys/transform_keys!&lt;/h3&gt;
+&lt;p&gt;Hash’e yeni ve kullanışlı metotlar geldi. Bu metotlar aşağıdaki gibi çalışıyor.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;hash&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;a: &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;b: &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;hash&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;transform_keys&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;to_s&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# =&amp;gt; { &#39;a&#39; =&amp;gt; 1, &#39;b&#39; =&amp;gt; 2 }&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;hash&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;a: &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;b: &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;hash&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;transform_keys!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;to_s&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# =&amp;gt; { &#39;a&#39; =&amp;gt; 1, &#39;b&#39; =&amp;gt; 2 }&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;hash&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# =&amp;gt; { &#39;a&#39; =&amp;gt; 1, &#39;b&#39; =&amp;gt; 2 }&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Tabiki bütün özellikler bunlarla sınırlı değil. Bütün detaylara buradan &lt;a href=&quot;https://github.com/ruby/ruby/blob/v2_5_0_preview1/NEWS&quot;&gt;ulaşabilirsiniz.&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Sevgiler.&lt;/p&gt;
+
+</description>
+        <pubDate>Sat, 30 Dec 2017 00:00:00 +0300</pubDate>
+        <link>enderahmetyurt.github.io/2017/ruby-2-5-ile-gelenler/</link>
+        <guid isPermaLink="true">enderahmetyurt.github.io/2017/ruby-2-5-ile-gelenler/</guid>
+        
+        <category>ruby</category>
+        
+        
+      </item>
+    
       <item>
         <title>Ruby 2.4 Binding#irb</title>
         <description>&lt;p&gt;Hello! &lt;a href=&quot;https://www.ruby-lang.org/en/news/2016/11/09/ruby-2-4-0-preview3-released/&quot;&gt;Ruby2.4.0.preview3&lt;/a&gt; was released yesterday. There are some really cool features in it. I will mention one of these. It is about debugging or open a REPL session. As you know before that release, Ruby developers use &lt;code class=&quot;highlighter-rouge&quot;&gt;p&lt;/code&gt; or other lovely gem &lt;a href=&quot;https://github.com/pry/pry&quot;&gt;pry&lt;/a&gt; to debug. For now &lt;a href=&quot;https://github.com/ruby/ruby/commit/493e48897421d176a8faf0f0820323d79ecdf94a&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;binding#irb&lt;/code&gt;&lt;/a&gt; provides to debug in your application.&lt;/p&gt;
@@ -53,12 +166,12 @@
         <pubDate>Thu, 10 Nov 2016 00:00:00 +0300</pubDate>
         <link>enderahmetyurt.github.io/2016/ruby2-4-binding-irb/</link>
         <guid isPermaLink="true">enderahmetyurt.github.io/2016/ruby2-4-binding-irb/</guid>
-
+        
         <category>ruby</category>
-
-
+        
+        
       </item>
-
+    
       <item>
         <title>Ruby 2.4 String#concat, Array#concat and String#prepend Multiple Arguments</title>
         <description>&lt;p&gt;Merhaba. Ruby 2.4’den önceki sürümler String ve Array için tanımlı #concat metotu birleştirme işlemini parametre almadan yapıyor.&lt;/p&gt;
@@ -118,12 +231,12 @@
         <pubDate>Sat, 05 Nov 2016 00:00:00 +0300</pubDate>
         <link>enderahmetyurt.github.io/2016/ruby-2-4-string-concat-array-concat-and-string-prepend-multiple-arguments/</link>
         <guid isPermaLink="true">enderahmetyurt.github.io/2016/ruby-2-4-string-concat-array-concat-and-string-prepend-multiple-arguments/</guid>
-
+        
         <category>ruby</category>
-
-
+        
+        
       </item>
-
+    
       <item>
         <title>Ruby 2.4 Hash#compact</title>
         <description>&lt;p&gt;Merhaba. Ruby 2.4 yazılarına devam ediyoruz.&lt;/p&gt;
@@ -154,12 +267,12 @@
         <pubDate>Sat, 05 Nov 2016 00:00:00 +0300</pubDate>
         <link>enderahmetyurt.github.io/2016/ruby-2-4-hash-compact/</link>
         <guid isPermaLink="true">enderahmetyurt.github.io/2016/ruby-2-4-hash-compact/</guid>
-
+        
         <category>ruby</category>
-
-
+        
+        
       </item>
-
+    
       <item>
         <title>Ruby 2.4 Enumerable#sum</title>
         <description>&lt;p&gt;Merhaba! &lt;a href=&quot;https://www.ruby-lang.org/en/news/2016/09/08/ruby-2-4-0-preview2-released/&quot;&gt;Ruby 2.4 previewleri&lt;/a&gt; bundan yakın bir zaman önce çıktı ve bir takım yenilikler ile birlikte geldiler. Kısa kısa Ruby 2.4 ile gelen yeniliklerden ve değişikliklerden bahsedelim.&lt;/p&gt;
@@ -194,12 +307,12 @@
         <pubDate>Wed, 02 Nov 2016 00:00:00 +0300</pubDate>
         <link>enderahmetyurt.github.io/2016/ruby-2-4-enumerable-sum/</link>
         <guid isPermaLink="true">enderahmetyurt.github.io/2016/ruby-2-4-enumerable-sum/</guid>
-
+        
         <category>ruby</category>
-
-
+        
+        
       </item>
-
+    
       <item>
         <title>Block, Proc, Lambda</title>
         <description>&lt;p&gt;Merhaba! Ruby’nin en güçlü özelliklerinden biri bloklardır. Diğer dillerin aksine Ruby’de blokları anlamak ve kullanmak kolay ve basittir.&lt;/p&gt;
@@ -307,12 +420,12 @@
         <pubDate>Thu, 19 May 2016 00:00:00 +0300</pubDate>
         <link>enderahmetyurt.github.io/2016/block-proc-lambda/</link>
         <guid isPermaLink="true">enderahmetyurt.github.io/2016/block-proc-lambda/</guid>
-
+        
         <category>ruby</category>
-
-
+        
+        
       </item>
-
+    
       <item>
         <title>Debugging with Pry</title>
         <description>&lt;p&gt;Merhaba! Kod yazarken bir bir şeylerin yolunda gitmediği veya kod içinde neler olduğunu anlamak istediğimiz anlar oluyor. Bu gibi durumlarda debugging yapıyoruz. Ruby’de eğer IDE kullanıyorsunuz debugging yapmak bir nebze kolay olabiliyor. Ancak benim gibi Sublime vb bir text editör kullanıcısıysanız imdadımıza PRY yetişiyor.&lt;/p&gt;
@@ -395,12 +508,12 @@
         <pubDate>Sun, 15 May 2016 00:00:00 +0300</pubDate>
         <link>enderahmetyurt.github.io/2016/debugging-with-pry/</link>
         <guid isPermaLink="true">enderahmetyurt.github.io/2016/debugging-with-pry/</guid>
-
+        
         <category>ruby</category>
-
-
+        
+        
       </item>
-
+    
       <item>
         <title>Ruby Enumerable</title>
         <description>&lt;p&gt;Merhaba! Bugün Ruby’de hemen hemen her gün kullandığımız &lt;code class=&quot;highlighter-rouge&quot;&gt;Enumerable&lt;/code&gt; metotlarından bahsetmek istiyorum. Bu yazıda kullanılan örnekleri daha iyi anlayabilmek için öncelikle Ruby’de Array ve Hash kavramlarını biraz olsun bilmeniz gerekiyor.&lt;/p&gt;
@@ -497,11 +610,11 @@
         <pubDate>Fri, 06 May 2016 00:00:00 +0300</pubDate>
         <link>enderahmetyurt.github.io/2016/ruby-enumerable/</link>
         <guid isPermaLink="true">enderahmetyurt.github.io/2016/ruby-enumerable/</guid>
-
+        
         <category>ruby</category>
-
-
+        
+        
       </item>
-
+    
   </channel>
 </rss>
