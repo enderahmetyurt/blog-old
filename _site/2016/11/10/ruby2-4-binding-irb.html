@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Ruby 2.4 Binding#irb &middot; Ender Ahmet Yurt
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+                                 <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+
+  <body class="theme-base-08">
+
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>
+        <a href="/">
+          Ender Ahmet Yurt
+        </a>
+      </h1>
+      <p class="lead">Software Engineer</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="sidebar-nav-item" href="/">Home</a>
+
+      
+
+      
+      
+        
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/about.html">About</a>
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+
+      <a class="sidebar-nav-item" href="https://github.com/enderahmetyurt">GitHub</a>
+      <a class="sidebar-nav-item" href="https://twitter.com/ndrx42">Twitter</a>
+      <span class="sidebar-nav-item">Currently v1.0.0</span>
+    </nav>
+
+    <p>&copy; 2018. All rights reserved.</p>
+  </div>
+</div>
+
+
+    <div class="content container">
+      <div class="post">
+  <h1 class="post-title">Ruby 2.4 Binding#irb</h1>
+  <span class="post-date">10 Nov 2016</span>
+  <p>Hello! <a href="https://www.ruby-lang.org/en/news/2016/11/09/ruby-2-4-0-preview3-released/">Ruby2.4.0.preview3</a> was released yesterday. There are some really cool features in it. I will mention one of these. It is about debugging or open a REPL session. As you know before that release, Ruby developers use <code class="highlighter-rouge">p</code> or other lovely gem <a href="https://github.com/pry/pry">pry</a> to debug. For now <a href="https://github.com/ruby/ruby/commit/493e48897421d176a8faf0f0820323d79ecdf94a"><code class="highlighter-rouge">binding#irb</code></a> provides to debug in your application.</p>
+
+<p>First, we need to install latest Ruby version. We can do it via RVM.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>rvm <span class="nb">install </span>2.4.0-preview3
+</code></pre></div></div>
+
+<p>Don’t forget to select the right version.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>rvm use 2.4.0-preview3
+</code></pre></div></div>
+
+<p>Now we can test that feature with a small Ruby program.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'irb'</span>
+
+<span class="k">class</span> <span class="nc">Test</span>
+  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">hello</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+    <span class="nb">binding</span><span class="p">.</span><span class="nf">irb</span>
+    <span class="nb">puts</span> <span class="s2">"Hello </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">"</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="nb">puts</span> <span class="no">Test</span><span class="p">.</span><span class="nf">hello</span><span class="p">(</span><span class="s1">'ender'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="n">ruby</span> <span class="n">ruby24p3</span><span class="p">.</span><span class="nf">rb</span>
+<span class="mf">2.4</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">preview3</span> <span class="p">:</span><span class="mo">001</span> <span class="o">&gt;</span> <span class="nb">name</span>
+<span class="c1">#=&gt; "ender"</span>
+</code></pre></div></div>
+
+<p>That’s it. After Ruby 2.4 we won’t need to write <code class="highlighter-rouge">p</code> we can open a REPL in anytime.</p>
+
+<p>Cheers.</p>
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2018/01/09/gmail-e-eklenti-yazmak.html">
+            Gmail'e Eklenti Yazmak
+            <small>09 Jan 2018</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2017/12/30/ruby-2-5-ile-gelenler.html">
+            Ruby 2.5 ile Gelenler
+            <small>30 Dec 2017</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2016/11/05/ruby-2-4-string-concat-array-concat-and-string-prepend-multiple-arguments.html">
+            Ruby 2.4 String#concat, Array#concat and String#prepend Multiple Arguments
+            <small>05 Nov 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+    </div>
+
+  </body>
+</html>

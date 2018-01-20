@@ -14,19 +14,14 @@ author:
   linkedin_username:  enderahmetyurt
   medium_username: ndrx
 
-# Build settings
-destination: _site
-paginate: 10
-permalink: /:year/:title/
-markdown: kramdown
-highlighter: rouge
+# Dependencies
+markdown:         kramdown
+highlighter:      rouge
 
-paginate:         20
+paginate: 1
 
 # Custom vars
-version:          2.1.0
+version: 1.0.0
 
-github:
-  repo:           https://github.com/poole/hyde
-
-plugins: [jekyll-paginate]
+plugins:
+  - jekyll-paginate
