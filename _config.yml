@@ -2,25 +2,17 @@
 title: Ender Ahmet Yurt
 description: 'Software Engineer'
 url: 'enderahmetyurt.github.io'
-baseurl: ''
+baseurl: '/'
 google_analytics: 'UA-41510931-2'
 disqus_shortname: 'ndrx42'
 
 author:
   name: 'Ender Ahmet Yurt'
   email: enderyurt@gmail.com
-  twitter_username: ndrx42
-  github_username:  enderahmetyurt
+  twitter_profile: https://twitter.com/ndrx42
+  github_profile:  https://github.com/enderahmetyurt
   linkedin_username:  enderahmetyurt
   medium_username: ndrx
-
-defaults:
-  -
-    scope:
-      path: ''
-      type: 'posts'
-    values:
-        layout: 'post'
 
 # Build settings
 destination: _site
@@ -29,14 +21,12 @@ permalink: /:year/:title/
 markdown: kramdown
 highlighter: rouge
 
-kramdown:
-  # use Github Flavored Markdown
-  input: GFM
-  # do not replace newlines by <br>s
-  hard_wrap: false
+paginate:         20
 
-gems: ['jekyll-paginate']
-exclude: ['README.md', 'Gemfile', 'Gemfile.lock', 'screenshot.png']
+# Custom vars
+version:          2.1.0
 
-# Filtering Content
-future: true
+github:
+  repo:           https://github.com/poole/hyde
+
+plugins: [jekyll-paginate]

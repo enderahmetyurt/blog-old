@@ -1,3 +1,10 @@
-source 'https://rubygems.org'
-gem 'github-pages'
-gem 'jekyll-compose', group: [:jekyll_plugins]
+source "https://rubygems.org"
+
+gem "jekyll"
+gem "jekyll-paginate"
+gem "redcarpet"
+gem "pygments.rb"
+
+group :jekyll_plugins do
+   gem "jekyll-gist"
+end
