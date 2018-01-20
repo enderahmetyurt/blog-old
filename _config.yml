@@ -1,7 +1,7 @@
 # Site settings
 title: Ender Ahmet Yurt
 description: 'Software Engineer'
-url: 'enderahmetyurt.com'
+url: 'enderahmetyurt.github.io'
 baseurl: '/'
 google_analytics: 'UA-41510931-2'
 disqus_shortname: 'ndrx42'
