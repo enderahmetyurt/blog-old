@@ -4,13 +4,96 @@
  <title>Ender Ahmet Yurt</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2018-01-20T16:53:25+03:00</updated>
+ <updated>2018-01-23T14:06:25+03:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Ender Ahmet Yurt</name>
    <email>enderyurt@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Gmail Eklenti Örneği</title>
+   <link href="http://localhost:4000/2018/01/23/gmail-eklenti-%C3%96rne%C4%9Fi.html"/>
+   <updated>2018-01-23T11:52:00+03:00</updated>
+   <id>http://localhost:4000/2018/01/23/gmail-eklenti-Örneği</id>
+   <content type="html">&lt;p&gt;Merhaba,&lt;/p&gt;
+
+&lt;p&gt;Daha önce &lt;a href=&quot;http://enderahmetyurt.com/2018/01/09/gmail-e-eklenti-yazmak.html&quot;&gt;Gmail add-on&lt;/a&gt; nedir? Bu konudan biraz bahsetmiştim. Şimdi ise küçük bir uygulama ile giriş yapıp daha pratik birşeyler göstermek istiyorum.&lt;/p&gt;
+
+&lt;p&gt;Öncelikle ihtiyacımız olan add-on’u yazmak için gerekli olan bir ortam. Google bize bu ortamı &lt;a href=&quot;https://script.google.com/&quot;&gt;https://script.google.com/&lt;/a&gt; ile veriyor. Sonrasında ise uygulamanın ayarlarının ve kütüphanelerinin bağımlılıklarının bulunduğu &lt;code class=&quot;highlighter-rouge&quot;&gt;manifest&lt;/code&gt; dosyasını tanımlamak gerekiyor. Son olarak ise kodu yani &lt;code class=&quot;highlighter-rouge&quot;&gt;CardService&lt;/code&gt;‘i yazmaya başlıyoruz.&lt;/p&gt;
+
+&lt;p&gt;Manifest dosyasını &lt;code class=&quot;highlighter-rouge&quot;&gt;appscript.json&lt;/code&gt; içine koymak gerekiyor. Default olarak bu dosya kod yazdığımız yerde görünür değil o yüzden &lt;code class=&quot;highlighter-rouge&quot;&gt;View &amp;gt; Show manifest file&lt;/code&gt; diyoruz ve aşağıdaki kodu dosyaya ekliyoruz.&lt;/p&gt;
+
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;gmail&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Quickstart Toolbar Label&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;logoUrl&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://www.example.com/hosted/images/2x/my-icon.png&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;primaryColor&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;#4285F4&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;secondaryColor&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;#4285F4&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;contextualTriggers&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;unconditional&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;onTriggerFunction&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;getContextualAddOn&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}],&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;version&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;TRUSTED_TESTER_V2&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Gördüğünüz gibi bu dosya içinde basit bir şekilde config ayarları yapılmış durumda. Uygulamanın adı, logosu, renkler ve versiyon gibi basit özelliklerin yanında asıl önemli olan uygulama ilk başladığında hangi metodun çalışması gerektiğini söyleyen &lt;code class=&quot;highlighter-rouge&quot;&gt;onTriggerFunction&lt;/code&gt; parametresi. Bu parametre uygulama ayağa kalkınca ilk çalışması gereken metodu belirtiyor ve artık yapmamız gerekenler bu metot içinden çalışmaya başlıyor.&lt;/p&gt;
+
+&lt;p&gt;Google bizim için &lt;code class=&quot;highlighter-rouge&quot;&gt;Code.gs&lt;/code&gt; adında bir google script dosyası açıyor ve aslında uygulama için ilk çalışan dosya burası oluyor. Bu dosya içine uygulamamız ile alakalı kodları yazıyoruz. Manifest dosyasında belirttiğimiz &lt;code class=&quot;highlighter-rouge&quot;&gt;getContextualAddOn&lt;/code&gt; metodunu bu dosya içinde yazmaya başlıyoruz.&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;getContextualAddOn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// Activate temporary Gmail add-on scopes, in this case to allow&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// message metadata to be read.&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;accessToken&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;messageMetadata&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;accessToken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;GmailApp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setCurrentMessageAccessToken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;accessToken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;messageId&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;messageMetadata&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;messageId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;GmailApp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getMessageById&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;messageId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;subject&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getSubject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sender&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getFrom&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+  
+  &lt;span class=&quot;c1&quot;&gt;// Create a card with a single card section and two widgets.&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// Be sure to execute build() to finalize the card construction.&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;exampleCard&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;CardService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;newCardBuilder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setHeader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;CardService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;newCardHeader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+             &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setTitle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Example card'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addSection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;CardService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;newCardSection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+              &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addWidget&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;CardService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;newKeyValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+                         &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setTopLabel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Subject'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                         &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setContent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;subject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+              &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addWidget&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;CardService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;newKeyValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+                         &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setTopLabel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'From'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                         &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setContent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sender&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;// Don't forget to build the Card!&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;exampleCard&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Yukarıdaki kodda amacımız bir email içeriğine ulaşabilmek. Bunun için Gmail’in servislerini kullanabilmemiz lazım. O yüzden Gmail’e authenticate olmamız gerekiyor. Zaten uygulama çalışmaya başladığı zaman bu bize soruluyor ve onay verildikten sonra kod çalışmaya başlıyor. Sonrasında ise Card servisi devreye giriyor. Daha önce de anlattığım gibi Gmail add-on için UI desteği Card ile geliyor ve gelen veriyi kullanıcıya göstermek için öncellikle bir Card tanımlıyoruz. Sonrasında ise gerekli component’ları koyup son olarak Card’ı &lt;code class=&quot;highlighter-rouge&quot;&gt;build()&lt;/code&gt; methodu ile oluşturuyoruz. Burası çok önemli. Eğer Card’ı hazırlayıp, build metodunu çağırmazsak isek istediğimiz sonucu alamayız.&lt;/p&gt;
+
+&lt;p&gt;Biraz Card’lardan bahsetmek gerekirse. Card’lar onlar için tanımlanmış özel &lt;strong&gt;widget&lt;/strong&gt;‘lardan oluşuyor. Her action için yeni bir Card tanımlayabilir ve özel widget’lar atayabiliriz içerlerine. CardBuilder class’ı yeni bir Card tanımlamamıza yarıyor. Her Card &lt;strong&gt;header&lt;/strong&gt; ve &lt;strong&gt;section&lt;/strong&gt;‘lardan oluşuyor. Bu section’lar içine kullanıcı ile kurulacak action’ları tanımlama adına widget’ları ekleyebiliyoruz. Kısacası bir Card oluşturmak için sırasıyla,&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Widget’ı oluşturmak&lt;/li&gt;
+  &lt;li&gt;Section’a widget’ı eklemek&lt;/li&gt;
+  &lt;li&gt;Section’a tüm widget’ları tanımlayana kadar devam etmek,&lt;/li&gt;
+  &lt;li&gt;Son olarak ise section’ı Card’a eklemek gerekiyor.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Gelelim test ve deployment konusuna. Farklı &lt;a href=&quot;https://developers.google.com/apps-script/concepts/deployments&quot;&gt;deployment yöntemleri&lt;/a&gt; mevcut fakat development tarafında hızlı test edebilmemiz için &lt;strong&gt;Head Deployments&lt;/strong&gt;‘dan bahsedeceğim.&lt;/p&gt;
+
+&lt;p&gt;Eğer bütün kodu düzgün bir şekilde yazdıysak script ekranından &lt;code class=&quot;highlighter-rouge&quot;&gt;Publish &amp;gt; Deploy from manifest&lt;/code&gt; diyerek açılan pop-up’dan &lt;code class=&quot;highlighter-rouge&quot;&gt;Lastest Version (HEAD)&lt;/code&gt; satırından &lt;strong&gt;Get ID&lt;/strong&gt; linkine tıklayarak açılan pencereden &lt;strong&gt;Deployment ID&lt;/strong&gt;‘yi kopyalayıp, alıyoruz ve ayrı bir pencerede Gmail hesabımı açıyoruz.&lt;/p&gt;
+
+&lt;p&gt;Gmail için ayarlarımızın yapıldığı &lt;strong&gt;Settings&lt;/strong&gt; sayfasına geliyoruz. Buradan &lt;strong&gt;Add-on&lt;/strong&gt; sekmesinde yer alan &lt;strong&gt;Developer add-ons&lt;/strong&gt; alanına biraz önce kopyaladığımız Deployment ID’yi yapıştırıyoruz ve sonrasında Install diyoruz. Sonrasında Inbox’a gidip sayfası yeniliyoruz.&lt;/p&gt;
+
+&lt;p&gt;Inbox içinden herhangi bir email’e tıkladığımız zaman sağ tafta uygulama görülecektir. Daha önce de belirttiğim gibi Gmail servislerini kullanmak için Gmail’e izin vermemiz gerekiyor. O yüzden &lt;code class=&quot;highlighter-rouge&quot;&gt;AUTHORIZE ACCESS&lt;/code&gt; buttonuna tıklayıp, uygulama için yetkilendirme izinini veriyoruz. Burada https ile bağlanmadığımız ve uygulamamız development ortamında olduğu için bir güvenlik sorunu çıkıyor olabilir. Bu uyuglama size ait olduğu için kullanmaya devam et diyerek Gmail servislerinin bilgilerimize ulaşmasına izin verebiliriz. Sonrasında uygulama Card’ı yeniden yükleniyor ve uygulamanın çalıştığını görebiliriz.&lt;/p&gt;
+
+&lt;div style=&quot;display: flex; justify-content: center;&quot;&gt;&lt;img src=&quot;/public/images/gmail-add-on-ss.png&quot; /&gt;&lt;/div&gt;
+
+&lt;p&gt;Sevgiler.&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Gmail'e Eklenti Yazmak</title>

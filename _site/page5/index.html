@@ -97,6 +97,10 @@
           
         
       
+        
+          
+        
+      
 
       <a class="sidebar-nav-item" href="https://github.com/enderahmetyurt">GitHub</a>
       <a class="sidebar-nav-item" href="https://twitter.com/ndrx42">Twitter</a>
@@ -113,26 +117,53 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/2016/11/05/ruby-2-4-hash-compact.html">
-        Ruby 2.4 Hash#compact
+      <a href="/2016/11/05/ruby-2-4-string-concat-array-concat-and-string-prepend-multiple-arguments.html">
+        Ruby 2.4 String#concat, Array#concat and String#prepend Multiple Arguments
       </a>
     </h1>
 
     <span class="post-date">05 Nov 2016</span>
 
-    <p>Merhaba. Ruby 2.4 yazılarına devam ediyoruz.</p>
+    <p>Merhaba. Ruby 2.4’den önceki sürümler String ve Array için tanımlı #concat metotu birleştirme işlemini parametre almadan yapıyor.</p>
 
-<p>Ruby’de nil value’e sahip bir key ile hash oluşturduğunuzda Ruby bu değeri hash’den kaldırıyor.</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="n">my_string</span> <span class="o">=</span> <span class="s2">"Hello"</span>
+<span class="o">&gt;</span> <span class="n">my_string</span><span class="p">.</span><span class="nf">concat</span><span class="p">(</span><span class="s2">" World"</span><span class="p">)</span>
+<span class="c1">#=&gt; "Hello World"</span>
 
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="nb">hash</span> <span class="o">=</span> <span class="p">{</span><span class="ss">:name</span><span class="o">=&gt;</span><span class="s2">"ender"</span><span class="p">,</span> <span class="ss">:age</span><span class="o">=&gt;</span><span class="kp">nil</span><span class="p">}</span>
-<span class="c1">#=&gt; {:name=&gt;"ender"}</span>
+<span class="o">&gt;</span> <span class="n">my_array</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'a'</span><span class="p">,</span> <span class="s1">'s'</span><span class="p">,</span> <span class="s1">'l'</span><span class="p">]</span>
+<span class="o">&gt;</span> <span class="n">my_array</span><span class="p">.</span><span class="nf">concat</span><span class="p">([</span><span class="s1">'e'</span><span class="p">])</span>
+<span class="c1">#=&gt; ["a", "s", "l", "e"]</span>
 </code></pre></div></div>
 
-<p>Active Support ile value’su nil olan key’leri dönmesini Hash#compact ile sağlayabiliyorsuz. Bu özellik artık Ruby 2.4 ile birlikte geliyor.</p>
+<p>Aynı şeklide String için tanımlı #prepend metotu da başa ekleme işlemi yapıyor.</p>
 
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="nb">hash</span> <span class="o">=</span> <span class="p">{</span><span class="ss">:name</span><span class="o">=&gt;</span><span class="s2">"ender"</span><span class="p">,</span> <span class="ss">:age</span><span class="o">=&gt;</span><span class="kp">nil</span><span class="p">}</span>
-<span class="o">&gt;</span> <span class="nb">hash</span><span class="p">.</span><span class="nf">compact</span>
-<span class="c1">#=&gt; {:name=&gt;"ender", :age=&gt;nil}</span>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="n">my_string</span> <span class="o">=</span> <span class="s2">"World"</span>
+<span class="o">&gt;</span> <span class="n">my_string</span><span class="p">.</span><span class="nf">prepend</span><span class="p">(</span><span class="s2">"Hello "</span><span class="p">)</span>
+<span class="c1">#=&gt; "Hello World"</span>
+</code></pre></div></div>
+
+<p>Bu sürümler için bu metotlara parametre vermeyi denersek,</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="n">my_string</span> <span class="o">=</span> <span class="s2">"Hello"</span>
+<span class="o">&gt;</span> <span class="n">my_string</span><span class="p">.</span><span class="nf">concat</span><span class="p">(</span><span class="s2">" World"</span><span class="p">,</span> <span class="s2">"!"</span><span class="p">)</span>
+<span class="c1">#=&gt; ArgumentError: wrong number of arguments (2 for 1)</span>
+</code></pre></div></div>
+
+<p>Argüman hatası alıyoruz.</p>
+
+<p>Ruby 2.4 ile artık bu metotlara çoklu argüman geçebiliriz.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="n">my_string</span> <span class="o">=</span> <span class="s2">"Hello"</span>
+<span class="o">&gt;</span> <span class="n">my_string</span><span class="p">.</span><span class="nf">concat</span><span class="p">(</span><span class="s2">" World"</span><span class="p">,</span> <span class="s2">"!"</span><span class="p">)</span>
+<span class="c1">#=&gt; "Hello World!"</span>
+
+<span class="o">&gt;</span> <span class="n">my_array</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'a'</span><span class="p">,</span> <span class="s1">'s'</span><span class="p">,</span> <span class="s1">'l'</span><span class="p">]</span>
+<span class="o">&gt;</span> <span class="n">my_array</span><span class="p">.</span><span class="nf">concat</span><span class="p">([</span><span class="s1">'e'</span><span class="p">],</span> <span class="p">[</span><span class="s1">'f'</span><span class="p">])</span>
+<span class="c1">#=&gt; ["a", "s", "l", "e", "f"]</span>
+
+<span class="o">&gt;</span> <span class="n">my_string</span> <span class="o">=</span> <span class="s2">"World!"</span>
+<span class="o">&gt;</span> <span class="n">my_string</span><span class="p">.</span><span class="nf">prepend</span><span class="p">(</span><span class="s2">"Ruby,"</span><span class="p">,</span><span class="s2">" Hello "</span><span class="p">)</span>
+<span class="c1">#=&gt; "Ruby, Hello World!"</span>
 </code></pre></div></div>
 
 <p>Sevgiler.</p>
@@ -140,7 +171,7 @@
 <p><small><em>Referans</em></small></p>
 
 <ul>
-  <li><a href="http://blog.bigbinary.com/2016/10/24/hash-compact-and-hash-compact-now-part-of-ruby-2-4.html">http://blog.bigbinary.com/2016/10/24/hash-compact-and-hash-compact-now-part-of-ruby-2-4.html</a></li>
+  <li><a href="http://blog.bigbinary.com/2016/10/28/string-array-concat-and-string-prepend-take-multiple-arguments-in-ruby-2-4.html">http://blog.bigbinary.com/2016/10/28/string-array-concat-and-string-prepend-take-multiple-arguments-in-ruby-2-4.html</a></li>
 </ul>
 
   </div>
@@ -158,6 +189,5 @@
   
 </div>
     </div>
-
   </body>
 </html>

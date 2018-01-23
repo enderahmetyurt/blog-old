@@ -97,6 +97,10 @@
           
         
       
+        
+          
+        
+      
 
       <a class="sidebar-nav-item" href="https://github.com/enderahmetyurt">GitHub</a>
       <a class="sidebar-nav-item" href="https://twitter.com/ndrx42">Twitter</a>
@@ -113,92 +117,81 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/2016/05/06/ruby-enumerable.html">
-        Ruby Enumerable
+      <a href="/2016/05/15/debugging-with-pry.html">
+        Debugging with Pry
       </a>
     </h1>
 
-    <span class="post-date">06 May 2016</span>
+    <span class="post-date">15 May 2016</span>
 
-    <p>Merhaba! Bugün Ruby’de hemen hemen her gün kullandığımız <code class="highlighter-rouge">Enumerable</code> metotlarından bahsetmek istiyorum. Bu yazıda kullanılan örnekleri daha iyi anlayabilmek için öncelikle Ruby’de Array ve Hash kavramlarını biraz olsun bilmeniz gerekiyor.</p>
+    <p>Merhaba! Kod yazarken bir bir şeylerin yolunda gitmediği veya kod içinde neler olduğunu anlamak istediğimiz anlar oluyor. Bu gibi durumlarda debugging yapıyoruz. Ruby’de eğer IDE kullanıyorsunuz debugging yapmak bir nebze kolay olabiliyor. Ancak benim gibi Sublime vb bir text editör kullanıcısıysanız imdadımıza PRY yetişiyor.</p>
 
-<p>Ruby’de <code class="highlighter-rouge">Enumerable</code> modülüne ihtiyaç duymamızın nedeni colletion’lar üzerinde daha hızlı ve kolay çalışmalar yapabilmektir. Örneğin, bir collection içindeki bütün tek sayıları getirmek için döngüler ve if bloklarını kullanabiliriz. Ancak bunun yerine <code class="highlighter-rouge">Enumerable</code> modülünde tanımlı metotlardan yardım alabiliyoruz.</p>
+<p>Pry nedir? Pry, aslında IRB yani Interactive Ruby Shell alternatif olarak çıkmış bir runtime developer console’dur. Kendisi bir RubyGem’i olup, bilgisayarınıza kurmanızla IRB’nin bazı zamanlarda yeterli olmadığı bir çok özelliği size sunar. Ancak bugünün konusu PRY’dan çok PRY ile nasıl debugging yapılır o olacak.</p>
 
-<p><code class="highlighter-rouge">Enumerable</code> ın metotlarını aşağıdaki gibi sıralayabiliriz.</p>
+<p>Her şeyden önce PRY ile debugging yapabilmek için PRY RubyGem’nin makinemizinde kurulu olması gerekiyor.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> Enumerable.instance_metots.sort
-<span class="o">=&gt;</span> <span class="o">[</span>:all?, :any?, :chunk, :collect, :collect_concat, :count, :cycle, :detect, :drop, :drop_while, :each_cons, :each_entry, :each_slice, :each_with_index, :each_with_object, :entries, :find, :find_all, :find_index, :first, :flat_map, :grep, :group_by, :include?, :inject, :lazy, :map, :max, :max_by, :member?, :min, :min_by, :minmax, :minmax_by, :none?, :one?, :partition, :reduce, :reject, :reverse_each, :select, :slice_before, :sort, :sort_by, :take, :take_while, :to_a, :to_h, :zip]
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> gem <span class="nb">install </span>pry
 </code></pre></div></div>
 
-<p>Bunların bazılarından bahsetmek gerekirse.</p>
+<p>Sonrasında ise artık kodumuzda hangi noktada durmasını istiyorsak oraya <code class="highlighter-rouge">binding.pry</code> komutu yazıyoruz. Örneğin,</p>
 
-<h2 id="each_with_index">#each_with_index</h2>
-<p><code class="highlighter-rouge">each</code> ile bir collection içindeki elemanları tek tek gezebiliriz.</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># person.rb</span>
+<span class="nb">require</span> <span class="s1">'pry'</span>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="o">[</span>1,2,3].each <span class="o">{</span> |num| print <span class="s2">"Number: #{num} "</span> <span class="o">}</span>
-<span class="o">=&gt;</span> Number: 1 Number: 2 Number: 3
-</code></pre></div></div>
-<p>Bu elemanların tek tek index’lerine ulaşmak için ise <code class="highlighter-rouge">each_with_index</code>i kullanabiliriz.</p>
+<span class="k">class</span> <span class="nc">Person</span>
+  <span class="k">def</span> <span class="nf">say_hello</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+    <span class="nb">binding</span><span class="p">.</span><span class="nf">pry</span>
+    <span class="nb">puts</span> <span class="s2">"Hello </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">"</span>
+  <span class="k">end</span>
+<span class="k">end</span>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="o">[</span>9,8,7].each_with_index <span class="k">do</span> |e,i|
-<span class="o">&gt;</span>   puts <span class="s2">"Index: #{i} Number: #{e}"</span>
-<span class="o">&gt;</span> end
-<span class="o">=&gt;</span> Index: 0 Number: 9
-<span class="o">=&gt;</span> Index: 1 Number: 8
-<span class="o">=&gt;</span> Index: 2 Number: 7
+<span class="nb">p</span> <span class="o">=</span> <span class="no">Person</span><span class="p">.</span><span class="nf">new</span>
+<span class="nb">puts</span> <span class="nb">p</span><span class="p">.</span><span class="nf">say_hello</span><span class="p">(</span><span class="s2">"ender"</span><span class="p">)</span>
 </code></pre></div></div>
 
-<h2 id="map">#map</h2>
-<p>Bir collection içindeki elemanlar üzerinde çalışmaklar yapmak istiyorsak <code class="highlighter-rouge">map</code> kullanmak en iyisi olacaktır.</p>
+<p>şeklinde bir Ruby kodu yazıyoruz ve konsoldan kodu çalıştırdığımızda ise</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="o">[</span>5,10,20].map<span class="o">{</span>|e| puts e<span class="k">**</span>2<span class="o">}</span>
-<span class="o">=&gt;</span> 25
-<span class="o">=&gt;</span> 100
-<span class="o">=&gt;</span> 400
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> ruby person.rb
+    4: def say_hello<span class="o">(</span>name<span class="o">)</span>
+ <span class="o">=&gt;</span> 5:   binding.pry
+    6:   puts <span class="s2">"Hello #{name}"</span>
+    7: end
+</code></pre></div></div>
+<p>şeklinde bir çıktı alıyoruz. Bu anda artık <code class="highlighter-rouge">name</code> değişkenini çağırabilir ve içinde ne olduğunu görebiliriz.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>1] pry<span class="o">(</span><span class="c">#&lt;Person&gt;)&gt; name</span>
+<span class="o">=&gt;</span> <span class="s2">"ender"</span>
 </code></pre></div></div>
 
-<h2 id="select">#select</h2>
-<p>Bazı durumlarda bir collection içinden belli bir duruma bağlı olarak değeri ya da değerleri almak isteyebiliriz. Bu durumda <code class="highlighter-rouge">select</code> kullanırsak kodumuzu daha anlaşılır yazmış oluruz.</p>
+<p>Sonrasında ise <code class="highlighter-rouge">exit</code> diyerek PRY’ı kapatıyoruz.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="o">(</span>1..20<span class="o">)</span>.to_a.select<span class="o">{</span>|n| n.odd?<span class="o">}</span>
-<span class="o">=&gt;</span> <span class="o">[</span>1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
+<p>Debugging yaparken kod içinde ileri gitmek, bir metotudun içine girmek ya da onu atlamak isteyebiliriz. PRY kendi hali ile buna cevap vermiyor. Ancak <a href="https://github.com/nixme/pry-debugger">pry-debugger</a> gem’i ile bunu da halledebiliyoruz.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> gem <span class="nb">install </span>pry-debugger
 </code></pre></div></div>
 
-<p>1 ile 20 arasındaki tüm tek sayıları ekrana bastık.</p>
+<p>Yukardaki örnek üzerinden devam edecek olursak,</p>
 
-<h2 id="reject">#reject</h2>
-<p>Seçmenin dışında bir collection’dan çıkarmak istediğimiz elemanlarımız da olabilir. Bu gibi durumlarda ise <code class="highlighter-rouge">reject</code> kullanabiliriz.</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'pry'</span>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="o">(</span>1..20<span class="o">)</span>.to_a.reject<span class="o">{</span>|n| n.odd?<span class="o">}</span>
-<span class="o">=&gt;</span> <span class="o">[</span>2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
+<span class="k">class</span> <span class="nc">Person</span>
+  <span class="k">def</span> <span class="nf">say_hello</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+    <span class="nb">binding</span><span class="p">.</span><span class="nf">pry</span>
+    <span class="nb">puts</span> <span class="s2">"Hello </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">"</span> <span class="c1"># Execution will stop here.</span>
+    <span class="nb">puts</span> <span class="s2">"Age: "</span> <span class="c1"># Run 'step' or 'next' in the console to move here.</span>
+    <span class="n">ask_age</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">ask_age</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+    <span class="nb">puts</span> <span class="s2">"How old are you? </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">.capitalize"</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="nb">p</span> <span class="o">=</span> <span class="no">Person</span><span class="p">.</span><span class="nf">new</span>
+<span class="nb">puts</span> <span class="nb">p</span><span class="p">.</span><span class="nf">say_hello</span><span class="p">(</span><span class="s2">"ender"</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>Yukarıda gördüğünüz gibi 1 ile 20 arasındaki tek sayıları çıkardım ve yeni array’im artık 1 ile 20 arasındaki çift sayılar oldu.</p>
-
-<h2 id="any">#any?</h2>
-<p>Bu metot bize duruma göre true ya da false bir boolean değer dönecektir. Eğer bir collection içinde bir duruma göre bir elemanın bulunup, bulumadığını kontrol etmek istiyorsak <code class="highlighter-rouge">any?</code> kullanabiliriz.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="o">(</span>1..20<span class="o">)</span>.to_a.any?<span class="o">{</span>|n| n&gt;20<span class="o">}</span>
-<span class="o">=&gt;</span> <span class="nb">false</span>
-</code></pre></div></div>
-
-<h2 id="group_by">#group_by?</h2>
-<p>Sanırım kullanımı en karizmatik metot bu olabilir. Elimizdeki bir collection’ı istediğimiz bir duruma göre gruplamamıza yarıyor ve bize bir Hash dönüyor.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="o">[</span><span class="s2">"ali"</span>, <span class="s2">"mehmet"</span>, <span class="s2">"osman"</span>, <span class="s2">"ayşe"</span>, <span class="s2">"emine"</span><span class="o">]</span>.group_by<span class="o">(</span>&amp;:length<span class="o">)</span>
-<span class="o">=&gt;</span> <span class="o">{</span><span class="nv">3</span><span class="o">=&gt;[</span><span class="s2">"ali"</span><span class="o">]</span>, <span class="nv">6</span><span class="o">=&gt;[</span><span class="s2">"mehmet"</span><span class="o">]</span>, <span class="nv">5</span><span class="o">=&gt;[</span><span class="s2">"osman"</span>, <span class="s2">"emine"</span><span class="o">]</span>, <span class="nv">4</span><span class="o">=&gt;[</span><span class="s2">"ayşe"</span><span class="o">]}</span>
-</code></pre></div></div>
-
-<p>Yukarıda da görüldüğü gibi içinde String’ler olan Array’imizi String’lerin uzunluklarına göre grupladık.</p>
-
-<h2 id="sort">#sort</h2>
-<p>Adı üstünde :)</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="o">[</span><span class="s2">"ali"</span>, <span class="s2">"mehmet"</span>, <span class="s2">"osman"</span>, <span class="s2">"ayşe"</span>, <span class="s2">"emine"</span><span class="o">]</span>.group_by<span class="o">(</span>&amp;:length<span class="o">)</span>.sort
-<span class="o">=&gt;</span> <span class="o">[[</span>3, <span class="o">[</span><span class="s2">"ali"</span><span class="o">]]</span>, <span class="o">[</span>4, <span class="o">[</span><span class="s2">"ayşe"</span><span class="o">]]</span>, <span class="o">[</span>5, <span class="o">[</span><span class="s2">"osman"</span>, <span class="s2">"emine"</span><span class="o">]]</span>, <span class="o">[</span>6, <span class="o">[</span><span class="s2">"mehmet"</span><span class="o">]]]</span>
-</code></pre></div></div>
-
-<p>Tabiki bütün kullanımlar bu kadar değil. Daha fazlası da var. Belki başka bir yazıda daha detaylı olarak diğer kullanımlardan örnekler verebilirim.</p>
+<p><code class="highlighter-rouge">next</code> komudu ile kodun durduğu yer bir alt satıra inebiliriz. Pry-debugger gem’i bize <code class="highlighter-rouge">step</code>, <code class="highlighter-rouge">finish</code> ve <code class="highlighter-rouge">continue</code> gibi fonksiyonlar da sağlamaktadır. Daha fazla bilgiye Github’daki Readme’den ulaşabilirsiniz.</p>
 
 <p>Sevgiler.</p>
 
@@ -208,7 +201,7 @@
 
 <div class="pagination">
   
-    <span class="pagination-item older">Older</span>
+    <a class="pagination-item older" href="/page10">Older</a>
   
   
     
@@ -217,6 +210,5 @@
   
 </div>
     </div>
-
   </body>
 </html>

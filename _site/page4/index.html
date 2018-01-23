@@ -97,6 +97,10 @@
           
         
       
+        
+          
+        
+      
 
       <a class="sidebar-nav-item" href="https://github.com/enderahmetyurt">GitHub</a>
       <a class="sidebar-nav-item" href="https://twitter.com/ndrx42">Twitter</a>
@@ -113,62 +117,47 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/2016/11/05/ruby-2-4-string-concat-array-concat-and-string-prepend-multiple-arguments.html">
-        Ruby 2.4 String#concat, Array#concat and String#prepend Multiple Arguments
+      <a href="/2016/11/10/ruby2-4-binding-irb.html">
+        Ruby 2.4 Binding#irb
       </a>
     </h1>
 
-    <span class="post-date">05 Nov 2016</span>
+    <span class="post-date">10 Nov 2016</span>
 
-    <p>Merhaba. Ruby 2.4’den önceki sürümler String ve Array için tanımlı #concat metotu birleştirme işlemini parametre almadan yapıyor.</p>
+    <p>Hello! <a href="https://www.ruby-lang.org/en/news/2016/11/09/ruby-2-4-0-preview3-released/">Ruby2.4.0.preview3</a> was released yesterday. There are some really cool features in it. I will mention one of these. It is about debugging or open a REPL session. As you know before that release, Ruby developers use <code class="highlighter-rouge">p</code> or other lovely gem <a href="https://github.com/pry/pry">pry</a> to debug. For now <a href="https://github.com/ruby/ruby/commit/493e48897421d176a8faf0f0820323d79ecdf94a"><code class="highlighter-rouge">binding#irb</code></a> provides to debug in your application.</p>
 
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="n">my_string</span> <span class="o">=</span> <span class="s2">"Hello"</span>
-<span class="o">&gt;</span> <span class="n">my_string</span><span class="p">.</span><span class="nf">concat</span><span class="p">(</span><span class="s2">" World"</span><span class="p">)</span>
-<span class="c1">#=&gt; "Hello World"</span>
+<p>First, we need to install latest Ruby version. We can do it via RVM.</p>
 
-<span class="o">&gt;</span> <span class="n">my_array</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'a'</span><span class="p">,</span> <span class="s1">'s'</span><span class="p">,</span> <span class="s1">'l'</span><span class="p">]</span>
-<span class="o">&gt;</span> <span class="n">my_array</span><span class="p">.</span><span class="nf">concat</span><span class="p">([</span><span class="s1">'e'</span><span class="p">])</span>
-<span class="c1">#=&gt; ["a", "s", "l", "e"]</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>rvm <span class="nb">install </span>2.4.0-preview3
 </code></pre></div></div>
 
-<p>Aynı şeklide String için tanımlı #prepend metotu da başa ekleme işlemi yapıyor.</p>
+<p>Don’t forget to select the right version.</p>
 
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="n">my_string</span> <span class="o">=</span> <span class="s2">"World"</span>
-<span class="o">&gt;</span> <span class="n">my_string</span><span class="p">.</span><span class="nf">prepend</span><span class="p">(</span><span class="s2">"Hello "</span><span class="p">)</span>
-<span class="c1">#=&gt; "Hello World"</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>rvm use 2.4.0-preview3
 </code></pre></div></div>
 
-<p>Bu sürümler için bu metotlara parametre vermeyi denersek,</p>
+<p>Now we can test that feature with a small Ruby program.</p>
 
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="n">my_string</span> <span class="o">=</span> <span class="s2">"Hello"</span>
-<span class="o">&gt;</span> <span class="n">my_string</span><span class="p">.</span><span class="nf">concat</span><span class="p">(</span><span class="s2">" World"</span><span class="p">,</span> <span class="s2">"!"</span><span class="p">)</span>
-<span class="c1">#=&gt; ArgumentError: wrong number of arguments (2 for 1)</span>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'irb'</span>
+
+<span class="k">class</span> <span class="nc">Test</span>
+  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">hello</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+    <span class="nb">binding</span><span class="p">.</span><span class="nf">irb</span>
+    <span class="nb">puts</span> <span class="s2">"Hello </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">"</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="nb">puts</span> <span class="no">Test</span><span class="p">.</span><span class="nf">hello</span><span class="p">(</span><span class="s1">'ender'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>Argüman hatası alıyoruz.</p>
-
-<p>Ruby 2.4 ile artık bu metotlara çoklu argüman geçebiliriz.</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="n">my_string</span> <span class="o">=</span> <span class="s2">"Hello"</span>
-<span class="o">&gt;</span> <span class="n">my_string</span><span class="p">.</span><span class="nf">concat</span><span class="p">(</span><span class="s2">" World"</span><span class="p">,</span> <span class="s2">"!"</span><span class="p">)</span>
-<span class="c1">#=&gt; "Hello World!"</span>
-
-<span class="o">&gt;</span> <span class="n">my_array</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'a'</span><span class="p">,</span> <span class="s1">'s'</span><span class="p">,</span> <span class="s1">'l'</span><span class="p">]</span>
-<span class="o">&gt;</span> <span class="n">my_array</span><span class="p">.</span><span class="nf">concat</span><span class="p">([</span><span class="s1">'e'</span><span class="p">],</span> <span class="p">[</span><span class="s1">'f'</span><span class="p">])</span>
-<span class="c1">#=&gt; ["a", "s", "l", "e", "f"]</span>
-
-<span class="o">&gt;</span> <span class="n">my_string</span> <span class="o">=</span> <span class="s2">"World!"</span>
-<span class="o">&gt;</span> <span class="n">my_string</span><span class="p">.</span><span class="nf">prepend</span><span class="p">(</span><span class="s2">"Ruby,"</span><span class="p">,</span><span class="s2">" Hello "</span><span class="p">)</span>
-<span class="c1">#=&gt; "Ruby, Hello World!"</span>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="n">ruby</span> <span class="n">ruby24p3</span><span class="p">.</span><span class="nf">rb</span>
+<span class="mf">2.4</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">preview3</span> <span class="p">:</span><span class="mo">001</span> <span class="o">&gt;</span> <span class="nb">name</span>
+<span class="c1">#=&gt; "ender"</span>
 </code></pre></div></div>
 
-<p>Sevgiler.</p>
+<p>That’s it. After Ruby 2.4 we won’t need to write <code class="highlighter-rouge">p</code> we can open a REPL in anytime.</p>
 
-<p><small><em>Referans</em></small></p>
-
-<ul>
-  <li><a href="http://blog.bigbinary.com/2016/10/28/string-array-concat-and-string-prepend-take-multiple-arguments-in-ruby-2-4.html">http://blog.bigbinary.com/2016/10/28/string-array-concat-and-string-prepend-take-multiple-arguments-in-ruby-2-4.html</a></li>
-</ul>
+<p>Cheers.</p>
 
   </div>
   
@@ -185,6 +174,5 @@
   
 </div>
     </div>
-
   </body>
 </html>

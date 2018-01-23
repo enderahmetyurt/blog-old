@@ -97,6 +97,10 @@
           
         
       
+        
+          
+        
+      
 
       <a class="sidebar-nav-item" href="https://github.com/enderahmetyurt">GitHub</a>
       <a class="sidebar-nav-item" href="https://twitter.com/ndrx42">Twitter</a>
@@ -113,106 +117,39 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/2016/05/19/block-proc-lambda.html">
-        Block, Proc, Lambda
+      <a href="/2016/11/02/ruby-2-4-enumerable-sum.html">
+        Ruby 2.4 Enumerable#sum
       </a>
     </h1>
 
-    <span class="post-date">19 May 2016</span>
+    <span class="post-date">02 Nov 2016</span>
 
-    <p>Merhaba! Ruby’nin en güçlü özelliklerinden biri bloklardır. Diğer dillerin aksine Ruby’de blokları anlamak ve kullanmak kolay ve basittir.</p>
+    <p>Merhaba! <a href="https://www.ruby-lang.org/en/news/2016/09/08/ruby-2-4-0-preview2-released/">Ruby 2.4 previewleri</a> bundan yakın bir zaman önce çıktı ve bir takım yenilikler ile birlikte geldiler. Kısa kısa Ruby 2.4 ile gelen yeniliklerden ve değişikliklerden bahsedelim.</p>
 
-<p>Ruby’de bloklarını kullanmak için iki yöntemimiz var,</p>
+<p>Bir Array’de ya da Hash’de elementleri toplamak yapmak için Active Support’da tanımlı olan <a href="https://github.com/rails/rails/blob/3d716b9e66e334c113c98fb3fc4bcf8a945b93a1/activesupport/lib/active_support/core_ext/enumerable.rb#L2-L27">Enumerable#sum</a>‘ı kullanıyoruz.</p>
 
-<ul>
-  <li><code class="highlighter-rouge">do</code> ve <code class="highlighter-rouge">end</code> arasına kodlarımızı yazmak.</li>
-  <li><code class="highlighter-rouge">{}</code> bu iki parantez arasına kodlarımızı yazmak.</li>
-</ul>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="o">[</span>1,2,3].sum
+<span class="c">#=&gt; 6</span>
 
-<p>Örnek vericek olursak,</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> my_array <span class="o">=</span> <span class="o">[</span>2,4,6]
-
-<span class="o">&gt;</span> my_array.map! <span class="k">do</span> |m|
-<span class="o">&gt;</span>  m <span class="k">**</span> 3
-<span class="o">&gt;</span> end
-<span class="o">=&gt;</span> <span class="o">[</span>8, 64, 216]
+<span class="o">&gt;</span> <span class="o">[</span><span class="s1">'e'</span>, <span class="s1">'a'</span>, <span class="s1">'y'</span><span class="o">]</span>.sum
+<span class="c">#=&gt; "eay"</span>
 </code></pre></div></div>
 
-<p>Bu işlemi tek satırda parantezler içinde de yapmak mümkündür.</p>
+<p>Ancak bundan sonra bu metotu Ruby 2.4 birlikte Active Support’a ihtiyacımız kalmadan kullanabileceğiniz. Fakat sadece integer için geçerli olan bu metot Active Support’daki gibi string ya da karakteler için geçerli değil. Üzülmeyelim bu metota parametre geçilebildiği için eğer işimiz sayılar ile değilse,</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> my_array <span class="o">=</span> <span class="o">[</span>2,4,6]
-<span class="o">&gt;</span> my_array.map! <span class="o">{</span> |m| m <span class="k">**</span> 3 <span class="o">}</span>
-<span class="o">=&gt;</span> <span class="o">[</span>8, 64, 216]
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="o">[</span><span class="s1">'e'</span>, <span class="s1">'a'</span>, <span class="s1">'y'</span><span class="o">]</span>.sum<span class="o">(</span><span class="s1">''</span><span class="o">)</span>
+<span class="c">#=&gt; "eay"</span>
 </code></pre></div></div>
 
-<p>Ruby’de hazır block’ların dışında kendi blocklarımızı da yazabiliriz.</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">change</span><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
- <span class="nb">self</span><span class="p">.</span><span class="nf">each_with_index</span> <span class="k">do</span> <span class="o">|</span><span class="n">e</span><span class="p">,</span> <span class="n">i</span><span class="o">|</span>
-   <span class="nb">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">block</span><span class="p">.</span><span class="nf">call</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
- <span class="k">end</span>
-<span class="k">end</span>
-
-<span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">].</span><span class="nf">change</span> <span class="k">do</span> <span class="o">|</span><span class="n">e</span><span class="o">|</span>
-  <span class="n">e</span> <span class="o">**</span> <span class="mi">2</span>
-<span class="k">end</span>
-
-<span class="o">=&gt;</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">16</span><span class="p">]</span>
-</code></pre></div></div>
-<p><em>Örnek, Sıktı Bağdat’ın Ruby kitabından alınmıştır.</em></p>
-
-<p>Yukarıdaki örnekte <code class="highlighter-rouge">change</code> metotuna block’u parametre olarak gönderiyoruz. Ruby’de bir metota block’un parametre olarak geçtiğini belirtmek için <code class="highlighter-rouge">&amp;</code> kullanıyoruz. Metot içinde ise gönderilen block’u kullanmak için <code class="highlighter-rouge">call</code> metotunu çağırıyoruz.</p>
-
-<p><code class="highlighter-rouge">yield</code> Ruby’de bir anahtar kelimedir ve kullanımı <code class="highlighter-rouge">block</code> gibidir. Ancak aralarında ufak farklılıklar vardır. Bunlardan biri yield’i çağırırken call metotunu çağırmaya ihtiyacımız yoktur. Ayrıca yield, block’a göre performans olarak daha iyidir.</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">name</span>
-  <span class="k">yield</span>
-<span class="k">end</span>
-
-<span class="nb">puts</span> <span class="nb">name</span> <span class="p">{</span> <span class="nb">puts</span> <span class="s2">"ender"</span> <span class="p">}</span>
-
-<span class="o">=&gt;</span> <span class="n">ender</span>
-</code></pre></div></div>
-
-<p>Parametre geçirmek yield için de geçerlidir. Aynı block’da olduğu gibi yield da parametre alabilir.</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-  <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span>
-  <span class="n">n</span><span class="p">.</span><span class="nf">times</span> <span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span> <span class="n">sum</span> <span class="o">+=</span> <span class="k">yield</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)}</span>
-  <span class="n">sum</span>
-<span class="k">end</span>
-
-<span class="nb">puts</span> <span class="n">sum</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span> <span class="n">i</span><span class="p">}</span>
-
-<span class="o">=&gt;</span> <span class="mi">55</span>
-</code></pre></div></div>
-<p><em>Örnek, Sıktı Bağdat’ın Ruby kitabından alınmıştır.</em></p>
-
-<p>Ruby’de block’ları birer nesne gibi kullanmak için <code class="highlighter-rouge">Proc</code> nesnesinden yararlanıyoruz. <code class="highlighter-rouge">proc = Proc.new {}</code> şeklinde çağırarak işlemlerimize başlıyoruz.</p>
-
-<p>Proc nesnesini çağırmak için block’larda olduğu gibi call metotununu kullanabiliriz.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> proc <span class="o">=</span> Proc.new <span class="o">{</span> puts <span class="s2">"Hello from Proc."</span> <span class="o">}</span>
-<span class="o">&gt;</span> proc.call
-<span class="o">=&gt;</span> Hello from Proc.
-</code></pre></div></div>
-
-<p><code class="highlighter-rouge">Lambda</code> Proc sınıfından türeyen bir nesnedir. Lambda’yı oluşturmak için Ruby’de genellikle <code class="highlighter-rouge">my_lambda = -&gt; {}</code> kullanılır. Bu kullanım Lambda nesnesi oluşturmamıza yarar.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> mult  <span class="o">=</span> lambda <span class="o">{</span>|x,y| x <span class="k">*</span> y <span class="o">}</span>
-<span class="o">&gt;</span> mult.call<span class="o">(</span>2,3<span class="o">)</span>
-<span class="o">=&gt;</span> 6
-</code></pre></div></div>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> wtp <span class="o">=</span> -&gt; <span class="o">{</span> puts <span class="s2">"What's up?"</span> <span class="o">}</span>
-<span class="o">&gt;</span> wtp.call
-<span class="o">=&gt;</span> What<span class="s1">'s up?
-</span></code></pre></div></div>
-
-<p>Ruby’de Block, Yield, Proc ve Lambda kullanımları oldukça yaygın olduğunu unutmayalım. Özellikle kodları daha okunur ve kendini tekrar etmeyecek şekilde yazmak istediğimizde bu özellikleri kullanabiliriz.</p>
+<p>yaparak işimizi görebiliriz.</p>
 
 <p>Sevgiler.</p>
+
+<p><small><em>Referans</em></small></p>
+
+<ul>
+  <li><a href="http://blog.bigbinary.com/2016/11/02/ruby-2-4-introduces-enumerable-sum.html">http://blog.bigbinary.com/2016/11/02/ruby-2-4-introduces-enumerable-sum.html</a></li>
+</ul>
 
   </div>
   
@@ -229,6 +166,5 @@
   
 </div>
     </div>
-
   </body>
 </html>
