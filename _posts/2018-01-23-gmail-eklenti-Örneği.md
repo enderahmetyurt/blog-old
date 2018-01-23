@@ -80,3 +80,8 @@ Inbox içinden herhangi bir email'e tıkladığımız zaman sağ tafta uygulama 
 
 
 Sevgiler.
+
+<small>
+*Referanslar:* 
+*https://developers.google.com/gmail/add-ons/how-tos/building*
+</small>

@@ -4,7 +4,7 @@
  <title>Ender Ahmet Yurt</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2018-01-23T14:06:25+03:00</updated>
+ <updated>2018-01-23T14:42:12+03:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Ender Ahmet Yurt</name>
@@ -92,6 +92,11 @@
 &lt;div style=&quot;display: flex; justify-content: center;&quot;&gt;&lt;img src=&quot;/public/images/gmail-add-on-ss.png&quot; /&gt;&lt;/div&gt;
 
 &lt;p&gt;Sevgiler.&lt;/p&gt;
+
+&lt;p&gt;&lt;small&gt;
+&lt;em&gt;Referanslar:&lt;/em&gt; 
+&lt;em&gt;https://developers.google.com/gmail/add-ons/how-tos/building&lt;/em&gt;
+&lt;/small&gt;&lt;/p&gt;
 </content>
  </entry>
  
