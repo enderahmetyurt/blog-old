@@ -4,7 +4,7 @@
  <title>Ender Ahmet Yurt</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2018-01-23T14:42:12+03:00</updated>
+ <updated>2018-01-27T19:41:01+03:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Ender Ahmet Yurt</name>
@@ -17,9 +17,7 @@
    <link href="http://localhost:4000/2018/01/23/gmail-eklenti-%C3%96rne%C4%9Fi.html"/>
    <updated>2018-01-23T11:52:00+03:00</updated>
    <id>http://localhost:4000/2018/01/23/gmail-eklenti-Örneği</id>
-   <content type="html">&lt;p&gt;Merhaba,&lt;/p&gt;
-
-&lt;p&gt;Daha önce &lt;a href=&quot;http://enderahmetyurt.com/2018/01/09/gmail-e-eklenti-yazmak.html&quot;&gt;Gmail add-on&lt;/a&gt; nedir? Bu konudan biraz bahsetmiştim. Şimdi ise küçük bir uygulama ile giriş yapıp daha pratik birşeyler göstermek istiyorum.&lt;/p&gt;
+   <content type="html">&lt;p&gt;Merhaba. Daha önce &lt;a href=&quot;http://enderahmetyurt.com/2018/01/09/gmail-e-eklenti-yazmak.html&quot;&gt;Gmail add-on&lt;/a&gt; nedir? Bu konudan biraz bahsetmiştim. Şimdi ise küçük bir uygulama ile giriş yapıp daha pratik birşeyler göstermek istiyorum.&lt;/p&gt;
 
 &lt;p&gt;Öncelikle ihtiyacımız olan add-on’u yazmak için gerekli olan bir ortam. Google bize bu ortamı &lt;a href=&quot;https://script.google.com/&quot;&gt;https://script.google.com/&lt;/a&gt; ile veriyor. Sonrasında ise uygulamanın ayarlarının ve kütüphanelerinin bağımlılıklarının bulunduğu &lt;code class=&quot;highlighter-rouge&quot;&gt;manifest&lt;/code&gt; dosyasını tanımlamak gerekiyor. Son olarak ise kodu yani &lt;code class=&quot;highlighter-rouge&quot;&gt;CardService&lt;/code&gt;‘i yazmaya başlıyoruz.&lt;/p&gt;
 

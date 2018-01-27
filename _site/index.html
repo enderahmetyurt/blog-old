@@ -65,46 +65,10 @@
           
         
       
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
 
       <a class="sidebar-nav-item" href="https://github.com/enderahmetyurt">GitHub</a>
       <a class="sidebar-nav-item" href="https://twitter.com/ndrx42">Twitter</a>
-      <span class="sidebar-nav-item">Currently v1.0.0</span>
+      <span class="sidebar-nav-item">Currently v1.1.0</span>
     </nav>
 
     <p>&copy; 2018. All rights reserved.</p>
@@ -116,94 +80,142 @@
       <div class="posts">
   
   <div class="post">
-    <h1 class="post-title">
+    <h3 class="post-title">
       <a href="/2018/01/23/gmail-eklenti-%C3%96rne%C4%9Fi.html">
         Gmail Eklenti Örneği
       </a>
-    </h1>
+    </h3>
 
     <span class="post-date">23 Jan 2018</span>
 
-    <p>Merhaba,</p>
+    <p>Merhaba. Daha önce <a href="http://enderahmetyurt.com/2018/01/09/gmail-e-eklenti-yazmak.html">Gmail add-on</a> nedir? Bu konudan biraz bahsetmiştim. Şimdi ise küçük bir uygulama ile giriş yapıp daha pratik birşeyler göstermek istiyorum.</p>
 
-<p>Daha önce <a href="http://enderahmetyurt.com/2018/01/09/gmail-e-eklenti-yazmak.html">Gmail add-on</a> nedir? Bu konudan biraz bahsetmiştim. Şimdi ise küçük bir uygulama ile giriş yapıp daha pratik birşeyler göstermek istiyorum.</p>
 
-<p>Öncelikle ihtiyacımız olan add-on’u yazmak için gerekli olan bir ortam. Google bize bu ortamı <a href="https://script.google.com/">https://script.google.com/</a> ile veriyor. Sonrasında ise uygulamanın ayarlarının ve kütüphanelerinin bağımlılıklarının bulunduğu <code class="highlighter-rouge">manifest</code> dosyasını tanımlamak gerekiyor. Son olarak ise kodu yani <code class="highlighter-rouge">CardService</code>‘i yazmaya başlıyoruz.</p>
-
-<p>Manifest dosyasını <code class="highlighter-rouge">appscript.json</code> içine koymak gerekiyor. Default olarak bu dosya kod yazdığımız yerde görünür değil o yüzden <code class="highlighter-rouge">View &gt; Show manifest file</code> diyoruz ve aşağıdaki kodu dosyaya ekliyoruz.</p>
-
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="s2">"gmail"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Quickstart Toolbar Label"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.example.com/hosted/images/2x/my-icon.png"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"primaryColor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#4285F4"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"secondaryColor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#4285F4"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"contextualTriggers"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-      </span><span class="s2">"unconditional"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-      </span><span class="s2">"onTriggerFunction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"getContextualAddOn"</span><span class="w">
-    </span><span class="p">}],</span><span class="w">
-    </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRUSTED_TESTER_V2"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span></code></pre></div></div>
-
-<p>Gördüğünüz gibi bu dosya içinde basit bir şekilde config ayarları yapılmış durumda. Uygulamanın adı, logosu, renkler ve versiyon gibi basit özelliklerin yanında asıl önemli olan uygulama ilk başladığında hangi metodun çalışması gerektiğini söyleyen <code class="highlighter-rouge">onTriggerFunction</code> parametresi. Bu parametre uygulama ayağa kalkınca ilk çalışması gereken metodu belirtiyor ve artık yapmamız gerekenler bu metot içinden çalışmaya başlıyor.</p>
-
-<p>Google bizim için <code class="highlighter-rouge">Code.gs</code> adında bir google script dosyası açıyor ve aslında uygulama için ilk çalışan dosya burası oluyor. Bu dosya içine uygulamamız ile alakalı kodları yazıyoruz. Manifest dosyasında belirttiğimiz <code class="highlighter-rouge">getContextualAddOn</code> metodunu bu dosya içinde yazmaya başlıyoruz.</p>
-
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">getContextualAddOn</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-  <span class="c1">// Activate temporary Gmail add-on scopes, in this case to allow</span>
-  <span class="c1">// message metadata to be read.</span>
-  <span class="kd">var</span> <span class="nx">accessToken</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">messageMetadata</span><span class="p">.</span><span class="nx">accessToken</span><span class="p">;</span>
-  <span class="nx">GmailApp</span><span class="p">.</span><span class="nx">setCurrentMessageAccessToken</span><span class="p">(</span><span class="nx">accessToken</span><span class="p">);</span>
+  </div>
   
-  <span class="kd">var</span> <span class="nx">messageId</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">messageMetadata</span><span class="p">.</span><span class="nx">messageId</span><span class="p">;</span>
-  <span class="kd">var</span> <span class="nx">message</span> <span class="o">=</span> <span class="nx">GmailApp</span><span class="p">.</span><span class="nx">getMessageById</span><span class="p">(</span><span class="nx">messageId</span><span class="p">);</span>
-  <span class="kd">var</span> <span class="nx">subject</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="nx">getSubject</span><span class="p">();</span>
-  <span class="kd">var</span> <span class="nx">sender</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="nx">getFrom</span><span class="p">();</span>
+  <div class="post">
+    <h3 class="post-title">
+      <a href="/2018/01/09/gmail-e-eklenti-yazmak.html">
+        Gmail'e Eklenti Yazmak
+      </a>
+    </h3>
+
+    <span class="post-date">09 Jan 2018</span>
+
+    <p>Merhaba. Gmail’de işlerimizi halletmek adına birkaç tarayıcı eklentisi kullanıyoruz. Fakat bu eklentiler kimi zaman tarayıcılar değişince iyi çalışmıyor ya da alternatifi bulunamıyor veya mobil uygulamalar üzerinde hiçbir şekilde var olmuyor. 2017 yılının sonuna doğru Google, Gmail için artık eklenti yazımını mümkün kıldı. İsteyenler artık tarayıcı eklentisi yazar gibi Gmail için eklenti yazabilecek. Peki bu Gmail eklentisi tam olarak ne anlama geliyor, ve bu iş nasıl yapılıyor?</p>
+
+
+  </div>
   
-  <span class="c1">// Create a card with a single card section and two widgets.</span>
-  <span class="c1">// Be sure to execute build() to finalize the card construction.</span>
-  <span class="kd">var</span> <span class="nx">exampleCard</span> <span class="o">=</span> <span class="nx">CardService</span><span class="p">.</span><span class="nx">newCardBuilder</span><span class="p">()</span>
-  <span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="nx">CardService</span><span class="p">.</span><span class="nx">newCardHeader</span><span class="p">()</span>
-             <span class="p">.</span><span class="nx">setTitle</span><span class="p">(</span><span class="s1">'Example card'</span><span class="p">))</span>
-  <span class="p">.</span><span class="nx">addSection</span><span class="p">(</span><span class="nx">CardService</span><span class="p">.</span><span class="nx">newCardSection</span><span class="p">()</span>
-              <span class="p">.</span><span class="nx">addWidget</span><span class="p">(</span><span class="nx">CardService</span><span class="p">.</span><span class="nx">newKeyValue</span><span class="p">()</span>
-                         <span class="p">.</span><span class="nx">setTopLabel</span><span class="p">(</span><span class="s1">'Subject'</span><span class="p">)</span>
-                         <span class="p">.</span><span class="nx">setContent</span><span class="p">(</span><span class="nx">subject</span><span class="p">))</span>
-              <span class="p">.</span><span class="nx">addWidget</span><span class="p">(</span><span class="nx">CardService</span><span class="p">.</span><span class="nx">newKeyValue</span><span class="p">()</span>
-                         <span class="p">.</span><span class="nx">setTopLabel</span><span class="p">(</span><span class="s1">'From'</span><span class="p">)</span>
-                         <span class="p">.</span><span class="nx">setContent</span><span class="p">(</span><span class="nx">sender</span><span class="p">)))</span>
-  <span class="p">.</span><span class="nx">build</span><span class="p">();</span>   <span class="c1">// Don't forget to build the Card!</span>
-  <span class="k">return</span> <span class="p">[</span><span class="nx">exampleCard</span><span class="p">];</span>
-<span class="p">}</span>
-</code></pre></div></div>
+  <div class="post">
+    <h3 class="post-title">
+      <a href="/2017/12/30/ruby-2-5-ile-gelenler.html">
+        Ruby 2.5 ile Gelenler
+      </a>
+    </h3>
 
-<p>Yukarıdaki kodda amacımız bir email içeriğine ulaşabilmek. Bunun için Gmail’in servislerini kullanabilmemiz lazım. O yüzden Gmail’e authenticate olmamız gerekiyor. Zaten uygulama çalışmaya başladığı zaman bu bize soruluyor ve onay verildikten sonra kod çalışmaya başlıyor. Sonrasında ise Card servisi devreye giriyor. Daha önce de anlattığım gibi Gmail add-on için UI desteği Card ile geliyor ve gelen veriyi kullanıcıya göstermek için öncellikle bir Card tanımlıyoruz. Sonrasında ise gerekli component’ları koyup son olarak Card’ı <code class="highlighter-rouge">build()</code> methodu ile oluşturuyoruz. Burası çok önemli. Eğer Card’ı hazırlayıp, build metodunu çağırmazsak isek istediğimiz sonucu alamayız.</p>
+    <span class="post-date">30 Dec 2017</span>
 
-<p>Biraz Card’lardan bahsetmek gerekirse. Card’lar onlar için tanımlanmış özel <strong>widget</strong>‘lardan oluşuyor. Her action için yeni bir Card tanımlayabilir ve özel widget’lar atayabiliriz içerlerine. CardBuilder class’ı yeni bir Card tanımlamamıza yarıyor. Her Card <strong>header</strong> ve <strong>section</strong>‘lardan oluşuyor. Bu section’lar içine kullanıcı ile kurulacak action’ları tanımlama adına widget’ları ekleyebiliyoruz. Kısacası bir Card oluşturmak için sırasıyla,</p>
+    <p>Merhaba, Ruby en son versiyonu olan 2.5 ile yeni yıla girmeden karşımıza çıktı. Bu versiyon ile ne gibi özellikler geldi kısaca bakalım.</p>
 
-<ul>
-  <li>Widget’ı oluşturmak</li>
-  <li>Section’a widget’ı eklemek</li>
-  <li>Section’a tüm widget’ları tanımlayana kadar devam etmek,</li>
-  <li>Son olarak ise section’ı Card’a eklemek gerekiyor.</li>
-</ul>
 
-<p>Gelelim test ve deployment konusuna. Farklı <a href="https://developers.google.com/apps-script/concepts/deployments">deployment yöntemleri</a> mevcut fakat development tarafında hızlı test edebilmemiz için <strong>Head Deployments</strong>‘dan bahsedeceğim.</p>
+  </div>
+  
+  <div class="post">
+    <h3 class="post-title">
+      <a href="/2016/11/10/ruby2-4-binding-irb.html">
+        Ruby 2.4 Binding#irb
+      </a>
+    </h3>
 
-<p>Eğer bütün kodu düzgün bir şekilde yazdıysak script ekranından <code class="highlighter-rouge">Publish &gt; Deploy from manifest</code> diyerek açılan pop-up’dan <code class="highlighter-rouge">Lastest Version (HEAD)</code> satırından <strong>Get ID</strong> linkine tıklayarak açılan pencereden <strong>Deployment ID</strong>‘yi kopyalayıp, alıyoruz ve ayrı bir pencerede Gmail hesabımı açıyoruz.</p>
+    <span class="post-date">10 Nov 2016</span>
 
-<p>Gmail için ayarlarımızın yapıldığı <strong>Settings</strong> sayfasına geliyoruz. Buradan <strong>Add-on</strong> sekmesinde yer alan <strong>Developer add-ons</strong> alanına biraz önce kopyaladığımız Deployment ID’yi yapıştırıyoruz ve sonrasında Install diyoruz. Sonrasında Inbox’a gidip sayfası yeniliyoruz.</p>
+    <p>Hello! <a href="https://www.ruby-lang.org/en/news/2016/11/09/ruby-2-4-0-preview3-released/">Ruby2.4.0.preview3</a> was released yesterday. There are some really cool features in it. I will mention one of these. It is about debugging or open a REPL session. As you know before that release, Ruby developers use <code class="highlighter-rouge">p</code> or other lovely gem <a href="https://github.com/pry/pry">pry</a> to debug. For now <a href="https://github.com/ruby/ruby/commit/493e48897421d176a8faf0f0820323d79ecdf94a"><code class="highlighter-rouge">binding#irb</code></a> provides to debug in your application.</p>
 
-<p>Inbox içinden herhangi bir email’e tıkladığımız zaman sağ tafta uygulama görülecektir. Daha önce de belirttiğim gibi Gmail servislerini kullanmak için Gmail’e izin vermemiz gerekiyor. O yüzden <code class="highlighter-rouge">AUTHORIZE ACCESS</code> buttonuna tıklayıp, uygulama için yetkilendirme izinini veriyoruz. Burada https ile bağlanmadığımız ve uygulamamız development ortamında olduğu için bir güvenlik sorunu çıkıyor olabilir. Bu uyuglama size ait olduğu için kullanmaya devam et diyerek Gmail servislerinin bilgilerimize ulaşmasına izin verebiliriz. Sonrasında uygulama Card’ı yeniden yükleniyor ve uygulamanın çalıştığını görebiliriz.</p>
 
-<div style="display: flex; justify-content: center;"><img src="/public/images/gmail-add-on-ss.png" /></div>
+  </div>
+  
+  <div class="post">
+    <h3 class="post-title">
+      <a href="/2016/11/05/ruby-2-4-string-concat-array-concat-and-string-prepend-multiple-arguments.html">
+        Ruby 2.4 String#concat, Array#concat and String#prepend Multiple Arguments
+      </a>
+    </h3>
 
-<p>Sevgiler.</p>
+    <span class="post-date">05 Nov 2016</span>
 
-<p><small>
-<em>Referanslar:</em> 
-<em>https://developers.google.com/gmail/add-ons/how-tos/building</em>
-</small></p>
+    <p>Merhaba. Ruby 2.4’den önceki sürümler String ve Array için tanımlı #concat metotu birleştirme işlemini parametre almadan yapıyor.</p>
+
+
+  </div>
+  
+  <div class="post">
+    <h3 class="post-title">
+      <a href="/2016/11/05/ruby-2-4-hash-compact.html">
+        Ruby 2.4 Hash#compact
+      </a>
+    </h3>
+
+    <span class="post-date">05 Nov 2016</span>
+
+    <p>Merhaba. Ruby 2.4 yazılarına devam ediyoruz.</p>
+
+
+  </div>
+  
+  <div class="post">
+    <h3 class="post-title">
+      <a href="/2016/11/02/ruby-2-4-enumerable-sum.html">
+        Ruby 2.4 Enumerable#sum
+      </a>
+    </h3>
+
+    <span class="post-date">02 Nov 2016</span>
+
+    <p>Merhaba! <a href="https://www.ruby-lang.org/en/news/2016/09/08/ruby-2-4-0-preview2-released/">Ruby 2.4 previewleri</a> bundan yakın bir zaman önce çıktı ve bir takım yenilikler ile birlikte geldiler. Kısa kısa Ruby 2.4 ile gelen yeniliklerden ve değişikliklerden bahsedelim.</p>
+
+
+  </div>
+  
+  <div class="post">
+    <h3 class="post-title">
+      <a href="/2016/05/19/block-proc-lambda.html">
+        Block, Proc, Lambda
+      </a>
+    </h3>
+
+    <span class="post-date">19 May 2016</span>
+
+    <p>Merhaba! Ruby’nin en güçlü özelliklerinden biri bloklardır. Diğer dillerin aksine Ruby’de blokları anlamak ve kullanmak kolay ve basittir.</p>
+
+
+  </div>
+  
+  <div class="post">
+    <h3 class="post-title">
+      <a href="/2016/05/15/debugging-with-pry.html">
+        Debugging with Pry
+      </a>
+    </h3>
+
+    <span class="post-date">15 May 2016</span>
+
+    <p>Merhaba! Kod yazarken bir bir şeylerin yolunda gitmediği veya kod içinde neler olduğunu anlamak istediğimiz anlar oluyor. Bu gibi durumlarda debugging yapıyoruz. Ruby’de eğer IDE kullanıyorsunuz debugging yapmak bir nebze kolay olabiliyor. Ancak benim gibi Sublime vb bir text editör kullanıcısıysanız imdadımıza PRY yetişiyor.</p>
+
+
+  </div>
+  
+  <div class="post">
+    <h3 class="post-title">
+      <a href="/2016/05/06/ruby-enumerable.html">
+        Ruby Enumerable
+      </a>
+    </h3>
+
+    <span class="post-date">06 May 2016</span>
+
+    <p>Merhaba! Bugün Ruby’de hemen hemen her gün kullandığımız <code class="highlighter-rouge">Enumerable</code> metotlarından bahsetmek istiyorum. Bu yazıda kullanılan örnekleri daha iyi anlayabilmek için öncelikle Ruby’de Array ve Hash kavramlarını biraz olsun bilmeniz gerekiyor.</p>
+
 
   </div>
   
@@ -211,7 +223,7 @@
 
 <div class="pagination">
   
-    <a class="pagination-item older" href="/page2">Older</a>
+    <span class="pagination-item older">Older</span>
   
   
     <span class="pagination-item newer">Newer</span>
