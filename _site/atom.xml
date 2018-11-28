@@ -11,7 +11,7 @@
    <email>enderyurt@gmail.com</email>
  </author>
 
- 
+
  <entry>
    <title>Ruby 2.6 ile Gelenler</title>
    <link href="http://localhost:4000/2018/11/28/ruby-2-6-ile-gelenler.html"/>
@@ -58,7 +58,7 @@ a.merge(b, c)
 &lt;p&gt;Sevgiler.&lt;/p&gt;
 </content>
  </entry>
- 
+
  <entry>
    <title>Gmail Eklenti Örneği</title>
    <link href="http://localhost:4000/2018/01/23/gmail-eklenti-%C3%96rne%C4%9Fi.html"/>
@@ -92,12 +92,12 @@ a.merge(b, c)
   &lt;span class=&quot;c1&quot;&gt;// message metadata to be read.&lt;/span&gt;
   &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;accessToken&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;messageMetadata&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;accessToken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
   &lt;span class=&quot;nx&quot;&gt;GmailApp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setCurrentMessageAccessToken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;accessToken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  
+
   &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;messageId&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;messageMetadata&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;messageId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
   &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;GmailApp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getMessageById&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;messageId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
   &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;subject&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getSubject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
   &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sender&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getFrom&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-  
+
   &lt;span class=&quot;c1&quot;&gt;// Create a card with a single card section and two widgets.&lt;/span&gt;
   &lt;span class=&quot;c1&quot;&gt;// Be sure to execute build() to finalize the card construction.&lt;/span&gt;
   &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;exampleCard&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;CardService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;newCardBuilder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
@@ -139,12 +139,12 @@ a.merge(b, c)
 &lt;p&gt;Sevgiler.&lt;/p&gt;
 
 &lt;p&gt;&lt;small&gt;
-&lt;em&gt;Referanslar:&lt;/em&gt; 
+&lt;em&gt;Referanslar:&lt;/em&gt;
 &lt;em&gt;https://developers.google.com/gmail/add-ons/how-tos/building&lt;/em&gt;
 &lt;/small&gt;&lt;/p&gt;
 </content>
  </entry>
- 
+
  <entry>
    <title>Gmail'e Eklenti Yazmak</title>
    <link href="http://localhost:4000/2018/01/09/gmail-e-eklenti-yazmak.html"/>
@@ -167,7 +167,7 @@ a.merge(b, c)
 &lt;p&gt;&lt;small&gt;&lt;em&gt;Image: https://developers.google.com/gmail/add-ons/&lt;/em&gt;&lt;/small&gt;&lt;/p&gt;
 </content>
  </entry>
- 
+
  <entry>
    <title>Ruby 2.5 ile Gelenler</title>
    <link href="http://localhost:4000/2017/12/30/ruby-2-5-ile-gelenler.html"/>
@@ -271,7 +271,7 @@ a.merge(b, c)
 
 </content>
  </entry>
- 
+
  <entry>
    <title>Ruby 2.4 Binding#irb</title>
    <link href="http://localhost:4000/2016/11/10/ruby2-4-binding-irb.html"/>
@@ -313,7 +313,7 @@ a.merge(b, c)
 &lt;p&gt;Cheers.&lt;/p&gt;
 </content>
  </entry>
- 
+
  <entry>
    <title>Ruby 2.4 String#concat, Array#concat and String#prepend Multiple Arguments</title>
    <link href="http://localhost:4000/2016/11/05/ruby-2-4-string-concat-array-concat-and-string-prepend-multiple-arguments.html"/>
@@ -370,7 +370,7 @@ a.merge(b, c)
 &lt;/ul&gt;
 </content>
  </entry>
- 
+
  <entry>
    <title>Ruby 2.4 Hash#compact</title>
    <link href="http://localhost:4000/2016/11/05/ruby-2-4-hash-compact.html"/>
@@ -400,7 +400,7 @@ a.merge(b, c)
 &lt;/ul&gt;
 </content>
  </entry>
- 
+
  <entry>
    <title>Ruby 2.4 Enumerable#sum</title>
    <link href="http://localhost:4000/2016/11/02/ruby-2-4-enumerable-sum.html"/>
@@ -434,7 +434,7 @@ a.merge(b, c)
 &lt;/ul&gt;
 </content>
  </entry>
- 
+
  <entry>
    <title>Block, Proc, Lambda</title>
    <link href="http://localhost:4000/2016/05/19/block-proc-lambda.html"/>
@@ -535,7 +535,7 @@ a.merge(b, c)
 &lt;p&gt;Sevgiler.&lt;/p&gt;
 </content>
  </entry>
- 
+
  <entry>
    <title>Debugging with Pry</title>
    <link href="http://localhost:4000/2016/05/15/debugging-with-pry.html"/>
@@ -613,7 +613,7 @@ a.merge(b, c)
 &lt;p&gt;Sevgiler.&lt;/p&gt;
 </content>
  </entry>
- 
+
  <entry>
    <title>Ruby Enumerable</title>
    <link href="http://localhost:4000/2016/05/06/ruby-enumerable.html"/>
@@ -702,6 +702,6 @@ a.merge(b, c)
 &lt;p&gt;Sevgiler.&lt;/p&gt;
 </content>
  </entry>
- 
+
 
 </feed>
