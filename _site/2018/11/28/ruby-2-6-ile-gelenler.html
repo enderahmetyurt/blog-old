@@ -11,7 +11,7 @@
 
   <title>
     
-      Ruby 2.4 Hash#compact &middot; Ender Ahmet Yurt
+      Ruby 2.6 ile Gelenler &middot; Ender Ahmet Yurt
     
   </title>
 
@@ -83,45 +83,53 @@
 
     <div class="content container">
       <div class="post">
-  <h1 class="post-title">Ruby 2.4 Hash#compact</h1>
-  <span class="post-date">05 Nov 2016</span>
-  <p>Merhaba. Ruby 2.4 yazılarına devam ediyoruz.</p>
+  <h1 class="post-title">Ruby 2.6 ile Gelenler</h1>
+  <span class="post-date">28 Nov 2018</span>
+  <p>Merhaba, Ruby’nin yeni versiyonu 2.6 25 Aralık 2018’de yayınlanacak. Öncesinde preview’dan yeni gelen özelliklerin bazılarına yakından bakalım.</p>
 
-<p>Ruby’de nil value’e sahip bir key ile hash oluşturduğunuzda Ruby bu değeri hash’den kaldırıyor.</p>
+<h3 id="arrayunion--arraydifference">Array#union &amp; Array#difference</h3>
+<p>Array class’ına gelen iki metot ile iki array arasındaki farkı görebilir ve onları birleştirebiliriz.</p>
 
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="nb">hash</span> <span class="o">=</span> <span class="p">{</span><span class="ss">:name</span><span class="o">=&gt;</span><span class="s2">"ender"</span><span class="p">,</span> <span class="ss">:age</span><span class="o">=&gt;</span><span class="kp">nil</span><span class="p">}</span>
-<span class="c1">#=&gt; {:name=&gt;"ender"}</span>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1,2,3,4,5].difference([3])
+=&gt; # [1, 2, 4, 5]
+[1,2,3,4,5].union([5,6,7])
+=&gt; # [1, 2, 3, 4, 5, 6, 7]
 </code></pre></div></div>
 
-<p>Active Support ile value’su nil olan key’leri dönmesini Hash#compact ile sağlayabiliyorsuz. Bu özellik artık Ruby 2.4 ile birlikte geliyor.</p>
+<h3 id="endless-ranges">Endless Ranges</h3>
+<p>Diğer versiyonların aksine 2.6 ile birlikte endless range’in yazımı değişti. Artık yeni endless range aşağıdaki gibi olacak.</p>
 
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="nb">hash</span> <span class="o">=</span> <span class="p">{</span><span class="ss">:name</span><span class="o">=&gt;</span><span class="s2">"ender"</span><span class="p">,</span> <span class="ss">:age</span><span class="o">=&gt;</span><span class="kp">nil</span><span class="p">}</span>
-<span class="o">&gt;</span> <span class="nb">hash</span><span class="p">.</span><span class="nf">compact</span>
-<span class="c1">#=&gt; {:name=&gt;"ender", :age=&gt;nil}</span>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(1..)
+</code></pre></div></div>
+
+<h3 id="enumerablearithmethicsequence">Enumerable::ArithmethicSequence</h3>
+<p>Artık iki yeni ArithmethicSequence metodumuz var. Bunlar  <code class="highlighter-rouge">Range#step</code> ve <code class="highlighter-rouge">Numeric#step</code> örnekleyecek olursak;</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(1..10).step(2) == (1..10).step(2)
+=&gt; # false - Ruby 2.5 (and older)
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(1..10).step(2) == (1..10).step(2)
+=&gt; # true - Ruby 2.6
+</code></pre></div></div>
+
+<h3 id="merge-hash-with-multiple-arguments">Merge Hash With Multiple Arguments</h3>
+<p>Hash’leri merge etmek için artık peş peşe <code class="highlighter-rouge">merge</code> yazmaya gerek yok.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a = { a: 1 }
+b = { b: 2 }
+c = { c: 3 }
+a.merge(b, c)
+=&gt; # {:a=&gt;1, :b=&gt;2, :c=&gt;3}
 </code></pre></div></div>
 
 <p>Sevgiler.</p>
-
-<p><small><em>Referans</em></small></p>
-
-<ul>
-  <li><a href="http://blog.bigbinary.com/2016/10/24/hash-compact-and-hash-compact-now-part-of-ruby-2-4.html">http://blog.bigbinary.com/2016/10/24/hash-compact-and-hash-compact-now-part-of-ruby-2-4.html</a></li>
-</ul>
 
 </div>
 
 <div class="related">
   <h2>Related Posts</h2>
   <ul class="related-posts">
-    
-      <li>
-        <h3>
-          <a href="/2018/11/28/ruby-2-6-ile-gelenler.html">
-            Ruby 2.6 ile Gelenler
-            <small>28 Nov 2018</small>
-          </a>
-        </h3>
-      </li>
     
       <li>
         <h3>
@@ -137,6 +145,15 @@
           <a href="/2018/01/09/gmail-e-eklenti-yazmak.html">
             Gmail'e Eklenti Yazmak
             <small>09 Jan 2018</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2017/12/30/ruby-2-5-ile-gelenler.html">
+            Ruby 2.5 ile Gelenler
+            <small>30 Dec 2017</small>
           </a>
         </h3>
       </li>
