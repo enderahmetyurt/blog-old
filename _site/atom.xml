@@ -4,14 +4,129 @@
  <title>Ender Ahmet Yurt</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2018-11-28T22:02:21+03:00</updated>
+ <updated>2018-12-05T21:07:22+03:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Ender Ahmet Yurt</name>
    <email>enderyurt@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Ruby State Design Pattern</title>
+   <link href="http://localhost:4000/2018/12/04/ruby-state-design-pattern.html"/>
+   <updated>2018-12-04T00:00:00+03:00</updated>
+   <id>http://localhost:4000/2018/12/04/ruby-state-design-pattern</id>
+   <content type="html">&lt;p&gt;Merhaba. Bugün &lt;strong&gt;State Design Pattern&lt;/strong&gt;‘ın Ruby’deki kullanımından bahsetmek istiyorum.&lt;/p&gt;
 
+&lt;p&gt;State design pattern, behavior pattern altında tanımlanır. Bu pattern’da bir nesnenin farklı durumlarda farklı şekillerde çalışmasını düzenlenir. Yani bir nesnenin durumu değiştiğinde o nesnenin çalışma şekli değişir. Bu duruma en güzel örnek trafik ışıklarını verebiliriz. Görme engelliler için trafik ışıklarını düşünün, kırmızı, sarı ve yeşil yandığında, durun, bekleyin ve geçin diyor. Işıklar arası geçişlerde ise birkaç saniye boşluk vererek, diğer ışığa geçiyor. Bu durumda ışıkların state’leri değişiyor ve yapacakları eylemler de state’lere göre belli oluyor.&lt;/p&gt;
+
+&lt;p&gt;State design pattern’ın 3 ana component’dan oluşuyor.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Context Class: Mevcut durumu bilen class.&lt;/li&gt;
+  &lt;li&gt;State Class: tanımlanmış state’lerin yapacağı işleri bilen class.&lt;/li&gt;
+  &lt;li&gt;State class’ından türetilmiş bütün durumlar için olan class’lar.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Peki bu durumun yararı nedir? Bütün state’ler kendi durumlarını yapacakları işi ve sonraki state’i biliyor. Mevcut state’in ne olduğuyla ilgilenmiyor. Aslında bu design yerine if/else de kullanıbilir ancak hem mimari olarak hem de kodu okumak anlamında if/else kullanmak daha zor olacaktır.&lt;/p&gt;
+
+&lt;p&gt;Şimdi bu tanımları Ruby’de trafik ışıkları örneği ile nasıl yazabiliriz, ona bakalım.&lt;/p&gt;
+
+&lt;p&gt;Öncelikle bir context class’ına ihtiyacımız var. TrafficLight class’ını context olarak belirliyoruz.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;TrafficLight&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;initialize&lt;/span&gt;
+    &lt;span class=&quot;vi&quot;&gt;@state&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;nil&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;next_state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;klass&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Green&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;vi&quot;&gt;@state&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;klass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;vi&quot;&gt;@state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;beep&lt;/span&gt;
+    &lt;span class=&quot;vi&quot;&gt;@state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;start_timer&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Sonrasında ise bir State class’ı tanımlıyoruz.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;State&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;initialize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;light&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;vi&quot;&gt;@light&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;light&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;beep&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;next_state&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;start_timer&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Green state ve diğerleri için şu şekilde bir class tanımlayabiliriz.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Green&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;State&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;beep&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Color is now green&quot;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;next_state&lt;/span&gt;
+    &lt;span class=&quot;vi&quot;&gt;@light&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;next_state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Yellow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;start_timer&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;sleep&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;next_state&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Yellow&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;State&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;beep&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Color is now yellow&quot;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;next_state&lt;/span&gt;
+    &lt;span class=&quot;vi&quot;&gt;@light&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;next_state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Red&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;start_timer&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;sleep&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;next_state&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Red&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;State&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;beep&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Color is now red&quot;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;next_state&lt;/span&gt;
+    &lt;span class=&quot;vi&quot;&gt;@light&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;next_state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;green&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;start_timer&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;sleep&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;next_state&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Artık her state ne yapacağı ve kendisinden sonra hangi state’in geleceğini biliyor.&lt;/p&gt;
+
+&lt;p&gt;Daha gerçekçi ve çalışan örnek için &lt;a href=&quot;https://github.com/ryanb/ruby-warrior&quot;&gt;RubyWarrior&lt;/a&gt;‘ı inceleyebilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;Eğer Ruby projelerinizde state machine kullanmak istiyorsanız &lt;a href=&quot;https://github.com/aasm/aasm&quot;&gt;AASM&lt;/a&gt; deneyebilirsiniz. Bu gem ile state’lerin durumlarını takip edebilir, callback’ler ile event’leri yönetebilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;Sevgiler.&lt;/p&gt;
+
+&lt;p&gt;&lt;small&gt;&lt;strong&gt;Referanslar:&lt;/strong&gt;&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;small&gt;&lt;em&gt;https://www.rubyguides.com/2018/12/state-machines/?tl_inbound=1&amp;amp;tl_target_all=1&amp;amp;tl_form_type=1&amp;amp;tl_period_type=1&lt;/em&gt;&lt;/small&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
  <entry>
    <title>Ruby 2.6 ile Gelenler</title>
    <link href="http://localhost:4000/2018/11/28/ruby-2-6-ile-gelenler.html"/>
@@ -58,7 +173,7 @@ a.merge(b, c)
 &lt;p&gt;Sevgiler.&lt;/p&gt;
 </content>
  </entry>
-
+ 
  <entry>
    <title>Gmail Eklenti Örneği</title>
    <link href="http://localhost:4000/2018/01/23/gmail-eklenti-%C3%96rne%C4%9Fi.html"/>
@@ -92,12 +207,12 @@ a.merge(b, c)
   &lt;span class=&quot;c1&quot;&gt;// message metadata to be read.&lt;/span&gt;
   &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;accessToken&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;messageMetadata&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;accessToken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
   &lt;span class=&quot;nx&quot;&gt;GmailApp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setCurrentMessageAccessToken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;accessToken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
+  
   &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;messageId&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;messageMetadata&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;messageId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
   &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;GmailApp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getMessageById&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;messageId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
   &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;subject&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getSubject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
   &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sender&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getFrom&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-
+  
   &lt;span class=&quot;c1&quot;&gt;// Create a card with a single card section and two widgets.&lt;/span&gt;
   &lt;span class=&quot;c1&quot;&gt;// Be sure to execute build() to finalize the card construction.&lt;/span&gt;
   &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;exampleCard&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;CardService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;newCardBuilder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
@@ -139,12 +254,12 @@ a.merge(b, c)
 &lt;p&gt;Sevgiler.&lt;/p&gt;
 
 &lt;p&gt;&lt;small&gt;
-&lt;em&gt;Referanslar:&lt;/em&gt;
+&lt;em&gt;Referanslar:&lt;/em&gt; 
 &lt;em&gt;https://developers.google.com/gmail/add-ons/how-tos/building&lt;/em&gt;
 &lt;/small&gt;&lt;/p&gt;
 </content>
  </entry>
-
+ 
  <entry>
    <title>Gmail'e Eklenti Yazmak</title>
    <link href="http://localhost:4000/2018/01/09/gmail-e-eklenti-yazmak.html"/>
@@ -167,7 +282,7 @@ a.merge(b, c)
 &lt;p&gt;&lt;small&gt;&lt;em&gt;Image: https://developers.google.com/gmail/add-ons/&lt;/em&gt;&lt;/small&gt;&lt;/p&gt;
 </content>
  </entry>
-
+ 
  <entry>
    <title>Ruby 2.5 ile Gelenler</title>
    <link href="http://localhost:4000/2017/12/30/ruby-2-5-ile-gelenler.html"/>
@@ -271,7 +386,7 @@ a.merge(b, c)
 
 </content>
  </entry>
-
+ 
  <entry>
    <title>Ruby 2.4 Binding#irb</title>
    <link href="http://localhost:4000/2016/11/10/ruby2-4-binding-irb.html"/>
@@ -313,7 +428,7 @@ a.merge(b, c)
 &lt;p&gt;Cheers.&lt;/p&gt;
 </content>
  </entry>
-
+ 
  <entry>
    <title>Ruby 2.4 String#concat, Array#concat and String#prepend Multiple Arguments</title>
    <link href="http://localhost:4000/2016/11/05/ruby-2-4-string-concat-array-concat-and-string-prepend-multiple-arguments.html"/>
@@ -370,7 +485,7 @@ a.merge(b, c)
 &lt;/ul&gt;
 </content>
  </entry>
-
+ 
  <entry>
    <title>Ruby 2.4 Hash#compact</title>
    <link href="http://localhost:4000/2016/11/05/ruby-2-4-hash-compact.html"/>
@@ -400,7 +515,7 @@ a.merge(b, c)
 &lt;/ul&gt;
 </content>
  </entry>
-
+ 
  <entry>
    <title>Ruby 2.4 Enumerable#sum</title>
    <link href="http://localhost:4000/2016/11/02/ruby-2-4-enumerable-sum.html"/>
@@ -434,7 +549,7 @@ a.merge(b, c)
 &lt;/ul&gt;
 </content>
  </entry>
-
+ 
  <entry>
    <title>Block, Proc, Lambda</title>
    <link href="http://localhost:4000/2016/05/19/block-proc-lambda.html"/>
@@ -535,7 +650,7 @@ a.merge(b, c)
 &lt;p&gt;Sevgiler.&lt;/p&gt;
 </content>
  </entry>
-
+ 
  <entry>
    <title>Debugging with Pry</title>
    <link href="http://localhost:4000/2016/05/15/debugging-with-pry.html"/>
@@ -613,7 +728,7 @@ a.merge(b, c)
 &lt;p&gt;Sevgiler.&lt;/p&gt;
 </content>
  </entry>
-
+ 
  <entry>
    <title>Ruby Enumerable</title>
    <link href="http://localhost:4000/2016/05/06/ruby-enumerable.html"/>
@@ -702,6 +817,6 @@ a.merge(b, c)
 &lt;p&gt;Sevgiler.&lt;/p&gt;
 </content>
  </entry>
-
+ 
 
 </feed>
