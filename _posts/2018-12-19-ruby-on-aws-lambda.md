@@ -16,12 +16,12 @@ Aws Ruby SDK'sı Aws üzerinde işlemler yapmamıza yarıyor. Bu SDK ile Amazon'
 - `Role` için ise `Create a new role from one or more templates.` diyip, `Role` kısmına bir rol adı yazıyoruz.
 - Sonrasında alttaki `Create function`'a basıp Lambda function'ımınızın oluşturulduğunu görüyoruz.
 
-<div style="display: flex; justify-content: center;"><img src="/public/images/aws1.png"></div>
+<div style="display: flex; justify-content: center;"><img src="/assets/img/aws1.png"></div>
 
 Lambda function'ı create edildikten sonraki açılan ekrandan her türlü kod düzenlemesini yapabilir, diğer servisler ile function'ı bağlayabilir ve servis ayarlarınızı yapabilirsiniz. Diğer tab yani `Monitoring` tab'ınıdan ise function'ının kullanımı ile alakalı sayıları alabilir, log servislerini kullanabilirsiniz.
 
 Alt tarafa code editor göreceksiniz. Burada lambda function'ımızı düzeltebiliriz. Gördüğümüz kod ise basit bir JSON önden lambda_handler isimli bir function. Bu kodu çalıştırmak için yapmamız gereken `Test`'e basıp, bir test event'i set edebilmek. Şimdilik biz bu alanı `{}` şeklinde tanımlıyoruz ve bir `Event name` verip, create ediyoruz. Sonrasında tekrar `Test` dediğimizde, Ruby Lamba Function'nın çalıştığını görebiliyoruz.
 
-<div style="display: flex; justify-content: center;"><img src="/public/images/aws2.png"></div>
+<div style="display: flex; justify-content: center;"><img src="/assets/img/aws2.png"></div>
 
 Sevgiler.
