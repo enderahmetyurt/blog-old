@@ -4,13 +4,44 @@
  <title>Ender Ahmet Yurt</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2018-12-05T21:07:22+03:00</updated>
+ <updated>2018-12-19T22:57:33+03:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Ender Ahmet Yurt</name>
    <email>enderyurt@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Ruby on AWS Lambda</title>
+   <link href="http://localhost:4000/2018/12/19/ruby-on-aws-lambda.html"/>
+   <updated>2018-12-19T00:00:00+03:00</updated>
+   <id>http://localhost:4000/2018/12/19/ruby-on-aws-lambda</id>
+   <content type="html">&lt;p&gt;Merhaba. Yakın zamanda duyurulan Aws Lambda’dan bahsetmek istiyorum.&lt;/p&gt;
+
+&lt;p&gt;Aws Ruby SDK’sı Aws üzerinde işlemler yapmamıza yarıyor. Bu SDK ile Amazon’un Amazon EC2, S3, SQS, SNS gibi servislerini kullanabiliyoruz. Yeni gelişmeler ile Amazon Lambda servisini de artık kullanabilir oluyoruz. Bu geliştirme ile artık Lambda fonksiyonları Ruby gibi kullanabilir ve AWS üzerinde çalıştırabiliriz. Bu girişten sonra küçük bir örnek yapalım.&lt;/p&gt;
+
+&lt;p&gt;Öncelikle &lt;a href=&quot;https://console.aws.amazon.com/lambda/home&quot;&gt;Lambda Console&lt;/a&gt;‘u açmak gerekiyor. Bu sayfada sırasıyla yapmamız gerekenler,&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Create function&lt;/code&gt;‘a tıklıyoruz.&lt;/li&gt;
+  &lt;li&gt;Küçük bir örnek yapabilmek için &lt;code class=&quot;highlighter-rouge&quot;&gt;Author from scratch&lt;/code&gt;‘i seçiyoruz.&lt;/li&gt;
+  &lt;li&gt;Function’ımıza kolay bir isim verdikten sonra, Ruby versiyonunu seçiyoruz.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Role&lt;/code&gt; için ise &lt;code class=&quot;highlighter-rouge&quot;&gt;Create a new role from one or more templates.&lt;/code&gt; diyip, &lt;code class=&quot;highlighter-rouge&quot;&gt;Role&lt;/code&gt; kısmına bir rol adı yazıyoruz.&lt;/li&gt;
+  &lt;li&gt;Sonrasında alttaki &lt;code class=&quot;highlighter-rouge&quot;&gt;Create function&lt;/code&gt;‘a basıp Lambda function’ımınızın oluşturulduğunu görüyoruz.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div style=&quot;display: flex; justify-content: center;&quot;&gt;&lt;img src=&quot;/public/images/aws1.png&quot; /&gt;&lt;/div&gt;
+
+&lt;p&gt;Lambda function’ı create edildikten sonraki açılan ekrandan her türlü kod düzenlemesini yapabilir, diğer servisler ile function’ı bağlayabilir ve servis ayarlarınızı yapabilirsiniz. Diğer tab yani &lt;code class=&quot;highlighter-rouge&quot;&gt;Monitoring&lt;/code&gt; tab’ınıdan ise function’ının kullanımı ile alakalı sayıları alabilir, log servislerini kullanabilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;Alt tarafa code editor göreceksiniz. Burada lambda function’ımızı düzeltebiliriz. Gördüğümüz kod ise basit bir JSON önden lambda_handler isimli bir function. Bu kodu çalıştırmak için yapmamız gereken &lt;code class=&quot;highlighter-rouge&quot;&gt;Test&lt;/code&gt;‘e basıp, bir test event’i set edebilmek. Şimdilik biz bu alanı &lt;code class=&quot;highlighter-rouge&quot;&gt;{}&lt;/code&gt; şeklinde tanımlıyoruz ve bir &lt;code class=&quot;highlighter-rouge&quot;&gt;Event name&lt;/code&gt; verip, create ediyoruz. Sonrasında tekrar &lt;code class=&quot;highlighter-rouge&quot;&gt;Test&lt;/code&gt; dediğimizde, Ruby Lamba Function’nın çalıştığını görebiliyoruz.&lt;/p&gt;
+
+&lt;div style=&quot;display: flex; justify-content: center;&quot;&gt;&lt;img src=&quot;/public/images/aws2.png&quot; /&gt;&lt;/div&gt;
+
+&lt;p&gt;Sevgiler.&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Ruby State Design Pattern</title>
