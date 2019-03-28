@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Ruby on AWS Lambda &middot; Ender Ahmet Yurt
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+
+  <body class="theme-base-08">
+
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>
+        <a href="/">
+          Ender Ahmet Yurt
+        </a>
+      </h1>
+      <p class="lead">Software Engineer</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="sidebar-nav-item" href="/">Home</a>
+
+      
+
+      
+      
+        
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/about.html">About</a>
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+
+      <a class="sidebar-nav-item" href="https://github.com/enderahmetyurt">GitHub</a>
+      <a class="sidebar-nav-item" href="https://twitter.com/ndrx42">Twitter</a>
+      <a class="sidebar-nav-item" href="https://www.linkedin.com/in/enderahmetyurt/">Linkedin</a>
+      <span class="sidebar-nav-item">Currently v1.1.0</span>
+    </nav>
+
+    <p>&copy; 2018. All rights reserved.</p>
+  </div>
+</div>
+
+
+    <div class="content container">
+      <div class="post">
+  <h1 class="post-title">Ruby on AWS Lambda</h1>
+  <span class="post-date">19 Dec 2018</span>
+  <p>Merhaba. Yakın zamanda duyurulan Aws Lambda’dan bahsetmek istiyorum.</p>
+
+<p>Aws Ruby SDK’sı Aws üzerinde işlemler yapmamıza yarıyor. Bu SDK ile Amazon’un Amazon EC2, S3, SQS, SNS gibi servislerini kullanabiliyoruz. Yeni gelişmeler ile Amazon Lambda servisini de artık kullanabilir oluyoruz. Bu geliştirme ile artık Lambda fonksiyonları Ruby gibi kullanabilir ve AWS üzerinde çalıştırabiliriz. Bu girişten sonra küçük bir örnek yapalım.</p>
+
+<p>Öncelikle <a href="https://console.aws.amazon.com/lambda/home">Lambda Console</a>‘u açmak gerekiyor. Bu sayfada sırasıyla yapmamız gerekenler,</p>
+
+<ul>
+  <li><code class="highlighter-rouge">Create function</code>‘a tıklıyoruz.</li>
+  <li>Küçük bir örnek yapabilmek için <code class="highlighter-rouge">Author from scratch</code>‘i seçiyoruz.</li>
+  <li>Function’ımıza kolay bir isim verdikten sonra, Ruby versiyonunu seçiyoruz.</li>
+  <li><code class="highlighter-rouge">Role</code> için ise <code class="highlighter-rouge">Create a new role from one or more templates.</code> diyip, <code class="highlighter-rouge">Role</code> kısmına bir rol adı yazıyoruz.</li>
+  <li>Sonrasında alttaki <code class="highlighter-rouge">Create function</code>‘a basıp Lambda function’ımınızın oluşturulduğunu görüyoruz.</li>
+</ul>
+
+<div style="display: flex; justify-content: center;"><img src="/assets/img/aws1.png" /></div>
+
+<p>Lambda function’ı create edildikten sonraki açılan ekrandan her türlü kod düzenlemesini yapabilir, diğer servisler ile function’ı bağlayabilir ve servis ayarlarınızı yapabilirsiniz. Diğer tab yani <code class="highlighter-rouge">Monitoring</code> tab’ınıdan ise function’ının kullanımı ile alakalı sayıları alabilir, log servislerini kullanabilirsiniz.</p>
+
+<p>Alt tarafa code editor göreceksiniz. Burada lambda function’ımızı düzeltebiliriz. Gördüğümüz kod ise basit bir JSON önden lambda_handler isimli bir function. Bu kodu çalıştırmak için yapmamız gereken <code class="highlighter-rouge">Test</code>‘e basıp, bir test event’i set edebilmek. Şimdilik biz bu alanı <code class="highlighter-rouge">{}</code> şeklinde tanımlıyoruz ve bir <code class="highlighter-rouge">Event name</code> verip, create ediyoruz. Sonrasında tekrar <code class="highlighter-rouge">Test</code> dediğimizde, Ruby Lamba Function’nın çalıştığını görebiliyoruz.</p>
+
+<div style="display: flex; justify-content: center;"><img src="/assets/img/aws2.png" /></div>
+
+<p>Sevgiler.</p>
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2018/12/04/ruby-state-design-pattern.html">
+            Ruby State Design Pattern
+            <small>04 Dec 2018</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2018/11/28/ruby-2-6-ile-gelenler.html">
+            Ruby 2.6 ile Gelenler
+            <small>28 Nov 2018</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2018/01/23/gmail-eklenti-%C3%96rne%C4%9Fi.html">
+            Gmail Eklenti Örneği
+            <small>23 Jan 2018</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+    </div>
+  </body>
+</html>
