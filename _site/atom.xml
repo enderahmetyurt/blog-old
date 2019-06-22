@@ -4,13 +4,94 @@
  <title>Ender Ahmet Yurt</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2019-06-22T18:59:17+03:00</updated>
+ <updated>2019-06-22T20:07:07+03:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Ender Ahmet Yurt</name>
    <email>enderyurt@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Ruby on Rails'da çoklu veritabanı</title>
+   <link href="http://localhost:4000/2019/06/22/ruby-on-rails-da-%C3%A7oklu-veritaban%C4%B1.html"/>
+   <updated>2019-06-22T20:01:00+03:00</updated>
+   <id>http://localhost:4000/2019/06/22/ruby-on-rails-da-çoklu-veritabanı</id>
+   <content type="html">&lt;p&gt;Merhaba. Ruby on Rails’ın son versiyonu olan 6. versiyonu ile gelen &lt;a href=&quot;https://edgeguides.rubyonrails.org/active_record_multiple_databases.html&quot;&gt;&lt;strong&gt;multiple database&lt;/strong&gt;&lt;/a&gt; özelliği ile artık çoklu veritabını yönetimi yapılabiliyor.&lt;/p&gt;
+
+&lt;p&gt;Bu durumun birçok anlamı var;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Bir veritabanının replikasını oluşturup, onlar üzerinde çalışmalar yapabilmek.&lt;/li&gt;
+  &lt;li&gt;Veritabanlarını farklı HTTP metotları için kullanabilmek.&lt;/li&gt;
+  &lt;li&gt;Çoklu veritabanlarında Rails’ın task’larını çalıştırabilmek.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Bunların yanında ise henüz desteklenmeyen özellikler arasında ise &lt;strong&gt;sharding&lt;/strong&gt; ve replikalar arası &lt;strong&gt;load balancing&lt;/strong&gt; başta geliyor.&lt;/p&gt;
+
+&lt;p&gt;Çoklu veritabanı için ayarları yapmak Rails 6’da çok kolay. Daha önce Ruby on Rails kullananlar bilecektir ki veritabanı ayar dosyası &lt;code class=&quot;highlighter-rouge&quot;&gt;config/database.yml&lt;/code&gt;‘da tutulur. Bu dosya üzerinde yeni bir takım eklemeler ile uygulamanız için çoklu veritabanlarını tanımlayabilirsiniz.&lt;/p&gt;
+
+&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;production&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;primary&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;database&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;my_primary_database&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;root&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;adapter&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;mysql&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;primary_replica&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;database&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;my_primary_database&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;root_readonly&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;adapter&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;mysql&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;replica&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;cities&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;database&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;cities_database&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;cities_root&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;adapter&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;mysql&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;migrations_paths&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;db/cities_migrate&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;cities_replica&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;database&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;my_cities_database&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;cities_readonly&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;adapter&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;mysql&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;replica&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Bu noktada birkaç konuya değinmek ve dikkat etmek gerekiyor. Öncelikle bir veritabanı eğer replika bir veritabanı ise &lt;code class=&quot;highlighter-rouge&quot;&gt;replica: true&lt;/code&gt; yazmak gerekiyor. Bunun yanında replika veritabanlarının adlarının aynı olması şart değil ancak aynı veri üzerinden çalışmalar olacağı için adlarının aynı olmasının faydası var.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;migration_paths&lt;/code&gt; Rails’da veritabanı &lt;strong&gt;migration&lt;/strong&gt;‘larının yerini söylemek için belirtmemiz gerekiyor. &lt;code class=&quot;highlighter-rouge&quot;&gt;cities &lt;/code&gt; veritabanı bir
+&lt;strong&gt;migration&lt;/strong&gt; çalıştırmak istersek &lt;code class=&quot;highlighter-rouge&quot;&gt;--database&lt;/code&gt; opsiyonu ile hangi dosyada çalışmaların olacağını belirtebiliyoruz.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+$ rails g migration CreateTowns name:string --database cities
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Model&lt;/strong&gt; seviyesinde ise birkaç ayara ihtiyac duyuyoruz. Burada önemli olan hangi veritabanlarının ne görevler yapacağı.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;CitiesBase&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ApplicationRecord&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;abstract_class&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;connects_to&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;database: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;writing: :cities&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;reading: :cities_replica&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;ApplicationRecord&lt;/strong&gt;‘u da güncellememiz gerekiyor.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ApplicationRecord&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;abstract_class&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;connects_to&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;database: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;writing: :primary&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;reading: :primary_replica&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;rails -T&lt;/code&gt; komutu ile de bütün &lt;strong&gt;task&lt;/strong&gt;‘ları görebilirsiniz. Hangi veritabanında çalışma yapmak istiyorsanız, adını sona ekleyerek yapabilirsiniz. &lt;code class=&quot;highlighter-rouge&quot;&gt;rails db:migrate:status:cities&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Ruby on Rails ile çoklu veritabanı kullanımı henüz RC versiyonda olasa da projelerde kullanılabilir durumda. Github ekibi tarafından geliştirilen ve şu an kullanılan bu özellik Ruby on Rails’ın gücünü daha da artıracak gibi duruyor.&lt;/p&gt;
+
+&lt;p&gt;Sevgiler.&lt;/p&gt;
+
+&lt;p&gt;&lt;small&gt;&lt;strong&gt;Referanslar:&lt;/strong&gt;&lt;/small&gt;
+&lt;br /&gt;
+&lt;small&gt;&lt;em&gt;https://edgeguides.rubyonrails.org/active_record_multiple_databases.html&lt;/em&gt;&lt;/small&gt;
+&lt;small&gt;&lt;em&gt;https://www.citusdata.com/blog/2019/05/23/rails-6-multiple-databases/&lt;/em&gt;&lt;/small&gt;&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Ruby on AWS Lambda</title>

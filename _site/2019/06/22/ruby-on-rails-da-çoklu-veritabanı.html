@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Ruby on Rails'da çoklu veritabanı &middot; Ender Ahmet Yurt
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+
+  <body>
+
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>
+        <a href="/">
+          Ender Ahmet Yurt
+        </a>
+      </h1>
+      <p class="lead">Software Engineer</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="sidebar-nav-item" href="/">Home</a>
+
+      
+
+      
+      
+        
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/about.html">About</a>
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+
+      <a class="sidebar-nav-item" href="https://github.com/enderahmetyurt">GitHub</a>
+      <a class="sidebar-nav-item" href="https://twitter.com/ndrx42">Twitter</a>
+      <a class="sidebar-nav-item" href="https://www.linkedin.com/in/enderahmetyurt/">Linkedin</a>
+      <span class="sidebar-nav-item">Currently v1.1.0</span>
+    </nav>
+
+    <p>&copy; 2019. All rights reserved.</p>
+  </div>
+</div>
+
+
+    <div class="content container">
+      <div class="post">
+  <h1 class="post-title">Ruby on Rails'da çoklu veritabanı</h1>
+  <span class="post-date">22 Jun 2019</span>
+  <p>Merhaba. Ruby on Rails’ın son versiyonu olan 6. versiyonu ile gelen <a href="https://edgeguides.rubyonrails.org/active_record_multiple_databases.html"><strong>multiple database</strong></a> özelliği ile artık çoklu veritabını yönetimi yapılabiliyor.</p>
+
+<p>Bu durumun birçok anlamı var;</p>
+
+<ul>
+  <li>Bir veritabanının replikasını oluşturup, onlar üzerinde çalışmalar yapabilmek.</li>
+  <li>Veritabanlarını farklı HTTP metotları için kullanabilmek.</li>
+  <li>Çoklu veritabanlarında Rails’ın task’larını çalıştırabilmek.</li>
+</ul>
+
+<p>Bunların yanında ise henüz desteklenmeyen özellikler arasında ise <strong>sharding</strong> ve replikalar arası <strong>load balancing</strong> başta geliyor.</p>
+
+<p>Çoklu veritabanı için ayarları yapmak Rails 6’da çok kolay. Daha önce Ruby on Rails kullananlar bilecektir ki veritabanı ayar dosyası <code class="highlighter-rouge">config/database.yml</code>‘da tutulur. Bu dosya üzerinde yeni bir takım eklemeler ile uygulamanız için çoklu veritabanlarını tanımlayabilirsiniz.</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">production</span><span class="pi">:</span>
+  <span class="na">primary</span><span class="pi">:</span>
+    <span class="na">database</span><span class="pi">:</span> <span class="s">my_primary_database</span>
+    <span class="na">user</span><span class="pi">:</span> <span class="s">root</span>
+    <span class="na">adapter</span><span class="pi">:</span> <span class="s">mysql</span>
+  <span class="na">primary_replica</span><span class="pi">:</span>
+    <span class="na">database</span><span class="pi">:</span> <span class="s">my_primary_database</span>
+    <span class="na">user</span><span class="pi">:</span> <span class="s">root_readonly</span>
+    <span class="na">adapter</span><span class="pi">:</span> <span class="s">mysql</span>
+    <span class="na">replica</span><span class="pi">:</span> <span class="no">true</span>
+  <span class="na">cities</span><span class="pi">:</span>
+    <span class="na">database</span><span class="pi">:</span> <span class="s">cities_database</span>
+    <span class="na">user</span><span class="pi">:</span> <span class="s">cities_root</span>
+    <span class="na">adapter</span><span class="pi">:</span> <span class="s">mysql</span>
+    <span class="na">migrations_paths</span><span class="pi">:</span> <span class="s">db/cities_migrate</span>
+  <span class="na">cities_replica</span><span class="pi">:</span>
+    <span class="na">database</span><span class="pi">:</span> <span class="s">my_cities_database</span>
+    <span class="na">user</span><span class="pi">:</span> <span class="s">cities_readonly</span>
+    <span class="na">adapter</span><span class="pi">:</span> <span class="s">mysql</span>
+    <span class="na">replica</span><span class="pi">:</span> <span class="no">true</span>
+</code></pre></div></div>
+
+<p>Bu noktada birkaç konuya değinmek ve dikkat etmek gerekiyor. Öncelikle bir veritabanı eğer replika bir veritabanı ise <code class="highlighter-rouge">replica: true</code> yazmak gerekiyor. Bunun yanında replika veritabanlarının adlarının aynı olması şart değil ancak aynı veri üzerinden çalışmalar olacağı için adlarının aynı olmasının faydası var.</p>
+
+<p><code class="highlighter-rouge">migration_paths</code> Rails’da veritabanı <strong>migration</strong>‘larının yerini söylemek için belirtmemiz gerekiyor. <code class="highlighter-rouge">cities </code> veritabanı bir
+<strong>migration</strong> çalıştırmak istersek <code class="highlighter-rouge">--database</code> opsiyonu ile hangi dosyada çalışmaların olacağını belirtebiliyoruz.</p>
+
+<p><code class="highlighter-rouge">
+$ rails g migration CreateTowns name:string --database cities
+</code></p>
+
+<p><strong>Model</strong> seviyesinde ise birkaç ayara ihtiyac duyuyoruz. Burada önemli olan hangi veritabanlarının ne görevler yapacağı.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CitiesBase</span> <span class="o">&lt;</span> <span class="no">ApplicationRecord</span>
+  <span class="nb">self</span><span class="p">.</span><span class="nf">abstract_class</span> <span class="o">=</span> <span class="kp">true</span>
+
+  <span class="n">connects_to</span> <span class="ss">database: </span><span class="p">{</span> <span class="ss">writing: :cities</span><span class="p">,</span> <span class="ss">reading: :cities_replica</span> <span class="p">}</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><strong>ApplicationRecord</strong>‘u da güncellememiz gerekiyor.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ApplicationRecord</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+  <span class="nb">self</span><span class="p">.</span><span class="nf">abstract_class</span> <span class="o">=</span> <span class="kp">true</span>
+
+  <span class="n">connects_to</span> <span class="ss">database: </span><span class="p">{</span> <span class="ss">writing: :primary</span><span class="p">,</span> <span class="ss">reading: :primary_replica</span> <span class="p">}</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">rails -T</code> komutu ile de bütün <strong>task</strong>‘ları görebilirsiniz. Hangi veritabanında çalışma yapmak istiyorsanız, adını sona ekleyerek yapabilirsiniz. <code class="highlighter-rouge">rails db:migrate:status:cities</code></p>
+
+<p>Ruby on Rails ile çoklu veritabanı kullanımı henüz RC versiyonda olasa da projelerde kullanılabilir durumda. Github ekibi tarafından geliştirilen ve şu an kullanılan bu özellik Ruby on Rails’ın gücünü daha da artıracak gibi duruyor.</p>
+
+<p>Sevgiler.</p>
+
+<p><small><strong>Referanslar:</strong></small>
+<br />
+<small><em>https://edgeguides.rubyonrails.org/active_record_multiple_databases.html</em></small>
+<small><em>https://www.citusdata.com/blog/2019/05/23/rails-6-multiple-databases/</em></small></p>
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2018/12/19/ruby-on-aws-lambda.html">
+            Ruby on AWS Lambda
+            <small>19 Dec 2018</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2018/12/04/ruby-state-design-pattern.html">
+            Ruby State Design Pattern
+            <small>04 Dec 2018</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2018/11/28/ruby-2-6-ile-gelenler.html">
+            Ruby 2.6 ile Gelenler
+            <small>28 Nov 2018</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+    </div>
+  </body>
+</html>
