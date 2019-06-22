@@ -2,6 +2,9 @@
 <html lang="en-us">
 
   {% include head.html %}
+  {% if jekyll.environment == 'production' %}
+  {% include analytics.html %}
+  {% endif %}
 
   <body>
 
