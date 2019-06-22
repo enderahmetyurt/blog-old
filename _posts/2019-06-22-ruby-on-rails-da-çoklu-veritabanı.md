@@ -5,12 +5,12 @@ date: 2019-06-22 20:01 +0300
 tags: [ruby_on_rails]
 ---
 
-Merhaba. Ruby on Rails'ın son versiyonu olan 6. versiyonu ile gelen [**multiple database**](https://edgeguides.rubyonrails.org/active_record_multiple_databases.html) özelliği ile artık çoklu veritabını yönetimi yapılabiliyor.
+Merhaba. Ruby on Rails'ın son versiyonu olan 6. versiyonu ile gelen [**multiple database**](https://edgeguides.rubyonrails.org/active_record_multiple_databases.html) özelliği ile artık çoklu veritabanı yönetimi yapılabiliyor.
 
 Bu durumun birçok anlamı var;
 
 - Bir veritabanının replikasını oluşturup, onlar üzerinde çalışmalar yapabilmek.
-- Veritabanlarını farklı HTTP metotları için kullanabilmek.
+- Birincil ve replika veritabanları arasında HTTP metotları ile otomatik geçişler yapabilmek.
 - Çoklu veritabanlarında Rails'ın task'larını çalıştırabilmek.
 
 Bunların yanında ise henüz desteklenmeyen özellikler arasında ise **sharding** ve replikalar arası **load balancing** başta geliyor.
