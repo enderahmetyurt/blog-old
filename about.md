@@ -5,7 +5,7 @@ title: About
 
 <p class="message">
   Merhaba ben Ender. Aslen Ordu Ünyeliyim. İstanbul'da yaşıyorum. Paraşüt şirketinde Yazılım Mühendisi olarak
-  çalışıyorum. Genel olarak ilgilendiğim alanlar web uygulamaları ve mobil uygulamalar. Boş vakitlerimde ise daha
+  çalışıyorum. Genel olarak ilgilendiğim alanlar web ve mobil uygulamaları. Boş vakitlerimde ise daha
   açık kaynak projelere destek vermeye çalışıyorum. Daha fazla bilgiye
   <a href="https://www.linkedin.com/in/enderahmetyurt/">Linkedin</a>
   profilimden ulaşabilirsiniz. Ayrıca beni <a href="https://github.com/enderahmetyurt">Github</a>'dan da
@@ -13,7 +13,7 @@ title: About
 </p>
 
 <p class="message">
-  Bu blog'un dışında hayata dair yazılar yazdığım, teknik konular dışında görüşlerimi belirtiğim
+  Bu blog'un dışında hayata dair yazılar yazdığım, teknik konular dışında görüşlerimi belirttiğim
   <a href="https://medium.com/@ndrx">Medium</a> blog'umdan da
   beni takip edebilir, yazılarımı okuyabilirsiniz.
 </p>
