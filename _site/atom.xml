@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
  <title>Ender Ahmet Yurt</title>
- <link href="http://localhost:4000/atom.xml" rel="self"/>
- <link href="http://localhost:4000/"/>
- <updated>2019-06-30T16:29:43+03:00</updated>
- <id>http://localhost:4000</id>
+ <link href="http://localhost:5001/atom.xml" rel="self"/>
+ <link href="http://localhost:5001/"/>
+ <updated>2019-07-06T12:54:23+03:00</updated>
+ <id>http://localhost:5001</id>
  <author>
    <name>Ender Ahmet Yurt</name>
    <email>enderyurt@gmail.com</email>
@@ -14,9 +14,9 @@
  
  <entry>
    <title>Ruby on Rails'da çoklu veritabanı</title>
-   <link href="http://localhost:4000/2019/06/22/ruby-on-rails-da-%C3%A7oklu-veritaban%C4%B1.html"/>
+   <link href="http://localhost:5001/2019/06/22/ruby-on-rails-da-%C3%A7oklu-veritaban%C4%B1.html"/>
    <updated>2019-06-22T20:01:00+03:00</updated>
-   <id>http://localhost:4000/2019/06/22/ruby-on-rails-da-çoklu-veritabanı</id>
+   <id>http://localhost:5001/2019/06/22/ruby-on-rails-da-çoklu-veritabanı</id>
    <content type="html">&lt;p&gt;Merhaba. Ruby on Rails’ın son versiyonu olan 6. versiyonu ile gelen &lt;a href=&quot;https://edgeguides.rubyonrails.org/active_record_multiple_databases.html&quot;&gt;&lt;strong&gt;multiple database&lt;/strong&gt;&lt;/a&gt; özelliği ile artık çoklu veritabanı yönetimi yapılabiliyor.&lt;/p&gt;
 
 &lt;p&gt;Bu durumun birçok anlamı var;&lt;/p&gt;
@@ -95,9 +95,9 @@ $ rails g migration CreateTowns name:string --database cities
  
  <entry>
    <title>Ruby on AWS Lambda</title>
-   <link href="http://localhost:4000/2018/12/19/ruby-on-aws-lambda.html"/>
+   <link href="http://localhost:5001/2018/12/19/ruby-on-aws-lambda.html"/>
    <updated>2018-12-19T00:00:00+03:00</updated>
-   <id>http://localhost:4000/2018/12/19/ruby-on-aws-lambda</id>
+   <id>http://localhost:5001/2018/12/19/ruby-on-aws-lambda</id>
    <content type="html">&lt;p&gt;Merhaba. Yakın zamanda duyurulan Aws Lambda’dan bahsetmek istiyorum.&lt;/p&gt;
 
 &lt;p&gt;Aws Ruby SDK’sı Aws üzerinde işlemler yapmamıza yarıyor. Bu SDK ile Amazon’un Amazon EC2, S3, SQS, SNS gibi servislerini kullanabiliyoruz. Yeni gelişmeler ile Amazon Lambda servisini de artık kullanabilir oluyoruz. Bu geliştirme ile artık Lambda fonksiyonları Ruby gibi kullanabilir ve AWS üzerinde çalıştırabiliriz. Bu girişten sonra küçük bir örnek yapalım.&lt;/p&gt;
@@ -126,9 +126,9 @@ $ rails g migration CreateTowns name:string --database cities
  
  <entry>
    <title>Ruby State Design Pattern</title>
-   <link href="http://localhost:4000/2018/12/04/ruby-state-design-pattern.html"/>
+   <link href="http://localhost:5001/2018/12/04/ruby-state-design-pattern.html"/>
    <updated>2018-12-04T00:00:00+03:00</updated>
-   <id>http://localhost:4000/2018/12/04/ruby-state-design-pattern</id>
+   <id>http://localhost:5001/2018/12/04/ruby-state-design-pattern</id>
    <content type="html">&lt;p&gt;Merhaba. Bugün &lt;strong&gt;State Design Pattern&lt;/strong&gt;‘ın Ruby’deki kullanımından bahsetmek istiyorum.&lt;/p&gt;
 
 &lt;p&gt;State design pattern, behavior pattern altında tanımlanır. Bu pattern’da bir nesnenin farklı durumlarda farklı şekillerde çalışmasını düzenlenir. Yani bir nesnenin durumu değiştiğinde o nesnenin çalışma şekli değişir. Bu duruma en güzel örnek trafik ışıklarını verebiliriz. Görme engelliler için trafik ışıklarını düşünün, kırmızı, sarı ve yeşil yandığında, durun, bekleyin ve geçin diyor. Işıklar arası geçişlerde ise birkaç saniye boşluk vererek, diğer ışığa geçiyor. Bu durumda ışıkların state’leri değişiyor ve yapacakları eylemler de state’lere göre belli oluyor.&lt;/p&gt;
@@ -241,9 +241,9 @@ $ rails g migration CreateTowns name:string --database cities
  
  <entry>
    <title>Ruby 2.6 ile Gelenler</title>
-   <link href="http://localhost:4000/2018/11/28/ruby-2-6-ile-gelenler.html"/>
+   <link href="http://localhost:5001/2018/11/28/ruby-2-6-ile-gelenler.html"/>
    <updated>2018-11-28T00:00:00+03:00</updated>
-   <id>http://localhost:4000/2018/11/28/ruby-2-6-ile-gelenler</id>
+   <id>http://localhost:5001/2018/11/28/ruby-2-6-ile-gelenler</id>
    <content type="html">&lt;p&gt;Merhaba, Ruby’nin yeni versiyonu 2.6 25 Aralık 2018’de yayınlanacak. Öncesinde preview’dan yeni gelen özelliklerin bazılarına yakından bakalım.&lt;/p&gt;
 
 &lt;h3 id=&quot;arrayunion--arraydifference&quot;&gt;Array#union &amp;amp; Array#difference&lt;/h3&gt;
@@ -288,9 +288,9 @@ a.merge(b, c)
  
  <entry>
    <title>Gmail Eklenti Örneği</title>
-   <link href="http://localhost:4000/2018/01/23/gmail-eklenti-%C3%96rne%C4%9Fi.html"/>
+   <link href="http://localhost:5001/2018/01/23/gmail-eklenti-%C3%96rne%C4%9Fi.html"/>
    <updated>2018-01-23T11:52:00+03:00</updated>
-   <id>http://localhost:4000/2018/01/23/gmail-eklenti-Örneği</id>
+   <id>http://localhost:5001/2018/01/23/gmail-eklenti-Örneği</id>
    <content type="html">&lt;p&gt;Merhaba. Daha önce &lt;a href=&quot;http://enderahmetyurt.com/2018/01/09/gmail-e-eklenti-yazmak.html&quot;&gt;Gmail add-on&lt;/a&gt; nedir? Bu konudan biraz bahsetmiştim. Şimdi ise küçük bir uygulama ile giriş yapıp daha pratik birşeyler göstermek istiyorum.&lt;/p&gt;
 
 &lt;p&gt;Öncelikle ihtiyacımız olan add-on’u yazmak için gerekli olan bir ortam. Google bize bu ortamı &lt;a href=&quot;https://script.google.com/&quot;&gt;https://script.google.com/&lt;/a&gt; ile veriyor. Sonrasında ise uygulamanın ayarlarının ve kütüphanelerinin bağımlılıklarının bulunduğu &lt;code class=&quot;highlighter-rouge&quot;&gt;manifest&lt;/code&gt; dosyasını tanımlamak gerekiyor. Son olarak ise kodu yani &lt;code class=&quot;highlighter-rouge&quot;&gt;CardService&lt;/code&gt;‘i yazmaya başlıyoruz.&lt;/p&gt;
@@ -374,9 +374,9 @@ a.merge(b, c)
  
  <entry>
    <title>Gmail'e Eklenti Yazmak</title>
-   <link href="http://localhost:4000/2018/01/09/gmail-e-eklenti-yazmak.html"/>
+   <link href="http://localhost:5001/2018/01/09/gmail-e-eklenti-yazmak.html"/>
    <updated>2018-01-09T00:00:00+03:00</updated>
-   <id>http://localhost:4000/2018/01/09/gmail-e-eklenti-yazmak</id>
+   <id>http://localhost:5001/2018/01/09/gmail-e-eklenti-yazmak</id>
    <content type="html">&lt;p&gt;Merhaba. Gmail’de işlerimizi halletmek adına birkaç tarayıcı eklentisi kullanıyoruz. Fakat bu eklentiler kimi zaman tarayıcılar değişince iyi çalışmıyor ya da alternatifi bulunamıyor veya mobil uygulamalar üzerinde hiçbir şekilde var olmuyor. 2017 yılının sonuna doğru Google, Gmail için artık eklenti yazımını mümkün kıldı. İsteyenler artık tarayıcı eklentisi yazar gibi Gmail için eklenti yazabilecek. Peki bu Gmail eklentisi tam olarak ne anlama geliyor, ve bu iş nasıl yapılıyor?&lt;/p&gt;
 
 &lt;p&gt;Gmail eklentileri emailler yolu ile yapılan günlük işlerinizi aslında kolaylaştırıyor. Örneğin, Asana uygulamasının eklentisi ile size gelen bir emaili Asana’da bir iş olarak hızlı bir şekilde açabilir ve detaylandırabilirsiniz. Eskiden olsaydı Asana’nın ekranlarına girip bu işlerini halletmeniz gerekecektir. Bunun gibi örnekleri çoğaltabiliriz. Kısacası Gmail eklentileri zamanı ve işleri kısaltmamıza yarıyor.&lt;/p&gt;
@@ -397,9 +397,9 @@ a.merge(b, c)
  
  <entry>
    <title>Ruby 2.5 ile Gelenler</title>
-   <link href="http://localhost:4000/2017/12/30/ruby-2-5-ile-gelenler.html"/>
+   <link href="http://localhost:5001/2017/12/30/ruby-2-5-ile-gelenler.html"/>
    <updated>2017-12-30T00:00:00+03:00</updated>
-   <id>http://localhost:4000/2017/12/30/ruby-2-5-ile-gelenler</id>
+   <id>http://localhost:5001/2017/12/30/ruby-2-5-ile-gelenler</id>
    <content type="html">&lt;p&gt;Merhaba, Ruby en son versiyonu olan 2.5 ile yeni yıla girmeden karşımıza çıktı. Bu versiyon ile ne gibi özellikler geldi kısaca bakalım.&lt;/p&gt;
 
 &lt;h3 id=&quot;beginende-gerek-kalmadı&quot;&gt;Begin/End’e gerek kalmadı&lt;/h3&gt;
@@ -501,9 +501,9 @@ a.merge(b, c)
  
  <entry>
    <title>Ruby 2.4 Binding#irb</title>
-   <link href="http://localhost:4000/2016/11/10/ruby2-4-binding-irb.html"/>
+   <link href="http://localhost:5001/2016/11/10/ruby2-4-binding-irb.html"/>
    <updated>2016-11-10T00:00:00+03:00</updated>
-   <id>http://localhost:4000/2016/11/10/ruby2-4-binding-irb</id>
+   <id>http://localhost:5001/2016/11/10/ruby2-4-binding-irb</id>
    <content type="html">&lt;p&gt;Hello! &lt;a href=&quot;https://www.ruby-lang.org/en/news/2016/11/09/ruby-2-4-0-preview3-released/&quot;&gt;Ruby2.4.0.preview3&lt;/a&gt; was released yesterday. There are some really cool features in it. I will mention one of these. It is about debugging or open a REPL session. As you know before that release, Ruby developers use &lt;code class=&quot;highlighter-rouge&quot;&gt;p&lt;/code&gt; or other lovely gem &lt;a href=&quot;https://github.com/pry/pry&quot;&gt;pry&lt;/a&gt; to debug. For now &lt;a href=&quot;https://github.com/ruby/ruby/commit/493e48897421d176a8faf0f0820323d79ecdf94a&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;binding#irb&lt;/code&gt;&lt;/a&gt; provides to debug in your application.&lt;/p&gt;
 
 &lt;p&gt;First, we need to install latest Ruby version. We can do it via RVM.&lt;/p&gt;
@@ -543,9 +543,9 @@ a.merge(b, c)
  
  <entry>
    <title>Ruby 2.4 String#concat, Array#concat and String#prepend Multiple Arguments</title>
-   <link href="http://localhost:4000/2016/11/05/ruby-2-4-string-concat-array-concat-and-string-prepend-multiple-arguments.html"/>
+   <link href="http://localhost:5001/2016/11/05/ruby-2-4-string-concat-array-concat-and-string-prepend-multiple-arguments.html"/>
    <updated>2016-11-05T00:00:00+03:00</updated>
-   <id>http://localhost:4000/2016/11/05/ruby-2-4-string-concat-array-concat-and-string-prepend-multiple-arguments</id>
+   <id>http://localhost:5001/2016/11/05/ruby-2-4-string-concat-array-concat-and-string-prepend-multiple-arguments</id>
    <content type="html">&lt;p&gt;Merhaba. Ruby 2.4’den önceki sürümler String ve Array için tanımlı #concat metotu birleştirme işlemini parametre almadan yapıyor.&lt;/p&gt;
 
 &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my_string&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hello&quot;&lt;/span&gt;
@@ -600,9 +600,9 @@ a.merge(b, c)
  
  <entry>
    <title>Ruby 2.4 Hash#compact</title>
-   <link href="http://localhost:4000/2016/11/05/ruby-2-4-hash-compact.html"/>
+   <link href="http://localhost:5001/2016/11/05/ruby-2-4-hash-compact.html"/>
    <updated>2016-11-05T00:00:00+03:00</updated>
-   <id>http://localhost:4000/2016/11/05/ruby-2-4-hash-compact</id>
+   <id>http://localhost:5001/2016/11/05/ruby-2-4-hash-compact</id>
    <content type="html">&lt;p&gt;Merhaba. Ruby 2.4 yazılarına devam ediyoruz.&lt;/p&gt;
 
 &lt;p&gt;Ruby’de nil value’e sahip bir key ile hash oluşturduğunuzda Ruby bu değeri hash’den kaldırıyor.&lt;/p&gt;
@@ -630,9 +630,9 @@ a.merge(b, c)
  
  <entry>
    <title>Ruby 2.4 Enumerable#sum</title>
-   <link href="http://localhost:4000/2016/11/02/ruby-2-4-enumerable-sum.html"/>
+   <link href="http://localhost:5001/2016/11/02/ruby-2-4-enumerable-sum.html"/>
    <updated>2016-11-02T00:00:00+03:00</updated>
-   <id>http://localhost:4000/2016/11/02/ruby-2-4-enumerable-sum</id>
+   <id>http://localhost:5001/2016/11/02/ruby-2-4-enumerable-sum</id>
    <content type="html">&lt;p&gt;Merhaba! &lt;a href=&quot;https://www.ruby-lang.org/en/news/2016/09/08/ruby-2-4-0-preview2-released/&quot;&gt;Ruby 2.4 previewleri&lt;/a&gt; bundan yakın bir zaman önce çıktı ve bir takım yenilikler ile birlikte geldiler. Kısa kısa Ruby 2.4 ile gelen yeniliklerden ve değişikliklerden bahsedelim.&lt;/p&gt;
 
 &lt;p&gt;Bir Array’de ya da Hash’de elementleri toplamak yapmak için Active Support’da tanımlı olan &lt;a href=&quot;https://github.com/rails/rails/blob/3d716b9e66e334c113c98fb3fc4bcf8a945b93a1/activesupport/lib/active_support/core_ext/enumerable.rb#L2-L27&quot;&gt;Enumerable#sum&lt;/a&gt;‘ı kullanıyoruz.&lt;/p&gt;
@@ -664,9 +664,9 @@ a.merge(b, c)
  
  <entry>
    <title>Block, Proc, Lambda</title>
-   <link href="http://localhost:4000/2016/05/19/block-proc-lambda.html"/>
+   <link href="http://localhost:5001/2016/05/19/block-proc-lambda.html"/>
    <updated>2016-05-19T00:00:00+03:00</updated>
-   <id>http://localhost:4000/2016/05/19/block-proc-lambda</id>
+   <id>http://localhost:5001/2016/05/19/block-proc-lambda</id>
    <content type="html">&lt;p&gt;Merhaba! Ruby’nin en güçlü özelliklerinden biri bloklardır. Diğer dillerin aksine Ruby’de blokları anlamak ve kullanmak kolay ve basittir.&lt;/p&gt;
 
 &lt;p&gt;Ruby’de bloklarını kullanmak için iki yöntemimiz var,&lt;/p&gt;
@@ -765,9 +765,9 @@ a.merge(b, c)
  
  <entry>
    <title>Debugging with Pry</title>
-   <link href="http://localhost:4000/2016/05/15/debugging-with-pry.html"/>
+   <link href="http://localhost:5001/2016/05/15/debugging-with-pry.html"/>
    <updated>2016-05-15T00:00:00+03:00</updated>
-   <id>http://localhost:4000/2016/05/15/debugging-with-pry</id>
+   <id>http://localhost:5001/2016/05/15/debugging-with-pry</id>
    <content type="html">&lt;p&gt;Merhaba! Kod yazarken bir bir şeylerin yolunda gitmediği veya kod içinde neler olduğunu anlamak istediğimiz anlar oluyor. Bu gibi durumlarda debugging yapıyoruz. Ruby’de eğer IDE kullanıyorsunuz debugging yapmak bir nebze kolay olabiliyor. Ancak benim gibi Sublime vb bir text editör kullanıcısıysanız imdadımıza PRY yetişiyor.&lt;/p&gt;
 
 &lt;p&gt;Pry nedir? Pry, aslında IRB yani Interactive Ruby Shell alternatif olarak çıkmış bir runtime developer console’dur. Kendisi bir RubyGem’i olup, bilgisayarınıza kurmanızla IRB’nin bazı zamanlarda yeterli olmadığı bir çok özelliği size sunar. Ancak bugünün konusu PRY’dan çok PRY ile nasıl debugging yapılır o olacak.&lt;/p&gt;
@@ -843,9 +843,9 @@ a.merge(b, c)
  
  <entry>
    <title>Ruby Enumerable</title>
-   <link href="http://localhost:4000/2016/05/06/ruby-enumerable.html"/>
+   <link href="http://localhost:5001/2016/05/06/ruby-enumerable.html"/>
    <updated>2016-05-06T00:00:00+03:00</updated>
-   <id>http://localhost:4000/2016/05/06/ruby-enumerable</id>
+   <id>http://localhost:5001/2016/05/06/ruby-enumerable</id>
    <content type="html">&lt;p&gt;Merhaba! Bugün Ruby’de hemen hemen her gün kullandığımız &lt;code class=&quot;highlighter-rouge&quot;&gt;Enumerable&lt;/code&gt; metotlarından bahsetmek istiyorum. Bu yazıda kullanılan örnekleri daha iyi anlayabilmek için öncelikle Ruby’de Array ve Hash kavramlarını biraz olsun bilmeniz gerekiyor.&lt;/p&gt;
 
 &lt;p&gt;Ruby’de &lt;code class=&quot;highlighter-rouge&quot;&gt;Enumerable&lt;/code&gt; modülüne ihtiyaç duymamızın nedeni colletion’lar üzerinde daha hızlı ve kolay çalışmalar yapabilmektir. Örneğin, bir collection içindeki bütün tek sayıları getirmek için döngüler ve if bloklarını kullanabiliriz. Ancak bunun yerine &lt;code class=&quot;highlighter-rouge&quot;&gt;Enumerable&lt;/code&gt; modülünde tanımlı metotlardan yardım alabiliyoruz.&lt;/p&gt;

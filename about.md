@@ -13,6 +13,11 @@ title: About
 </p>
 
 <p class="message">
+  Teknoloji şirketlerinde yazılımcı ya da yazılımdan sorumlu kişiler ile çalıştıkları şirketlerin teknik alt yapıları, yazılımcı kültürleri ve daha nice konuları konuştuğumuz
+  <a href="https://uretimbandi.com/">Paraşütle Üretim Bandı:Teknik</a> adlı podcast'de de düzenli olarak yayın yapıyorum.
+</p>
+
+<p class="message">
   Bu blog'un dışında hayata dair yazılar yazdığım, teknik konular dışında görüşlerimi belirttiğim
   <a href="https://medium.com/@ndrx">Medium</a> blog'umdan da
   beni takip edebilir, yazılarımı okuyabilirsiniz.
