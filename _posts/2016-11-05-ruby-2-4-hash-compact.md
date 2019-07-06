@@ -25,4 +25,4 @@ Sevgiler.
 
 <small>*Referans*</small>
 
-* [http://blog.bigbinary.com/2016/10/24/hash-compact-and-hash-compact-now-part-of-ruby-2-4.html](http://blog.bigbinary.com/2016/10/24/hash-compact-and-hash-compact-now-part-of-ruby-2-4.html)
+* [https://blog.bigbinary.com/2016/10/24/hash-compact-and-hash-compact-now-part-of-ruby-2-4.html](https://blog.bigbinary.com/2016/10/24/hash-compact-and-hash-compact-now-part-of-ruby-2-4.html)

@@ -4,7 +4,7 @@ title: Gmail Eklenti Örneği
 date: 2018-01-23 11:52 +0300
 ---
 
-Merhaba. Daha önce [Gmail add-on](http://enderahmetyurt.com/2018/01/09/gmail-e-eklenti-yazmak.html) nedir? Bu konudan biraz bahsetmiştim. Şimdi ise küçük bir uygulama ile giriş yapıp daha pratik birşeyler göstermek istiyorum.
+Merhaba. Daha önce [Gmail add-on](https://enderahmetyurt.com/2018/01/09/gmail-e-eklenti-yazmak.html) nedir? Bu konudan biraz bahsetmiştim. Şimdi ise küçük bir uygulama ile giriş yapıp daha pratik birşeyler göstermek istiyorum.
 
 Öncelikle ihtiyacımız olan add-on'u yazmak için gerekli olan bir ortam. Google bize bu ortamı [https://script.google.com/](https://script.google.com/) ile veriyor. Sonrasında ise uygulamanın ayarlarının ve kütüphanelerinin bağımlılıklarının bulunduğu ```manifest``` dosyasını tanımlamak gerekiyor. Son olarak ise kodu yani ```CardService```'i yazmaya başlıyoruz.
 
@@ -34,12 +34,12 @@ function getContextualAddOn(e) {
   // message metadata to be read.
   var accessToken = e.messageMetadata.accessToken;
   GmailApp.setCurrentMessageAccessToken(accessToken);
-  
+
   var messageId = e.messageMetadata.messageId;
   var message = GmailApp.getMessageById(messageId);
   var subject = message.getSubject();
   var sender = message.getFrom();
-  
+
   // Create a card with a single card section and two widgets.
   // Be sure to execute build() to finalize the card construction.
   var exampleCard = CardService.newCardBuilder()
@@ -80,6 +80,6 @@ Inbox içinden herhangi bir email'e tıkladığımız zaman sağ tafta uygulama 
 Sevgiler.
 
 <small>
-*Referanslar:* 
+*Referanslar:*
 *https://developers.google.com/gmail/add-ons/how-tos/building*
 </small>

@@ -30,4 +30,4 @@ Sevgiler.
 
 <small>*Referans*</small>
 
-* [http://blog.bigbinary.com/2016/11/02/ruby-2-4-introduces-enumerable-sum.html](http://blog.bigbinary.com/2016/11/02/ruby-2-4-introduces-enumerable-sum.html)
+* [https://blog.bigbinary.com/2016/11/02/ruby-2-4-introduces-enumerable-sum.html](https://blog.bigbinary.com/2016/11/02/ruby-2-4-introduces-enumerable-sum.html)

@@ -54,4 +54,4 @@ Sevgiler.
 
 <small>*Referans*</small>
 
-* [http://blog.bigbinary.com/2016/10/28/string-array-concat-and-string-prepend-take-multiple-arguments-in-ruby-2-4.html](http://blog.bigbinary.com/2016/10/28/string-array-concat-and-string-prepend-take-multiple-arguments-in-ruby-2-4.html)
+* [https://blog.bigbinary.com/2016/10/28/string-array-concat-and-string-prepend-take-multiple-arguments-in-ruby-2-4.html](https://blog.bigbinary.com/2016/10/28/string-array-concat-and-string-prepend-take-multiple-arguments-in-ruby-2-4.html)
