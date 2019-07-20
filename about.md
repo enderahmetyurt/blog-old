@@ -4,17 +4,15 @@ title: About
 ---
 
 <p class="message">
-  Merhaba ben Ender. Aslen Ordu Ünyeliyim. İstanbul'da yaşıyorum. Paraşüt şirketinde Yazılım Mühendisi olarak
-  çalışıyorum. Genel olarak ilgilendiğim alanlar web ve mobil uygulamaları. Boş vakitlerimde ise daha
-  açık kaynak projelere destek vermeye çalışıyorum. Daha fazla bilgiye
-  <a href="https://www.linkedin.com/in/enderahmetyurt/">Linkedin</a>
-  profilimden ulaşabilirsiniz. Ayrıca beni <a href="https://github.com/enderahmetyurt">Github</a>'dan da
-  takip edebilirsiniz.
+  Merhaba ben Ender. Aslen Ordu Ünyeliyim. 2005 yılından beri İstanbul'da yaşıyorum. 2011 yılından bu yana farklı teknoloji şirketlerinde yazılım geliştiricisi olarak görev yaptım. 2018 Kasım'dan beri <a href="https://parasut.com/">Paraşüt</a> şirketinde Yazılım Mühendisi olarak çalışıyorum. Genel olarak ilgilendiklerim web ve mobil uygulamaları. Boş vakitlerimde ise açık kaynak projelere destek vermeye ve 2012 yılından beri içinde bulunduğum <a href="https://rubyturkiye.org/">Ruby Türkiye</a> topluluğunda gönüllü olarak görev alıyorum. Benim ile ilgili daha fazla bilgiye <a href="https://www.linkedin.com/in/enderahmetyurt/">Linkedin</a> profilimden ulaşabilirsiniz. Ayrıca beni <a href="https://github.com/enderahmetyurt">Github</a>'dan da takip edebilirsiniz.
 </p>
 
 <p class="message">
   Teknoloji şirketlerinde yazılımcı ya da yazılımdan sorumlu kişiler ile çalıştıkları şirketlerin teknik alt yapıları, yazılımcı kültürleri ve daha nice konuları konuştuğumuz
   <a href="https://uretimbandi.com/">Paraşütle Üretim Bandı:Teknik</a> adlı podcast'de de düzenli olarak yayın yapıyorum.
+  <br>
+  <br>
+  2015 - 2017 yılları arasında ise Dünya'da ve Türkiye'deki Ruby programlama dili hakkındaki gelişmeleri konuştuğumuz <a href="https://yakutrb.com/">Yakut</a> adlı podcast'i yaptım.
 </p>
 
 <p class="message">
