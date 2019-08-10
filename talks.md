@@ -6,14 +6,15 @@ title: Talks
 Çeşitli zamanlarda yaptığım konuşmalar ve etkinlikler.
 
 <ul>
-  <li><i>2013/Ekim</i> - Rails Girls Istanbul - Co-organizer</li>
-  <li><i>2014/Ocak</i> - Bilgisayar Mühendisleri Odası İstanbul - Ruby 101</li>
-  <li><i>2015/Ocak</i> - Istanbul Hackerspace - Ruby on Rails 101</li>
-  <li><i>2015/Mart</i> - Özgür Yazılım Günleri - Metaprogramming with Ruby</li>
-  <li><i>2016/Nisan</i> - Trakya Üniversitesi - Ruby on Rails 101</li>
-  <li><i>2017/Nisan</i> - Özgür Yazılım Günleri - Kıymetlimiz "Ruby Gems"</li>
-  <li><i>2017/Ekim</i> - İstanbul Aydın Üniversitesi - Ruby 101</li>
-  <li><i>2018/Ocak</i> - Bilgisayar Mühendisleri Odası İstanbul - Ruby on Rails 101</li>
-  <li><i>2018/Nisan</i> - İstanbul AltınBaş Üniversitesi - Ruby on Rails 101</li>
+  <li><i>2019/Temmuz</i> - Özgür Yazılım Kampı - Ruby on Rails Sınıfı Eğitmeni (4 Gün)</li>
   <li><i>2018/Kasım</i> - Rails Girls Istanbul - Co-organizer</li>
+  <li><i>2018/Nisan</i> - İstanbul AltınBaş Üniversitesi - Ruby on Rails 101</li>
+  <li><i>2018/Ocak</i> - Bilgisayar Mühendisleri Odası İstanbul - Ruby on Rails 101</li>
+  <li><i>2017/Ekim</i> - İstanbul Aydın Üniversitesi - Ruby 101</li>
+  <li><i>2017/Nisan</i> - Özgür Yazılım Günleri - Kıymetlimiz "Ruby Gems"</li>
+  <li><i>2016/Nisan</i> - Trakya Üniversitesi - Ruby on Rails 101</li>
+  <li><i>2015/Mart</i> - Özgür Yazılım Günleri - Metaprogramming with Ruby</li>
+  <li><i>2015/Ocak</i> - Istanbul Hackerspace - Ruby on Rails 101</li>
+  <li><i>2014/Ocak</i> - Bilgisayar Mühendisleri Odası İstanbul - Ruby 101</li>
+  <li><i>2013/Ekim</i> - Rails Girls Istanbul - Co-organizer</li>
 </ul>
