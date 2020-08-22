@@ -4,7 +4,9 @@ title: Ruby Enumerable
 tags: [ruby]
 ---
 
-Merhaba! Bugün Ruby'de hemen hemen her gün kullandığımız ```Enumerable``` metotlarından bahsetmek istiyorum. Bu yazıda kullanılan örnekleri daha iyi anlayabilmek için öncelikle Ruby'de Array ve Hash kavramlarını biraz olsun bilmeniz gerekiyor.
+Merhaba! Bugün Ruby'de hemen hemen her gün kullandığımız ```Enumerable``` metotlarından bahsetmek istiyorum.
+
+Bu yazıda kullanılan örnekleri daha iyi anlayabilmek için öncelikle Ruby'de Array ve Hash kavramlarını biraz olsun bilmeniz gerekiyor.
 
 Ruby'de ```Enumerable``` modülüne ihtiyaç duymamızın nedeni colletion'lar üzerinde daha hızlı ve kolay çalışmalar yapabilmektir. Örneğin, bir collection içindeki bütün tek sayıları getirmek için döngüler ve if bloklarını kullanabiliriz. Ancak bunun yerine ```Enumerable``` modülünde tanımlı metotlardan yardım alabiliyoruz.
 

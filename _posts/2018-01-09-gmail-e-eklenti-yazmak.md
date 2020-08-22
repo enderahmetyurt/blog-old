@@ -4,7 +4,9 @@ title: Gmail'e Eklenti Yazmak
 tags: [gmail-addons]
 ---
 
-Merhaba. Gmail'de işlerimizi halletmek adına birkaç tarayıcı eklentisi kullanıyoruz. Fakat bu eklentiler kimi zaman tarayıcılar değişince iyi çalışmıyor ya da alternatifi bulunamıyor veya mobil uygulamalar üzerinde hiçbir şekilde var olmuyor. 2017 yılının sonuna doğru Google, Gmail için artık eklenti yazımını mümkün kıldı. İsteyenler artık tarayıcı eklentisi yazar gibi Gmail için eklenti yazabilecek. Peki bu Gmail eklentisi tam olarak ne anlama geliyor, ve bu iş nasıl yapılıyor?
+Merhaba. Gmail'de işlerimizi halletmek adına birkaç tarayıcı eklentisi kullanıyoruz.
+
+Fakat bu eklentiler kimi zaman tarayıcılar değişince iyi çalışmıyor ya da alternatifi bulunamıyor veya mobil uygulamalar üzerinde hiçbir şekilde var olmuyor. 2017 yılının sonuna doğru Google, Gmail için artık eklenti yazımını mümkün kıldı. İsteyenler artık tarayıcı eklentisi yazar gibi Gmail için eklenti yazabilecek. Peki bu Gmail eklentisi tam olarak ne anlama geliyor, ve bu iş nasıl yapılıyor?
 
 Gmail eklentileri emailler yolu ile yapılan günlük işlerinizi aslında kolaylaştırıyor. Örneğin, Asana uygulamasının eklentisi ile size gelen bir emaili Asana'da bir iş olarak hızlı bir şekilde açabilir ve detaylandırabilirsiniz. Eskiden olsaydı Asana'nın ekranlarına girip bu işlerini halletmeniz gerekecektir. Bunun gibi örnekleri çoğaltabiliriz. Kısacası Gmail eklentileri zamanı ve işleri kısaltmamıza yarıyor.
 

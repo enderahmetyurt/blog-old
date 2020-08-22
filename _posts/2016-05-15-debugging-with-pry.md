@@ -4,7 +4,9 @@ title: Debugging with Pry
 tags: [ruby]
 ---
 
-Merhaba! Kod yazarken bir bir şeylerin yolunda gitmediği veya kod içinde neler olduğunu anlamak istediğimiz anlar oluyor. Bu gibi durumlarda debugging yapıyoruz. Ruby'de eğer IDE kullanıyorsunuz debugging yapmak bir nebze kolay olabiliyor. Ancak benim gibi Sublime vb bir text editör kullanıcısıysanız imdadımıza PRY yetişiyor.
+Merhaba! Kod yazarken bir bir şeylerin yolunda gitmediği veya kod içinde neler olduğunu anlamak istediğimiz anlar oluyor. Bu gibi durumlarda debugging yapıyoruz.
+
+Ruby'de eğer IDE kullanıyorsunuz debugging yapmak bir nebze kolay olabiliyor. Ancak benim gibi Sublime vb bir text editör kullanıcısıysanız imdadımıza PRY yetişiyor.
 
 Pry nedir? Pry, aslında IRB yani Interactive Ruby Shell alternatif olarak çıkmış bir runtime developer console'dur. Kendisi bir RubyGem'i olup, bilgisayarınıza kurmanızla IRB'nin bazı zamanlarda yeterli olmadığı bir çok özelliği size sunar. Ancak bugünün konusu PRY'dan çok PRY ile nasıl debugging yapılır o olacak.
 

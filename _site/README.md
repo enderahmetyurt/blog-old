@@ -1,2 +1,2 @@
-# www.enderahmetyurt.com
-### Just a personal technical blog
+# Just a personal technical blog
+www.enderahmetyurt.com
