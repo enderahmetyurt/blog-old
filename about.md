@@ -9,7 +9,7 @@ title: About
 
 <p class="message">
   Teknoloji şirketlerinde yazılımcı ya da yazılımdan sorumlu kişiler ile çalıştıkları şirketlerin teknik alt yapıları, yazılımcı kültürleri ve daha nice konuları konuştuğumuz
-  <a href="https://uretimbandi.com/">Paraşütle Üretim Bandı:Teknik</a> adlı podcast'de de düzenli olarak yayın yapıyorum.
+  <a href="https://uretimbandi.com/">Üretim Bandı:Teknik</a> adlı podcast'de de düzenli olarak yayın yapıyorum.
   <br>
   <br>
   2015 - 2017 yılları arasında ise Dünya'da ve Türkiye'deki Ruby programlama dili hakkındaki gelişmeleri konuştuğumuz <a href="https://yakutrb.com/">Yakut</a> adlı podcast'i yaptım.
