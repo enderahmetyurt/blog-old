@@ -2,6 +2,7 @@
 layout: post
 title: Ruby on Rails'da çoklu veritabanı
 date: 2019-06-22 20:01 +0300
+thumbnail: octocat.png
 tags: [ruby_on_rails]
 ---
 

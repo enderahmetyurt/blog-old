@@ -27,8 +27,12 @@ version: 1.1.0
 plugins:
   - jekyll-paginate
 
+# Image settings
+image_base: /public/images/
+
 defaults:
   - scope:
       path: "assets/img"
     values:
       image: true
+
