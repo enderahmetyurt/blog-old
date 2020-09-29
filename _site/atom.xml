@@ -4,7 +4,7 @@
  <title>Ender Ahmet Yurt</title>
  <link href="http://localhost:5005/atom.xml" rel="self"/>
  <link href="http://localhost:5005/"/>
- <updated>2020-09-29T15:39:03+03:00</updated>
+ <updated>2020-09-29T21:24:27+03:00</updated>
  <id>http://localhost:5005</id>
  <author>
    <name>Ender Ahmet Yurt</name>
@@ -79,7 +79,7 @@
 &lt;span class=&quot;n&quot;&gt;surname&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#=&amp;gt; &quot;bar&quot;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;ancak eşitliğin iki tarafındaki pattern ayni olmadığı vakit sorun çıkacaktır. Örneğin &lt;code class=&quot;highlighter-rouge&quot;&gt;[name, surname, 20] = [:foo, &quot;bar&quot;, 20]&lt;/code&gt; bu şekilde yaparsak hata alacağız.&lt;/p&gt;
+&lt;p&gt;ancak eşitliğin iki tarafındaki pattern ayni olmadığı vakit sorun çıkacaktır. Örneğin &lt;code class=&quot;highlighter-rouge&quot;&gt;[name, surname, 30] = [:foo, &quot;bar&quot;, 20]&lt;/code&gt; bu şekilde yaparsak hata alacağız.&lt;/p&gt;
 
 &lt;p&gt;Pattern Matching işimize daha çok if veya when statement’larda işimize yarayacak gibi duruyor. Daha fazlası Hash’lerde ve Array’lerde de bu özellik çokça kullanılabilir. Ancak tehlikeli olan şu ki yeni syntax biraz kafa karıştırıcı ve alışması zor olabilir. Bazı karışık condition’lar için yararlı gibi duruyor ancak kullanımı o kadar kolay olduğunu söyleyemem.&lt;/p&gt;
 

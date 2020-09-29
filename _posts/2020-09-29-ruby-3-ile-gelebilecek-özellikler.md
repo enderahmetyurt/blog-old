@@ -67,7 +67,7 @@ name #=> :foo
 surname #=> "bar"
 ```
 
-ancak eşitliğin iki tarafındaki pattern ayni olmadığı vakit sorun çıkacaktır. Örneğin `[name, surname, 20] = [:foo, "bar", 20]` bu şekilde yaparsak hata alacağız.
+ancak eşitliğin iki tarafındaki pattern ayni olmadığı vakit sorun çıkacaktır. Örneğin `[name, surname, 30] = [:foo, "bar", 20]` bu şekilde yaparsak hata alacağız.
 
 Pattern Matching işimize daha çok if veya when statement'larda işimize yarayacak gibi duruyor. Daha fazlası Hash'lerde ve Array'lerde de bu özellik çokça kullanılabilir. Ancak tehlikeli olan şu ki yeni syntax biraz kafa karıştırıcı ve alışması zor olabilir. Bazı karışık condition'lar için yararlı gibi duruyor ancak kullanımı o kadar kolay olduğunu söyleyemem.
 
