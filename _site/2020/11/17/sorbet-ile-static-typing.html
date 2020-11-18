@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <meta property="og:image" content="/public/images/octocat.png">
+
+  <title>
+    
+      Sorbet ile Static Typing &middot; Ender Ahmet Yurt
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+  
+
+  <body>
+
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>
+        <a href="/">
+          Ender Ahmet Yurt
+        </a>
+      </h1>
+      <p class="lead">Software Engineer</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="sidebar-nav-item" href="/">Home</a>
+
+      
+
+      
+      
+        
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/about.html">About</a>
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/talks.html">Talks</a>
+          
+        
+      
+        
+          
+        
+      
+
+      <a class="sidebar-nav-item" href="https://github.com/enderahmetyurt">GitHub</a>
+      <a class="sidebar-nav-item" href="https://twitter.com/eayurt">Twitter</a>
+      <a class="sidebar-nav-item" href="https://www.linkedin.com/in/enderahmetyurt/">Linkedin</a>
+      <span class="sidebar-nav-item">Currently v1.1.0</span>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved.</p>
+  </div>
+</div>
+
+
+    <div class="content container">
+      <div class="post">
+  <h1 class="post-title">Sorbet ile Static Typing</h1>
+  <span class="post-date">17 Nov 2020</span>
+  <p>Merhaba, Ruby her ne kadar süper sevimli bir dil olsa da dinamik bir dil olduğu için yazılan kodlarda ortaya çıkan hatalar ancak runtime’da kendini gösterebiliyor.</p>
+
+<p>Ancak statik programlama dillerinde kodlarda ortaya çıkan hataları compile time’da alabiliyoruz. Bu duruma bir örnek vermek gerekirse Ruby’de</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">animal</span> <span class="o">=</span> <span class="s1">'Foo'</span>
+<span class="n">animal</span><span class="p">.</span><span class="nf">greeting</span>
+</code></pre></div></div>
+
+<p>Yukarıdaki kod bize ancak code çalıştığı zaman <code class="highlighter-rouge">NoMethodError</code> hatasını dönecektir. Ancak bu kodu Java gibi compile edilen bir dil ile yazsaydik, hatayı kod compile edildiği zaman alacaktık ve kod içindeki hatalari minimize etme şansımız olacaktı.</p>
+
+<h2 id="sorbet">Sorbet</h2>
+
+<p>Ruby için geliştirilmiş ve kodunuzdaki method tanımlarını, method signature kontrolleri ve değişken tiplerinin kontrolünü yapan bir Ruby Gem’i. Özünde normal Ruby gibi kodumuzu yazıyoruz ancak Sorbet kullanmak istiyor ve type check yapmak istiyorsak ile Sorbet’in <code class="highlighter-rouge">T::Sig</code> modulünü kullanarak kontrollerimizi yapabiliyoruz.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># typed: true</span>
+<span class="nb">require</span> <span class="s1">'sorbet-runtime'</span>
+
+<span class="k">class</span> <span class="nc">A</span>
+  <span class="kp">extend</span> <span class="no">T</span><span class="o">::</span><span class="no">Sig</span>
+
+  <span class="n">sig</span> <span class="p">{</span><span class="n">params</span><span class="p">(</span><span class="ss">x: </span><span class="no">Integer</span><span class="p">).</span><span class="nf">returns</span><span class="p">(</span><span class="no">String</span><span class="p">)}</span>
+  <span class="k">def</span> <span class="nf">bar</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span><span class="p">.</span><span class="nf">to_s</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">main</span>
+  <span class="no">A</span><span class="p">.</span><span class="nf">new</span><span class="p">.</span><span class="nf">barr</span><span class="p">(</span><span class="mi">91</span><span class="p">)</span>   <span class="c1"># error: Typo!</span>
+  <span class="no">A</span><span class="p">.</span><span class="nf">new</span><span class="p">.</span><span class="nf">bar</span><span class="p">(</span><span class="s2">"91"</span><span class="p">)</span>  <span class="c1"># error: Type mismatch!</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>İlk olarak Sorbet’e statik tip kontrollerini ne şekilde raporlaması gerektiğini belirtmek gerekiyor. <code class="highlighter-rouge"># typed: true</code> dediğimiz zaman normal type hatalarını raporla demek oluyor. Bu şekilde yapabileceğimiz tam beş adet level var. Bu tiplere ve detaylarına <a href="https://sorbet.org/docs/static">buradan</a> ulaşabilirsiniz. <code class="highlighter-rouge">sorbet-runtime</code>‘ı require ediyoruz çünku bu kod çalıştırıldığı zaman da hatayı bize döndürsün istiyoruz. Sonrasinda <code class="highlighter-rouge">A</code> adında bir class’ımız var ve bu class’ın instance’ının bir <code class="highlighter-rouge">bar</code> adında bir methodu var. Ruby’de methodlara verilen parametlerin tipi ve method’ların döndürdüğü değelerin tiplerinin pek önemi olmazken Sorbet ile bunlari <code class="highlighter-rouge">sig</code> methodu ile belirleyebiliyoruz. <code class="highlighter-rouge">sig {params(x: Integer).returns(String)}</code> ile bu method integer tipinde bir parametre alır ve String tipinde birşey döner diyoruz.</p>
+
+<p>Siz de Sorbet’i hızlica denemek istiyorsaniz <a href="https://sorbet.run/#%23%20typed%3A%20true%0Arequire%20'sorbet-runtime'%0A%0Aclass%20A%0A%20%20extend%20T%3A%3ASig%0A%0A%20%20sig%20%7Bparams(x%3A%20Integer).returns(String)%7D%0A%20%20def%20bar(x)%0A%20%20%20%20x.to_s%0A%20%20end%0Aend%0A%0Adef%20main%0A%20%20A.new.barr(91)%20%20%20%23%20error%3A%20Typo!%0A%20%20A.new.bar(%2291%22)%20%20%23%20error%3A%20Type%20mismatch!%0Aend">buradan</a> online Sorbet runtime aracını kullanabilirsiniz.</p>
+
+<h3 id="kurulum">Kurulum</h3>
+
+<p>Sorbet’i projelerimize eklemek için öncelikle <code class="highlighter-rouge">Gemfile</code> dosyamıza Sorbet ve Sorbet Runtime Gem’lerini eklememiz gerekiyor.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># -- Gemfile --
+
+gem 'sorbet', :group =&gt; :development
+gem 'sorbet-runtime'
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">$ bundle install</code> ile Gem’leri indirdikten sonra artık Sorbet kullanmaya başlayabiliriz.</p>
+
+<h3 id="kullanım">Kullanım</h3>
+
+<p>Sorbet’i kullanacağımız projenin altinda <code class="highlighter-rouge">$ srb init</code> diyerek Sorbet için gerekli olan dosyaları oluşturuyoruz. Bu dosyalar Sorbet tarafından otomatik oluşuyor. <code class="highlighter-rouge">sorbet</code> klasörü altında <code class="highlighter-rouge">config</code> dosyasi ve <code class="highlighter-rouge">rbi</code> klasörü bulunuyor. <code class="highlighter-rouge">config</code> dosyası içinde Sorbet için commandline ayarlarını yapabilirsiniz. Daha fazla detaya <a href="https://sorbet.org/docs/cli">buradan</a> bakabilirsiniz. <code class="highlighter-rouge">rbi</code> klasörü içinde ise Sorbet içinde bulunmayan sizin kendi class, module ve diğer nesne tanımlarınızı yapabilir, Sorbet’te bunları kullanabilirsiniz. Sorbet ile gelen RBI dosyalarına <a href="buradan">buradan</a> ulaşabilirsiniz.</p>
+
+<p>Kendi yazdığımız Ruby kodlarındaki type check’leri yapmak için ise, <code class="highlighter-rouge">$ srb tc</code> komudunu çalıştırarak yapabiliriz.</p>
+
+<h3 id="örnek">Örnek</h3>
+
+<p>Ben daha önceden yazmış olduğum Ruby Gem’ime Sorbet’i ekledim. Bu <a href="https://github.com/enderahmetyurt/bilisim_sozlugu/commit/6854a4a607461073b2dc69569b70deeee040c0ec">commit</a>‘te görüldüğü gibi <code class="highlighter-rouge">search</code> methoduna <code class="highlighter-rouge">sig {params(word: String).void}</code> ekledim. Bu method konsola birşeyler bastığı için <code class="highlighter-rouge">nil</code> dönüyordu ve <code class="highlighter-rouge">void</code> ile aslında bu method’un birşey dönmediğini belirttim. Ayrıca lokal değişkenlere de tipler tanımladım. Mesela <code class="highlighter-rouge">CSS_SELECTOR</code> için sadece String olabilir demek istedim ve <code class="highlighter-rouge">CSS_SELECTOR = T.let("table tbody tr".freeze, String)</code> bu şekilde yazarak bu değişken sadece String kabul etmelidir dedim. Kodun diğer yerlerinde eğer bu değişkeni String dışında bir tipe eşitlersem Sorbet bana hata dönecek. Sizler de bu kodu düzeltmek isterseniz PR’larınızı memnuniyet ile bekliyorum.</p>
+
+<h3 id="sonuç">Sonuç</h3>
+
+<p>Ben Sorbet’i çok sevdim ve kendi yazdığım küçük Ruby projeleri için implemente etmeye başladım. Hepinizin merak ettiği bu iş Ruby on Rails’da nasıl oluyor sorularına ise kısa bir zamanda cevap verebilmeyi ben de istiyorum. Konu ile alakalı <a href="https://flexport.engineering/adding-sorbet-to-a-rails-monolith-ef72d6a18449">şöyle</a> bir yazı var, isterseniz inceleyebilirsiniz.</p>
+
+<p>Ruby her ne kadar süpersonik bir dil olsa da her güzelin bir kusuru var ve o kusurda Sorbet ile biraz olsun kapatılabiliyor.</p>
+
+<p>Sevgiler.</p>
+
+<p><em>Referanslar:</em></p>
+
+<ul>
+  <li><a href="https://blog.heroku.com/static-typing-ruby-with-sorbet">https://blog.heroku.com/static-typing-ruby-with-sorbet</a></li>
+  <li><a href="https://medium.com/better-programming/static-typed-ruby-introducing-sorbet-from-stripe-eeb4ffd8644">https://medium.com/better-programming/static-typed-ruby-introducing-sorbet-from-stripe-eeb4ffd8644</a></li>
+  <li><a href="https://sorbet.org/docs/overview">https://sorbet.org/docs/overview</a></li>
+</ul>
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2020/09/29/ruby-3-ile-gelebilecek-%C3%B6zellikler.html">
+            Ruby 3 ile Gelebilecek Özellikler
+            <small>29 Sep 2020</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2019/06/22/ruby-on-rails-da-%C3%A7oklu-veritaban%C4%B1.html">
+            Ruby on Rails'da çoklu veritabanı
+            <small>22 Jun 2019</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2018/12/19/ruby-on-aws-lambda.html">
+            Ruby on AWS Lambda
+            <small>19 Dec 2018</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+    </div>
+  </body>
+</html>

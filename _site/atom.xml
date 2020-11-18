@@ -2,10 +2,10 @@
 <feed xmlns="https://www.w3.org/2005/Atom">
 
  <title>Ender Ahmet Yurt</title>
- <link href="http://localhost:5005/atom.xml" rel="self"/>
- <link href="http://localhost:5005/"/>
- <updated>2020-09-29T21:24:27+03:00</updated>
- <id>http://localhost:5005</id>
+ <link href="http://localhost:4000/atom.xml" rel="self"/>
+ <link href="http://localhost:4000/"/>
+ <updated>2020-11-18T09:46:26+03:00</updated>
+ <id>http://localhost:4000</id>
  <author>
    <name>Ender Ahmet Yurt</name>
    <email>enderyurt@gmail.com</email>
@@ -13,10 +13,91 @@
 
  
  <entry>
+   <title>Sorbet ile Static Typing</title>
+   <link href="http://localhost:4000/2020/11/17/sorbet-ile-static-typing.html"/>
+   <updated>2020-11-17T14:41:00+03:00</updated>
+   <id>http://localhost:4000/2020/11/17/sorbet-ile-static-typing</id>
+   <content type="html">&lt;p&gt;Merhaba, Ruby her ne kadar süper sevimli bir dil olsa da dinamik bir dil olduğu için yazılan kodlarda ortaya çıkan hatalar ancak runtime’da kendini gösterebiliyor.&lt;/p&gt;
+
+&lt;p&gt;Ancak statik programlama dillerinde kodlarda ortaya çıkan hataları compile time’da alabiliyoruz. Bu duruma bir örnek vermek gerekirse Ruby’de&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;animal&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Foo'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;animal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;greeting&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Yukarıdaki kod bize ancak code çalıştığı zaman &lt;code class=&quot;highlighter-rouge&quot;&gt;NoMethodError&lt;/code&gt; hatasını dönecektir. Ancak bu kodu Java gibi compile edilen bir dil ile yazsaydik, hatayı kod compile edildiği zaman alacaktık ve kod içindeki hatalari minimize etme şansımız olacaktı.&lt;/p&gt;
+
+&lt;h2 id=&quot;sorbet&quot;&gt;Sorbet&lt;/h2&gt;
+
+&lt;p&gt;Ruby için geliştirilmiş ve kodunuzdaki method tanımlarını, method signature kontrolleri ve değişken tiplerinin kontrolünü yapan bir Ruby Gem’i. Özünde normal Ruby gibi kodumuzu yazıyoruz ancak Sorbet kullanmak istiyor ve type check yapmak istiyorsak ile Sorbet’in &lt;code class=&quot;highlighter-rouge&quot;&gt;T::Sig&lt;/code&gt; modulünü kullanarak kontrollerimizi yapabiliyoruz.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# typed: true&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'sorbet-runtime'&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;A&lt;/span&gt;
+  &lt;span class=&quot;kp&quot;&gt;extend&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Sig&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;sig&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;x: &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Integer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;returns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)}&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;bar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;to_s&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;
+  &lt;span class=&quot;no&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;barr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;91&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;# error: Typo!&lt;/span&gt;
+  &lt;span class=&quot;no&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;bar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;91&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# error: Type mismatch!&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;İlk olarak Sorbet’e statik tip kontrollerini ne şekilde raporlaması gerektiğini belirtmek gerekiyor. &lt;code class=&quot;highlighter-rouge&quot;&gt;# typed: true&lt;/code&gt; dediğimiz zaman normal type hatalarını raporla demek oluyor. Bu şekilde yapabileceğimiz tam beş adet level var. Bu tiplere ve detaylarına &lt;a href=&quot;https://sorbet.org/docs/static&quot;&gt;buradan&lt;/a&gt; ulaşabilirsiniz. &lt;code class=&quot;highlighter-rouge&quot;&gt;sorbet-runtime&lt;/code&gt;‘ı require ediyoruz çünku bu kod çalıştırıldığı zaman da hatayı bize döndürsün istiyoruz. Sonrasinda &lt;code class=&quot;highlighter-rouge&quot;&gt;A&lt;/code&gt; adında bir class’ımız var ve bu class’ın instance’ının bir &lt;code class=&quot;highlighter-rouge&quot;&gt;bar&lt;/code&gt; adında bir methodu var. Ruby’de methodlara verilen parametlerin tipi ve method’ların döndürdüğü değelerin tiplerinin pek önemi olmazken Sorbet ile bunlari &lt;code class=&quot;highlighter-rouge&quot;&gt;sig&lt;/code&gt; methodu ile belirleyebiliyoruz. &lt;code class=&quot;highlighter-rouge&quot;&gt;sig {params(x: Integer).returns(String)}&lt;/code&gt; ile bu method integer tipinde bir parametre alır ve String tipinde birşey döner diyoruz.&lt;/p&gt;
+
+&lt;p&gt;Siz de Sorbet’i hızlica denemek istiyorsaniz &lt;a href=&quot;https://sorbet.run/#%23%20typed%3A%20true%0Arequire%20'sorbet-runtime'%0A%0Aclass%20A%0A%20%20extend%20T%3A%3ASig%0A%0A%20%20sig%20%7Bparams(x%3A%20Integer).returns(String)%7D%0A%20%20def%20bar(x)%0A%20%20%20%20x.to_s%0A%20%20end%0Aend%0A%0Adef%20main%0A%20%20A.new.barr(91)%20%20%20%23%20error%3A%20Typo!%0A%20%20A.new.bar(%2291%22)%20%20%23%20error%3A%20Type%20mismatch!%0Aend&quot;&gt;buradan&lt;/a&gt; online Sorbet runtime aracını kullanabilirsiniz.&lt;/p&gt;
+
+&lt;h3 id=&quot;kurulum&quot;&gt;Kurulum&lt;/h3&gt;
+
+&lt;p&gt;Sorbet’i projelerimize eklemek için öncelikle &lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt; dosyamıza Sorbet ve Sorbet Runtime Gem’lerini eklememiz gerekiyor.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# -- Gemfile --
+
+gem 'sorbet', :group =&amp;gt; :development
+gem 'sorbet-runtime'
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ bundle install&lt;/code&gt; ile Gem’leri indirdikten sonra artık Sorbet kullanmaya başlayabiliriz.&lt;/p&gt;
+
+&lt;h3 id=&quot;kullanım&quot;&gt;Kullanım&lt;/h3&gt;
+
+&lt;p&gt;Sorbet’i kullanacağımız projenin altinda &lt;code class=&quot;highlighter-rouge&quot;&gt;$ srb init&lt;/code&gt; diyerek Sorbet için gerekli olan dosyaları oluşturuyoruz. Bu dosyalar Sorbet tarafından otomatik oluşuyor. &lt;code class=&quot;highlighter-rouge&quot;&gt;sorbet&lt;/code&gt; klasörü altında &lt;code class=&quot;highlighter-rouge&quot;&gt;config&lt;/code&gt; dosyasi ve &lt;code class=&quot;highlighter-rouge&quot;&gt;rbi&lt;/code&gt; klasörü bulunuyor. &lt;code class=&quot;highlighter-rouge&quot;&gt;config&lt;/code&gt; dosyası içinde Sorbet için commandline ayarlarını yapabilirsiniz. Daha fazla detaya &lt;a href=&quot;https://sorbet.org/docs/cli&quot;&gt;buradan&lt;/a&gt; bakabilirsiniz. &lt;code class=&quot;highlighter-rouge&quot;&gt;rbi&lt;/code&gt; klasörü içinde ise Sorbet içinde bulunmayan sizin kendi class, module ve diğer nesne tanımlarınızı yapabilir, Sorbet’te bunları kullanabilirsiniz. Sorbet ile gelen RBI dosyalarına &lt;a href=&quot;buradan&quot;&gt;buradan&lt;/a&gt; ulaşabilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;Kendi yazdığımız Ruby kodlarındaki type check’leri yapmak için ise, &lt;code class=&quot;highlighter-rouge&quot;&gt;$ srb tc&lt;/code&gt; komudunu çalıştırarak yapabiliriz.&lt;/p&gt;
+
+&lt;h3 id=&quot;örnek&quot;&gt;Örnek&lt;/h3&gt;
+
+&lt;p&gt;Ben daha önceden yazmış olduğum Ruby Gem’ime Sorbet’i ekledim. Bu &lt;a href=&quot;https://github.com/enderahmetyurt/bilisim_sozlugu/commit/6854a4a607461073b2dc69569b70deeee040c0ec&quot;&gt;commit&lt;/a&gt;‘te görüldüğü gibi &lt;code class=&quot;highlighter-rouge&quot;&gt;search&lt;/code&gt; methoduna &lt;code class=&quot;highlighter-rouge&quot;&gt;sig {params(word: String).void}&lt;/code&gt; ekledim. Bu method konsola birşeyler bastığı için &lt;code class=&quot;highlighter-rouge&quot;&gt;nil&lt;/code&gt; dönüyordu ve &lt;code class=&quot;highlighter-rouge&quot;&gt;void&lt;/code&gt; ile aslında bu method’un birşey dönmediğini belirttim. Ayrıca lokal değişkenlere de tipler tanımladım. Mesela &lt;code class=&quot;highlighter-rouge&quot;&gt;CSS_SELECTOR&lt;/code&gt; için sadece String olabilir demek istedim ve &lt;code class=&quot;highlighter-rouge&quot;&gt;CSS_SELECTOR = T.let(&quot;table tbody tr&quot;.freeze, String)&lt;/code&gt; bu şekilde yazarak bu değişken sadece String kabul etmelidir dedim. Kodun diğer yerlerinde eğer bu değişkeni String dışında bir tipe eşitlersem Sorbet bana hata dönecek. Sizler de bu kodu düzeltmek isterseniz PR’larınızı memnuniyet ile bekliyorum.&lt;/p&gt;
+
+&lt;h3 id=&quot;sonuç&quot;&gt;Sonuç&lt;/h3&gt;
+
+&lt;p&gt;Ben Sorbet’i çok sevdim ve kendi yazdığım küçük Ruby projeleri için implemente etmeye başladım. Hepinizin merak ettiği bu iş Ruby on Rails’da nasıl oluyor sorularına ise kısa bir zamanda cevap verebilmeyi ben de istiyorum. Konu ile alakalı &lt;a href=&quot;https://flexport.engineering/adding-sorbet-to-a-rails-monolith-ef72d6a18449&quot;&gt;şöyle&lt;/a&gt; bir yazı var, isterseniz inceleyebilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;Ruby her ne kadar süpersonik bir dil olsa da her güzelin bir kusuru var ve o kusurda Sorbet ile biraz olsun kapatılabiliyor.&lt;/p&gt;
+
+&lt;p&gt;Sevgiler.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Referanslar:&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://blog.heroku.com/static-typing-ruby-with-sorbet&quot;&gt;https://blog.heroku.com/static-typing-ruby-with-sorbet&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://medium.com/better-programming/static-typed-ruby-introducing-sorbet-from-stripe-eeb4ffd8644&quot;&gt;https://medium.com/better-programming/static-typed-ruby-introducing-sorbet-from-stripe-eeb4ffd8644&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://sorbet.org/docs/overview&quot;&gt;https://sorbet.org/docs/overview&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
    <title>Ruby 3 ile Gelebilecek Özellikler</title>
-   <link href="http://localhost:5005/2020/09/29/ruby-3-ile-gelebilecek-%C3%B6zellikler.html"/>
+   <link href="http://localhost:4000/2020/09/29/ruby-3-ile-gelebilecek-%C3%B6zellikler.html"/>
    <updated>2020-09-29T14:03:00+03:00</updated>
-   <id>http://localhost:5005/2020/09/29/ruby-3-ile-gelebilecek-özellikler</id>
+   <id>http://localhost:4000/2020/09/29/ruby-3-ile-gelebilecek-özellikler</id>
    <content type="html">&lt;p&gt;Merhaba, Ruby 3 2020 Aralık ayında yayına çıkmış olacak. Güzel özelliklerle geliyor olsa da bu özelliklerden hangilerinin hala Ruby 3 içerisinde olup olmayacağı tartışma konusu.&lt;/p&gt;
 
 &lt;p&gt;Deneysel özelliklerin bir kısmı Ruby 2.7 ile bizlerin kullanılımına sunuluyor ve deneme, test etme şansı buluyoruz. Bu yazıda Ruby 3’de görmemiz muhtemelen birkaçından bahsedeceğim.&lt;/p&gt;
@@ -124,9 +205,9 @@
  
  <entry>
    <title>Ruby on Rails'da çoklu veritabanı</title>
-   <link href="http://localhost:5005/2019/06/22/ruby-on-rails-da-%C3%A7oklu-veritaban%C4%B1.html"/>
+   <link href="http://localhost:4000/2019/06/22/ruby-on-rails-da-%C3%A7oklu-veritaban%C4%B1.html"/>
    <updated>2019-06-22T20:01:00+03:00</updated>
-   <id>http://localhost:5005/2019/06/22/ruby-on-rails-da-çoklu-veritabanı</id>
+   <id>http://localhost:4000/2019/06/22/ruby-on-rails-da-çoklu-veritabanı</id>
    <content type="html">&lt;p&gt;Merhaba. Ruby on Rails’ın son versiyonu olan 6. versiyonu ile gelen &lt;a href=&quot;https://edgeguides.rubyonrails.org/active_record_multiple_databases.html&quot;&gt;&lt;strong&gt;multiple database&lt;/strong&gt;&lt;/a&gt; özelliği ile artık çoklu veritabanı yönetimi yapılabiliyor.&lt;/p&gt;
 
 &lt;p&gt;Bu durumun birçok anlamı var;&lt;/p&gt;
@@ -205,9 +286,9 @@ $ rails g migration CreateTowns name:string --database cities
  
  <entry>
    <title>Ruby on AWS Lambda</title>
-   <link href="http://localhost:5005/2018/12/19/ruby-on-aws-lambda.html"/>
+   <link href="http://localhost:4000/2018/12/19/ruby-on-aws-lambda.html"/>
    <updated>2018-12-19T00:00:00+03:00</updated>
-   <id>http://localhost:5005/2018/12/19/ruby-on-aws-lambda</id>
+   <id>http://localhost:4000/2018/12/19/ruby-on-aws-lambda</id>
    <content type="html">&lt;p&gt;Merhaba. Yakın zamanda duyurulan Aws Lambda’dan bahsetmek istiyorum.&lt;/p&gt;
 
 &lt;p&gt;Aws Ruby SDK’sı Aws üzerinde işlemler yapmamıza yarıyor. Bu SDK ile Amazon’un Amazon EC2, S3, SQS, SNS gibi servislerini kullanabiliyoruz. Yeni gelişmeler ile Amazon Lambda servisini de artık kullanabilir oluyoruz. Bu geliştirme ile artık Lambda fonksiyonları Ruby gibi kullanabilir ve AWS üzerinde çalıştırabiliriz. Bu girişten sonra küçük bir örnek yapalım.&lt;/p&gt;
@@ -236,9 +317,9 @@ $ rails g migration CreateTowns name:string --database cities
  
  <entry>
    <title>Ruby State Design Pattern</title>
-   <link href="http://localhost:5005/2018/12/04/ruby-state-design-pattern.html"/>
+   <link href="http://localhost:4000/2018/12/04/ruby-state-design-pattern.html"/>
    <updated>2018-12-04T00:00:00+03:00</updated>
-   <id>http://localhost:5005/2018/12/04/ruby-state-design-pattern</id>
+   <id>http://localhost:4000/2018/12/04/ruby-state-design-pattern</id>
    <content type="html">&lt;p&gt;Merhaba. Bugün &lt;strong&gt;State Design Pattern&lt;/strong&gt;‘ın Ruby’deki kullanımından bahsetmek istiyorum.&lt;/p&gt;
 
 &lt;p&gt;State design pattern, behavior pattern altında tanımlanır. Bu pattern’da bir nesnenin farklı durumlarda farklı şekillerde çalışmasını düzenlenir. Yani bir nesnenin durumu değiştiğinde o nesnenin çalışma şekli değişir. Bu duruma en güzel örnek trafik ışıklarını verebiliriz. Görme engelliler için trafik ışıklarını düşünün, kırmızı, sarı ve yeşil yandığında, durun, bekleyin ve geçin diyor. Işıklar arası geçişlerde ise birkaç saniye boşluk vererek, diğer ışığa geçiyor. Bu durumda ışıkların state’leri değişiyor ve yapacakları eylemler de state’lere göre belli oluyor.&lt;/p&gt;
@@ -351,9 +432,9 @@ $ rails g migration CreateTowns name:string --database cities
  
  <entry>
    <title>Ruby 2.6 ile Gelenler</title>
-   <link href="http://localhost:5005/2018/11/28/ruby-2-6-ile-gelenler.html"/>
+   <link href="http://localhost:4000/2018/11/28/ruby-2-6-ile-gelenler.html"/>
    <updated>2018-11-28T00:00:00+03:00</updated>
-   <id>http://localhost:5005/2018/11/28/ruby-2-6-ile-gelenler</id>
+   <id>http://localhost:4000/2018/11/28/ruby-2-6-ile-gelenler</id>
    <content type="html">&lt;p&gt;Merhaba, Ruby’nin yeni versiyonu 2.6 25 Aralık 2018’de yayınlanacak. Öncesinde preview’dan yeni gelen özelliklerin bazılarına yakından bakalım.&lt;/p&gt;
 
 &lt;h3 id=&quot;arrayunion--arraydifference&quot;&gt;Array#union &amp;amp; Array#difference&lt;/h3&gt;
@@ -398,9 +479,9 @@ a.merge(b, c)
  
  <entry>
    <title>Gmail Eklenti Örneği</title>
-   <link href="http://localhost:5005/2018/01/23/gmail-eklenti-%C3%96rne%C4%9Fi.html"/>
+   <link href="http://localhost:4000/2018/01/23/gmail-eklenti-%C3%96rne%C4%9Fi.html"/>
    <updated>2018-01-23T11:52:00+03:00</updated>
-   <id>http://localhost:5005/2018/01/23/gmail-eklenti-Örneği</id>
+   <id>http://localhost:4000/2018/01/23/gmail-eklenti-Örneği</id>
    <content type="html">&lt;p&gt;Merhaba. Daha önce &lt;a href=&quot;https://enderahmetyurt.com/2018/01/09/gmail-e-eklenti-yazmak.html&quot;&gt;Gmail add-on&lt;/a&gt; nedir? Bu konudan biraz bahsetmiştim. Şimdi ise küçük bir uygulama ile giriş yapıp daha pratik birşeyler göstermek istiyorum.&lt;/p&gt;
 
 &lt;p&gt;Öncelikle ihtiyacımız olan add-on’u yazmak için gerekli olan bir ortam. Google bize bu ortamı &lt;a href=&quot;https://script.google.com/&quot;&gt;https://script.google.com/&lt;/a&gt; ile veriyor. Sonrasında ise uygulamanın ayarlarının ve kütüphanelerinin bağımlılıklarının bulunduğu &lt;code class=&quot;highlighter-rouge&quot;&gt;manifest&lt;/code&gt; dosyasını tanımlamak gerekiyor. Son olarak ise kodu yani &lt;code class=&quot;highlighter-rouge&quot;&gt;CardService&lt;/code&gt;‘i yazmaya başlıyoruz.&lt;/p&gt;
@@ -484,9 +565,9 @@ a.merge(b, c)
  
  <entry>
    <title>Gmail'e Eklenti Yazmak</title>
-   <link href="http://localhost:5005/2018/01/09/gmail-e-eklenti-yazmak.html"/>
+   <link href="http://localhost:4000/2018/01/09/gmail-e-eklenti-yazmak.html"/>
    <updated>2018-01-09T00:00:00+03:00</updated>
-   <id>http://localhost:5005/2018/01/09/gmail-e-eklenti-yazmak</id>
+   <id>http://localhost:4000/2018/01/09/gmail-e-eklenti-yazmak</id>
    <content type="html">&lt;p&gt;Merhaba. Gmail’de işlerimizi halletmek adına birkaç tarayıcı eklentisi kullanıyoruz.&lt;/p&gt;
 
 &lt;p&gt;Fakat bu eklentiler kimi zaman tarayıcılar değişince iyi çalışmıyor ya da alternatifi bulunamıyor veya mobil uygulamalar üzerinde hiçbir şekilde var olmuyor. 2017 yılının sonuna doğru Google, Gmail için artık eklenti yazımını mümkün kıldı. İsteyenler artık tarayıcı eklentisi yazar gibi Gmail için eklenti yazabilecek. Peki bu Gmail eklentisi tam olarak ne anlama geliyor, ve bu iş nasıl yapılıyor?&lt;/p&gt;
@@ -509,9 +590,9 @@ a.merge(b, c)
  
  <entry>
    <title>Ruby 2.5 ile Gelenler</title>
-   <link href="http://localhost:5005/2017/12/30/ruby-2-5-ile-gelenler.html"/>
+   <link href="http://localhost:4000/2017/12/30/ruby-2-5-ile-gelenler.html"/>
    <updated>2017-12-30T00:00:00+03:00</updated>
-   <id>http://localhost:5005/2017/12/30/ruby-2-5-ile-gelenler</id>
+   <id>http://localhost:4000/2017/12/30/ruby-2-5-ile-gelenler</id>
    <content type="html">&lt;p&gt;Merhaba, Ruby en son versiyonu olan 2.5 ile yeni yıla girmeden karşımıza çıktı. Bu versiyon ile ne gibi özellikler geldi kısaca bakalım.&lt;/p&gt;
 
 &lt;h3 id=&quot;beginende-gerek-kalmadı&quot;&gt;Begin/End’e gerek kalmadı&lt;/h3&gt;
@@ -613,9 +694,9 @@ a.merge(b, c)
  
  <entry>
    <title>Ruby 2.4 Binding#irb</title>
-   <link href="http://localhost:5005/2016/11/10/ruby2-4-binding-irb.html"/>
+   <link href="http://localhost:4000/2016/11/10/ruby2-4-binding-irb.html"/>
    <updated>2016-11-10T00:00:00+03:00</updated>
-   <id>http://localhost:5005/2016/11/10/ruby2-4-binding-irb</id>
+   <id>http://localhost:4000/2016/11/10/ruby2-4-binding-irb</id>
    <content type="html">&lt;p&gt;Hello! &lt;a href=&quot;https://www.ruby-lang.org/en/news/2016/11/09/ruby-2-4-0-preview3-released/&quot;&gt;Ruby2.4.0.preview3&lt;/a&gt; was released yesterday. There are some really cool features in it. I will mention one of these.&lt;/p&gt;
 
 &lt;p&gt;It is about debugging or open a REPL session. As you know before that release, Ruby developers use &lt;code class=&quot;highlighter-rouge&quot;&gt;p&lt;/code&gt; or other lovely gem &lt;a href=&quot;https://github.com/pry/pry&quot;&gt;pry&lt;/a&gt; to debug. For now &lt;a href=&quot;https://github.com/ruby/ruby/commit/493e48897421d176a8faf0f0820323d79ecdf94a&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;binding#irb&lt;/code&gt;&lt;/a&gt; provides to debug in your application.&lt;/p&gt;
@@ -657,9 +738,9 @@ a.merge(b, c)
  
  <entry>
    <title>Ruby 2.4 String#concat, Array#concat and String#prepend Multiple Arguments</title>
-   <link href="http://localhost:5005/2016/11/05/ruby-2-4-string-concat-array-concat-and-string-prepend-multiple-arguments.html"/>
+   <link href="http://localhost:4000/2016/11/05/ruby-2-4-string-concat-array-concat-and-string-prepend-multiple-arguments.html"/>
    <updated>2016-11-05T00:00:00+03:00</updated>
-   <id>http://localhost:5005/2016/11/05/ruby-2-4-string-concat-array-concat-and-string-prepend-multiple-arguments</id>
+   <id>http://localhost:4000/2016/11/05/ruby-2-4-string-concat-array-concat-and-string-prepend-multiple-arguments</id>
    <content type="html">&lt;p&gt;Merhaba. Ruby 2.4’den önceki sürümler String ve Array için tanımlı #concat metotu birleştirme işlemini parametre almadan yapıyor.&lt;/p&gt;
 
 &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my_string&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hello&quot;&lt;/span&gt;
@@ -714,9 +795,9 @@ a.merge(b, c)
  
  <entry>
    <title>Ruby 2.4 Hash#compact</title>
-   <link href="http://localhost:5005/2016/11/05/ruby-2-4-hash-compact.html"/>
+   <link href="http://localhost:4000/2016/11/05/ruby-2-4-hash-compact.html"/>
    <updated>2016-11-05T00:00:00+03:00</updated>
-   <id>http://localhost:5005/2016/11/05/ruby-2-4-hash-compact</id>
+   <id>http://localhost:4000/2016/11/05/ruby-2-4-hash-compact</id>
    <content type="html">&lt;p&gt;Merhaba. Ruby 2.4 yazılarına devam ediyoruz.&lt;/p&gt;
 
 &lt;p&gt;Ruby’de nil value’e sahip bir key ile hash oluşturduğunuzda Ruby bu değeri hash’den kaldırıyor.&lt;/p&gt;
@@ -744,9 +825,9 @@ a.merge(b, c)
  
  <entry>
    <title>Ruby 2.4 Enumerable#sum</title>
-   <link href="http://localhost:5005/2016/11/02/ruby-2-4-enumerable-sum.html"/>
+   <link href="http://localhost:4000/2016/11/02/ruby-2-4-enumerable-sum.html"/>
    <updated>2016-11-02T00:00:00+03:00</updated>
-   <id>http://localhost:5005/2016/11/02/ruby-2-4-enumerable-sum</id>
+   <id>http://localhost:4000/2016/11/02/ruby-2-4-enumerable-sum</id>
    <content type="html">&lt;p&gt;Merhaba! &lt;a href=&quot;https://www.ruby-lang.org/en/news/2016/09/08/ruby-2-4-0-preview2-released/&quot;&gt;Ruby 2.4 previewleri&lt;/a&gt; bundan yakın bir zaman önce çıktı ve bir takım yenilikler ile birlikte geldiler.&lt;/p&gt;
 
 &lt;p&gt;Kısa kısa Ruby 2.4 ile gelen yeniliklerden ve değişikliklerden bahsedelim. Bir Array’de ya da Hash’de elementleri toplamak yapmak için Active Support’da tanımlı olan &lt;a href=&quot;https://github.com/rails/rails/blob/3d716b9e66e334c113c98fb3fc4bcf8a945b93a1/activesupport/lib/active_support/core_ext/enumerable.rb#L2-L27&quot;&gt;Enumerable#sum&lt;/a&gt;‘ı kullanıyoruz.&lt;/p&gt;
@@ -778,9 +859,9 @@ a.merge(b, c)
  
  <entry>
    <title>Block, Proc, Lambda</title>
-   <link href="http://localhost:5005/2016/05/19/block-proc-lambda.html"/>
+   <link href="http://localhost:4000/2016/05/19/block-proc-lambda.html"/>
    <updated>2016-05-19T00:00:00+03:00</updated>
-   <id>http://localhost:5005/2016/05/19/block-proc-lambda</id>
+   <id>http://localhost:4000/2016/05/19/block-proc-lambda</id>
    <content type="html">&lt;p&gt;Merhaba! Ruby’nin en güçlü özelliklerinden biri bloklardır. Diğer dillerin aksine Ruby’de blokları anlamak ve kullanmak kolay ve basittir.&lt;/p&gt;
 
 &lt;p&gt;Ruby’de bloklarını kullanmak için iki yöntemimiz var,&lt;/p&gt;
@@ -879,9 +960,9 @@ a.merge(b, c)
  
  <entry>
    <title>Debugging with Pry</title>
-   <link href="http://localhost:5005/2016/05/15/debugging-with-pry.html"/>
+   <link href="http://localhost:4000/2016/05/15/debugging-with-pry.html"/>
    <updated>2016-05-15T00:00:00+03:00</updated>
-   <id>http://localhost:5005/2016/05/15/debugging-with-pry</id>
+   <id>http://localhost:4000/2016/05/15/debugging-with-pry</id>
    <content type="html">&lt;p&gt;Merhaba! Kod yazarken bir bir şeylerin yolunda gitmediği veya kod içinde neler olduğunu anlamak istediğimiz anlar oluyor. Bu gibi durumlarda debugging yapıyoruz.&lt;/p&gt;
 
 &lt;p&gt;Ruby’de eğer IDE kullanıyorsunuz debugging yapmak bir nebze kolay olabiliyor. Ancak benim gibi Sublime vb bir text editör kullanıcısıysanız imdadımıza PRY yetişiyor.&lt;/p&gt;
@@ -959,9 +1040,9 @@ a.merge(b, c)
  
  <entry>
    <title>Ruby Enumerable</title>
-   <link href="http://localhost:5005/2016/05/06/ruby-enumerable.html"/>
+   <link href="http://localhost:4000/2016/05/06/ruby-enumerable.html"/>
    <updated>2016-05-06T00:00:00+03:00</updated>
-   <id>http://localhost:5005/2016/05/06/ruby-enumerable</id>
+   <id>http://localhost:4000/2016/05/06/ruby-enumerable</id>
    <content type="html">&lt;p&gt;Merhaba! Bugün Ruby’de hemen hemen her gün kullandığımız &lt;code class=&quot;highlighter-rouge&quot;&gt;Enumerable&lt;/code&gt; metotlarından bahsetmek istiyorum.&lt;/p&gt;
 
 &lt;p&gt;Bu yazıda kullanılan örnekleri daha iyi anlayabilmek için öncelikle Ruby’de Array ve Hash kavramlarını biraz olsun bilmeniz gerekiyor.&lt;/p&gt;
