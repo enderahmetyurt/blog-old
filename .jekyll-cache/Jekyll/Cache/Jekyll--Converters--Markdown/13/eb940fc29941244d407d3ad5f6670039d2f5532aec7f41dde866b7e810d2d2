@@ -1,0 +1,73 @@
+I"`<p>Merhaba! Kod yazarken bir bir şeylerin yolunda gitmediği veya kod içinde neler olduğunu anlamak istediğimiz anlar oluyor. Bu gibi durumlarda debugging yapıyoruz.</p>
+
+<p>Ruby’de eğer IDE kullanıyorsunuz debugging yapmak bir nebze kolay olabiliyor. Ancak benim gibi Sublime vb bir text editör kullanıcısıysanız imdadımıza PRY yetişiyor.</p>
+
+<p>Pry nedir? Pry, aslında IRB yani Interactive Ruby Shell alternatif olarak çıkmış bir runtime developer console’dur. Kendisi bir RubyGem’i olup, bilgisayarınıza kurmanızla IRB’nin bazı zamanlarda yeterli olmadığı bir çok özelliği size sunar. Ancak bugünün konusu PRY’dan çok PRY ile nasıl debugging yapılır o olacak.</p>
+
+<p>Her şeyden önce PRY ile debugging yapabilmek için PRY RubyGem’nin makinemizinde kurulu olması gerekiyor.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> gem <span class="nb">install </span>pry
+</code></pre></div></div>
+
+<p>Sonrasında ise artık kodumuzda hangi noktada durmasını istiyorsak oraya <code class="language-plaintext highlighter-rouge">binding.pry</code> komutu yazıyoruz. Örneğin,</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># person.rb</span>
+<span class="nb">require</span> <span class="s1">'pry'</span>
+
+<span class="k">class</span> <span class="nc">Person</span>
+  <span class="k">def</span> <span class="nf">say_hello</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+    <span class="nb">binding</span><span class="p">.</span><span class="nf">pry</span>
+    <span class="nb">puts</span> <span class="s2">"Hello </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">"</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="nb">p</span> <span class="o">=</span> <span class="no">Person</span><span class="p">.</span><span class="nf">new</span>
+<span class="nb">puts</span> <span class="nb">p</span><span class="p">.</span><span class="nf">say_hello</span><span class="p">(</span><span class="s2">"ender"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>şeklinde bir Ruby kodu yazıyoruz ve konsoldan kodu çalıştırdığımızda ise</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> ruby person.rb
+    4: def say_hello<span class="o">(</span>name<span class="o">)</span>
+ <span class="o">=&gt;</span> 5:   binding.pry
+    6:   puts <span class="s2">"Hello #{name}"</span>
+    7: end
+</code></pre></div></div>
+<p>şeklinde bir çıktı alıyoruz. Bu anda artık <code class="language-plaintext highlighter-rouge">name</code> değişkenini çağırabilir ve içinde ne olduğunu görebiliriz.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>1] pry<span class="o">(</span><span class="c">#&lt;Person&gt;)&gt; name</span>
+<span class="o">=&gt;</span> <span class="s2">"ender"</span>
+</code></pre></div></div>
+
+<p>Sonrasında ise <code class="language-plaintext highlighter-rouge">exit</code> diyerek PRY’ı kapatıyoruz.</p>
+
+<p>Debugging yaparken kod içinde ileri gitmek, bir metotudun içine girmek ya da onu atlamak isteyebiliriz. PRY kendi hali ile buna cevap vermiyor. Ancak <a href="https://github.com/nixme/pry-debugger">pry-debugger</a> gem’i ile bunu da halledebiliyoruz.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> gem <span class="nb">install </span>pry-debugger
+</code></pre></div></div>
+
+<p>Yukardaki örnek üzerinden devam edecek olursak,</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'pry'</span>
+
+<span class="k">class</span> <span class="nc">Person</span>
+  <span class="k">def</span> <span class="nf">say_hello</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+    <span class="nb">binding</span><span class="p">.</span><span class="nf">pry</span>
+    <span class="nb">puts</span> <span class="s2">"Hello </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">"</span> <span class="c1"># Execution will stop here.</span>
+    <span class="nb">puts</span> <span class="s2">"Age: "</span> <span class="c1"># Run 'step' or 'next' in the console to move here.</span>
+    <span class="n">ask_age</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">ask_age</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+    <span class="nb">puts</span> <span class="s2">"How old are you? </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">.capitalize"</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="nb">p</span> <span class="o">=</span> <span class="no">Person</span><span class="p">.</span><span class="nf">new</span>
+<span class="nb">puts</span> <span class="nb">p</span><span class="p">.</span><span class="nf">say_hello</span><span class="p">(</span><span class="s2">"ender"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">next</code> komudu ile kodun durduğu yer bir alt satıra inebiliriz. Pry-debugger gem’i bize <code class="language-plaintext highlighter-rouge">step</code>, <code class="language-plaintext highlighter-rouge">finish</code> ve <code class="language-plaintext highlighter-rouge">continue</code> gibi fonksiyonlar da sağlamaktadır. Daha fazla bilgiye Github’daki Readme’den ulaşabilirsiniz.</p>
+
+<p>Sevgiler.</p>
+:ET

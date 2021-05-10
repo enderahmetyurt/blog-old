@@ -83,7 +83,6 @@
       <a class="sidebar-nav-item" href="https://github.com/enderahmetyurt">GitHub</a>
       <a class="sidebar-nav-item" href="https://twitter.com/eayurt">Twitter</a>
       <a class="sidebar-nav-item" href="https://www.linkedin.com/in/enderahmetyurt/">Linkedin</a>
-      <span class="sidebar-nav-item">Currently v1.1.0</span>
     </nav>
 
     <p>&copy; 2021. All rights reserved.</p>
@@ -107,7 +106,7 @@
 
 <p>Bunların yanında ise henüz desteklenmeyen özellikler arasında ise <strong>sharding</strong> ve replikalar arası <strong>load balancing</strong> başta geliyor.</p>
 
-<p>Çoklu veritabanı için ayarları yapmak Rails 6’da çok kolay. Daha önce Ruby on Rails kullananlar bilecektir ki veritabanı ayar dosyası <code class="highlighter-rouge">config/database.yml</code>‘da tutulur. Bu dosya üzerinde yeni bir takım eklemeler ile uygulamanız için çoklu veritabanlarını tanımlayabilirsiniz.</p>
+<p>Çoklu veritabanı için ayarları yapmak Rails 6’da çok kolay. Daha önce Ruby on Rails kullananlar bilecektir ki veritabanı ayar dosyası <code class="language-plaintext highlighter-rouge">config/database.yml</code>‘da tutulur. Bu dosya üzerinde yeni bir takım eklemeler ile uygulamanız için çoklu veritabanlarını tanımlayabilirsiniz.</p>
 
 <div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">production</span><span class="pi">:</span>
   <span class="na">primary</span><span class="pi">:</span>
@@ -131,14 +130,14 @@
     <span class="na">replica</span><span class="pi">:</span> <span class="no">true</span>
 </code></pre></div></div>
 
-<p>Bu noktada birkaç konuya değinmek ve dikkat etmek gerekiyor. Öncelikle bir veritabanı eğer replika bir veritabanı ise <code class="highlighter-rouge">replica: true</code> yazmak gerekiyor. Bunun yanında replika veritabanlarının adlarının aynı olması şart değil ancak aynı veri üzerinden çalışmalar olacağı için adlarının aynı olmasının faydası var.</p>
+<p>Bu noktada birkaç konuya değinmek ve dikkat etmek gerekiyor. Öncelikle bir veritabanı eğer replika bir veritabanı ise <code class="language-plaintext highlighter-rouge">replica: true</code> yazmak gerekiyor. Bunun yanında replika veritabanlarının adlarının aynı olması şart değil ancak aynı veri üzerinden çalışmalar olacağı için adlarının aynı olmasının faydası var.</p>
 
-<p><code class="highlighter-rouge">migration_paths</code> Rails’da veritabanı <strong>migration</strong>‘larının yerini söylemek için belirtmemiz gerekiyor. <code class="highlighter-rouge">cities </code> veritabanı bir
-<strong>migration</strong> çalıştırmak istersek <code class="highlighter-rouge">--database</code> opsiyonu ile hangi dosyada çalışmaların olacağını belirtebiliyoruz.</p>
+<p><code class="language-plaintext highlighter-rouge">migration_paths</code> Rails’da veritabanı <strong>migration</strong>‘larının yerini söylemek için belirtmemiz gerekiyor. <code class="language-plaintext highlighter-rouge">cities </code> veritabanı bir
+<strong>migration</strong> çalıştırmak istersek <code class="language-plaintext highlighter-rouge">--database</code> opsiyonu ile hangi dosyada çalışmaların olacağını belirtebiliyoruz.</p>
 
-<p><code class="highlighter-rouge">
-$ rails g migration CreateTowns name:string --database cities
-</code></p>
+<p>`
+$ rails g migration CreateTowns name:string –database cities
+`</p>
 
 <p><strong>Model</strong> seviyesinde ise birkaç ayara ihtiyac duyuyoruz. Burada önemli olan hangi veritabanlarının ne görevler yapacağı.</p>
 
@@ -158,7 +157,7 @@ $ rails g migration CreateTowns name:string --database cities
 <span class="k">end</span>
 </code></pre></div></div>
 
-<p><code class="highlighter-rouge">rails -T</code> komutu ile de bütün <strong>task</strong>‘ları görebilirsiniz. Hangi veritabanında çalışma yapmak istiyorsanız, adını sona ekleyerek yapabilirsiniz. <code class="highlighter-rouge">rails db:migrate:status:cities</code></p>
+<p><code class="language-plaintext highlighter-rouge">rails -T</code> komutu ile de bütün <strong>task</strong>‘ları görebilirsiniz. Hangi veritabanında çalışma yapmak istiyorsanız, adını sona ekleyerek yapabilirsiniz. <code class="language-plaintext highlighter-rouge">rails db:migrate:status:cities</code></p>
 
 <p>Ruby on Rails ile çoklu veritabanı kullanımı henüz RC versiyonda olasa da projelerde kullanılabilir durumda. Github ekibi tarafından geliştirilen ve şu an kullanılan bu özellik Ruby on Rails’ın gücünü daha da artıracak gibi duruyor.</p>
 

@@ -1,0 +1,74 @@
+I"#<p>Merhaba. Ruby on Rails’ın son versiyonu olan 6. versiyonu ile gelen <a href="https://edgeguides.rubyonrails.org/active_record_multiple_databases.html"><strong>multiple database</strong></a> özelliği ile artık çoklu veritabanı yönetimi yapılabiliyor.</p>
+
+<p>Bu durumun birçok anlamı var;</p>
+
+<ul>
+  <li>Bir veritabanının replikasını oluşturup, onlar üzerinde çalışmalar yapabilmek.</li>
+  <li>Birincil ve replika veritabanları arasında HTTP metotları ile otomatik geçişler yapabilmek.</li>
+  <li>Çoklu veritabanlarında Rails’ın task’larını çalıştırabilmek.</li>
+</ul>
+
+<p>Bunların yanında ise henüz desteklenmeyen özellikler arasında ise <strong>sharding</strong> ve replikalar arası <strong>load balancing</strong> başta geliyor.</p>
+
+<p>Çoklu veritabanı için ayarları yapmak Rails 6’da çok kolay. Daha önce Ruby on Rails kullananlar bilecektir ki veritabanı ayar dosyası <code class="language-plaintext highlighter-rouge">config/database.yml</code>‘da tutulur. Bu dosya üzerinde yeni bir takım eklemeler ile uygulamanız için çoklu veritabanlarını tanımlayabilirsiniz.</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">production</span><span class="pi">:</span>
+  <span class="na">primary</span><span class="pi">:</span>
+    <span class="na">database</span><span class="pi">:</span> <span class="s">my_primary_database</span>
+    <span class="na">user</span><span class="pi">:</span> <span class="s">root</span>
+    <span class="na">adapter</span><span class="pi">:</span> <span class="s">mysql</span>
+  <span class="na">primary_replica</span><span class="pi">:</span>
+    <span class="na">database</span><span class="pi">:</span> <span class="s">my_primary_database</span>
+    <span class="na">user</span><span class="pi">:</span> <span class="s">root_readonly</span>
+    <span class="na">adapter</span><span class="pi">:</span> <span class="s">mysql</span>
+    <span class="na">replica</span><span class="pi">:</span> <span class="no">true</span>
+  <span class="na">cities</span><span class="pi">:</span>
+    <span class="na">database</span><span class="pi">:</span> <span class="s">cities_database</span>
+    <span class="na">user</span><span class="pi">:</span> <span class="s">cities_root</span>
+    <span class="na">adapter</span><span class="pi">:</span> <span class="s">mysql</span>
+    <span class="na">migrations_paths</span><span class="pi">:</span> <span class="s">db/cities_migrate</span>
+  <span class="na">cities_replica</span><span class="pi">:</span>
+    <span class="na">database</span><span class="pi">:</span> <span class="s">my_cities_database</span>
+    <span class="na">user</span><span class="pi">:</span> <span class="s">cities_readonly</span>
+    <span class="na">adapter</span><span class="pi">:</span> <span class="s">mysql</span>
+    <span class="na">replica</span><span class="pi">:</span> <span class="no">true</span>
+</code></pre></div></div>
+
+<p>Bu noktada birkaç konuya değinmek ve dikkat etmek gerekiyor. Öncelikle bir veritabanı eğer replika bir veritabanı ise <code class="language-plaintext highlighter-rouge">replica: true</code> yazmak gerekiyor. Bunun yanında replika veritabanlarının adlarının aynı olması şart değil ancak aynı veri üzerinden çalışmalar olacağı için adlarının aynı olmasının faydası var.</p>
+
+<p><code class="language-plaintext highlighter-rouge">migration_paths</code> Rails’da veritabanı <strong>migration</strong>‘larının yerini söylemek için belirtmemiz gerekiyor. <code class="language-plaintext highlighter-rouge">cities </code> veritabanı bir
+<strong>migration</strong> çalıştırmak istersek <code class="language-plaintext highlighter-rouge">--database</code> opsiyonu ile hangi dosyada çalışmaların olacağını belirtebiliyoruz.</p>
+
+<p>`
+$ rails g migration CreateTowns name:string –database cities
+`</p>
+
+<p><strong>Model</strong> seviyesinde ise birkaç ayara ihtiyac duyuyoruz. Burada önemli olan hangi veritabanlarının ne görevler yapacağı.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CitiesBase</span> <span class="o">&lt;</span> <span class="no">ApplicationRecord</span>
+  <span class="nb">self</span><span class="p">.</span><span class="nf">abstract_class</span> <span class="o">=</span> <span class="kp">true</span>
+
+  <span class="n">connects_to</span> <span class="ss">database: </span><span class="p">{</span> <span class="ss">writing: :cities</span><span class="p">,</span> <span class="ss">reading: :cities_replica</span> <span class="p">}</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><strong>ApplicationRecord</strong>‘u da güncellememiz gerekiyor.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ApplicationRecord</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+  <span class="nb">self</span><span class="p">.</span><span class="nf">abstract_class</span> <span class="o">=</span> <span class="kp">true</span>
+
+  <span class="n">connects_to</span> <span class="ss">database: </span><span class="p">{</span> <span class="ss">writing: :primary</span><span class="p">,</span> <span class="ss">reading: :primary_replica</span> <span class="p">}</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">rails -T</code> komutu ile de bütün <strong>task</strong>‘ları görebilirsiniz. Hangi veritabanında çalışma yapmak istiyorsanız, adını sona ekleyerek yapabilirsiniz. <code class="language-plaintext highlighter-rouge">rails db:migrate:status:cities</code></p>
+
+<p>Ruby on Rails ile çoklu veritabanı kullanımı henüz RC versiyonda olasa da projelerde kullanılabilir durumda. Github ekibi tarafından geliştirilen ve şu an kullanılan bu özellik Ruby on Rails’ın gücünü daha da artıracak gibi duruyor.</p>
+
+<p>Sevgiler.</p>
+
+<p><small><strong>Referanslar:</strong></small>
+<br />
+<small><em>https://edgeguides.rubyonrails.org/active_record_multiple_databases.html</em></small>
+<small><em>https://www.citusdata.com/blog/2019/05/23/rails-6-multiple-databases/</em></small></p>
+:ET

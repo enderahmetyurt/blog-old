@@ -83,7 +83,6 @@
       <a class="sidebar-nav-item" href="https://github.com/enderahmetyurt">GitHub</a>
       <a class="sidebar-nav-item" href="https://twitter.com/eayurt">Twitter</a>
       <a class="sidebar-nav-item" href="https://www.linkedin.com/in/enderahmetyurt/">Linkedin</a>
-      <span class="sidebar-nav-item">Currently v1.1.0</span>
     </nav>
 
     <p>&copy; 2021. All rights reserved.</p>
@@ -95,13 +94,13 @@
       <div class="post">
   <h1 class="post-title">Ruby Enumerable</h1>
   <span class="post-date">06 May 2016</span>
-  <p>Merhaba! Bugün Ruby’de hemen hemen her gün kullandığımız <code class="highlighter-rouge">Enumerable</code> metotlarından bahsetmek istiyorum.</p>
+  <p>Merhaba! Bugün Ruby’de hemen hemen her gün kullandığımız <code class="language-plaintext highlighter-rouge">Enumerable</code> metotlarından bahsetmek istiyorum.</p>
 
 <p>Bu yazıda kullanılan örnekleri daha iyi anlayabilmek için öncelikle Ruby’de Array ve Hash kavramlarını biraz olsun bilmeniz gerekiyor.</p>
 
-<p>Ruby’de <code class="highlighter-rouge">Enumerable</code> modülüne ihtiyaç duymamızın nedeni colletion’lar üzerinde daha hızlı ve kolay çalışmalar yapabilmektir. Örneğin, bir collection içindeki bütün tek sayıları getirmek için döngüler ve if bloklarını kullanabiliriz. Ancak bunun yerine <code class="highlighter-rouge">Enumerable</code> modülünde tanımlı metotlardan yardım alabiliyoruz.</p>
+<p>Ruby’de <code class="language-plaintext highlighter-rouge">Enumerable</code> modülüne ihtiyaç duymamızın nedeni colletion’lar üzerinde daha hızlı ve kolay çalışmalar yapabilmektir. Örneğin, bir collection içindeki bütün tek sayıları getirmek için döngüler ve if bloklarını kullanabiliriz. Ancak bunun yerine <code class="language-plaintext highlighter-rouge">Enumerable</code> modülünde tanımlı metotlardan yardım alabiliyoruz.</p>
 
-<p><code class="highlighter-rouge">Enumerable</code> ın metotlarını aşağıdaki gibi sıralayabiliriz.</p>
+<p><code class="language-plaintext highlighter-rouge">Enumerable</code> ın metotlarını aşağıdaki gibi sıralayabiliriz.</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> Enumerable.instance_metots.sort
 <span class="o">=&gt;</span> <span class="o">[</span>:all?, :any?, :chunk, :collect, :collect_concat, :count, :cycle, :detect, :drop, :drop_while, :each_cons, :each_entry, :each_slice, :each_with_index, :each_with_object, :entries, :find, :find_all, :find_index, :first, :flat_map, :grep, :group_by, :include?, :inject, :lazy, :map, :max, :max_by, :member?, :min, :min_by, :minmax, :minmax_by, :none?, :one?, :partition, :reduce, :reject, :reverse_each, :select, :slice_before, :sort, :sort_by, :take, :take_while, :to_a, :to_h, :zip]
@@ -110,12 +109,12 @@
 <p>Bunların bazılarından bahsetmek gerekirse.</p>
 
 <h2 id="each_with_index">#each_with_index</h2>
-<p><code class="highlighter-rouge">each</code> ile bir collection içindeki elemanları tek tek gezebiliriz.</p>
+<p><code class="language-plaintext highlighter-rouge">each</code> ile bir collection içindeki elemanları tek tek gezebiliriz.</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="o">[</span>1,2,3].each <span class="o">{</span> |num| print <span class="s2">"Number: #{num} "</span> <span class="o">}</span>
 <span class="o">=&gt;</span> Number: 1 Number: 2 Number: 3
 </code></pre></div></div>
-<p>Bu elemanların tek tek index’lerine ulaşmak için ise <code class="highlighter-rouge">each_with_index</code>i kullanabiliriz.</p>
+<p>Bu elemanların tek tek index’lerine ulaşmak için ise <code class="language-plaintext highlighter-rouge">each_with_index</code>i kullanabiliriz.</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="o">[</span>9,8,7].each_with_index <span class="k">do</span> |e,i|
 <span class="o">&gt;</span>   puts <span class="s2">"Index: #{i} Number: #{e}"</span>
@@ -126,7 +125,7 @@
 </code></pre></div></div>
 
 <h2 id="map">#map</h2>
-<p>Bir collection içindeki elemanlar üzerinde çalışmaklar yapmak istiyorsak <code class="highlighter-rouge">map</code> kullanmak en iyisi olacaktır.</p>
+<p>Bir collection içindeki elemanlar üzerinde çalışmaklar yapmak istiyorsak <code class="language-plaintext highlighter-rouge">map</code> kullanmak en iyisi olacaktır.</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="o">[</span>5,10,20].map<span class="o">{</span>|e| puts e<span class="k">**</span>2<span class="o">}</span>
 <span class="o">=&gt;</span> 25
@@ -135,7 +134,7 @@
 </code></pre></div></div>
 
 <h2 id="select">#select</h2>
-<p>Bazı durumlarda bir collection içinden belli bir duruma bağlı olarak değeri ya da değerleri almak isteyebiliriz. Bu durumda <code class="highlighter-rouge">select</code> kullanırsak kodumuzu daha anlaşılır yazmış oluruz.</p>
+<p>Bazı durumlarda bir collection içinden belli bir duruma bağlı olarak değeri ya da değerleri almak isteyebiliriz. Bu durumda <code class="language-plaintext highlighter-rouge">select</code> kullanırsak kodumuzu daha anlaşılır yazmış oluruz.</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="o">(</span>1..20<span class="o">)</span>.to_a.select<span class="o">{</span>|n| n.odd?<span class="o">}</span>
 <span class="o">=&gt;</span> <span class="o">[</span>1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
@@ -144,7 +143,7 @@
 <p>1 ile 20 arasındaki tüm tek sayıları ekrana bastık.</p>
 
 <h2 id="reject">#reject</h2>
-<p>Seçmenin dışında bir collection’dan çıkarmak istediğimiz elemanlarımız da olabilir. Bu gibi durumlarda ise <code class="highlighter-rouge">reject</code> kullanabiliriz.</p>
+<p>Seçmenin dışında bir collection’dan çıkarmak istediğimiz elemanlarımız da olabilir. Bu gibi durumlarda ise <code class="language-plaintext highlighter-rouge">reject</code> kullanabiliriz.</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="o">(</span>1..20<span class="o">)</span>.to_a.reject<span class="o">{</span>|n| n.odd?<span class="o">}</span>
 <span class="o">=&gt;</span> <span class="o">[</span>2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
@@ -153,7 +152,7 @@
 <p>Yukarıda gördüğünüz gibi 1 ile 20 arasındaki tek sayıları çıkardım ve yeni array’im artık 1 ile 20 arasındaki çift sayılar oldu.</p>
 
 <h2 id="any">#any?</h2>
-<p>Bu metot bize duruma göre true ya da false bir boolean değer dönecektir. Eğer bir collection içinde bir duruma göre bir elemanın bulunup, bulumadığını kontrol etmek istiyorsak <code class="highlighter-rouge">any?</code> kullanabiliriz.</p>
+<p>Bu metot bize duruma göre true ya da false bir boolean değer dönecektir. Eğer bir collection içinde bir duruma göre bir elemanın bulunup, bulumadığını kontrol etmek istiyorsak <code class="language-plaintext highlighter-rouge">any?</code> kullanabiliriz.</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="o">(</span>1..20<span class="o">)</span>.to_a.any?<span class="o">{</span>|n| n&gt;20<span class="o">}</span>
 <span class="o">=&gt;</span> <span class="nb">false</span>

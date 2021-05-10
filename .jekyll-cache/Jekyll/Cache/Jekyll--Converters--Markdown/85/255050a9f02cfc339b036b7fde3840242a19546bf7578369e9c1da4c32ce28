@@ -1,0 +1,103 @@
+I"�)<p>Merhaba, Ruby 3 2020 Aralık ayında yayına çıkmış olacak. Güzel özelliklerle geliyor olsa da bu özelliklerden hangilerinin hala Ruby 3 içerisinde olup olmayacağı tartışma konusu.</p>
+
+<p>Deneysel özelliklerin bir kısmı Ruby 2.7 ile bizlerin kullanılımına sunuluyor ve deneme, test etme şansı buluyoruz. Bu yazıda Ruby 3’de görmemiz muhtemelen birkaçından bahsedeceğim.</p>
+
+<p>Matz geçenlerde Github sponsorlarına bir anket gönderdi. Anket, hangi özelliği Ruby 3’de görmek istediğimiz ile alakalıydı. Seçenekler arasında ise şu özellikler vardı:</p>
+
+<ul>
+  <li>Ractor</li>
+  <li>JIT</li>
+  <li>Type Profiler / Static Type Analysis</li>
+  <li>Heap Compaction (GC Improvement)</li>
+  <li>Pattern Matching</li>
+  <li>Right Assignment</li>
+</ul>
+
+<p>Şimdi bunlara tek tek bakalım.</p>
+
+<h2 id="ractor">Ractor</h2>
+
+<p>Eski adı Guild olan bir özellikte çalışan Koichi Sasada Matz’ın da önerisi ile adını Ractor’a çevirdi. Mantığının ise <code class="language-plaintext highlighter-rouge">"Ractor," Ruby's Actor-like feature (not an exact Actor-model)</code> geldiğini söylüyor. Konu aslında MRI Ruby’nin kodu parallel çalıştırmasına izin vermemesinden geliyor. Guild yani yeni ismi ile Ractor, Ruby için yeni bir concurrency modeli öneriyor. Burada asıl amaç Ruby 3 ile bu modeli kurarken Ruby 2 ile uyumluluğu korumak ve parallel çalışabilecek parçaları ve objeleri hızlı bir şekilde paylaşımına izin vermek. Ruby’deki yaygın concurrency problemlerden biri thread’lerin race condition’lar oluşturup, oluşturmadığından emin olmaktır. Ruby’deki <code class="language-plaintext highlighter-rouge">Thread::Mutex</code> ile bunun önüne geçebilirsiniz fakat bu sefer de paralelliği ortadan kaldırmış ya da yavaşlatmış olursunuz.</p>
+
+<p>Ruby’de Thread ve Fiber olmak üzere iki tane sınıf var. Thread’ler işletim sistemi seviyesinde kodun parallel çalışmasını sağlarken, Fiber ise parallel çalışacak kodların manuel olarak planlamasının yapılmasına izin verir. Guild’ı ise bu ikisinin birlikte uygulanması ile ortaya çıkar. Şöyle diyebiliriz; Bir Guild içerisinde en az bir Thread ve onun da içerisinde en az bir Fiber bulunur. Guild içerisindeki Thread’ler paralel çalışamazken, farklı Guild’dekiler çalışabilir.</p>
+
+<p>Bir Guild’deki mutable bir obje başka bir Guild’den obje tarafından okunamaz ya da değiştirilemez. Bu sebeple Guild’lerin parallel çalışması sağlanır. <code class="language-plaintext highlighter-rouge">Guild::Channel</code> ile bunu yapmak da mümkündür. Bu yöntem ile bir obje diğer Guild’de kopyalanır ve ilgili Guild’e gönderilir.</p>
+
+<p>Ractor (Guild) ile alakalı daha fazla bilgiye ve örneğe buradan ulaşabilirsiniz. <a href="https://github.com/ko1/ruby/blob/ractor_parallel/doc/ractor.md">https://github.com/ko1/ruby/blob/ractor_parallel/doc/ractor.md</a></p>
+
+<p>Sonuçta bu özellik ile artık Ruby’de thread-safe konularına kafayı takmadan paralel işler yapabileceğiz gibi duruyor.</p>
+
+<h2 id="jit">JIT</h2>
+
+<p>Uzun adi Just In Compile olan JIT Ruby programlarının makine kodlarına dönüştürür. Diğer derleyicilerden farklı olarak bütün kod derlemez sadece kodun değiştirilen yerlerini derler. JIT ne kadar hızlanma getirir ve neler götürür bu konuda bazı çalışmalar <a href="https://eregon.me/blog/2016/11/28/optcarrot.html">https://eregon.me/blog/2016/11/28/optcarrot.html</a> olsa da yorumlanan bir Ruby’den daha hızlı olacağı kesin.</p>
+
+<p>JIT’in avantajı kadar yanında getirdiği ve muhtemelen geliştirilecek bir takım dezavantajları da var. Bunlardan biri memory kullanımı diğeri ise warmup süresinin uzunluğu.</p>
+
+<p>Bildiğim kadarı ile JIT şuan Ruby 2.6’da var ve <code class="language-plaintext highlighter-rouge">-jit</code> flag’i ile kullanılabiliyor. Ruby on Rails gibi büyük gem’lerde henüz kullanılmıyor diye biliyorum ancak daha küçük işler için tercih edilebilir.</p>
+
+<p>JIT konusu hakkında çalışan Takashi Kokubun, Ruby Rouges podcast’ine konuk olmuş. Daha fazla detayı <a href="https://devchat.tv/ruby-rogues/rr-470-performance-improvement-of-ruby-3-0-jit-with-takashi-kokubun/">buradan</a> dinleyebilirsiniz.</p>
+
+<h2 id="type-profiler--static-type-analysis">Type Profiler / Static Type Analysis</h2>
+
+<p>Tip kontrolü ve statik tipli bir dil olmaya doğru giden Ruby, bu özelliği ile beni de heyecanlandırıyor. Dinamik bir dil olan Ruby’nin statik bir dil olma yolunda attığı adımlardan biri RBS <a href="https://github.com/ruby/rbs">https://github.com/ruby/rbs</a> dili diyebiliriz. RBS, Ruby 3 için bir tip imzalama dili. Type’ları olan kodlar artik RBS dosyaları içine yazılmaya başlıyor ki bu da mevcut Ruby kodunun karışmasını engelliyor.</p>
+
+<p>Aslında şuan Sorbet projesi ile type check yapılabiliyor. Sorbet ve Ruby geliştiricileri RBS için birlikte işler çıkarmaya çalışıyorlar.</p>
+
+<p>Herkes RBS kullanmak zorunda değil tabiki ama tiplerin ve tip kontrolünün gelmesi Ruby’e daha fazla güç ve çeşitlilik katacaktır diye düşünüyorum. Yazılan kodun kalitesi ve hata oranı ne kadar azalsa da dinamik bir dilde program yazmak, statik bir dile göre her zaman daha hızlı olacağı da aşikar.</p>
+
+<h2 id="heap-compaction-gc-improvement">Heap Compaction (GC Improvement)</h2>
+
+<p>Ruby’de garbage collection gibi bellek yönetim işleri ile pek uğraşmaya gerek yok. Zaten en güzel yanı da bu değil mi? :) Ancak işler karmaşıklaştıkca ve programlar büyüdükce programlama dillerinin de kendi garbage collector’larında geliştirmeler yapması gerekir.</p>
+
+<p>Ruby 2.7 ile aslında şuan kullanılabilen heap compaction özelliği ile Ruby’de garbage collector daha verimli bir hale geldi. Bu özellik sayesinde program için memory’de kullanılmak istenen alana heap denir. Bu heap objeler için kullanıldikca veya heap içindeki objeler serbest kaldıkca memory içerisinde boşluklar oluşur ve memory dağınık bir hale gelir. Ayrılan bütün hafızayı birlikte kullanmaktansa heap içindeki kullanılan memory sıkıştırılır boşluklar da değerlendirilmiş olur.</p>
+
+<h2 id="pattern-matching">Pattern Matching</h2>
+
+<p>Ruby 2.7 ile hayatımıza giren bu özelliğe pek ısındım diyemem. Ama seveni de vardır elbet. Elixir kullananlar zaten bu özelliğe aşinadırlar. Küçük bir örnekle anlatacak olursak</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="nb">name</span><span class="p">,</span> <span class="n">surname</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="ss">:foo</span><span class="p">,</span> <span class="s2">"bar"</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
+<span class="nb">name</span> <span class="c1">#=&gt; :foo</span>
+<span class="n">surname</span> <span class="c1">#=&gt; "bar"</span>
+</code></pre></div></div>
+
+<p>ancak eşitliğin iki tarafındaki pattern ayni olmadığı vakit sorun çıkacaktır. Örneğin <code class="language-plaintext highlighter-rouge">[name, surname, 30] = [:foo, "bar", 20]</code> bu şekilde yaparsak hata alacağız.</p>
+
+<p>Pattern Matching işimize daha çok if veya when statement’larda işimize yarayacak gibi duruyor. Daha fazlası Hash’lerde ve Array’lerde de bu özellik çokça kullanılabilir. Ancak tehlikeli olan şu ki yeni syntax biraz kafa karıştırıcı ve alışması zor olabilir. Bazı karışık condition’lar için yararlı gibi duruyor ancak kullanımı o kadar kolay olduğunu söyleyemem.</p>
+
+<h3 id="right-assignment">Right Assignment</h3>
+
+<p>Neden diye sordurttan bir özellik daha. Soldan sağa kod okumaya alıştığımız için bu özellik bizlere biraz zor gelecektir.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="s1">'hello'</span> <span class="o">=&gt;</span> <span class="n">foo</span> <span class="c1"># This is equivalent to foo = 'hello'</span>
+</code></pre></div></div>
+
+<p>Burada çok anlamlı değil ama şu örnek için güzel duruyor.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">full_name</span>
+  <span class="p">[</span><span class="s1">'foo'</span><span class="p">,</span> <span class="s1">'bar'</span><span class="p">]</span>
+<span class="k">end</span>
+
+<span class="n">full_name</span> <span class="o">=&gt;</span> <span class="nb">name</span><span class="p">,</span> <span class="n">surname</span>
+</code></pre></div></div>
+
+<p>aslında burada yapılmak istenden <code class="language-plaintext highlighter-rouge">name, surname = full_name</code></p>
+
+<h3 id="sonuç">Sonuç</h3>
+
+<p>Tüm bunlar tabiki bu kadar az değil. Çok fazla detayın olduğu ve dikkatli bakıldığında hepsi Ruby’e bir şekilde birşeyler katacak özellikler. Benim şahsi fikrim Ruby zaten rahat yazılabilen ve okunabilen bir dil. Bazı performans problemleri de halledildikten sonra daha iyi bir dil olacağı kesin. Ruby 3 ile umarim performansa yönelik geliştirmelere daha fazla önem verirler.</p>
+
+<p>Sevgiler.</p>
+
+<p><em>Referanslar:</em></p>
+
+<ul>
+  <li><a href="https://bugs.ruby-lang.org/issues/17100">https://bugs.ruby-lang.org/issues/17100</a></li>
+  <li><a href="https://olivierlacan.com/posts/concurrency-in-ruby-3-with-guilds/">https://olivierlacan.com/posts/concurrency-in-ruby-3-with-guilds/</a></li>
+  <li><a href="https://engineering.appfolio.com/appfolio-engineering/2017/12/26/ruby-3-and-jit-where-when-and-how-fast">https://engineering.appfolio.com/appfolio-engineering/2017/12/26/ruby-3-and-jit-where-when-and-how-fast</a></li>
+  <li><a href="https://developer.squareup.com/blog/the-state-of-ruby-3-typing/">https://developer.squareup.com/blog/the-state-of-ruby-3-typing/</a></li>
+  <li><a href="https://stackify.com/how-does-ruby-garbage-collection-work-a-simple-tutorial/">https://stackify.com/how-does-ruby-garbage-collection-work-a-simple-tutorial/</a></li>
+  <li><a href="https://www.toptal.com/ruby/ruby-pattern-matching-tutorial">https://www.toptal.com/ruby/ruby-pattern-matching-tutorial</a></li>
+  <li><a href="https://bugs.ruby-lang.org/issues/15921">https://bugs.ruby-lang.org/issues/15921</a></li>
+  <li><a href="https://blog.saeloun.com/2020/08/31/ruby-adds-experimental-rightward-assignment.html">https://blog.saeloun.com/2020/08/31/ruby-adds-experimental-rightward-assignment.html</a></li>
+</ul>
+:ET

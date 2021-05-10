@@ -83,7 +83,6 @@
       <a class="sidebar-nav-item" href="https://github.com/enderahmetyurt">GitHub</a>
       <a class="sidebar-nav-item" href="https://twitter.com/eayurt">Twitter</a>
       <a class="sidebar-nav-item" href="https://www.linkedin.com/in/enderahmetyurt/">Linkedin</a>
-      <span class="sidebar-nav-item">Currently v1.1.0</span>
     </nav>
 
     <p>&copy; 2021. All rights reserved.</p>
@@ -97,26 +96,26 @@
   <span class="post-date">23 Jan 2018</span>
   <p>Merhaba. Daha önce <a href="https://enderahmetyurt.com/2018/01/09/gmail-e-eklenti-yazmak.html">Gmail add-on</a> nedir? Bu konudan biraz bahsetmiştim. Şimdi ise küçük bir uygulama ile giriş yapıp daha pratik birşeyler göstermek istiyorum.</p>
 
-<p>Öncelikle ihtiyacımız olan add-on’u yazmak için gerekli olan bir ortam. Google bize bu ortamı <a href="https://script.google.com/">https://script.google.com/</a> ile veriyor. Sonrasında ise uygulamanın ayarlarının ve kütüphanelerinin bağımlılıklarının bulunduğu <code class="highlighter-rouge">manifest</code> dosyasını tanımlamak gerekiyor. Son olarak ise kodu yani <code class="highlighter-rouge">CardService</code>‘i yazmaya başlıyoruz.</p>
+<p>Öncelikle ihtiyacımız olan add-on’u yazmak için gerekli olan bir ortam. Google bize bu ortamı <a href="https://script.google.com/">https://script.google.com/</a> ile veriyor. Sonrasında ise uygulamanın ayarlarının ve kütüphanelerinin bağımlılıklarının bulunduğu <code class="language-plaintext highlighter-rouge">manifest</code> dosyasını tanımlamak gerekiyor. Son olarak ise kodu yani <code class="language-plaintext highlighter-rouge">CardService</code>‘i yazmaya başlıyoruz.</p>
 
-<p>Manifest dosyasını <code class="highlighter-rouge">appscript.json</code> içine koymak gerekiyor. Default olarak bu dosya kod yazdığımız yerde görünür değil o yüzden <code class="highlighter-rouge">View &gt; Show manifest file</code> diyoruz ve aşağıdaki kodu dosyaya ekliyoruz.</p>
+<p>Manifest dosyasını <code class="language-plaintext highlighter-rouge">appscript.json</code> içine koymak gerekiyor. Default olarak bu dosya kod yazdığımız yerde görünür değil o yüzden <code class="language-plaintext highlighter-rouge">View &gt; Show manifest file</code> diyoruz ve aşağıdaki kodu dosyaya ekliyoruz.</p>
 
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="s2">"gmail"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Quickstart Toolbar Label"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.example.com/hosted/images/2x/my-icon.png"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"primaryColor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#4285F4"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"secondaryColor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#4285F4"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"contextualTriggers"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-      </span><span class="s2">"unconditional"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-      </span><span class="s2">"onTriggerFunction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"getContextualAddOn"</span><span class="w">
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="nl">"gmail"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Quickstart Toolbar Label"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"logoUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.example.com/hosted/images/2x/my-icon.png"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"primaryColor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#4285F4"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"secondaryColor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#4285F4"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"contextualTriggers"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+      </span><span class="nl">"unconditional"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+      </span><span class="nl">"onTriggerFunction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"getContextualAddOn"</span><span class="w">
     </span><span class="p">}],</span><span class="w">
-    </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRUSTED_TESTER_V2"</span><span class="w">
+    </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRUSTED_TESTER_V2"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
-<p>Gördüğünüz gibi bu dosya içinde basit bir şekilde config ayarları yapılmış durumda. Uygulamanın adı, logosu, renkler ve versiyon gibi basit özelliklerin yanında asıl önemli olan uygulama ilk başladığında hangi metodun çalışması gerektiğini söyleyen <code class="highlighter-rouge">onTriggerFunction</code> parametresi. Bu parametre uygulama ayağa kalkınca ilk çalışması gereken metodu belirtiyor ve artık yapmamız gerekenler bu metot içinden çalışmaya başlıyor.</p>
+<p>Gördüğünüz gibi bu dosya içinde basit bir şekilde config ayarları yapılmış durumda. Uygulamanın adı, logosu, renkler ve versiyon gibi basit özelliklerin yanında asıl önemli olan uygulama ilk başladığında hangi metodun çalışması gerektiğini söyleyen <code class="language-plaintext highlighter-rouge">onTriggerFunction</code> parametresi. Bu parametre uygulama ayağa kalkınca ilk çalışması gereken metodu belirtiyor ve artık yapmamız gerekenler bu metot içinden çalışmaya başlıyor.</p>
 
-<p>Google bizim için <code class="highlighter-rouge">Code.gs</code> adında bir google script dosyası açıyor ve aslında uygulama için ilk çalışan dosya burası oluyor. Bu dosya içine uygulamamız ile alakalı kodları yazıyoruz. Manifest dosyasında belirttiğimiz <code class="highlighter-rouge">getContextualAddOn</code> metodunu bu dosya içinde yazmaya başlıyoruz.</p>
+<p>Google bizim için <code class="language-plaintext highlighter-rouge">Code.gs</code> adında bir google script dosyası açıyor ve aslında uygulama için ilk çalışan dosya burası oluyor. Bu dosya içine uygulamamız ile alakalı kodları yazıyoruz. Manifest dosyasında belirttiğimiz <code class="language-plaintext highlighter-rouge">getContextualAddOn</code> metodunu bu dosya içinde yazmaya başlıyoruz.</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">getContextualAddOn</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
   <span class="c1">// Activate temporary Gmail add-on scopes, in this case to allow</span>
@@ -133,20 +132,20 @@
   <span class="c1">// Be sure to execute build() to finalize the card construction.</span>
   <span class="kd">var</span> <span class="nx">exampleCard</span> <span class="o">=</span> <span class="nx">CardService</span><span class="p">.</span><span class="nx">newCardBuilder</span><span class="p">()</span>
   <span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="nx">CardService</span><span class="p">.</span><span class="nx">newCardHeader</span><span class="p">()</span>
-             <span class="p">.</span><span class="nx">setTitle</span><span class="p">(</span><span class="s1">'Example card'</span><span class="p">))</span>
+             <span class="p">.</span><span class="nx">setTitle</span><span class="p">(</span><span class="dl">'</span><span class="s1">Example card</span><span class="dl">'</span><span class="p">))</span>
   <span class="p">.</span><span class="nx">addSection</span><span class="p">(</span><span class="nx">CardService</span><span class="p">.</span><span class="nx">newCardSection</span><span class="p">()</span>
               <span class="p">.</span><span class="nx">addWidget</span><span class="p">(</span><span class="nx">CardService</span><span class="p">.</span><span class="nx">newKeyValue</span><span class="p">()</span>
-                         <span class="p">.</span><span class="nx">setTopLabel</span><span class="p">(</span><span class="s1">'Subject'</span><span class="p">)</span>
+                         <span class="p">.</span><span class="nx">setTopLabel</span><span class="p">(</span><span class="dl">'</span><span class="s1">Subject</span><span class="dl">'</span><span class="p">)</span>
                          <span class="p">.</span><span class="nx">setContent</span><span class="p">(</span><span class="nx">subject</span><span class="p">))</span>
               <span class="p">.</span><span class="nx">addWidget</span><span class="p">(</span><span class="nx">CardService</span><span class="p">.</span><span class="nx">newKeyValue</span><span class="p">()</span>
-                         <span class="p">.</span><span class="nx">setTopLabel</span><span class="p">(</span><span class="s1">'From'</span><span class="p">)</span>
+                         <span class="p">.</span><span class="nx">setTopLabel</span><span class="p">(</span><span class="dl">'</span><span class="s1">From</span><span class="dl">'</span><span class="p">)</span>
                          <span class="p">.</span><span class="nx">setContent</span><span class="p">(</span><span class="nx">sender</span><span class="p">)))</span>
   <span class="p">.</span><span class="nx">build</span><span class="p">();</span>   <span class="c1">// Don't forget to build the Card!</span>
   <span class="k">return</span> <span class="p">[</span><span class="nx">exampleCard</span><span class="p">];</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p>Yukarıdaki kodda amacımız bir email içeriğine ulaşabilmek. Bunun için Gmail’in servislerini kullanabilmemiz lazım. O yüzden Gmail’e authenticate olmamız gerekiyor. Zaten uygulama çalışmaya başladığı zaman bu bize soruluyor ve onay verildikten sonra kod çalışmaya başlıyor. Sonrasında ise Card servisi devreye giriyor. Daha önce de anlattığım gibi Gmail add-on için UI desteği Card ile geliyor ve gelen veriyi kullanıcıya göstermek için öncellikle bir Card tanımlıyoruz. Sonrasında ise gerekli component’ları koyup son olarak Card’ı <code class="highlighter-rouge">build()</code> methodu ile oluşturuyoruz. Burası çok önemli. Eğer Card’ı hazırlayıp, build metodunu çağırmazsak isek istediğimiz sonucu alamayız.</p>
+<p>Yukarıdaki kodda amacımız bir email içeriğine ulaşabilmek. Bunun için Gmail’in servislerini kullanabilmemiz lazım. O yüzden Gmail’e authenticate olmamız gerekiyor. Zaten uygulama çalışmaya başladığı zaman bu bize soruluyor ve onay verildikten sonra kod çalışmaya başlıyor. Sonrasında ise Card servisi devreye giriyor. Daha önce de anlattığım gibi Gmail add-on için UI desteği Card ile geliyor ve gelen veriyi kullanıcıya göstermek için öncellikle bir Card tanımlıyoruz. Sonrasında ise gerekli component’ları koyup son olarak Card’ı <code class="language-plaintext highlighter-rouge">build()</code> methodu ile oluşturuyoruz. Burası çok önemli. Eğer Card’ı hazırlayıp, build metodunu çağırmazsak isek istediğimiz sonucu alamayız.</p>
 
 <p>Biraz Card’lardan bahsetmek gerekirse. Card’lar onlar için tanımlanmış özel <strong>widget</strong>‘lardan oluşuyor. Her action için yeni bir Card tanımlayabilir ve özel widget’lar atayabiliriz içerlerine. CardBuilder class’ı yeni bir Card tanımlamamıza yarıyor. Her Card <strong>header</strong> ve <strong>section</strong>‘lardan oluşuyor. Bu section’lar içine kullanıcı ile kurulacak action’ları tanımlama adına widget’ları ekleyebiliyoruz. Kısacası bir Card oluşturmak için sırasıyla,</p>
 
@@ -159,11 +158,11 @@
 
 <p>Gelelim test ve deployment konusuna. Farklı <a href="https://developers.google.com/apps-script/concepts/deployments">deployment yöntemleri</a> mevcut fakat development tarafında hızlı test edebilmemiz için <strong>Head Deployments</strong>‘dan bahsedeceğim.</p>
 
-<p>Eğer bütün kodu düzgün bir şekilde yazdıysak script ekranından <code class="highlighter-rouge">Publish &gt; Deploy from manifest</code> diyerek açılan pop-up’dan <code class="highlighter-rouge">Lastest Version (HEAD)</code> satırından <strong>Get ID</strong> linkine tıklayarak açılan pencereden <strong>Deployment ID</strong>‘yi kopyalayıp, alıyoruz ve ayrı bir pencerede Gmail hesabımı açıyoruz.</p>
+<p>Eğer bütün kodu düzgün bir şekilde yazdıysak script ekranından <code class="language-plaintext highlighter-rouge">Publish &gt; Deploy from manifest</code> diyerek açılan pop-up’dan <code class="language-plaintext highlighter-rouge">Lastest Version (HEAD)</code> satırından <strong>Get ID</strong> linkine tıklayarak açılan pencereden <strong>Deployment ID</strong>‘yi kopyalayıp, alıyoruz ve ayrı bir pencerede Gmail hesabımı açıyoruz.</p>
 
 <p>Gmail için ayarlarımızın yapıldığı <strong>Settings</strong> sayfasına geliyoruz. Buradan <strong>Add-on</strong> sekmesinde yer alan <strong>Developer add-ons</strong> alanına biraz önce kopyaladığımız Deployment ID’yi yapıştırıyoruz ve sonrasında Install diyoruz. Sonrasında Inbox’a gidip sayfası yeniliyoruz.</p>
 
-<p>Inbox içinden herhangi bir email’e tıkladığımız zaman sağ tafta uygulama görülecektir. Daha önce de belirttiğim gibi Gmail servislerini kullanmak için Gmail’e izin vermemiz gerekiyor. O yüzden <code class="highlighter-rouge">AUTHORIZE ACCESS</code> buttonuna tıklayıp, uygulama için yetkilendirme izinini veriyoruz. Burada https ile bağlanmadığımız ve uygulamamız development ortamında olduğu için bir güvenlik sorunu çıkıyor olabilir. Bu uyuglama size ait olduğu için kullanmaya devam et diyerek Gmail servislerinin bilgilerimize ulaşmasına izin verebiliriz. Sonrasında uygulama Card’ı yeniden yükleniyor ve uygulamanın çalıştığını görebiliriz.</p>
+<p>Inbox içinden herhangi bir email’e tıkladığımız zaman sağ tafta uygulama görülecektir. Daha önce de belirttiğim gibi Gmail servislerini kullanmak için Gmail’e izin vermemiz gerekiyor. O yüzden <code class="language-plaintext highlighter-rouge">AUTHORIZE ACCESS</code> buttonuna tıklayıp, uygulama için yetkilendirme izinini veriyoruz. Burada https ile bağlanmadığımız ve uygulamamız development ortamında olduğu için bir güvenlik sorunu çıkıyor olabilir. Bu uyuglama size ait olduğu için kullanmaya devam et diyerek Gmail servislerinin bilgilerimize ulaşmasına izin verebiliriz. Sonrasında uygulama Card’ı yeniden yükleniyor ve uygulamanın çalıştığını görebiliriz.</p>
 
 <div style="display: flex; justify-content: center;"><img src="/public/images/gmail-add-on-ss.png" /></div>
 

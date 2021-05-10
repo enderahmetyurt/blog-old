@@ -83,7 +83,6 @@
       <a class="sidebar-nav-item" href="https://github.com/enderahmetyurt">GitHub</a>
       <a class="sidebar-nav-item" href="https://twitter.com/eayurt">Twitter</a>
       <a class="sidebar-nav-item" href="https://www.linkedin.com/in/enderahmetyurt/">Linkedin</a>
-      <span class="sidebar-nav-item">Currently v1.1.0</span>
     </nav>
 
     <p>&copy; 2021. All rights reserved.</p>
@@ -106,7 +105,7 @@
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> gem <span class="nb">install </span>pry
 </code></pre></div></div>
 
-<p>Sonrasında ise artık kodumuzda hangi noktada durmasını istiyorsak oraya <code class="highlighter-rouge">binding.pry</code> komutu yazıyoruz. Örneğin,</p>
+<p>Sonrasında ise artık kodumuzda hangi noktada durmasını istiyorsak oraya <code class="language-plaintext highlighter-rouge">binding.pry</code> komutu yazıyoruz. Örneğin,</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># person.rb</span>
 <span class="nb">require</span> <span class="s1">'pry'</span>
@@ -130,13 +129,13 @@
     6:   puts <span class="s2">"Hello #{name}"</span>
     7: end
 </code></pre></div></div>
-<p>şeklinde bir çıktı alıyoruz. Bu anda artık <code class="highlighter-rouge">name</code> değişkenini çağırabilir ve içinde ne olduğunu görebiliriz.</p>
+<p>şeklinde bir çıktı alıyoruz. Bu anda artık <code class="language-plaintext highlighter-rouge">name</code> değişkenini çağırabilir ve içinde ne olduğunu görebiliriz.</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>1] pry<span class="o">(</span><span class="c">#&lt;Person&gt;)&gt; name</span>
 <span class="o">=&gt;</span> <span class="s2">"ender"</span>
 </code></pre></div></div>
 
-<p>Sonrasında ise <code class="highlighter-rouge">exit</code> diyerek PRY’ı kapatıyoruz.</p>
+<p>Sonrasında ise <code class="language-plaintext highlighter-rouge">exit</code> diyerek PRY’ı kapatıyoruz.</p>
 
 <p>Debugging yaparken kod içinde ileri gitmek, bir metotudun içine girmek ya da onu atlamak isteyebiliriz. PRY kendi hali ile buna cevap vermiyor. Ancak <a href="https://github.com/nixme/pry-debugger">pry-debugger</a> gem’i ile bunu da halledebiliyoruz.</p>
 
@@ -164,7 +163,7 @@
 <span class="nb">puts</span> <span class="nb">p</span><span class="p">.</span><span class="nf">say_hello</span><span class="p">(</span><span class="s2">"ender"</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p><code class="highlighter-rouge">next</code> komudu ile kodun durduğu yer bir alt satıra inebiliriz. Pry-debugger gem’i bize <code class="highlighter-rouge">step</code>, <code class="highlighter-rouge">finish</code> ve <code class="highlighter-rouge">continue</code> gibi fonksiyonlar da sağlamaktadır. Daha fazla bilgiye Github’daki Readme’den ulaşabilirsiniz.</p>
+<p><code class="language-plaintext highlighter-rouge">next</code> komudu ile kodun durduğu yer bir alt satıra inebiliriz. Pry-debugger gem’i bize <code class="language-plaintext highlighter-rouge">step</code>, <code class="language-plaintext highlighter-rouge">finish</code> ve <code class="language-plaintext highlighter-rouge">continue</code> gibi fonksiyonlar da sağlamaktadır. Daha fazla bilgiye Github’daki Readme’den ulaşabilirsiniz.</p>
 
 <p>Sevgiler.</p>
 

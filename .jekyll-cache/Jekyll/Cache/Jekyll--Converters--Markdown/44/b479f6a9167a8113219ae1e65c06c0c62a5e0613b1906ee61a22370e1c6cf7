@@ -1,0 +1,74 @@
+I"�"<p>Merhaba, Ruby her ne kadar süper sevimli bir dil olsa da dinamik bir dil olduğu için yazılan kodlarda ortaya çıkan hatalar ancak runtime’da kendini gösterebiliyor.</p>
+
+<p>Ancak statik programlama dillerinde kodlarda ortaya çıkan hataları compile time’da alabiliyoruz. Bu duruma bir örnek vermek gerekirse Ruby’de</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">animal</span> <span class="o">=</span> <span class="s1">'Foo'</span>
+<span class="n">animal</span><span class="p">.</span><span class="nf">greeting</span>
+</code></pre></div></div>
+
+<p>Yukarıdaki kod bize ancak code çalıştığı zaman <code class="language-plaintext highlighter-rouge">NoMethodError</code> hatasını dönecektir. Ancak bu kodu Java gibi compile edilen bir dil ile yazsaydik, hatayı kod compile edildiği zaman alacaktık ve kod içindeki hatalari minimize etme şansımız olacaktı.</p>
+
+<h2 id="sorbet">Sorbet</h2>
+
+<p>Ruby için geliştirilmiş ve kodunuzdaki method tanımlarını, method signature kontrolleri ve değişken tiplerinin kontrolünü yapan bir Ruby Gem’i. Özünde normal Ruby gibi kodumuzu yazıyoruz ancak Sorbet kullanmak istiyor ve type check yapmak istiyorsak ile Sorbet’in <code class="language-plaintext highlighter-rouge">T::Sig</code> modulünü kullanarak kontrollerimizi yapabiliyoruz.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># typed: true</span>
+<span class="nb">require</span> <span class="s1">'sorbet-runtime'</span>
+
+<span class="k">class</span> <span class="nc">A</span>
+  <span class="kp">extend</span> <span class="no">T</span><span class="o">::</span><span class="no">Sig</span>
+
+  <span class="n">sig</span> <span class="p">{</span><span class="n">params</span><span class="p">(</span><span class="ss">x: </span><span class="no">Integer</span><span class="p">).</span><span class="nf">returns</span><span class="p">(</span><span class="no">String</span><span class="p">)}</span>
+  <span class="k">def</span> <span class="nf">bar</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span><span class="p">.</span><span class="nf">to_s</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">main</span>
+  <span class="no">A</span><span class="p">.</span><span class="nf">new</span><span class="p">.</span><span class="nf">barr</span><span class="p">(</span><span class="mi">91</span><span class="p">)</span>   <span class="c1"># error: Typo!</span>
+  <span class="no">A</span><span class="p">.</span><span class="nf">new</span><span class="p">.</span><span class="nf">bar</span><span class="p">(</span><span class="s2">"91"</span><span class="p">)</span>  <span class="c1"># error: Type mismatch!</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>İlk olarak Sorbet’e statik tip kontrollerini ne şekilde raporlaması gerektiğini belirtmek gerekiyor. <code class="language-plaintext highlighter-rouge"># typed: true</code> dediğimiz zaman normal type hatalarını raporla demek oluyor. Bu şekilde yapabileceğimiz tam beş adet level var. Bu tiplere ve detaylarına <a href="https://sorbet.org/docs/static">buradan</a> ulaşabilirsiniz. <code class="language-plaintext highlighter-rouge">sorbet-runtime</code>‘ı require ediyoruz çünku bu kod çalıştırıldığı zaman da hatayı bize döndürsün istiyoruz. Sonrasinda <code class="language-plaintext highlighter-rouge">A</code> adında bir class’ımız var ve bu class’ın instance’ının bir <code class="language-plaintext highlighter-rouge">bar</code> adında bir methodu var. Ruby’de methodlara verilen parametlerin tipi ve method’ların döndürdüğü değelerin tiplerinin pek önemi olmazken Sorbet ile bunlari <code class="language-plaintext highlighter-rouge">sig</code> methodu ile belirleyebiliyoruz. <code class="language-plaintext highlighter-rouge">sig {params(x: Integer).returns(String)}</code> ile bu method integer tipinde bir parametre alır ve String tipinde birşey döner diyoruz.</p>
+
+<p>Siz de Sorbet’i hızlica denemek istiyorsaniz <a href="https://sorbet.run/#%23%20typed%3A%20true%0Arequire%20'sorbet-runtime'%0A%0Aclass%20A%0A%20%20extend%20T%3A%3ASig%0A%0A%20%20sig%20%7Bparams(x%3A%20Integer).returns(String)%7D%0A%20%20def%20bar(x)%0A%20%20%20%20x.to_s%0A%20%20end%0Aend%0A%0Adef%20main%0A%20%20A.new.barr(91)%20%20%20%23%20error%3A%20Typo!%0A%20%20A.new.bar(%2291%22)%20%20%23%20error%3A%20Type%20mismatch!%0Aend">buradan</a> online Sorbet runtime aracını kullanabilirsiniz.</p>
+
+<h3 id="kurulum">Kurulum</h3>
+
+<p>Sorbet’i projelerimize eklemek için öncelikle <code class="language-plaintext highlighter-rouge">Gemfile</code> dosyamıza Sorbet ve Sorbet Runtime Gem’lerini eklememiz gerekiyor.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># -- Gemfile --
+
+gem 'sorbet', :group =&gt; :development
+gem 'sorbet-runtime'
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">$ bundle install</code> ile Gem’leri indirdikten sonra artık Sorbet kullanmaya başlayabiliriz.</p>
+
+<h3 id="kullanım">Kullanım</h3>
+
+<p>Sorbet’i kullanacağımız projenin altinda <code class="language-plaintext highlighter-rouge">$ srb init</code> diyerek Sorbet için gerekli olan dosyaları oluşturuyoruz. Bu dosyalar Sorbet tarafından otomatik oluşuyor. <code class="language-plaintext highlighter-rouge">sorbet</code> klasörü altında <code class="language-plaintext highlighter-rouge">config</code> dosyasi ve <code class="language-plaintext highlighter-rouge">rbi</code> klasörü bulunuyor. <code class="language-plaintext highlighter-rouge">config</code> dosyası içinde Sorbet için commandline ayarlarını yapabilirsiniz. Daha fazla detaya <a href="https://sorbet.org/docs/cli">buradan</a> bakabilirsiniz. <code class="language-plaintext highlighter-rouge">rbi</code> klasörü içinde ise Sorbet içinde bulunmayan sizin kendi class, module ve diğer nesne tanımlarınızı yapabilir, Sorbet’te bunları kullanabilirsiniz. Sorbet ile gelen RBI dosyalarına <a href="buradan">buradan</a> ulaşabilirsiniz.</p>
+
+<p>Kendi yazdığımız Ruby kodlarındaki type check’leri yapmak için ise, <code class="language-plaintext highlighter-rouge">$ srb tc</code> komudunu çalıştırarak yapabiliriz.</p>
+
+<h3 id="örnek">Örnek</h3>
+
+<p>Ben daha önceden yazmış olduğum Ruby Gem’ime Sorbet’i ekledim. Bu <a href="https://github.com/enderahmetyurt/bilisim_sozlugu/commit/6854a4a607461073b2dc69569b70deeee040c0ec">commit</a>‘te görüldüğü gibi <code class="language-plaintext highlighter-rouge">search</code> methoduna <code class="language-plaintext highlighter-rouge">sig {params(word: String).void}</code> ekledim. Bu method konsola birşeyler bastığı için <code class="language-plaintext highlighter-rouge">nil</code> dönüyordu ve <code class="language-plaintext highlighter-rouge">void</code> ile aslında bu method’un birşey dönmediğini belirttim. Ayrıca lokal değişkenlere de tipler tanımladım. Mesela <code class="language-plaintext highlighter-rouge">CSS_SELECTOR</code> için sadece String olabilir demek istedim ve <code class="language-plaintext highlighter-rouge">CSS_SELECTOR = T.let("table tbody tr".freeze, String)</code> bu şekilde yazarak bu değişken sadece String kabul etmelidir dedim. Kodun diğer yerlerinde eğer bu değişkeni String dışında bir tipe eşitlersem Sorbet bana hata dönecek. Sizler de bu kodu düzeltmek isterseniz PR’larınızı memnuniyet ile bekliyorum.</p>
+
+<h3 id="sonuç">Sonuç</h3>
+
+<p>Ben Sorbet’i çok sevdim ve kendi yazdığım küçük Ruby projeleri için implemente etmeye başladım. Hepinizin merak ettiği bu iş Ruby on Rails’da nasıl oluyor sorularına ise kısa bir zamanda cevap verebilmeyi ben de istiyorum. Konu ile alakalı <a href="https://flexport.engineering/adding-sorbet-to-a-rails-monolith-ef72d6a18449">şöyle</a> bir yazı var, isterseniz inceleyebilirsiniz.</p>
+
+<p>Ruby her ne kadar süpersonik bir dil olsa da her güzelin bir kusuru var ve o kusurda Sorbet ile biraz olsun kapatılabiliyor.</p>
+
+<p>Sevgiler.</p>
+
+<p><em>Referanslar:</em></p>
+
+<ul>
+  <li><a href="https://blog.heroku.com/static-typing-ruby-with-sorbet">https://blog.heroku.com/static-typing-ruby-with-sorbet</a></li>
+  <li><a href="https://medium.com/better-programming/static-typed-ruby-introducing-sorbet-from-stripe-eeb4ffd8644">https://medium.com/better-programming/static-typed-ruby-introducing-sorbet-from-stripe-eeb4ffd8644</a></li>
+  <li><a href="https://sorbet.org/docs/overview">https://sorbet.org/docs/overview</a></li>
+</ul>
+:ET

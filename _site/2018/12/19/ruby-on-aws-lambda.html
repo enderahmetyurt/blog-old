@@ -83,7 +83,6 @@
       <a class="sidebar-nav-item" href="https://github.com/enderahmetyurt">GitHub</a>
       <a class="sidebar-nav-item" href="https://twitter.com/eayurt">Twitter</a>
       <a class="sidebar-nav-item" href="https://www.linkedin.com/in/enderahmetyurt/">Linkedin</a>
-      <span class="sidebar-nav-item">Currently v1.1.0</span>
     </nav>
 
     <p>&copy; 2021. All rights reserved.</p>
@@ -102,18 +101,18 @@
 <p>Öncelikle <a href="https://console.aws.amazon.com/lambda/home">Lambda Console</a>‘u açmak gerekiyor. Bu sayfada sırasıyla yapmamız gerekenler,</p>
 
 <ul>
-  <li><code class="highlighter-rouge">Create function</code>‘a tıklıyoruz.</li>
-  <li>Küçük bir örnek yapabilmek için <code class="highlighter-rouge">Author from scratch</code>‘i seçiyoruz.</li>
+  <li><code class="language-plaintext highlighter-rouge">Create function</code>‘a tıklıyoruz.</li>
+  <li>Küçük bir örnek yapabilmek için <code class="language-plaintext highlighter-rouge">Author from scratch</code>‘i seçiyoruz.</li>
   <li>Function’ımıza kolay bir isim verdikten sonra, Ruby versiyonunu seçiyoruz.</li>
-  <li><code class="highlighter-rouge">Role</code> için ise <code class="highlighter-rouge">Create a new role from one or more templates.</code> diyip, <code class="highlighter-rouge">Role</code> kısmına bir rol adı yazıyoruz.</li>
-  <li>Sonrasında alttaki <code class="highlighter-rouge">Create function</code>‘a basıp Lambda function’ımınızın oluşturulduğunu görüyoruz.</li>
+  <li><code class="language-plaintext highlighter-rouge">Role</code> için ise <code class="language-plaintext highlighter-rouge">Create a new role from one or more templates.</code> diyip, <code class="language-plaintext highlighter-rouge">Role</code> kısmına bir rol adı yazıyoruz.</li>
+  <li>Sonrasında alttaki <code class="language-plaintext highlighter-rouge">Create function</code>‘a basıp Lambda function’ımınızın oluşturulduğunu görüyoruz.</li>
 </ul>
 
 <div style="display: flex; justify-content: center;"><img src="/assets/img/aws1.png" /></div>
 
-<p>Lambda function’ı create edildikten sonraki açılan ekrandan her türlü kod düzenlemesini yapabilir, diğer servisler ile function’ı bağlayabilir ve servis ayarlarınızı yapabilirsiniz. Diğer tab yani <code class="highlighter-rouge">Monitoring</code> tab’ınıdan ise function’ının kullanımı ile alakalı sayıları alabilir, log servislerini kullanabilirsiniz.</p>
+<p>Lambda function’ı create edildikten sonraki açılan ekrandan her türlü kod düzenlemesini yapabilir, diğer servisler ile function’ı bağlayabilir ve servis ayarlarınızı yapabilirsiniz. Diğer tab yani <code class="language-plaintext highlighter-rouge">Monitoring</code> tab’ınıdan ise function’ının kullanımı ile alakalı sayıları alabilir, log servislerini kullanabilirsiniz.</p>
 
-<p>Alt tarafa code editor göreceksiniz. Burada lambda function’ımızı düzeltebiliriz. Gördüğümüz kod ise basit bir JSON önden lambda_handler isimli bir function. Bu kodu çalıştırmak için yapmamız gereken <code class="highlighter-rouge">Test</code>‘e basıp, bir test event’i set edebilmek. Şimdilik biz bu alanı <code class="highlighter-rouge">{}</code> şeklinde tanımlıyoruz ve bir <code class="highlighter-rouge">Event name</code> verip, create ediyoruz. Sonrasında tekrar <code class="highlighter-rouge">Test</code> dediğimizde, Ruby Lamba Function’nın çalıştığını görebiliyoruz.</p>
+<p>Alt tarafa code editor göreceksiniz. Burada lambda function’ımızı düzeltebiliriz. Gördüğümüz kod ise basit bir JSON önden lambda_handler isimli bir function. Bu kodu çalıştırmak için yapmamız gereken <code class="language-plaintext highlighter-rouge">Test</code>‘e basıp, bir test event’i set edebilmek. Şimdilik biz bu alanı <code class="language-plaintext highlighter-rouge">{}</code> şeklinde tanımlıyoruz ve bir <code class="language-plaintext highlighter-rouge">Event name</code> verip, create ediyoruz. Sonrasında tekrar <code class="language-plaintext highlighter-rouge">Test</code> dediğimizde, Ruby Lamba Function’nın çalıştığını görebiliyoruz.</p>
 
 <div style="display: flex; justify-content: center;"><img src="/assets/img/aws2.png" /></div>
 

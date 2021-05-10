@@ -1,0 +1,40 @@
+I"<p>Merhaba, Ruby’nin yeni versiyonu 2.6 25 Aralık 2018’de yayınlanacak. Öncesinde preview’dan yeni gelen özelliklerin bazılarına yakından bakalım.</p>
+
+<h3 id="arrayunion--arraydifference">Array#union &amp; Array#difference</h3>
+<p>Array class’ına gelen iki metot ile iki array arasındaki farkı görebilir ve onları birleştirebiliriz.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1,2,3,4,5].difference([3])
+=&gt; # [1, 2, 4, 5]
+[1,2,3,4,5].union([5,6,7])
+=&gt; # [1, 2, 3, 4, 5, 6, 7]
+</code></pre></div></div>
+
+<h3 id="endless-ranges">Endless Ranges</h3>
+<p>Diğer versiyonların aksine 2.6 ile birlikte endless range’in yazımı değişti. Artık yeni endless range aşağıdaki gibi olacak.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(1..)
+</code></pre></div></div>
+
+<h3 id="enumerablearithmethicsequence">Enumerable::ArithmethicSequence</h3>
+<p>Artık iki yeni ArithmethicSequence metodumuz var. Bunlar  <code class="language-plaintext highlighter-rouge">Range#step</code> ve <code class="language-plaintext highlighter-rouge">Numeric#step</code> örnekleyecek olursak;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(1..10).step(2) == (1..10).step(2)
+=&gt; # false - Ruby 2.5 (and older)
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(1..10).step(2) == (1..10).step(2)
+=&gt; # true - Ruby 2.6
+</code></pre></div></div>
+
+<h3 id="merge-hash-with-multiple-arguments">Merge Hash With Multiple Arguments</h3>
+<p>Hash’leri merge etmek için artık peş peşe <code class="language-plaintext highlighter-rouge">merge</code> yazmaya gerek yok.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a = { a: 1 }
+b = { b: 2 }
+c = { c: 3 }
+a.merge(b, c)
+=&gt; # {:a=&gt;1, :b=&gt;2, :c=&gt;3}
+</code></pre></div></div>
+
+<p>Sevgiler.</p>
+:ET

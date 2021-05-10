@@ -1,0 +1,108 @@
+I".<p>Merhaba. Bugün <strong>State Design Pattern</strong>‘ın Ruby’deki kullanımından bahsetmek istiyorum.</p>
+
+<p>State design pattern, behavior pattern altında tanımlanır. Bu pattern’da bir nesnenin farklı durumlarda farklı şekillerde çalışmasını düzenlenir. Yani bir nesnenin durumu değiştiğinde o nesnenin çalışma şekli değişir. Bu duruma en güzel örnek trafik ışıklarını verebiliriz. Görme engelliler için trafik ışıklarını düşünün, kırmızı, sarı ve yeşil yandığında, durun, bekleyin ve geçin diyor. Işıklar arası geçişlerde ise birkaç saniye boşluk vererek, diğer ışığa geçiyor. Bu durumda ışıkların state’leri değişiyor ve yapacakları eylemler de state’lere göre belli oluyor.</p>
+
+<p>State design pattern’ın 3 ana component’dan oluşuyor.</p>
+
+<ul>
+  <li>Context Class: Mevcut durumu bilen class.</li>
+  <li>State Class: tanımlanmış state’lerin yapacağı işleri bilen class.</li>
+  <li>State class’ından türetilmiş bütün durumlar için olan class’lar.</li>
+</ul>
+
+<p>Peki bu durumun yararı nedir? Bütün state’ler kendi durumlarını yapacakları işi ve sonraki state’i biliyor. Mevcut state’in ne olduğuyla ilgilenmiyor. Aslında bu design yerine if/else de kullanıbilir ancak hem mimari olarak hem de kodu okumak anlamında if/else kullanmak daha zor olacaktır.</p>
+
+<p>Şimdi bu tanımları Ruby’de trafik ışıkları örneği ile nasıl yazabiliriz, ona bakalım.</p>
+
+<p>Öncelikle bir context class’ına ihtiyacımız var. TrafficLight class’ını context olarak belirliyoruz.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">TrafficLight</span>
+  <span class="k">def</span> <span class="nf">initialize</span>
+    <span class="vi">@state</span> <span class="o">=</span> <span class="kp">nil</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">next_state</span><span class="p">(</span><span class="n">klass</span> <span class="o">=</span> <span class="no">Green</span><span class="p">)</span>
+    <span class="vi">@state</span> <span class="o">=</span> <span class="n">klass</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="nb">self</span><span class="p">)</span>
+    <span class="vi">@state</span><span class="p">.</span><span class="nf">beep</span>
+    <span class="vi">@state</span><span class="p">.</span><span class="nf">start_timer</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Sonrasında ise bir State class’ı tanımlıyoruz.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">State</span>
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">light</span><span class="p">)</span>
+    <span class="vi">@light</span> <span class="o">=</span> <span class="n">light</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">beep</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">next_state</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">start_timer</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Green state ve diğerleri için şu şekilde bir class tanımlayabiliriz.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Green</span> <span class="o">&lt;</span> <span class="no">State</span>
+  <span class="k">def</span> <span class="nf">beep</span>
+    <span class="nb">puts</span> <span class="s2">"Color is now green"</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">next_state</span>
+    <span class="vi">@light</span><span class="p">.</span><span class="nf">next_state</span><span class="p">(</span><span class="no">Yellow</span><span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">start_timer</span>
+    <span class="nb">sleep</span> <span class="mi">5</span><span class="p">;</span> <span class="n">next_state</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Yellow</span> <span class="o">&lt;</span> <span class="no">State</span>
+  <span class="k">def</span> <span class="nf">beep</span>
+    <span class="nb">puts</span> <span class="s2">"Color is now yellow"</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">next_state</span>
+    <span class="vi">@light</span><span class="p">.</span><span class="nf">next_state</span><span class="p">(</span><span class="no">Red</span><span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">start_timer</span>
+    <span class="nb">sleep</span> <span class="mi">5</span><span class="p">;</span> <span class="n">next_state</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Red</span> <span class="o">&lt;</span> <span class="no">State</span>
+  <span class="k">def</span> <span class="nf">beep</span>
+    <span class="nb">puts</span> <span class="s2">"Color is now red"</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">next_state</span>
+    <span class="vi">@light</span><span class="p">.</span><span class="nf">next_state</span><span class="p">(</span><span class="n">green</span><span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">start_timer</span>
+    <span class="nb">sleep</span> <span class="mi">5</span><span class="p">;</span> <span class="n">next_state</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Artık her state ne yapacağı ve kendisinden sonra hangi state’in geleceğini biliyor.</p>
+
+<p>Daha gerçekçi ve çalışan örnek için <a href="https://github.com/ryanb/ruby-warrior">RubyWarrior</a>‘ı inceleyebilirsiniz.</p>
+
+<p>Eğer Ruby projelerinizde state machine kullanmak istiyorsanız <a href="https://github.com/aasm/aasm">AASM</a> deneyebilirsiniz. Bu gem ile state’lerin durumlarını takip edebilir, callback’ler ile event’leri yönetebilirsiniz.</p>
+
+<p>Sevgiler.</p>
+
+<p><small><strong>Referanslar:</strong></small></p>
+
+<p><small><em>https://www.rubyguides.com/2018/12/state-machines/?tl_inbound=1&amp;tl_target_all=1&amp;tl_form_type=1&amp;tl_period_type=1</em></small></p>
+:ET

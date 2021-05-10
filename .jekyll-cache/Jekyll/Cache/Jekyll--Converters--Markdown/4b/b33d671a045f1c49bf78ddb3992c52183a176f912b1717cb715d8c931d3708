@@ -1,0 +1,23 @@
+I"�<p>Merhaba. Ruby 2.4 yazılarına devam ediyoruz.</p>
+
+<p>Ruby’de nil value’e sahip bir key ile hash oluşturduğunuzda Ruby bu değeri hash’den kaldırıyor.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="nb">hash</span> <span class="o">=</span> <span class="p">{</span><span class="ss">:name</span><span class="o">=&gt;</span><span class="s2">"ender"</span><span class="p">,</span> <span class="ss">:age</span><span class="o">=&gt;</span><span class="kp">nil</span><span class="p">}</span>
+<span class="c1">#=&gt; {:name=&gt;"ender"}</span>
+</code></pre></div></div>
+
+<p>Active Support ile value’su nil olan key’leri dönmesini Hash#compact ile sağlayabiliyorsuz. Bu özellik artık Ruby 2.4 ile birlikte geliyor.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="nb">hash</span> <span class="o">=</span> <span class="p">{</span><span class="ss">:name</span><span class="o">=&gt;</span><span class="s2">"ender"</span><span class="p">,</span> <span class="ss">:age</span><span class="o">=&gt;</span><span class="kp">nil</span><span class="p">}</span>
+<span class="o">&gt;</span> <span class="nb">hash</span><span class="p">.</span><span class="nf">compact</span>
+<span class="c1">#=&gt; {:name=&gt;"ender", :age=&gt;nil}</span>
+</code></pre></div></div>
+
+<p>Sevgiler.</p>
+
+<p><small><em>Referans</em></small></p>
+
+<ul>
+  <li><a href="https://blog.bigbinary.com/2016/10/24/hash-compact-and-hash-compact-now-part-of-ruby-2-4.html">https://blog.bigbinary.com/2016/10/24/hash-compact-and-hash-compact-now-part-of-ruby-2-4.html</a></li>
+</ul>
+:ET

@@ -83,7 +83,6 @@
       <a class="sidebar-nav-item" href="https://github.com/enderahmetyurt">GitHub</a>
       <a class="sidebar-nav-item" href="https://twitter.com/eayurt">Twitter</a>
       <a class="sidebar-nav-item" href="https://www.linkedin.com/in/enderahmetyurt/">Linkedin</a>
-      <span class="sidebar-nav-item">Currently v1.1.0</span>
     </nav>
 
     <p>&copy; 2021. All rights reserved.</p>
@@ -100,8 +99,8 @@
 <p>Ruby’de bloklarını kullanmak için iki yöntemimiz var,</p>
 
 <ul>
-  <li><code class="highlighter-rouge">do</code> ve <code class="highlighter-rouge">end</code> arasına kodlarımızı yazmak.</li>
-  <li><code class="highlighter-rouge">{}</code> bu iki parantez arasına kodlarımızı yazmak.</li>
+  <li><code class="language-plaintext highlighter-rouge">do</code> ve <code class="language-plaintext highlighter-rouge">end</code> arasına kodlarımızı yazmak.</li>
+  <li><code class="language-plaintext highlighter-rouge">{}</code> bu iki parantez arasına kodlarımızı yazmak.</li>
 </ul>
 
 <p>Örnek vericek olursak,</p>
@@ -137,9 +136,9 @@
 </code></pre></div></div>
 <p><em>Örnek, Sıktı Bağdat’ın Ruby kitabından alınmıştır.</em></p>
 
-<p>Yukarıdaki örnekte <code class="highlighter-rouge">change</code> metotuna block’u parametre olarak gönderiyoruz. Ruby’de bir metota block’un parametre olarak geçtiğini belirtmek için <code class="highlighter-rouge">&amp;</code> kullanıyoruz. Metot içinde ise gönderilen block’u kullanmak için <code class="highlighter-rouge">call</code> metotunu çağırıyoruz.</p>
+<p>Yukarıdaki örnekte <code class="language-plaintext highlighter-rouge">change</code> metotuna block’u parametre olarak gönderiyoruz. Ruby’de bir metota block’un parametre olarak geçtiğini belirtmek için <code class="language-plaintext highlighter-rouge">&amp;</code> kullanıyoruz. Metot içinde ise gönderilen block’u kullanmak için <code class="language-plaintext highlighter-rouge">call</code> metotunu çağırıyoruz.</p>
 
-<p><code class="highlighter-rouge">yield</code> Ruby’de bir anahtar kelimedir ve kullanımı <code class="highlighter-rouge">block</code> gibidir. Ancak aralarında ufak farklılıklar vardır. Bunlardan biri yield’i çağırırken call metotunu çağırmaya ihtiyacımız yoktur. Ayrıca yield, block’a göre performans olarak daha iyidir.</p>
+<p><code class="language-plaintext highlighter-rouge">yield</code> Ruby’de bir anahtar kelimedir ve kullanımı <code class="language-plaintext highlighter-rouge">block</code> gibidir. Ancak aralarında ufak farklılıklar vardır. Bunlardan biri yield’i çağırırken call metotunu çağırmaya ihtiyacımız yoktur. Ayrıca yield, block’a göre performans olarak daha iyidir.</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">name</span>
   <span class="k">yield</span>
@@ -164,7 +163,7 @@
 </code></pre></div></div>
 <p><em>Örnek, Sıktı Bağdat’ın Ruby kitabından alınmıştır.</em></p>
 
-<p>Ruby’de block’ları birer nesne gibi kullanmak için <code class="highlighter-rouge">Proc</code> nesnesinden yararlanıyoruz. <code class="highlighter-rouge">proc = Proc.new {}</code> şeklinde çağırarak işlemlerimize başlıyoruz.</p>
+<p>Ruby’de block’ları birer nesne gibi kullanmak için <code class="language-plaintext highlighter-rouge">Proc</code> nesnesinden yararlanıyoruz. <code class="language-plaintext highlighter-rouge">proc = Proc.new {}</code> şeklinde çağırarak işlemlerimize başlıyoruz.</p>
 
 <p>Proc nesnesini çağırmak için block’larda olduğu gibi call metotununu kullanabiliriz.</p>
 
@@ -173,7 +172,7 @@
 <span class="o">=&gt;</span> Hello from Proc.
 </code></pre></div></div>
 
-<p><code class="highlighter-rouge">Lambda</code> Proc sınıfından türeyen bir nesnedir. Lambda’yı oluşturmak için Ruby’de genellikle <code class="highlighter-rouge">my_lambda = -&gt; {}</code> kullanılır. Bu kullanım Lambda nesnesi oluşturmamıza yarar.</p>
+<p><code class="language-plaintext highlighter-rouge">Lambda</code> Proc sınıfından türeyen bir nesnedir. Lambda’yı oluşturmak için Ruby’de genellikle <code class="language-plaintext highlighter-rouge">my_lambda = -&gt; {}</code> kullanılır. Bu kullanım Lambda nesnesi oluşturmamıza yarar.</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> mult  <span class="o">=</span> lambda <span class="o">{</span>|x,y| x <span class="k">*</span> y <span class="o">}</span>
 <span class="o">&gt;</span> mult.call<span class="o">(</span>2,3<span class="o">)</span>

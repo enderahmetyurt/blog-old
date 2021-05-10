@@ -1,0 +1,27 @@
+I"�<p>Merhaba! <a href="https://www.ruby-lang.org/en/news/2016/09/08/ruby-2-4-0-preview2-released/">Ruby 2.4 previewleri</a> bundan yakın bir zaman önce çıktı ve bir takım yenilikler ile birlikte geldiler.</p>
+
+<p>Kısa kısa Ruby 2.4 ile gelen yeniliklerden ve değişikliklerden bahsedelim. Bir Array’de ya da Hash’de elementleri toplamak yapmak için Active Support’da tanımlı olan <a href="https://github.com/rails/rails/blob/3d716b9e66e334c113c98fb3fc4bcf8a945b93a1/activesupport/lib/active_support/core_ext/enumerable.rb#L2-L27">Enumerable#sum</a>‘ı kullanıyoruz.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="o">[</span>1,2,3].sum
+<span class="c">#=&gt; 6</span>
+
+<span class="o">&gt;</span> <span class="o">[</span><span class="s1">'e'</span>, <span class="s1">'a'</span>, <span class="s1">'y'</span><span class="o">]</span>.sum
+<span class="c">#=&gt; "eay"</span>
+</code></pre></div></div>
+
+<p>Ancak bundan sonra bu metotu Ruby 2.4 birlikte Active Support’a ihtiyacımız kalmadan kullanabileceğiniz. Fakat sadece integer için geçerli olan bu metot Active Support’daki gibi string ya da karakteler için geçerli değil. Üzülmeyelim bu metota parametre geçilebildiği için eğer işimiz sayılar ile değilse,</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="o">[</span><span class="s1">'e'</span>, <span class="s1">'a'</span>, <span class="s1">'y'</span><span class="o">]</span>.sum<span class="o">(</span><span class="s1">''</span><span class="o">)</span>
+<span class="c">#=&gt; "eay"</span>
+</code></pre></div></div>
+
+<p>yaparak işimizi görebiliriz.</p>
+
+<p>Sevgiler.</p>
+
+<p><small><em>Referans</em></small></p>
+
+<ul>
+  <li><a href="https://blog.bigbinary.com/2016/11/02/ruby-2-4-introduces-enumerable-sum.html">https://blog.bigbinary.com/2016/11/02/ruby-2-4-introduces-enumerable-sum.html</a></li>
+</ul>
+:ET

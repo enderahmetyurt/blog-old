@@ -1,0 +1,97 @@
+I")<p>Merhaba, Ruby en son versiyonu olan 2.5 ile yeni yıla girmeden karşımıza çıktı. Bu versiyon ile ne gibi özellikler geldi kısaca bakalım.</p>
+
+<h3 id="beginende-gerek-kalmadı">Begin/End’e gerek kalmadı</h3>
+
+<p>Bu özellik ile artık <code class="language-plaintext highlighter-rouge">begin end</code> block’u yazmak zorunda kalmıyoruz.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 2.4</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">n</span><span class="o">|</span>
+  <span class="k">begin</span>
+    <span class="n">n</span> <span class="o">/</span> <span class="mi">0</span>
+  <span class="k">rescue</span>
+    <span class="nb">puts</span> <span class="s2">"rescue"</span>
+  <span class="k">else</span>
+    <span class="nb">puts</span> <span class="s2">"else"</span>
+  <span class="k">ensure</span>
+    <span class="nb">puts</span> <span class="s2">"ensure"</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="c1"># 2.5</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">n</span><span class="o">|</span>
+  <span class="n">n</span> <span class="o">/</span> <span class="mi">0</span>
+<span class="k">rescue</span>
+  <span class="nb">puts</span> <span class="s2">"rescue"</span>
+<span class="k">else</span>
+  <span class="nb">puts</span> <span class="s2">"else"</span>
+<span class="k">ensure</span>
+  <span class="nb">puts</span> <span class="s2">"ensure"</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<h3 id="backtrace-ve-error-messageın-sıralaması-değişti">Backtrace ve error message’ın sıralaması değişti</h3>
+<p>Hata masajları ve nerede hata olduğunu gösteren mesajlar artık tam tersi şekilde gelmeye başladı. Bu sanırım daha açıklayıcı olacak gibi geliyor bana. Sanırım bu özellikle 2.5 ile gelse bile daha çok deneysel bir özellik olduğu söyleniyor.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 2.4</span>
+<span class="o">&gt;</span> <span class="nb">puts</span> <span class="s2">"hello </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">"</span>
+
+<span class="c1"># NameError: undefined local variable or method `name' for main:Object</span>
+<span class="c1">#   from (irb):1</span>
+<span class="c1">#   from /Users/ender/.rvm/rubies/ruby-2.4.2/bin/irb:11:in `&lt;main&gt;'</span>
+
+<span class="c1"># 2.5</span>
+<span class="o">&gt;</span> <span class="nb">puts</span> <span class="s2">"hello </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">"</span>
+
+<span class="c1"># Traceback (most recent call last):</span>
+<span class="c1">#         2: from /Users/ender/.rvm/rubies/ruby-2.5.0/bin/irb:11:in `&lt;main&gt;'</span>
+<span class="c1">#         1: from (irb):1</span>
+<span class="c1"># NameError (undefined local variable or method `name' for main:Object)</span>
+
+</code></pre></div></div>
+
+<h3 id="stringdelete_prefixdelete_suffix">String#delete_prefix/delete_suffix</h3>
+
+<p>String sınıfı için iki yeni metot geldi. Gerekli bir metot mu bilemiyorum ama zaman zaman işe yarayabilir gibi duruyor.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="s2">"ender"</span><span class="p">.</span><span class="nf">delete_prefix</span><span class="p">(</span><span class="s1">'en'</span><span class="p">)</span>
+<span class="c1"># =&gt; "der"</span>
+<span class="o">&gt;</span> <span class="s2">"minder"</span><span class="p">.</span><span class="nf">delete_prefix</span><span class="p">(</span><span class="s1">'en'</span><span class="p">)</span>
+<span class="c1"># =&gt; "minder"</span>
+<span class="o">&gt;</span> <span class="s2">"ender"</span><span class="p">.</span><span class="nf">delete_suffix</span><span class="p">(</span><span class="s1">'er'</span><span class="p">)</span>
+<span class="c1"># =&gt; "end"</span>
+<span class="o">&gt;</span><span class="err"> </span><span class="s2">"deriz"</span><span class="p">.</span><span class="nf">delete_suffix</span><span class="p">(</span><span class="s1">'er'</span><span class="p">)</span>
+<span class="c1"># =&gt; "deriz"</span>
+</code></pre></div></div>
+
+<h3 id="bir-başka-alias-daha">Bir başka alias daha</h3>
+<p>unshift/push’un alias’ı prepend/append artık bizlerle.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="n">array</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="o">&gt;</span> <span class="n">array</span><span class="p">.</span><span class="nf">prepend</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="c1"># =&gt; [1, 2, 3, 4]</span>
+<span class="o">&gt;</span> <span class="n">array</span>               <span class="c1"># =&gt; [1, 2, 3, 4]</span>
+
+<span class="o">&gt;</span> <span class="n">array</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="o">&gt;</span> <span class="n">array</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>  <span class="c1"># =&gt; [1, 2, 3, 4]</span>
+<span class="o">&gt;</span> <span class="n">array</span>               <span class="c1"># =&gt; [1, 2, 3, 4]</span>
+</code></pre></div></div>
+
+<h3 id="hashtransform_keystransform_keys">Hash#transform_keys/transform_keys!</h3>
+<p>Hash’e yeni ve kullanışlı metotlar geldi. Bu metotlar aşağıdaki gibi çalışıyor.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="nb">hash</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">a: </span><span class="mi">1</span><span class="p">,</span> <span class="ss">b: </span><span class="mi">2</span> <span class="p">}</span>
+<span class="o">&gt;</span> <span class="nb">hash</span><span class="p">.</span><span class="nf">transform_keys</span> <span class="p">{</span> <span class="o">|</span><span class="n">k</span><span class="o">|</span> <span class="n">k</span><span class="p">.</span><span class="nf">to_s</span> <span class="p">}</span>
+<span class="c1"># =&gt; { 'a' =&gt; 1, 'b' =&gt; 2 }</span>
+
+<span class="o">&gt;</span> <span class="nb">hash</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">a: </span><span class="mi">1</span><span class="p">,</span> <span class="ss">b: </span><span class="mi">2</span> <span class="p">}</span>
+<span class="o">&gt;</span> <span class="nb">hash</span><span class="p">.</span><span class="nf">transform_keys!</span> <span class="p">{</span> <span class="o">|</span><span class="n">k</span><span class="o">|</span> <span class="n">k</span><span class="p">.</span><span class="nf">to_s</span> <span class="p">}</span>
+<span class="c1"># =&gt; { 'a' =&gt; 1, 'b' =&gt; 2 }</span>
+
+<span class="o">&gt;</span> <span class="nb">hash</span>
+<span class="c1"># =&gt; { 'a' =&gt; 1, 'b' =&gt; 2 }</span>
+</code></pre></div></div>
+
+<p>Tabiki bütün özellikler bunlarla sınırlı değil. Bütün detaylara buradan <a href="https://github.com/ruby/ruby/blob/v2_5_0_preview1/NEWS">ulaşabilirsiniz.</a></p>
+
+<p>Sevgiler.</p>
+
+:ET

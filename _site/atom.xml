@@ -2,10 +2,10 @@
 <feed xmlns="https://www.w3.org/2005/Atom">
 
  <title>Ender Ahmet Yurt</title>
- <link href="http://localhost:4000/atom.xml" rel="self"/>
- <link href="http://localhost:4000/"/>
- <updated>2021-04-25T15:56:52+03:00</updated>
- <id>http://localhost:4000</id>
+ <link href="enderahmetyurt.github.io/atom.xml" rel="self"/>
+ <link href="enderahmetyurt.github.io/"/>
+ <updated>2021-05-10T20:30:08+03:00</updated>
+ <id>enderahmetyurt.github.io</id>
  <author>
    <name>Ender Ahmet Yurt</name>
    <email>enderyurt@gmail.com</email>
@@ -14,9 +14,9 @@
  
  <entry>
    <title>Sorbet ile Static Typing</title>
-   <link href="http://localhost:4000/2020/11/17/sorbet-ile-static-typing.html"/>
+   <link href="enderahmetyurt.github.io/2020/11/17/sorbet-ile-static-typing.html"/>
    <updated>2020-11-17T14:41:00+03:00</updated>
-   <id>http://localhost:4000/2020/11/17/sorbet-ile-static-typing</id>
+   <id>enderahmetyurt.github.io/2020/11/17/sorbet-ile-static-typing</id>
    <content type="html">&lt;p&gt;Merhaba, Ruby her ne kadar süper sevimli bir dil olsa da dinamik bir dil olduğu için yazılan kodlarda ortaya çıkan hatalar ancak runtime’da kendini gösterebiliyor.&lt;/p&gt;
 
 &lt;p&gt;Ancak statik programlama dillerinde kodlarda ortaya çıkan hataları compile time’da alabiliyoruz. Bu duruma bir örnek vermek gerekirse Ruby’de&lt;/p&gt;
@@ -25,11 +25,11 @@
 &lt;span class=&quot;n&quot;&gt;animal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;greeting&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Yukarıdaki kod bize ancak code çalıştığı zaman &lt;code class=&quot;highlighter-rouge&quot;&gt;NoMethodError&lt;/code&gt; hatasını dönecektir. Ancak bu kodu Java gibi compile edilen bir dil ile yazsaydik, hatayı kod compile edildiği zaman alacaktık ve kod içindeki hatalari minimize etme şansımız olacaktı.&lt;/p&gt;
+&lt;p&gt;Yukarıdaki kod bize ancak code çalıştığı zaman &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NoMethodError&lt;/code&gt; hatasını dönecektir. Ancak bu kodu Java gibi compile edilen bir dil ile yazsaydik, hatayı kod compile edildiği zaman alacaktık ve kod içindeki hatalari minimize etme şansımız olacaktı.&lt;/p&gt;
 
 &lt;h2 id=&quot;sorbet&quot;&gt;Sorbet&lt;/h2&gt;
 
-&lt;p&gt;Ruby için geliştirilmiş ve kodunuzdaki method tanımlarını, method signature kontrolleri ve değişken tiplerinin kontrolünü yapan bir Ruby Gem’i. Özünde normal Ruby gibi kodumuzu yazıyoruz ancak Sorbet kullanmak istiyor ve type check yapmak istiyorsak ile Sorbet’in &lt;code class=&quot;highlighter-rouge&quot;&gt;T::Sig&lt;/code&gt; modulünü kullanarak kontrollerimizi yapabiliyoruz.&lt;/p&gt;
+&lt;p&gt;Ruby için geliştirilmiş ve kodunuzdaki method tanımlarını, method signature kontrolleri ve değişken tiplerinin kontrolünü yapan bir Ruby Gem’i. Özünde normal Ruby gibi kodumuzu yazıyoruz ancak Sorbet kullanmak istiyor ve type check yapmak istiyorsak ile Sorbet’in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;T::Sig&lt;/code&gt; modulünü kullanarak kontrollerimizi yapabiliyoruz.&lt;/p&gt;
 
 &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# typed: true&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'sorbet-runtime'&lt;/span&gt;
@@ -49,31 +49,31 @@
 &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;İlk olarak Sorbet’e statik tip kontrollerini ne şekilde raporlaması gerektiğini belirtmek gerekiyor. &lt;code class=&quot;highlighter-rouge&quot;&gt;# typed: true&lt;/code&gt; dediğimiz zaman normal type hatalarını raporla demek oluyor. Bu şekilde yapabileceğimiz tam beş adet level var. Bu tiplere ve detaylarına &lt;a href=&quot;https://sorbet.org/docs/static&quot;&gt;buradan&lt;/a&gt; ulaşabilirsiniz. &lt;code class=&quot;highlighter-rouge&quot;&gt;sorbet-runtime&lt;/code&gt;‘ı require ediyoruz çünku bu kod çalıştırıldığı zaman da hatayı bize döndürsün istiyoruz. Sonrasinda &lt;code class=&quot;highlighter-rouge&quot;&gt;A&lt;/code&gt; adında bir class’ımız var ve bu class’ın instance’ının bir &lt;code class=&quot;highlighter-rouge&quot;&gt;bar&lt;/code&gt; adında bir methodu var. Ruby’de methodlara verilen parametlerin tipi ve method’ların döndürdüğü değelerin tiplerinin pek önemi olmazken Sorbet ile bunlari &lt;code class=&quot;highlighter-rouge&quot;&gt;sig&lt;/code&gt; methodu ile belirleyebiliyoruz. &lt;code class=&quot;highlighter-rouge&quot;&gt;sig {params(x: Integer).returns(String)}&lt;/code&gt; ile bu method integer tipinde bir parametre alır ve String tipinde birşey döner diyoruz.&lt;/p&gt;
+&lt;p&gt;İlk olarak Sorbet’e statik tip kontrollerini ne şekilde raporlaması gerektiğini belirtmek gerekiyor. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# typed: true&lt;/code&gt; dediğimiz zaman normal type hatalarını raporla demek oluyor. Bu şekilde yapabileceğimiz tam beş adet level var. Bu tiplere ve detaylarına &lt;a href=&quot;https://sorbet.org/docs/static&quot;&gt;buradan&lt;/a&gt; ulaşabilirsiniz. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sorbet-runtime&lt;/code&gt;‘ı require ediyoruz çünku bu kod çalıştırıldığı zaman da hatayı bize döndürsün istiyoruz. Sonrasinda &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;A&lt;/code&gt; adında bir class’ımız var ve bu class’ın instance’ının bir &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bar&lt;/code&gt; adında bir methodu var. Ruby’de methodlara verilen parametlerin tipi ve method’ların döndürdüğü değelerin tiplerinin pek önemi olmazken Sorbet ile bunlari &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sig&lt;/code&gt; methodu ile belirleyebiliyoruz. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sig {params(x: Integer).returns(String)}&lt;/code&gt; ile bu method integer tipinde bir parametre alır ve String tipinde birşey döner diyoruz.&lt;/p&gt;
 
 &lt;p&gt;Siz de Sorbet’i hızlica denemek istiyorsaniz &lt;a href=&quot;https://sorbet.run/#%23%20typed%3A%20true%0Arequire%20'sorbet-runtime'%0A%0Aclass%20A%0A%20%20extend%20T%3A%3ASig%0A%0A%20%20sig%20%7Bparams(x%3A%20Integer).returns(String)%7D%0A%20%20def%20bar(x)%0A%20%20%20%20x.to_s%0A%20%20end%0Aend%0A%0Adef%20main%0A%20%20A.new.barr(91)%20%20%20%23%20error%3A%20Typo!%0A%20%20A.new.bar(%2291%22)%20%20%23%20error%3A%20Type%20mismatch!%0Aend&quot;&gt;buradan&lt;/a&gt; online Sorbet runtime aracını kullanabilirsiniz.&lt;/p&gt;
 
 &lt;h3 id=&quot;kurulum&quot;&gt;Kurulum&lt;/h3&gt;
 
-&lt;p&gt;Sorbet’i projelerimize eklemek için öncelikle &lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt; dosyamıza Sorbet ve Sorbet Runtime Gem’lerini eklememiz gerekiyor.&lt;/p&gt;
+&lt;p&gt;Sorbet’i projelerimize eklemek için öncelikle &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt; dosyamıza Sorbet ve Sorbet Runtime Gem’lerini eklememiz gerekiyor.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# -- Gemfile --
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# -- Gemfile --
 
 gem 'sorbet', :group =&amp;gt; :development
 gem 'sorbet-runtime'
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ bundle install&lt;/code&gt; ile Gem’leri indirdikten sonra artık Sorbet kullanmaya başlayabiliriz.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ bundle install&lt;/code&gt; ile Gem’leri indirdikten sonra artık Sorbet kullanmaya başlayabiliriz.&lt;/p&gt;
 
 &lt;h3 id=&quot;kullanım&quot;&gt;Kullanım&lt;/h3&gt;
 
-&lt;p&gt;Sorbet’i kullanacağımız projenin altinda &lt;code class=&quot;highlighter-rouge&quot;&gt;$ srb init&lt;/code&gt; diyerek Sorbet için gerekli olan dosyaları oluşturuyoruz. Bu dosyalar Sorbet tarafından otomatik oluşuyor. &lt;code class=&quot;highlighter-rouge&quot;&gt;sorbet&lt;/code&gt; klasörü altında &lt;code class=&quot;highlighter-rouge&quot;&gt;config&lt;/code&gt; dosyasi ve &lt;code class=&quot;highlighter-rouge&quot;&gt;rbi&lt;/code&gt; klasörü bulunuyor. &lt;code class=&quot;highlighter-rouge&quot;&gt;config&lt;/code&gt; dosyası içinde Sorbet için commandline ayarlarını yapabilirsiniz. Daha fazla detaya &lt;a href=&quot;https://sorbet.org/docs/cli&quot;&gt;buradan&lt;/a&gt; bakabilirsiniz. &lt;code class=&quot;highlighter-rouge&quot;&gt;rbi&lt;/code&gt; klasörü içinde ise Sorbet içinde bulunmayan sizin kendi class, module ve diğer nesne tanımlarınızı yapabilir, Sorbet’te bunları kullanabilirsiniz. Sorbet ile gelen RBI dosyalarına &lt;a href=&quot;buradan&quot;&gt;buradan&lt;/a&gt; ulaşabilirsiniz.&lt;/p&gt;
+&lt;p&gt;Sorbet’i kullanacağımız projenin altinda &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ srb init&lt;/code&gt; diyerek Sorbet için gerekli olan dosyaları oluşturuyoruz. Bu dosyalar Sorbet tarafından otomatik oluşuyor. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sorbet&lt;/code&gt; klasörü altında &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;config&lt;/code&gt; dosyasi ve &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rbi&lt;/code&gt; klasörü bulunuyor. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;config&lt;/code&gt; dosyası içinde Sorbet için commandline ayarlarını yapabilirsiniz. Daha fazla detaya &lt;a href=&quot;https://sorbet.org/docs/cli&quot;&gt;buradan&lt;/a&gt; bakabilirsiniz. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rbi&lt;/code&gt; klasörü içinde ise Sorbet içinde bulunmayan sizin kendi class, module ve diğer nesne tanımlarınızı yapabilir, Sorbet’te bunları kullanabilirsiniz. Sorbet ile gelen RBI dosyalarına &lt;a href=&quot;buradan&quot;&gt;buradan&lt;/a&gt; ulaşabilirsiniz.&lt;/p&gt;
 
-&lt;p&gt;Kendi yazdığımız Ruby kodlarındaki type check’leri yapmak için ise, &lt;code class=&quot;highlighter-rouge&quot;&gt;$ srb tc&lt;/code&gt; komudunu çalıştırarak yapabiliriz.&lt;/p&gt;
+&lt;p&gt;Kendi yazdığımız Ruby kodlarındaki type check’leri yapmak için ise, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ srb tc&lt;/code&gt; komudunu çalıştırarak yapabiliriz.&lt;/p&gt;
 
 &lt;h3 id=&quot;örnek&quot;&gt;Örnek&lt;/h3&gt;
 
-&lt;p&gt;Ben daha önceden yazmış olduğum Ruby Gem’ime Sorbet’i ekledim. Bu &lt;a href=&quot;https://github.com/enderahmetyurt/bilisim_sozlugu/commit/6854a4a607461073b2dc69569b70deeee040c0ec&quot;&gt;commit&lt;/a&gt;‘te görüldüğü gibi &lt;code class=&quot;highlighter-rouge&quot;&gt;search&lt;/code&gt; methoduna &lt;code class=&quot;highlighter-rouge&quot;&gt;sig {params(word: String).void}&lt;/code&gt; ekledim. Bu method konsola birşeyler bastığı için &lt;code class=&quot;highlighter-rouge&quot;&gt;nil&lt;/code&gt; dönüyordu ve &lt;code class=&quot;highlighter-rouge&quot;&gt;void&lt;/code&gt; ile aslında bu method’un birşey dönmediğini belirttim. Ayrıca lokal değişkenlere de tipler tanımladım. Mesela &lt;code class=&quot;highlighter-rouge&quot;&gt;CSS_SELECTOR&lt;/code&gt; için sadece String olabilir demek istedim ve &lt;code class=&quot;highlighter-rouge&quot;&gt;CSS_SELECTOR = T.let(&quot;table tbody tr&quot;.freeze, String)&lt;/code&gt; bu şekilde yazarak bu değişken sadece String kabul etmelidir dedim. Kodun diğer yerlerinde eğer bu değişkeni String dışında bir tipe eşitlersem Sorbet bana hata dönecek. Sizler de bu kodu düzeltmek isterseniz PR’larınızı memnuniyet ile bekliyorum.&lt;/p&gt;
+&lt;p&gt;Ben daha önceden yazmış olduğum Ruby Gem’ime Sorbet’i ekledim. Bu &lt;a href=&quot;https://github.com/enderahmetyurt/bilisim_sozlugu/commit/6854a4a607461073b2dc69569b70deeee040c0ec&quot;&gt;commit&lt;/a&gt;‘te görüldüğü gibi &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;search&lt;/code&gt; methoduna &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sig {params(word: String).void}&lt;/code&gt; ekledim. Bu method konsola birşeyler bastığı için &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nil&lt;/code&gt; dönüyordu ve &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;void&lt;/code&gt; ile aslında bu method’un birşey dönmediğini belirttim. Ayrıca lokal değişkenlere de tipler tanımladım. Mesela &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CSS_SELECTOR&lt;/code&gt; için sadece String olabilir demek istedim ve &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CSS_SELECTOR = T.let(&quot;table tbody tr&quot;.freeze, String)&lt;/code&gt; bu şekilde yazarak bu değişken sadece String kabul etmelidir dedim. Kodun diğer yerlerinde eğer bu değişkeni String dışında bir tipe eşitlersem Sorbet bana hata dönecek. Sizler de bu kodu düzeltmek isterseniz PR’larınızı memnuniyet ile bekliyorum.&lt;/p&gt;
 
 &lt;h3 id=&quot;sonuç&quot;&gt;Sonuç&lt;/h3&gt;
 
@@ -95,9 +95,9 @@ gem 'sorbet-runtime'
  
  <entry>
    <title>Ruby 3 ile Gelebilecek Özellikler</title>
-   <link href="http://localhost:4000/2020/09/29/ruby-3-ile-gelebilecek-%C3%B6zellikler.html"/>
+   <link href="enderahmetyurt.github.io/2020/09/29/ruby-3-ile-gelebilecek-%C3%B6zellikler.html"/>
    <updated>2020-09-29T14:03:00+03:00</updated>
-   <id>http://localhost:4000/2020/09/29/ruby-3-ile-gelebilecek-özellikler</id>
+   <id>enderahmetyurt.github.io/2020/09/29/ruby-3-ile-gelebilecek-özellikler</id>
    <content type="html">&lt;p&gt;Merhaba, Ruby 3 2020 Aralık ayında yayına çıkmış olacak. Güzel özelliklerle geliyor olsa da bu özelliklerden hangilerinin hala Ruby 3 içerisinde olup olmayacağı tartışma konusu.&lt;/p&gt;
 
 &lt;p&gt;Deneysel özelliklerin bir kısmı Ruby 2.7 ile bizlerin kullanılımına sunuluyor ve deneme, test etme şansı buluyoruz. Bu yazıda Ruby 3’de görmemiz muhtemelen birkaçından bahsedeceğim.&lt;/p&gt;
@@ -117,11 +117,11 @@ gem 'sorbet-runtime'
 
 &lt;h2 id=&quot;ractor&quot;&gt;Ractor&lt;/h2&gt;
 
-&lt;p&gt;Eski adı Guild olan bir özellikte çalışan Koichi Sasada Matz’ın da önerisi ile adını Ractor’a çevirdi. Mantığının ise &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;Ractor,&quot; Ruby's Actor-like feature (not an exact Actor-model)&lt;/code&gt; geldiğini söylüyor. Konu aslında MRI Ruby’nin kodu parallel çalıştırmasına izin vermemesinden geliyor. Guild yani yeni ismi ile Ractor, Ruby için yeni bir concurrency modeli öneriyor. Burada asıl amaç Ruby 3 ile bu modeli kurarken Ruby 2 ile uyumluluğu korumak ve parallel çalışabilecek parçaları ve objeleri hızlı bir şekilde paylaşımına izin vermek. Ruby’deki yaygın concurrency problemlerden biri thread’lerin race condition’lar oluşturup, oluşturmadığından emin olmaktır. Ruby’deki &lt;code class=&quot;highlighter-rouge&quot;&gt;Thread::Mutex&lt;/code&gt; ile bunun önüne geçebilirsiniz fakat bu sefer de paralelliği ortadan kaldırmış ya da yavaşlatmış olursunuz.&lt;/p&gt;
+&lt;p&gt;Eski adı Guild olan bir özellikte çalışan Koichi Sasada Matz’ın da önerisi ile adını Ractor’a çevirdi. Mantığının ise &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&quot;Ractor,&quot; Ruby's Actor-like feature (not an exact Actor-model)&lt;/code&gt; geldiğini söylüyor. Konu aslında MRI Ruby’nin kodu parallel çalıştırmasına izin vermemesinden geliyor. Guild yani yeni ismi ile Ractor, Ruby için yeni bir concurrency modeli öneriyor. Burada asıl amaç Ruby 3 ile bu modeli kurarken Ruby 2 ile uyumluluğu korumak ve parallel çalışabilecek parçaları ve objeleri hızlı bir şekilde paylaşımına izin vermek. Ruby’deki yaygın concurrency problemlerden biri thread’lerin race condition’lar oluşturup, oluşturmadığından emin olmaktır. Ruby’deki &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Thread::Mutex&lt;/code&gt; ile bunun önüne geçebilirsiniz fakat bu sefer de paralelliği ortadan kaldırmış ya da yavaşlatmış olursunuz.&lt;/p&gt;
 
 &lt;p&gt;Ruby’de Thread ve Fiber olmak üzere iki tane sınıf var. Thread’ler işletim sistemi seviyesinde kodun parallel çalışmasını sağlarken, Fiber ise parallel çalışacak kodların manuel olarak planlamasının yapılmasına izin verir. Guild’ı ise bu ikisinin birlikte uygulanması ile ortaya çıkar. Şöyle diyebiliriz; Bir Guild içerisinde en az bir Thread ve onun da içerisinde en az bir Fiber bulunur. Guild içerisindeki Thread’ler paralel çalışamazken, farklı Guild’dekiler çalışabilir.&lt;/p&gt;
 
-&lt;p&gt;Bir Guild’deki mutable bir obje başka bir Guild’den obje tarafından okunamaz ya da değiştirilemez. Bu sebeple Guild’lerin parallel çalışması sağlanır. &lt;code class=&quot;highlighter-rouge&quot;&gt;Guild::Channel&lt;/code&gt; ile bunu yapmak da mümkündür. Bu yöntem ile bir obje diğer Guild’de kopyalanır ve ilgili Guild’e gönderilir.&lt;/p&gt;
+&lt;p&gt;Bir Guild’deki mutable bir obje başka bir Guild’den obje tarafından okunamaz ya da değiştirilemez. Bu sebeple Guild’lerin parallel çalışması sağlanır. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Guild::Channel&lt;/code&gt; ile bunu yapmak da mümkündür. Bu yöntem ile bir obje diğer Guild’de kopyalanır ve ilgili Guild’e gönderilir.&lt;/p&gt;
 
 &lt;p&gt;Ractor (Guild) ile alakalı daha fazla bilgiye ve örneğe buradan ulaşabilirsiniz. &lt;a href=&quot;https://github.com/ko1/ruby/blob/ractor_parallel/doc/ractor.md&quot;&gt;https://github.com/ko1/ruby/blob/ractor_parallel/doc/ractor.md&lt;/a&gt;&lt;/p&gt;
 
@@ -133,7 +133,7 @@ gem 'sorbet-runtime'
 
 &lt;p&gt;JIT’in avantajı kadar yanında getirdiği ve muhtemelen geliştirilecek bir takım dezavantajları da var. Bunlardan biri memory kullanımı diğeri ise warmup süresinin uzunluğu.&lt;/p&gt;
 
-&lt;p&gt;Bildiğim kadarı ile JIT şuan Ruby 2.6’da var ve &lt;code class=&quot;highlighter-rouge&quot;&gt;-jit&lt;/code&gt; flag’i ile kullanılabiliyor. Ruby on Rails gibi büyük gem’lerde henüz kullanılmıyor diye biliyorum ancak daha küçük işler için tercih edilebilir.&lt;/p&gt;
+&lt;p&gt;Bildiğim kadarı ile JIT şuan Ruby 2.6’da var ve &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-jit&lt;/code&gt; flag’i ile kullanılabiliyor. Ruby on Rails gibi büyük gem’lerde henüz kullanılmıyor diye biliyorum ancak daha küçük işler için tercih edilebilir.&lt;/p&gt;
 
 &lt;p&gt;JIT konusu hakkında çalışan Takashi Kokubun, Ruby Rouges podcast’ine konuk olmuş. Daha fazla detayı &lt;a href=&quot;https://devchat.tv/ruby-rogues/rr-470-performance-improvement-of-ruby-3-0-jit-with-takashi-kokubun/&quot;&gt;buradan&lt;/a&gt; dinleyebilirsiniz.&lt;/p&gt;
 
@@ -160,7 +160,7 @@ gem 'sorbet-runtime'
 &lt;span class=&quot;n&quot;&gt;surname&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#=&amp;gt; &quot;bar&quot;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;ancak eşitliğin iki tarafındaki pattern ayni olmadığı vakit sorun çıkacaktır. Örneğin &lt;code class=&quot;highlighter-rouge&quot;&gt;[name, surname, 30] = [:foo, &quot;bar&quot;, 20]&lt;/code&gt; bu şekilde yaparsak hata alacağız.&lt;/p&gt;
+&lt;p&gt;ancak eşitliğin iki tarafındaki pattern ayni olmadığı vakit sorun çıkacaktır. Örneğin &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[name, surname, 30] = [:foo, &quot;bar&quot;, 20]&lt;/code&gt; bu şekilde yaparsak hata alacağız.&lt;/p&gt;
 
 &lt;p&gt;Pattern Matching işimize daha çok if veya when statement’larda işimize yarayacak gibi duruyor. Daha fazlası Hash’lerde ve Array’lerde de bu özellik çokça kullanılabilir. Ancak tehlikeli olan şu ki yeni syntax biraz kafa karıştırıcı ve alışması zor olabilir. Bazı karışık condition’lar için yararlı gibi duruyor ancak kullanımı o kadar kolay olduğunu söyleyemem.&lt;/p&gt;
 
@@ -180,7 +180,7 @@ gem 'sorbet-runtime'
 &lt;span class=&quot;n&quot;&gt;full_name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;surname&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;aslında burada yapılmak istenden &lt;code class=&quot;highlighter-rouge&quot;&gt;name, surname = full_name&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;aslında burada yapılmak istenden &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;name, surname = full_name&lt;/code&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;sonuç&quot;&gt;Sonuç&lt;/h3&gt;
 
@@ -205,9 +205,9 @@ gem 'sorbet-runtime'
  
  <entry>
    <title>Ruby on Rails'da çoklu veritabanı</title>
-   <link href="http://localhost:4000/2019/06/22/ruby-on-rails-da-%C3%A7oklu-veritaban%C4%B1.html"/>
+   <link href="enderahmetyurt.github.io/2019/06/22/ruby-on-rails-da-%C3%A7oklu-veritaban%C4%B1.html"/>
    <updated>2019-06-22T20:01:00+03:00</updated>
-   <id>http://localhost:4000/2019/06/22/ruby-on-rails-da-çoklu-veritabanı</id>
+   <id>enderahmetyurt.github.io/2019/06/22/ruby-on-rails-da-çoklu-veritabanı</id>
    <content type="html">&lt;p&gt;Merhaba. Ruby on Rails’ın son versiyonu olan 6. versiyonu ile gelen &lt;a href=&quot;https://edgeguides.rubyonrails.org/active_record_multiple_databases.html&quot;&gt;&lt;strong&gt;multiple database&lt;/strong&gt;&lt;/a&gt; özelliği ile artık çoklu veritabanı yönetimi yapılabiliyor.&lt;/p&gt;
 
 &lt;p&gt;Bu durumun birçok anlamı var;&lt;/p&gt;
@@ -220,7 +220,7 @@ gem 'sorbet-runtime'
 
 &lt;p&gt;Bunların yanında ise henüz desteklenmeyen özellikler arasında ise &lt;strong&gt;sharding&lt;/strong&gt; ve replikalar arası &lt;strong&gt;load balancing&lt;/strong&gt; başta geliyor.&lt;/p&gt;
 
-&lt;p&gt;Çoklu veritabanı için ayarları yapmak Rails 6’da çok kolay. Daha önce Ruby on Rails kullananlar bilecektir ki veritabanı ayar dosyası &lt;code class=&quot;highlighter-rouge&quot;&gt;config/database.yml&lt;/code&gt;‘da tutulur. Bu dosya üzerinde yeni bir takım eklemeler ile uygulamanız için çoklu veritabanlarını tanımlayabilirsiniz.&lt;/p&gt;
+&lt;p&gt;Çoklu veritabanı için ayarları yapmak Rails 6’da çok kolay. Daha önce Ruby on Rails kullananlar bilecektir ki veritabanı ayar dosyası &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;config/database.yml&lt;/code&gt;‘da tutulur. Bu dosya üzerinde yeni bir takım eklemeler ile uygulamanız için çoklu veritabanlarını tanımlayabilirsiniz.&lt;/p&gt;
 
 &lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;production&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
   &lt;span class=&quot;na&quot;&gt;primary&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
@@ -244,14 +244,14 @@ gem 'sorbet-runtime'
     &lt;span class=&quot;na&quot;&gt;replica&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Bu noktada birkaç konuya değinmek ve dikkat etmek gerekiyor. Öncelikle bir veritabanı eğer replika bir veritabanı ise &lt;code class=&quot;highlighter-rouge&quot;&gt;replica: true&lt;/code&gt; yazmak gerekiyor. Bunun yanında replika veritabanlarının adlarının aynı olması şart değil ancak aynı veri üzerinden çalışmalar olacağı için adlarının aynı olmasının faydası var.&lt;/p&gt;
+&lt;p&gt;Bu noktada birkaç konuya değinmek ve dikkat etmek gerekiyor. Öncelikle bir veritabanı eğer replika bir veritabanı ise &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;replica: true&lt;/code&gt; yazmak gerekiyor. Bunun yanında replika veritabanlarının adlarının aynı olması şart değil ancak aynı veri üzerinden çalışmalar olacağı için adlarının aynı olmasının faydası var.&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;migration_paths&lt;/code&gt; Rails’da veritabanı &lt;strong&gt;migration&lt;/strong&gt;‘larının yerini söylemek için belirtmemiz gerekiyor. &lt;code class=&quot;highlighter-rouge&quot;&gt;cities &lt;/code&gt; veritabanı bir
-&lt;strong&gt;migration&lt;/strong&gt; çalıştırmak istersek &lt;code class=&quot;highlighter-rouge&quot;&gt;--database&lt;/code&gt; opsiyonu ile hangi dosyada çalışmaların olacağını belirtebiliyoruz.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;migration_paths&lt;/code&gt; Rails’da veritabanı &lt;strong&gt;migration&lt;/strong&gt;‘larının yerini söylemek için belirtmemiz gerekiyor. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cities &lt;/code&gt; veritabanı bir
+&lt;strong&gt;migration&lt;/strong&gt; çalıştırmak istersek &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--database&lt;/code&gt; opsiyonu ile hangi dosyada çalışmaların olacağını belirtebiliyoruz.&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
-$ rails g migration CreateTowns name:string --database cities
-&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;`
+$ rails g migration CreateTowns name:string –database cities
+`&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Model&lt;/strong&gt; seviyesinde ise birkaç ayara ihtiyac duyuyoruz. Burada önemli olan hangi veritabanlarının ne görevler yapacağı.&lt;/p&gt;
 
@@ -271,7 +271,7 @@ $ rails g migration CreateTowns name:string --database cities
 &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;rails -T&lt;/code&gt; komutu ile de bütün &lt;strong&gt;task&lt;/strong&gt;‘ları görebilirsiniz. Hangi veritabanında çalışma yapmak istiyorsanız, adını sona ekleyerek yapabilirsiniz. &lt;code class=&quot;highlighter-rouge&quot;&gt;rails db:migrate:status:cities&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rails -T&lt;/code&gt; komutu ile de bütün &lt;strong&gt;task&lt;/strong&gt;‘ları görebilirsiniz. Hangi veritabanında çalışma yapmak istiyorsanız, adını sona ekleyerek yapabilirsiniz. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rails db:migrate:status:cities&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;Ruby on Rails ile çoklu veritabanı kullanımı henüz RC versiyonda olasa da projelerde kullanılabilir durumda. Github ekibi tarafından geliştirilen ve şu an kullanılan bu özellik Ruby on Rails’ın gücünü daha da artıracak gibi duruyor.&lt;/p&gt;
 
@@ -286,9 +286,9 @@ $ rails g migration CreateTowns name:string --database cities
  
  <entry>
    <title>Ruby on AWS Lambda</title>
-   <link href="http://localhost:4000/2018/12/19/ruby-on-aws-lambda.html"/>
+   <link href="enderahmetyurt.github.io/2018/12/19/ruby-on-aws-lambda.html"/>
    <updated>2018-12-19T00:00:00+03:00</updated>
-   <id>http://localhost:4000/2018/12/19/ruby-on-aws-lambda</id>
+   <id>enderahmetyurt.github.io/2018/12/19/ruby-on-aws-lambda</id>
    <content type="html">&lt;p&gt;Merhaba. Yakın zamanda duyurulan Aws Lambda’dan bahsetmek istiyorum.&lt;/p&gt;
 
 &lt;p&gt;Aws Ruby SDK’sı Aws üzerinde işlemler yapmamıza yarıyor. Bu SDK ile Amazon’un Amazon EC2, S3, SQS, SNS gibi servislerini kullanabiliyoruz. Yeni gelişmeler ile Amazon Lambda servisini de artık kullanabilir oluyoruz. Bu geliştirme ile artık Lambda fonksiyonları Ruby gibi kullanabilir ve AWS üzerinde çalıştırabiliriz. Bu girişten sonra küçük bir örnek yapalım.&lt;/p&gt;
@@ -296,18 +296,18 @@ $ rails g migration CreateTowns name:string --database cities
 &lt;p&gt;Öncelikle &lt;a href=&quot;https://console.aws.amazon.com/lambda/home&quot;&gt;Lambda Console&lt;/a&gt;‘u açmak gerekiyor. Bu sayfada sırasıyla yapmamız gerekenler,&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Create function&lt;/code&gt;‘a tıklıyoruz.&lt;/li&gt;
-  &lt;li&gt;Küçük bir örnek yapabilmek için &lt;code class=&quot;highlighter-rouge&quot;&gt;Author from scratch&lt;/code&gt;‘i seçiyoruz.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Create function&lt;/code&gt;‘a tıklıyoruz.&lt;/li&gt;
+  &lt;li&gt;Küçük bir örnek yapabilmek için &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Author from scratch&lt;/code&gt;‘i seçiyoruz.&lt;/li&gt;
   &lt;li&gt;Function’ımıza kolay bir isim verdikten sonra, Ruby versiyonunu seçiyoruz.&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Role&lt;/code&gt; için ise &lt;code class=&quot;highlighter-rouge&quot;&gt;Create a new role from one or more templates.&lt;/code&gt; diyip, &lt;code class=&quot;highlighter-rouge&quot;&gt;Role&lt;/code&gt; kısmına bir rol adı yazıyoruz.&lt;/li&gt;
-  &lt;li&gt;Sonrasında alttaki &lt;code class=&quot;highlighter-rouge&quot;&gt;Create function&lt;/code&gt;‘a basıp Lambda function’ımınızın oluşturulduğunu görüyoruz.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Role&lt;/code&gt; için ise &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Create a new role from one or more templates.&lt;/code&gt; diyip, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Role&lt;/code&gt; kısmına bir rol adı yazıyoruz.&lt;/li&gt;
+  &lt;li&gt;Sonrasında alttaki &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Create function&lt;/code&gt;‘a basıp Lambda function’ımınızın oluşturulduğunu görüyoruz.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;div style=&quot;display: flex; justify-content: center;&quot;&gt;&lt;img src=&quot;/assets/img/aws1.png&quot; /&gt;&lt;/div&gt;
 
-&lt;p&gt;Lambda function’ı create edildikten sonraki açılan ekrandan her türlü kod düzenlemesini yapabilir, diğer servisler ile function’ı bağlayabilir ve servis ayarlarınızı yapabilirsiniz. Diğer tab yani &lt;code class=&quot;highlighter-rouge&quot;&gt;Monitoring&lt;/code&gt; tab’ınıdan ise function’ının kullanımı ile alakalı sayıları alabilir, log servislerini kullanabilirsiniz.&lt;/p&gt;
+&lt;p&gt;Lambda function’ı create edildikten sonraki açılan ekrandan her türlü kod düzenlemesini yapabilir, diğer servisler ile function’ı bağlayabilir ve servis ayarlarınızı yapabilirsiniz. Diğer tab yani &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Monitoring&lt;/code&gt; tab’ınıdan ise function’ının kullanımı ile alakalı sayıları alabilir, log servislerini kullanabilirsiniz.&lt;/p&gt;
 
-&lt;p&gt;Alt tarafa code editor göreceksiniz. Burada lambda function’ımızı düzeltebiliriz. Gördüğümüz kod ise basit bir JSON önden lambda_handler isimli bir function. Bu kodu çalıştırmak için yapmamız gereken &lt;code class=&quot;highlighter-rouge&quot;&gt;Test&lt;/code&gt;‘e basıp, bir test event’i set edebilmek. Şimdilik biz bu alanı &lt;code class=&quot;highlighter-rouge&quot;&gt;{}&lt;/code&gt; şeklinde tanımlıyoruz ve bir &lt;code class=&quot;highlighter-rouge&quot;&gt;Event name&lt;/code&gt; verip, create ediyoruz. Sonrasında tekrar &lt;code class=&quot;highlighter-rouge&quot;&gt;Test&lt;/code&gt; dediğimizde, Ruby Lamba Function’nın çalıştığını görebiliyoruz.&lt;/p&gt;
+&lt;p&gt;Alt tarafa code editor göreceksiniz. Burada lambda function’ımızı düzeltebiliriz. Gördüğümüz kod ise basit bir JSON önden lambda_handler isimli bir function. Bu kodu çalıştırmak için yapmamız gereken &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Test&lt;/code&gt;‘e basıp, bir test event’i set edebilmek. Şimdilik biz bu alanı &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{}&lt;/code&gt; şeklinde tanımlıyoruz ve bir &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Event name&lt;/code&gt; verip, create ediyoruz. Sonrasında tekrar &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Test&lt;/code&gt; dediğimizde, Ruby Lamba Function’nın çalıştığını görebiliyoruz.&lt;/p&gt;
 
 &lt;div style=&quot;display: flex; justify-content: center;&quot;&gt;&lt;img src=&quot;/assets/img/aws2.png&quot; /&gt;&lt;/div&gt;
 
@@ -317,9 +317,9 @@ $ rails g migration CreateTowns name:string --database cities
  
  <entry>
    <title>Ruby State Design Pattern</title>
-   <link href="http://localhost:4000/2018/12/04/ruby-state-design-pattern.html"/>
+   <link href="enderahmetyurt.github.io/2018/12/04/ruby-state-design-pattern.html"/>
    <updated>2018-12-04T00:00:00+03:00</updated>
-   <id>http://localhost:4000/2018/12/04/ruby-state-design-pattern</id>
+   <id>enderahmetyurt.github.io/2018/12/04/ruby-state-design-pattern</id>
    <content type="html">&lt;p&gt;Merhaba. Bugün &lt;strong&gt;State Design Pattern&lt;/strong&gt;‘ın Ruby’deki kullanımından bahsetmek istiyorum.&lt;/p&gt;
 
 &lt;p&gt;State design pattern, behavior pattern altında tanımlanır. Bu pattern’da bir nesnenin farklı durumlarda farklı şekillerde çalışmasını düzenlenir. Yani bir nesnenin durumu değiştiğinde o nesnenin çalışma şekli değişir. Bu duruma en güzel örnek trafik ışıklarını verebiliriz. Görme engelliler için trafik ışıklarını düşünün, kırmızı, sarı ve yeşil yandığında, durun, bekleyin ve geçin diyor. Işıklar arası geçişlerde ise birkaç saniye boşluk vererek, diğer ışığa geçiyor. Bu durumda ışıkların state’leri değişiyor ve yapacakları eylemler de state’lere göre belli oluyor.&lt;/p&gt;
@@ -432,15 +432,15 @@ $ rails g migration CreateTowns name:string --database cities
  
  <entry>
    <title>Ruby 2.6 ile Gelenler</title>
-   <link href="http://localhost:4000/2018/11/28/ruby-2-6-ile-gelenler.html"/>
+   <link href="enderahmetyurt.github.io/2018/11/28/ruby-2-6-ile-gelenler.html"/>
    <updated>2018-11-28T00:00:00+03:00</updated>
-   <id>http://localhost:4000/2018/11/28/ruby-2-6-ile-gelenler</id>
+   <id>enderahmetyurt.github.io/2018/11/28/ruby-2-6-ile-gelenler</id>
    <content type="html">&lt;p&gt;Merhaba, Ruby’nin yeni versiyonu 2.6 25 Aralık 2018’de yayınlanacak. Öncesinde preview’dan yeni gelen özelliklerin bazılarına yakından bakalım.&lt;/p&gt;
 
 &lt;h3 id=&quot;arrayunion--arraydifference&quot;&gt;Array#union &amp;amp; Array#difference&lt;/h3&gt;
 &lt;p&gt;Array class’ına gelen iki metot ile iki array arasındaki farkı görebilir ve onları birleştirebiliriz.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[1,2,3,4,5].difference([3])
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[1,2,3,4,5].difference([3])
 =&amp;gt; # [1, 2, 4, 5]
 [1,2,3,4,5].union([5,6,7])
 =&amp;gt; # [1, 2, 3, 4, 5, 6, 7]
@@ -449,24 +449,24 @@ $ rails g migration CreateTowns name:string --database cities
 &lt;h3 id=&quot;endless-ranges&quot;&gt;Endless Ranges&lt;/h3&gt;
 &lt;p&gt;Diğer versiyonların aksine 2.6 ile birlikte endless range’in yazımı değişti. Artık yeni endless range aşağıdaki gibi olacak.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;(1..)
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;(1..)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;enumerablearithmethicsequence&quot;&gt;Enumerable::ArithmethicSequence&lt;/h3&gt;
-&lt;p&gt;Artık iki yeni ArithmethicSequence metodumuz var. Bunlar  &lt;code class=&quot;highlighter-rouge&quot;&gt;Range#step&lt;/code&gt; ve &lt;code class=&quot;highlighter-rouge&quot;&gt;Numeric#step&lt;/code&gt; örnekleyecek olursak;&lt;/p&gt;
+&lt;p&gt;Artık iki yeni ArithmethicSequence metodumuz var. Bunlar  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Range#step&lt;/code&gt; ve &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Numeric#step&lt;/code&gt; örnekleyecek olursak;&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;(1..10).step(2) == (1..10).step(2)
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;(1..10).step(2) == (1..10).step(2)
 =&amp;gt; # false - Ruby 2.5 (and older)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;(1..10).step(2) == (1..10).step(2)
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;(1..10).step(2) == (1..10).step(2)
 =&amp;gt; # true - Ruby 2.6
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;merge-hash-with-multiple-arguments&quot;&gt;Merge Hash With Multiple Arguments&lt;/h3&gt;
-&lt;p&gt;Hash’leri merge etmek için artık peş peşe &lt;code class=&quot;highlighter-rouge&quot;&gt;merge&lt;/code&gt; yazmaya gerek yok.&lt;/p&gt;
+&lt;p&gt;Hash’leri merge etmek için artık peş peşe &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;merge&lt;/code&gt; yazmaya gerek yok.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;a = { a: 1 }
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;a = { a: 1 }
 b = { b: 2 }
 c = { c: 3 }
 a.merge(b, c)
@@ -479,31 +479,31 @@ a.merge(b, c)
  
  <entry>
    <title>Gmail Eklenti Örneği</title>
-   <link href="http://localhost:4000/2018/01/23/gmail-eklenti-%C3%96rne%C4%9Fi.html"/>
+   <link href="enderahmetyurt.github.io/2018/01/23/gmail-eklenti-%C3%96rne%C4%9Fi.html"/>
    <updated>2018-01-23T11:52:00+03:00</updated>
-   <id>http://localhost:4000/2018/01/23/gmail-eklenti-Örneği</id>
+   <id>enderahmetyurt.github.io/2018/01/23/gmail-eklenti-Örneği</id>
    <content type="html">&lt;p&gt;Merhaba. Daha önce &lt;a href=&quot;https://enderahmetyurt.com/2018/01/09/gmail-e-eklenti-yazmak.html&quot;&gt;Gmail add-on&lt;/a&gt; nedir? Bu konudan biraz bahsetmiştim. Şimdi ise küçük bir uygulama ile giriş yapıp daha pratik birşeyler göstermek istiyorum.&lt;/p&gt;
 
-&lt;p&gt;Öncelikle ihtiyacımız olan add-on’u yazmak için gerekli olan bir ortam. Google bize bu ortamı &lt;a href=&quot;https://script.google.com/&quot;&gt;https://script.google.com/&lt;/a&gt; ile veriyor. Sonrasında ise uygulamanın ayarlarının ve kütüphanelerinin bağımlılıklarının bulunduğu &lt;code class=&quot;highlighter-rouge&quot;&gt;manifest&lt;/code&gt; dosyasını tanımlamak gerekiyor. Son olarak ise kodu yani &lt;code class=&quot;highlighter-rouge&quot;&gt;CardService&lt;/code&gt;‘i yazmaya başlıyoruz.&lt;/p&gt;
+&lt;p&gt;Öncelikle ihtiyacımız olan add-on’u yazmak için gerekli olan bir ortam. Google bize bu ortamı &lt;a href=&quot;https://script.google.com/&quot;&gt;https://script.google.com/&lt;/a&gt; ile veriyor. Sonrasında ise uygulamanın ayarlarının ve kütüphanelerinin bağımlılıklarının bulunduğu &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;manifest&lt;/code&gt; dosyasını tanımlamak gerekiyor. Son olarak ise kodu yani &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CardService&lt;/code&gt;‘i yazmaya başlıyoruz.&lt;/p&gt;
 
-&lt;p&gt;Manifest dosyasını &lt;code class=&quot;highlighter-rouge&quot;&gt;appscript.json&lt;/code&gt; içine koymak gerekiyor. Default olarak bu dosya kod yazdığımız yerde görünür değil o yüzden &lt;code class=&quot;highlighter-rouge&quot;&gt;View &amp;gt; Show manifest file&lt;/code&gt; diyoruz ve aşağıdaki kodu dosyaya ekliyoruz.&lt;/p&gt;
+&lt;p&gt;Manifest dosyasını &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;appscript.json&lt;/code&gt; içine koymak gerekiyor. Default olarak bu dosya kod yazdığımız yerde görünür değil o yüzden &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;View &amp;gt; Show manifest file&lt;/code&gt; diyoruz ve aşağıdaki kodu dosyaya ekliyoruz.&lt;/p&gt;
 
-&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;gmail&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Quickstart Toolbar Label&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;logoUrl&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://www.example.com/hosted/images/2x/my-icon.png&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;primaryColor&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;#4285F4&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;secondaryColor&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;#4285F4&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;contextualTriggers&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;unconditional&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;onTriggerFunction&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;getContextualAddOn&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;gmail&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Quickstart Toolbar Label&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;logoUrl&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://www.example.com/hosted/images/2x/my-icon.png&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;primaryColor&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;#4285F4&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;secondaryColor&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;#4285F4&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;contextualTriggers&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;unconditional&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;onTriggerFunction&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;getContextualAddOn&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
     &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}],&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;version&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;TRUSTED_TESTER_V2&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;version&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;TRUSTED_TESTER_V2&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
   &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Gördüğünüz gibi bu dosya içinde basit bir şekilde config ayarları yapılmış durumda. Uygulamanın adı, logosu, renkler ve versiyon gibi basit özelliklerin yanında asıl önemli olan uygulama ilk başladığında hangi metodun çalışması gerektiğini söyleyen &lt;code class=&quot;highlighter-rouge&quot;&gt;onTriggerFunction&lt;/code&gt; parametresi. Bu parametre uygulama ayağa kalkınca ilk çalışması gereken metodu belirtiyor ve artık yapmamız gerekenler bu metot içinden çalışmaya başlıyor.&lt;/p&gt;
+&lt;p&gt;Gördüğünüz gibi bu dosya içinde basit bir şekilde config ayarları yapılmış durumda. Uygulamanın adı, logosu, renkler ve versiyon gibi basit özelliklerin yanında asıl önemli olan uygulama ilk başladığında hangi metodun çalışması gerektiğini söyleyen &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;onTriggerFunction&lt;/code&gt; parametresi. Bu parametre uygulama ayağa kalkınca ilk çalışması gereken metodu belirtiyor ve artık yapmamız gerekenler bu metot içinden çalışmaya başlıyor.&lt;/p&gt;
 
-&lt;p&gt;Google bizim için &lt;code class=&quot;highlighter-rouge&quot;&gt;Code.gs&lt;/code&gt; adında bir google script dosyası açıyor ve aslında uygulama için ilk çalışan dosya burası oluyor. Bu dosya içine uygulamamız ile alakalı kodları yazıyoruz. Manifest dosyasında belirttiğimiz &lt;code class=&quot;highlighter-rouge&quot;&gt;getContextualAddOn&lt;/code&gt; metodunu bu dosya içinde yazmaya başlıyoruz.&lt;/p&gt;
+&lt;p&gt;Google bizim için &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Code.gs&lt;/code&gt; adında bir google script dosyası açıyor ve aslında uygulama için ilk çalışan dosya burası oluyor. Bu dosya içine uygulamamız ile alakalı kodları yazıyoruz. Manifest dosyasında belirttiğimiz &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;getContextualAddOn&lt;/code&gt; metodunu bu dosya içinde yazmaya başlıyoruz.&lt;/p&gt;
 
 &lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;getContextualAddOn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;c1&quot;&gt;// Activate temporary Gmail add-on scopes, in this case to allow&lt;/span&gt;
@@ -520,20 +520,20 @@ a.merge(b, c)
   &lt;span class=&quot;c1&quot;&gt;// Be sure to execute build() to finalize the card construction.&lt;/span&gt;
   &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;exampleCard&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;CardService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;newCardBuilder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
   &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setHeader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;CardService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;newCardHeader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-             &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setTitle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Example card'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+             &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setTitle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;Example card&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
   &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addSection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;CardService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;newCardSection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
               &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addWidget&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;CardService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;newKeyValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-                         &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setTopLabel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Subject'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                         &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setTopLabel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;Subject&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
                          &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setContent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;subject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
               &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addWidget&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;CardService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;newKeyValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-                         &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setTopLabel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'From'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                         &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setTopLabel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;From&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
                          &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setContent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sender&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
   &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;// Don't forget to build the Card!&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;exampleCard&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Yukarıdaki kodda amacımız bir email içeriğine ulaşabilmek. Bunun için Gmail’in servislerini kullanabilmemiz lazım. O yüzden Gmail’e authenticate olmamız gerekiyor. Zaten uygulama çalışmaya başladığı zaman bu bize soruluyor ve onay verildikten sonra kod çalışmaya başlıyor. Sonrasında ise Card servisi devreye giriyor. Daha önce de anlattığım gibi Gmail add-on için UI desteği Card ile geliyor ve gelen veriyi kullanıcıya göstermek için öncellikle bir Card tanımlıyoruz. Sonrasında ise gerekli component’ları koyup son olarak Card’ı &lt;code class=&quot;highlighter-rouge&quot;&gt;build()&lt;/code&gt; methodu ile oluşturuyoruz. Burası çok önemli. Eğer Card’ı hazırlayıp, build metodunu çağırmazsak isek istediğimiz sonucu alamayız.&lt;/p&gt;
+&lt;p&gt;Yukarıdaki kodda amacımız bir email içeriğine ulaşabilmek. Bunun için Gmail’in servislerini kullanabilmemiz lazım. O yüzden Gmail’e authenticate olmamız gerekiyor. Zaten uygulama çalışmaya başladığı zaman bu bize soruluyor ve onay verildikten sonra kod çalışmaya başlıyor. Sonrasında ise Card servisi devreye giriyor. Daha önce de anlattığım gibi Gmail add-on için UI desteği Card ile geliyor ve gelen veriyi kullanıcıya göstermek için öncellikle bir Card tanımlıyoruz. Sonrasında ise gerekli component’ları koyup son olarak Card’ı &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;build()&lt;/code&gt; methodu ile oluşturuyoruz. Burası çok önemli. Eğer Card’ı hazırlayıp, build metodunu çağırmazsak isek istediğimiz sonucu alamayız.&lt;/p&gt;
 
 &lt;p&gt;Biraz Card’lardan bahsetmek gerekirse. Card’lar onlar için tanımlanmış özel &lt;strong&gt;widget&lt;/strong&gt;‘lardan oluşuyor. Her action için yeni bir Card tanımlayabilir ve özel widget’lar atayabiliriz içerlerine. CardBuilder class’ı yeni bir Card tanımlamamıza yarıyor. Her Card &lt;strong&gt;header&lt;/strong&gt; ve &lt;strong&gt;section&lt;/strong&gt;‘lardan oluşuyor. Bu section’lar içine kullanıcı ile kurulacak action’ları tanımlama adına widget’ları ekleyebiliyoruz. Kısacası bir Card oluşturmak için sırasıyla,&lt;/p&gt;
 
@@ -546,11 +546,11 @@ a.merge(b, c)
 
 &lt;p&gt;Gelelim test ve deployment konusuna. Farklı &lt;a href=&quot;https://developers.google.com/apps-script/concepts/deployments&quot;&gt;deployment yöntemleri&lt;/a&gt; mevcut fakat development tarafında hızlı test edebilmemiz için &lt;strong&gt;Head Deployments&lt;/strong&gt;‘dan bahsedeceğim.&lt;/p&gt;
 
-&lt;p&gt;Eğer bütün kodu düzgün bir şekilde yazdıysak script ekranından &lt;code class=&quot;highlighter-rouge&quot;&gt;Publish &amp;gt; Deploy from manifest&lt;/code&gt; diyerek açılan pop-up’dan &lt;code class=&quot;highlighter-rouge&quot;&gt;Lastest Version (HEAD)&lt;/code&gt; satırından &lt;strong&gt;Get ID&lt;/strong&gt; linkine tıklayarak açılan pencereden &lt;strong&gt;Deployment ID&lt;/strong&gt;‘yi kopyalayıp, alıyoruz ve ayrı bir pencerede Gmail hesabımı açıyoruz.&lt;/p&gt;
+&lt;p&gt;Eğer bütün kodu düzgün bir şekilde yazdıysak script ekranından &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Publish &amp;gt; Deploy from manifest&lt;/code&gt; diyerek açılan pop-up’dan &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Lastest Version (HEAD)&lt;/code&gt; satırından &lt;strong&gt;Get ID&lt;/strong&gt; linkine tıklayarak açılan pencereden &lt;strong&gt;Deployment ID&lt;/strong&gt;‘yi kopyalayıp, alıyoruz ve ayrı bir pencerede Gmail hesabımı açıyoruz.&lt;/p&gt;
 
 &lt;p&gt;Gmail için ayarlarımızın yapıldığı &lt;strong&gt;Settings&lt;/strong&gt; sayfasına geliyoruz. Buradan &lt;strong&gt;Add-on&lt;/strong&gt; sekmesinde yer alan &lt;strong&gt;Developer add-ons&lt;/strong&gt; alanına biraz önce kopyaladığımız Deployment ID’yi yapıştırıyoruz ve sonrasında Install diyoruz. Sonrasında Inbox’a gidip sayfası yeniliyoruz.&lt;/p&gt;
 
-&lt;p&gt;Inbox içinden herhangi bir email’e tıkladığımız zaman sağ tafta uygulama görülecektir. Daha önce de belirttiğim gibi Gmail servislerini kullanmak için Gmail’e izin vermemiz gerekiyor. O yüzden &lt;code class=&quot;highlighter-rouge&quot;&gt;AUTHORIZE ACCESS&lt;/code&gt; buttonuna tıklayıp, uygulama için yetkilendirme izinini veriyoruz. Burada https ile bağlanmadığımız ve uygulamamız development ortamında olduğu için bir güvenlik sorunu çıkıyor olabilir. Bu uyuglama size ait olduğu için kullanmaya devam et diyerek Gmail servislerinin bilgilerimize ulaşmasına izin verebiliriz. Sonrasında uygulama Card’ı yeniden yükleniyor ve uygulamanın çalıştığını görebiliriz.&lt;/p&gt;
+&lt;p&gt;Inbox içinden herhangi bir email’e tıkladığımız zaman sağ tafta uygulama görülecektir. Daha önce de belirttiğim gibi Gmail servislerini kullanmak için Gmail’e izin vermemiz gerekiyor. O yüzden &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;AUTHORIZE ACCESS&lt;/code&gt; buttonuna tıklayıp, uygulama için yetkilendirme izinini veriyoruz. Burada https ile bağlanmadığımız ve uygulamamız development ortamında olduğu için bir güvenlik sorunu çıkıyor olabilir. Bu uyuglama size ait olduğu için kullanmaya devam et diyerek Gmail servislerinin bilgilerimize ulaşmasına izin verebiliriz. Sonrasında uygulama Card’ı yeniden yükleniyor ve uygulamanın çalıştığını görebiliriz.&lt;/p&gt;
 
 &lt;div style=&quot;display: flex; justify-content: center;&quot;&gt;&lt;img src=&quot;/public/images/gmail-add-on-ss.png&quot; /&gt;&lt;/div&gt;
 
@@ -565,9 +565,9 @@ a.merge(b, c)
  
  <entry>
    <title>Gmail'e Eklenti Yazmak</title>
-   <link href="http://localhost:4000/2018/01/09/gmail-e-eklenti-yazmak.html"/>
+   <link href="enderahmetyurt.github.io/2018/01/09/gmail-e-eklenti-yazmak.html"/>
    <updated>2018-01-09T00:00:00+03:00</updated>
-   <id>http://localhost:4000/2018/01/09/gmail-e-eklenti-yazmak</id>
+   <id>enderahmetyurt.github.io/2018/01/09/gmail-e-eklenti-yazmak</id>
    <content type="html">&lt;p&gt;Merhaba. Gmail’de işlerimizi halletmek adına birkaç tarayıcı eklentisi kullanıyoruz.&lt;/p&gt;
 
 &lt;p&gt;Fakat bu eklentiler kimi zaman tarayıcılar değişince iyi çalışmıyor ya da alternatifi bulunamıyor veya mobil uygulamalar üzerinde hiçbir şekilde var olmuyor. 2017 yılının sonuna doğru Google, Gmail için artık eklenti yazımını mümkün kıldı. İsteyenler artık tarayıcı eklentisi yazar gibi Gmail için eklenti yazabilecek. Peki bu Gmail eklentisi tam olarak ne anlama geliyor, ve bu iş nasıl yapılıyor?&lt;/p&gt;
@@ -590,14 +590,14 @@ a.merge(b, c)
  
  <entry>
    <title>Ruby 2.5 ile Gelenler</title>
-   <link href="http://localhost:4000/2017/12/30/ruby-2-5-ile-gelenler.html"/>
+   <link href="enderahmetyurt.github.io/2017/12/30/ruby-2-5-ile-gelenler.html"/>
    <updated>2017-12-30T00:00:00+03:00</updated>
-   <id>http://localhost:4000/2017/12/30/ruby-2-5-ile-gelenler</id>
+   <id>enderahmetyurt.github.io/2017/12/30/ruby-2-5-ile-gelenler</id>
    <content type="html">&lt;p&gt;Merhaba, Ruby en son versiyonu olan 2.5 ile yeni yıla girmeden karşımıza çıktı. Bu versiyon ile ne gibi özellikler geldi kısaca bakalım.&lt;/p&gt;
 
 &lt;h3 id=&quot;beginende-gerek-kalmadı&quot;&gt;Begin/End’e gerek kalmadı&lt;/h3&gt;
 
-&lt;p&gt;Bu özellik ile artık &lt;code class=&quot;highlighter-rouge&quot;&gt;begin end&lt;/code&gt; block’u yazmak zorunda kalmıyoruz.&lt;/p&gt;
+&lt;p&gt;Bu özellik ile artık &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;begin end&lt;/code&gt; block’u yazmak zorunda kalmıyoruz.&lt;/p&gt;
 
 &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# 2.4&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
@@ -694,12 +694,12 @@ a.merge(b, c)
  
  <entry>
    <title>Ruby 2.4 Binding#irb</title>
-   <link href="http://localhost:4000/2016/11/10/ruby2-4-binding-irb.html"/>
+   <link href="enderahmetyurt.github.io/2016/11/10/ruby2-4-binding-irb.html"/>
    <updated>2016-11-10T00:00:00+03:00</updated>
-   <id>http://localhost:4000/2016/11/10/ruby2-4-binding-irb</id>
+   <id>enderahmetyurt.github.io/2016/11/10/ruby2-4-binding-irb</id>
    <content type="html">&lt;p&gt;Hello! &lt;a href=&quot;https://www.ruby-lang.org/en/news/2016/11/09/ruby-2-4-0-preview3-released/&quot;&gt;Ruby2.4.0.preview3&lt;/a&gt; was released yesterday. There are some really cool features in it. I will mention one of these.&lt;/p&gt;
 
-&lt;p&gt;It is about debugging or open a REPL session. As you know before that release, Ruby developers use &lt;code class=&quot;highlighter-rouge&quot;&gt;p&lt;/code&gt; or other lovely gem &lt;a href=&quot;https://github.com/pry/pry&quot;&gt;pry&lt;/a&gt; to debug. For now &lt;a href=&quot;https://github.com/ruby/ruby/commit/493e48897421d176a8faf0f0820323d79ecdf94a&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;binding#irb&lt;/code&gt;&lt;/a&gt; provides to debug in your application.&lt;/p&gt;
+&lt;p&gt;It is about debugging or open a REPL session. As you know before that release, Ruby developers use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;p&lt;/code&gt; or other lovely gem &lt;a href=&quot;https://github.com/pry/pry&quot;&gt;pry&lt;/a&gt; to debug. For now &lt;a href=&quot;https://github.com/ruby/ruby/commit/493e48897421d176a8faf0f0820323d79ecdf94a&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;binding#irb&lt;/code&gt;&lt;/a&gt; provides to debug in your application.&lt;/p&gt;
 
 &lt;p&gt;First, we need to install latest Ruby version. We can do it via RVM.&lt;/p&gt;
 
@@ -730,7 +730,7 @@ a.merge(b, c)
 &lt;span class=&quot;c1&quot;&gt;#=&amp;gt; &quot;ender&quot;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;That’s it. After Ruby 2.4 we won’t need to write &lt;code class=&quot;highlighter-rouge&quot;&gt;p&lt;/code&gt; we can open a REPL in anytime.&lt;/p&gt;
+&lt;p&gt;That’s it. After Ruby 2.4 we won’t need to write &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;p&lt;/code&gt; we can open a REPL in anytime.&lt;/p&gt;
 
 &lt;p&gt;Cheers.&lt;/p&gt;
 </content>
@@ -738,9 +738,9 @@ a.merge(b, c)
  
  <entry>
    <title>Ruby 2.4 String#concat, Array#concat and String#prepend Multiple Arguments</title>
-   <link href="http://localhost:4000/2016/11/05/ruby-2-4-string-concat-array-concat-and-string-prepend-multiple-arguments.html"/>
+   <link href="enderahmetyurt.github.io/2016/11/05/ruby-2-4-string-concat-array-concat-and-string-prepend-multiple-arguments.html"/>
    <updated>2016-11-05T00:00:00+03:00</updated>
-   <id>http://localhost:4000/2016/11/05/ruby-2-4-string-concat-array-concat-and-string-prepend-multiple-arguments</id>
+   <id>enderahmetyurt.github.io/2016/11/05/ruby-2-4-string-concat-array-concat-and-string-prepend-multiple-arguments</id>
    <content type="html">&lt;p&gt;Merhaba. Ruby 2.4’den önceki sürümler String ve Array için tanımlı #concat metotu birleştirme işlemini parametre almadan yapıyor.&lt;/p&gt;
 
 &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my_string&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hello&quot;&lt;/span&gt;
@@ -795,9 +795,9 @@ a.merge(b, c)
  
  <entry>
    <title>Ruby 2.4 Hash#compact</title>
-   <link href="http://localhost:4000/2016/11/05/ruby-2-4-hash-compact.html"/>
+   <link href="enderahmetyurt.github.io/2016/11/05/ruby-2-4-hash-compact.html"/>
    <updated>2016-11-05T00:00:00+03:00</updated>
-   <id>http://localhost:4000/2016/11/05/ruby-2-4-hash-compact</id>
+   <id>enderahmetyurt.github.io/2016/11/05/ruby-2-4-hash-compact</id>
    <content type="html">&lt;p&gt;Merhaba. Ruby 2.4 yazılarına devam ediyoruz.&lt;/p&gt;
 
 &lt;p&gt;Ruby’de nil value’e sahip bir key ile hash oluşturduğunuzda Ruby bu değeri hash’den kaldırıyor.&lt;/p&gt;
@@ -825,9 +825,9 @@ a.merge(b, c)
  
  <entry>
    <title>Ruby 2.4 Enumerable#sum</title>
-   <link href="http://localhost:4000/2016/11/02/ruby-2-4-enumerable-sum.html"/>
+   <link href="enderahmetyurt.github.io/2016/11/02/ruby-2-4-enumerable-sum.html"/>
    <updated>2016-11-02T00:00:00+03:00</updated>
-   <id>http://localhost:4000/2016/11/02/ruby-2-4-enumerable-sum</id>
+   <id>enderahmetyurt.github.io/2016/11/02/ruby-2-4-enumerable-sum</id>
    <content type="html">&lt;p&gt;Merhaba! &lt;a href=&quot;https://www.ruby-lang.org/en/news/2016/09/08/ruby-2-4-0-preview2-released/&quot;&gt;Ruby 2.4 previewleri&lt;/a&gt; bundan yakın bir zaman önce çıktı ve bir takım yenilikler ile birlikte geldiler.&lt;/p&gt;
 
 &lt;p&gt;Kısa kısa Ruby 2.4 ile gelen yeniliklerden ve değişikliklerden bahsedelim. Bir Array’de ya da Hash’de elementleri toplamak yapmak için Active Support’da tanımlı olan &lt;a href=&quot;https://github.com/rails/rails/blob/3d716b9e66e334c113c98fb3fc4bcf8a945b93a1/activesupport/lib/active_support/core_ext/enumerable.rb#L2-L27&quot;&gt;Enumerable#sum&lt;/a&gt;‘ı kullanıyoruz.&lt;/p&gt;
@@ -859,16 +859,16 @@ a.merge(b, c)
  
  <entry>
    <title>Block, Proc, Lambda</title>
-   <link href="http://localhost:4000/2016/05/19/block-proc-lambda.html"/>
+   <link href="enderahmetyurt.github.io/2016/05/19/block-proc-lambda.html"/>
    <updated>2016-05-19T00:00:00+03:00</updated>
-   <id>http://localhost:4000/2016/05/19/block-proc-lambda</id>
+   <id>enderahmetyurt.github.io/2016/05/19/block-proc-lambda</id>
    <content type="html">&lt;p&gt;Merhaba! Ruby’nin en güçlü özelliklerinden biri bloklardır. Diğer dillerin aksine Ruby’de blokları anlamak ve kullanmak kolay ve basittir.&lt;/p&gt;
 
 &lt;p&gt;Ruby’de bloklarını kullanmak için iki yöntemimiz var,&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;do&lt;/code&gt; ve &lt;code class=&quot;highlighter-rouge&quot;&gt;end&lt;/code&gt; arasına kodlarımızı yazmak.&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;{}&lt;/code&gt; bu iki parantez arasına kodlarımızı yazmak.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;do&lt;/code&gt; ve &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;end&lt;/code&gt; arasına kodlarımızı yazmak.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{}&lt;/code&gt; bu iki parantez arasına kodlarımızı yazmak.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Örnek vericek olursak,&lt;/p&gt;
@@ -904,9 +904,9 @@ a.merge(b, c)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;&lt;em&gt;Örnek, Sıktı Bağdat’ın Ruby kitabından alınmıştır.&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;Yukarıdaki örnekte &lt;code class=&quot;highlighter-rouge&quot;&gt;change&lt;/code&gt; metotuna block’u parametre olarak gönderiyoruz. Ruby’de bir metota block’un parametre olarak geçtiğini belirtmek için &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;amp;&lt;/code&gt; kullanıyoruz. Metot içinde ise gönderilen block’u kullanmak için &lt;code class=&quot;highlighter-rouge&quot;&gt;call&lt;/code&gt; metotunu çağırıyoruz.&lt;/p&gt;
+&lt;p&gt;Yukarıdaki örnekte &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;change&lt;/code&gt; metotuna block’u parametre olarak gönderiyoruz. Ruby’de bir metota block’un parametre olarak geçtiğini belirtmek için &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;amp;&lt;/code&gt; kullanıyoruz. Metot içinde ise gönderilen block’u kullanmak için &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;call&lt;/code&gt; metotunu çağırıyoruz.&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;yield&lt;/code&gt; Ruby’de bir anahtar kelimedir ve kullanımı &lt;code class=&quot;highlighter-rouge&quot;&gt;block&lt;/code&gt; gibidir. Ancak aralarında ufak farklılıklar vardır. Bunlardan biri yield’i çağırırken call metotunu çağırmaya ihtiyacımız yoktur. Ayrıca yield, block’a göre performans olarak daha iyidir.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;yield&lt;/code&gt; Ruby’de bir anahtar kelimedir ve kullanımı &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;block&lt;/code&gt; gibidir. Ancak aralarında ufak farklılıklar vardır. Bunlardan biri yield’i çağırırken call metotunu çağırmaya ihtiyacımız yoktur. Ayrıca yield, block’a göre performans olarak daha iyidir.&lt;/p&gt;
 
 &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;name&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt;
@@ -931,7 +931,7 @@ a.merge(b, c)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;&lt;em&gt;Örnek, Sıktı Bağdat’ın Ruby kitabından alınmıştır.&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;Ruby’de block’ları birer nesne gibi kullanmak için &lt;code class=&quot;highlighter-rouge&quot;&gt;Proc&lt;/code&gt; nesnesinden yararlanıyoruz. &lt;code class=&quot;highlighter-rouge&quot;&gt;proc = Proc.new {}&lt;/code&gt; şeklinde çağırarak işlemlerimize başlıyoruz.&lt;/p&gt;
+&lt;p&gt;Ruby’de block’ları birer nesne gibi kullanmak için &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Proc&lt;/code&gt; nesnesinden yararlanıyoruz. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;proc = Proc.new {}&lt;/code&gt; şeklinde çağırarak işlemlerimize başlıyoruz.&lt;/p&gt;
 
 &lt;p&gt;Proc nesnesini çağırmak için block’larda olduğu gibi call metotununu kullanabiliriz.&lt;/p&gt;
 
@@ -940,7 +940,7 @@ a.merge(b, c)
 &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; Hello from Proc.
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Lambda&lt;/code&gt; Proc sınıfından türeyen bir nesnedir. Lambda’yı oluşturmak için Ruby’de genellikle &lt;code class=&quot;highlighter-rouge&quot;&gt;my_lambda = -&amp;gt; {}&lt;/code&gt; kullanılır. Bu kullanım Lambda nesnesi oluşturmamıza yarar.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Lambda&lt;/code&gt; Proc sınıfından türeyen bir nesnedir. Lambda’yı oluşturmak için Ruby’de genellikle &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;my_lambda = -&amp;gt; {}&lt;/code&gt; kullanılır. Bu kullanım Lambda nesnesi oluşturmamıza yarar.&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; mult  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; lambda &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;|x,y| x &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; y &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; mult.call&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;2,3&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
@@ -960,9 +960,9 @@ a.merge(b, c)
  
  <entry>
    <title>Debugging with Pry</title>
-   <link href="http://localhost:4000/2016/05/15/debugging-with-pry.html"/>
+   <link href="enderahmetyurt.github.io/2016/05/15/debugging-with-pry.html"/>
    <updated>2016-05-15T00:00:00+03:00</updated>
-   <id>http://localhost:4000/2016/05/15/debugging-with-pry</id>
+   <id>enderahmetyurt.github.io/2016/05/15/debugging-with-pry</id>
    <content type="html">&lt;p&gt;Merhaba! Kod yazarken bir bir şeylerin yolunda gitmediği veya kod içinde neler olduğunu anlamak istediğimiz anlar oluyor. Bu gibi durumlarda debugging yapıyoruz.&lt;/p&gt;
 
 &lt;p&gt;Ruby’de eğer IDE kullanıyorsunuz debugging yapmak bir nebze kolay olabiliyor. Ancak benim gibi Sublime vb bir text editör kullanıcısıysanız imdadımıza PRY yetişiyor.&lt;/p&gt;
@@ -974,7 +974,7 @@ a.merge(b, c)
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; gem &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;pry
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Sonrasında ise artık kodumuzda hangi noktada durmasını istiyorsak oraya &lt;code class=&quot;highlighter-rouge&quot;&gt;binding.pry&lt;/code&gt; komutu yazıyoruz. Örneğin,&lt;/p&gt;
+&lt;p&gt;Sonrasında ise artık kodumuzda hangi noktada durmasını istiyorsak oraya &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;binding.pry&lt;/code&gt; komutu yazıyoruz. Örneğin,&lt;/p&gt;
 
 &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# person.rb&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'pry'&lt;/span&gt;
@@ -998,13 +998,13 @@ a.merge(b, c)
     6:   puts &lt;span class=&quot;s2&quot;&gt;&quot;Hello #{name}&quot;&lt;/span&gt;
     7: end
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;şeklinde bir çıktı alıyoruz. Bu anda artık &lt;code class=&quot;highlighter-rouge&quot;&gt;name&lt;/code&gt; değişkenini çağırabilir ve içinde ne olduğunu görebiliriz.&lt;/p&gt;
+&lt;p&gt;şeklinde bir çıktı alıyoruz. Bu anda artık &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;name&lt;/code&gt; değişkenini çağırabilir ve içinde ne olduğunu görebiliriz.&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;1] pry&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;#&amp;lt;Person&amp;gt;)&amp;gt; name&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;ender&quot;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Sonrasında ise &lt;code class=&quot;highlighter-rouge&quot;&gt;exit&lt;/code&gt; diyerek PRY’ı kapatıyoruz.&lt;/p&gt;
+&lt;p&gt;Sonrasında ise &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;exit&lt;/code&gt; diyerek PRY’ı kapatıyoruz.&lt;/p&gt;
 
 &lt;p&gt;Debugging yaparken kod içinde ileri gitmek, bir metotudun içine girmek ya da onu atlamak isteyebiliriz. PRY kendi hali ile buna cevap vermiyor. Ancak &lt;a href=&quot;https://github.com/nixme/pry-debugger&quot;&gt;pry-debugger&lt;/a&gt; gem’i ile bunu da halledebiliyoruz.&lt;/p&gt;
 
@@ -1032,7 +1032,7 @@ a.merge(b, c)
 &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;say_hello&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;ender&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;next&lt;/code&gt; komudu ile kodun durduğu yer bir alt satıra inebiliriz. Pry-debugger gem’i bize &lt;code class=&quot;highlighter-rouge&quot;&gt;step&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;finish&lt;/code&gt; ve &lt;code class=&quot;highlighter-rouge&quot;&gt;continue&lt;/code&gt; gibi fonksiyonlar da sağlamaktadır. Daha fazla bilgiye Github’daki Readme’den ulaşabilirsiniz.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;next&lt;/code&gt; komudu ile kodun durduğu yer bir alt satıra inebiliriz. Pry-debugger gem’i bize &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;step&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;finish&lt;/code&gt; ve &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;continue&lt;/code&gt; gibi fonksiyonlar da sağlamaktadır. Daha fazla bilgiye Github’daki Readme’den ulaşabilirsiniz.&lt;/p&gt;
 
 &lt;p&gt;Sevgiler.&lt;/p&gt;
 </content>
@@ -1040,16 +1040,16 @@ a.merge(b, c)
  
  <entry>
    <title>Ruby Enumerable</title>
-   <link href="http://localhost:4000/2016/05/06/ruby-enumerable.html"/>
+   <link href="enderahmetyurt.github.io/2016/05/06/ruby-enumerable.html"/>
    <updated>2016-05-06T00:00:00+03:00</updated>
-   <id>http://localhost:4000/2016/05/06/ruby-enumerable</id>
-   <content type="html">&lt;p&gt;Merhaba! Bugün Ruby’de hemen hemen her gün kullandığımız &lt;code class=&quot;highlighter-rouge&quot;&gt;Enumerable&lt;/code&gt; metotlarından bahsetmek istiyorum.&lt;/p&gt;
+   <id>enderahmetyurt.github.io/2016/05/06/ruby-enumerable</id>
+   <content type="html">&lt;p&gt;Merhaba! Bugün Ruby’de hemen hemen her gün kullandığımız &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Enumerable&lt;/code&gt; metotlarından bahsetmek istiyorum.&lt;/p&gt;
 
 &lt;p&gt;Bu yazıda kullanılan örnekleri daha iyi anlayabilmek için öncelikle Ruby’de Array ve Hash kavramlarını biraz olsun bilmeniz gerekiyor.&lt;/p&gt;
 
-&lt;p&gt;Ruby’de &lt;code class=&quot;highlighter-rouge&quot;&gt;Enumerable&lt;/code&gt; modülüne ihtiyaç duymamızın nedeni colletion’lar üzerinde daha hızlı ve kolay çalışmalar yapabilmektir. Örneğin, bir collection içindeki bütün tek sayıları getirmek için döngüler ve if bloklarını kullanabiliriz. Ancak bunun yerine &lt;code class=&quot;highlighter-rouge&quot;&gt;Enumerable&lt;/code&gt; modülünde tanımlı metotlardan yardım alabiliyoruz.&lt;/p&gt;
+&lt;p&gt;Ruby’de &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Enumerable&lt;/code&gt; modülüne ihtiyaç duymamızın nedeni colletion’lar üzerinde daha hızlı ve kolay çalışmalar yapabilmektir. Örneğin, bir collection içindeki bütün tek sayıları getirmek için döngüler ve if bloklarını kullanabiliriz. Ancak bunun yerine &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Enumerable&lt;/code&gt; modülünde tanımlı metotlardan yardım alabiliyoruz.&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Enumerable&lt;/code&gt; ın metotlarını aşağıdaki gibi sıralayabiliriz.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Enumerable&lt;/code&gt; ın metotlarını aşağıdaki gibi sıralayabiliriz.&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; Enumerable.instance_metots.sort
 &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;:all?, :any?, :chunk, :collect, :collect_concat, :count, :cycle, :detect, :drop, :drop_while, :each_cons, :each_entry, :each_slice, :each_with_index, :each_with_object, :entries, :find, :find_all, :find_index, :first, :flat_map, :grep, :group_by, :include?, :inject, :lazy, :map, :max, :max_by, :member?, :min, :min_by, :minmax, :minmax_by, :none?, :one?, :partition, :reduce, :reject, :reverse_each, :select, :slice_before, :sort, :sort_by, :take, :take_while, :to_a, :to_h, :zip]
@@ -1058,12 +1058,12 @@ a.merge(b, c)
 &lt;p&gt;Bunların bazılarından bahsetmek gerekirse.&lt;/p&gt;
 
 &lt;h2 id=&quot;each_with_index&quot;&gt;#each_with_index&lt;/h2&gt;
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;each&lt;/code&gt; ile bir collection içindeki elemanları tek tek gezebiliriz.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;each&lt;/code&gt; ile bir collection içindeki elemanları tek tek gezebiliriz.&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;1,2,3].each &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; |num| print &lt;span class=&quot;s2&quot;&gt;&quot;Number: #{num} &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; Number: 1 Number: 2 Number: 3
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Bu elemanların tek tek index’lerine ulaşmak için ise &lt;code class=&quot;highlighter-rouge&quot;&gt;each_with_index&lt;/code&gt;i kullanabiliriz.&lt;/p&gt;
+&lt;p&gt;Bu elemanların tek tek index’lerine ulaşmak için ise &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;each_with_index&lt;/code&gt;i kullanabiliriz.&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;9,8,7].each_with_index &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; |e,i|
 &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;   puts &lt;span class=&quot;s2&quot;&gt;&quot;Index: #{i} Number: #{e}&quot;&lt;/span&gt;
@@ -1074,7 +1074,7 @@ a.merge(b, c)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;map&quot;&gt;#map&lt;/h2&gt;
-&lt;p&gt;Bir collection içindeki elemanlar üzerinde çalışmaklar yapmak istiyorsak &lt;code class=&quot;highlighter-rouge&quot;&gt;map&lt;/code&gt; kullanmak en iyisi olacaktır.&lt;/p&gt;
+&lt;p&gt;Bir collection içindeki elemanlar üzerinde çalışmaklar yapmak istiyorsak &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;map&lt;/code&gt; kullanmak en iyisi olacaktır.&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;5,10,20].map&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;|e| puts e&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;2&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; 25
@@ -1083,7 +1083,7 @@ a.merge(b, c)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;select&quot;&gt;#select&lt;/h2&gt;
-&lt;p&gt;Bazı durumlarda bir collection içinden belli bir duruma bağlı olarak değeri ya da değerleri almak isteyebiliriz. Bu durumda &lt;code class=&quot;highlighter-rouge&quot;&gt;select&lt;/code&gt; kullanırsak kodumuzu daha anlaşılır yazmış oluruz.&lt;/p&gt;
+&lt;p&gt;Bazı durumlarda bir collection içinden belli bir duruma bağlı olarak değeri ya da değerleri almak isteyebiliriz. Bu durumda &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;select&lt;/code&gt; kullanırsak kodumuzu daha anlaşılır yazmış oluruz.&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1..20&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;.to_a.select&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;|n| n.odd?&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
@@ -1092,7 +1092,7 @@ a.merge(b, c)
 &lt;p&gt;1 ile 20 arasındaki tüm tek sayıları ekrana bastık.&lt;/p&gt;
 
 &lt;h2 id=&quot;reject&quot;&gt;#reject&lt;/h2&gt;
-&lt;p&gt;Seçmenin dışında bir collection’dan çıkarmak istediğimiz elemanlarımız da olabilir. Bu gibi durumlarda ise &lt;code class=&quot;highlighter-rouge&quot;&gt;reject&lt;/code&gt; kullanabiliriz.&lt;/p&gt;
+&lt;p&gt;Seçmenin dışında bir collection’dan çıkarmak istediğimiz elemanlarımız da olabilir. Bu gibi durumlarda ise &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;reject&lt;/code&gt; kullanabiliriz.&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1..20&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;.to_a.reject&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;|n| n.odd?&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
@@ -1101,7 +1101,7 @@ a.merge(b, c)
 &lt;p&gt;Yukarıda gördüğünüz gibi 1 ile 20 arasındaki tek sayıları çıkardım ve yeni array’im artık 1 ile 20 arasındaki çift sayılar oldu.&lt;/p&gt;
 
 &lt;h2 id=&quot;any&quot;&gt;#any?&lt;/h2&gt;
-&lt;p&gt;Bu metot bize duruma göre true ya da false bir boolean değer dönecektir. Eğer bir collection içinde bir duruma göre bir elemanın bulunup, bulumadığını kontrol etmek istiyorsak &lt;code class=&quot;highlighter-rouge&quot;&gt;any?&lt;/code&gt; kullanabiliriz.&lt;/p&gt;
+&lt;p&gt;Bu metot bize duruma göre true ya da false bir boolean değer dönecektir. Eğer bir collection içinde bir duruma göre bir elemanın bulunup, bulumadığını kontrol etmek istiyorsak &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;any?&lt;/code&gt; kullanabiliriz.&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1..20&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;.to_a.any?&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;|n| n&amp;gt;20&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;

@@ -1,0 +1,94 @@
+I"�<p>Merhaba! Ruby’nin en güçlü özelliklerinden biri bloklardır. Diğer dillerin aksine Ruby’de blokları anlamak ve kullanmak kolay ve basittir.</p>
+
+<p>Ruby’de bloklarını kullanmak için iki yöntemimiz var,</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">do</code> ve <code class="language-plaintext highlighter-rouge">end</code> arasına kodlarımızı yazmak.</li>
+  <li><code class="language-plaintext highlighter-rouge">{}</code> bu iki parantez arasına kodlarımızı yazmak.</li>
+</ul>
+
+<p>Örnek vericek olursak,</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> my_array <span class="o">=</span> <span class="o">[</span>2,4,6]
+
+<span class="o">&gt;</span> my_array.map! <span class="k">do</span> |m|
+<span class="o">&gt;</span>  m <span class="k">**</span> 3
+<span class="o">&gt;</span> end
+<span class="o">=&gt;</span> <span class="o">[</span>8, 64, 216]
+</code></pre></div></div>
+
+<p>Bu işlemi tek satırda parantezler içinde de yapmak mümkündür.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> my_array <span class="o">=</span> <span class="o">[</span>2,4,6]
+<span class="o">&gt;</span> my_array.map! <span class="o">{</span> |m| m <span class="k">**</span> 3 <span class="o">}</span>
+<span class="o">=&gt;</span> <span class="o">[</span>8, 64, 216]
+</code></pre></div></div>
+
+<p>Ruby’de hazır block’ların dışında kendi blocklarımızı da yazabiliriz.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">change</span><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+ <span class="nb">self</span><span class="p">.</span><span class="nf">each_with_index</span> <span class="k">do</span> <span class="o">|</span><span class="n">e</span><span class="p">,</span> <span class="n">i</span><span class="o">|</span>
+   <span class="nb">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">block</span><span class="p">.</span><span class="nf">call</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+ <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">].</span><span class="nf">change</span> <span class="k">do</span> <span class="o">|</span><span class="n">e</span><span class="o">|</span>
+  <span class="n">e</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="k">end</span>
+
+<span class="o">=&gt;</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">16</span><span class="p">]</span>
+</code></pre></div></div>
+<p><em>Örnek, Sıktı Bağdat’ın Ruby kitabından alınmıştır.</em></p>
+
+<p>Yukarıdaki örnekte <code class="language-plaintext highlighter-rouge">change</code> metotuna block’u parametre olarak gönderiyoruz. Ruby’de bir metota block’un parametre olarak geçtiğini belirtmek için <code class="language-plaintext highlighter-rouge">&amp;</code> kullanıyoruz. Metot içinde ise gönderilen block’u kullanmak için <code class="language-plaintext highlighter-rouge">call</code> metotunu çağırıyoruz.</p>
+
+<p><code class="language-plaintext highlighter-rouge">yield</code> Ruby’de bir anahtar kelimedir ve kullanımı <code class="language-plaintext highlighter-rouge">block</code> gibidir. Ancak aralarında ufak farklılıklar vardır. Bunlardan biri yield’i çağırırken call metotunu çağırmaya ihtiyacımız yoktur. Ayrıca yield, block’a göre performans olarak daha iyidir.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">name</span>
+  <span class="k">yield</span>
+<span class="k">end</span>
+
+<span class="nb">puts</span> <span class="nb">name</span> <span class="p">{</span> <span class="nb">puts</span> <span class="s2">"ender"</span> <span class="p">}</span>
+
+<span class="o">=&gt;</span> <span class="n">ender</span>
+</code></pre></div></div>
+
+<p>Parametre geçirmek yield için de geçerlidir. Aynı block’da olduğu gibi yield da parametre alabilir.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+  <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">n</span><span class="p">.</span><span class="nf">times</span> <span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span> <span class="n">sum</span> <span class="o">+=</span> <span class="k">yield</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)}</span>
+  <span class="n">sum</span>
+<span class="k">end</span>
+
+<span class="nb">puts</span> <span class="n">sum</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span> <span class="n">i</span><span class="p">}</span>
+
+<span class="o">=&gt;</span> <span class="mi">55</span>
+</code></pre></div></div>
+<p><em>Örnek, Sıktı Bağdat’ın Ruby kitabından alınmıştır.</em></p>
+
+<p>Ruby’de block’ları birer nesne gibi kullanmak için <code class="language-plaintext highlighter-rouge">Proc</code> nesnesinden yararlanıyoruz. <code class="language-plaintext highlighter-rouge">proc = Proc.new {}</code> şeklinde çağırarak işlemlerimize başlıyoruz.</p>
+
+<p>Proc nesnesini çağırmak için block’larda olduğu gibi call metotununu kullanabiliriz.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> proc <span class="o">=</span> Proc.new <span class="o">{</span> puts <span class="s2">"Hello from Proc."</span> <span class="o">}</span>
+<span class="o">&gt;</span> proc.call
+<span class="o">=&gt;</span> Hello from Proc.
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">Lambda</code> Proc sınıfından türeyen bir nesnedir. Lambda’yı oluşturmak için Ruby’de genellikle <code class="language-plaintext highlighter-rouge">my_lambda = -&gt; {}</code> kullanılır. Bu kullanım Lambda nesnesi oluşturmamıza yarar.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> mult  <span class="o">=</span> lambda <span class="o">{</span>|x,y| x <span class="k">*</span> y <span class="o">}</span>
+<span class="o">&gt;</span> mult.call<span class="o">(</span>2,3<span class="o">)</span>
+<span class="o">=&gt;</span> 6
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> wtp <span class="o">=</span> -&gt; <span class="o">{</span> puts <span class="s2">"What's up?"</span> <span class="o">}</span>
+<span class="o">&gt;</span> wtp.call
+<span class="o">=&gt;</span> What<span class="s1">'s up?
+</span></code></pre></div></div>
+
+<p>Ruby’de Block, Yield, Proc ve Lambda kullanımları oldukça yaygın olduğunu unutmayalım. Özellikle kodları daha okunur ve kendini tekrar etmeyecek şekilde yazmak istediğimizde bu özellikleri kullanabiliriz.</p>
+
+<p>Sevgiler.</p>
+:ET

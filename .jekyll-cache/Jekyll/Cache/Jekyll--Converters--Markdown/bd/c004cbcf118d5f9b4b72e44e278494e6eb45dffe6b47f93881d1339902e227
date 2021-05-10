@@ -1,0 +1,18 @@
+I"^<p>Merhaba. Gmail’de işlerimizi halletmek adına birkaç tarayıcı eklentisi kullanıyoruz.</p>
+
+<p>Fakat bu eklentiler kimi zaman tarayıcılar değişince iyi çalışmıyor ya da alternatifi bulunamıyor veya mobil uygulamalar üzerinde hiçbir şekilde var olmuyor. 2017 yılının sonuna doğru Google, Gmail için artık eklenti yazımını mümkün kıldı. İsteyenler artık tarayıcı eklentisi yazar gibi Gmail için eklenti yazabilecek. Peki bu Gmail eklentisi tam olarak ne anlama geliyor, ve bu iş nasıl yapılıyor?</p>
+
+<p>Gmail eklentileri emailler yolu ile yapılan günlük işlerinizi aslında kolaylaştırıyor. Örneğin, Asana uygulamasının eklentisi ile size gelen bir emaili Asana’da bir iş olarak hızlı bir şekilde açabilir ve detaylandırabilirsiniz. Eskiden olsaydı Asana’nın ekranlarına girip bu işlerini halletmeniz gerekecektir. Bunun gibi örnekleri çoğaltabiliriz. Kısacası Gmail eklentileri zamanı ve işleri kısaltmamıza yarıyor.</p>
+
+<p>Kendisine ait bir UI ekranı olan eklentileri direk Google servislerine bağlayabilir, her türlü istediğiniz veriyi çekip, yazabilirsiniz. Bunların dışında Google servisi olmayan dışarıdan servislere de (Asana örneği gibi) bağlanabilir, veri paylaşımı yapabilirsiniz. Ayrıca başka cihazlar üzerinden eklentileri yönetebilir ve cihazlar arası sorunsuz bir şekilde çalışma sağlayabilirsiniz.</p>
+
+<p>Google bu servisi sadece Gmail için vermiyor. Bütün Google servisleri Drive, Docs, Sheets için de ayrı ayrı uygulamalar yazabilirsiniz. Bu eklentileri yazmak için <a href="https://developers.google.com/apps-script/">Apps Script</a> adında Javascript’e çok benzeyen bir programlama dili kullanılıyor. Bu dilin sağladığı kütüphaneler sayesinde eklentiler geliştiriliyor ve uygulamalar arası veri akışı sağlanabiliyor.</p>
+
+<p><img style="float: left; width: 65%; margin-right: 10px;" src="https://developers.google.com/gmail/add-ons/images/top-card-graphic-01.png" /> Gmail eklentileri içinde oluşan widget’lar ortaya çıkıyor. Bu widget’ler ise <a href="https://developers.google.com/gmail/add-ons/concepts/cards">Card</a> adı verilen kavram üzerinde yaşıyor. Bu Card’lar eklentinin UI’ını oluşturuyor ve bütün eklenti ve eklentinin diğer sayfaları bu Card’lar üzerinde yaşıyor. Bir eklenti içinde birçok Card tanımlanabilir ve bu Card’lar üzerinde text, input alanları, button’lar gibi birçok element eklenebilir. Card’lar ile web ve mobile için ayrı ayrı uygulamaya yazmaya gerek kalmıyor. Bir eklenti cross-platfrom çalışabiliyor. Burada küçük bir not düşmek istiyorum. Bugün itibari ile bu eklentiler henüz <strong>iOS cihazlarda çalışmıyor.</strong></p>
+
+<p>Google bu her konuda olduğu gibi bu konu ile de alakalı müthiş bir doküman hazırlamış. Eğer konuya ilgi duyuyorsanız <a href="https://developers.google.com/gmail/add-ons/how-tos/building">buradan</a> başlayabilirsiniz. Ayrıca Gmail için de hazırlanmış örnek eklentilere <a href="https://github.com/googlesamples/gmail-add-ons-samples">buradan</a> erişebilirsiniz. Çok daha fazla bilgi almak istiyorsanız Gmail’in resmi eklenti <a href="https://developers.google.com/gmail/add-ons/">sayfasını</a> ziyaret edebilirsiniz.</p>
+
+<p>Sevgiler.</p>
+
+<p><small><em>Image: https://developers.google.com/gmail/add-ons/</em></small></p>
+:ET
