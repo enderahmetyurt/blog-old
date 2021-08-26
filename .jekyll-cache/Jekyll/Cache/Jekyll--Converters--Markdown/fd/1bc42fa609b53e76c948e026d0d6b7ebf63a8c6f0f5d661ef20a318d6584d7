@@ -1,9 +1,5 @@
----
-layout: page
-title: About
----
-
-<p class="message">
+I"
+<p class="message">
   Hi, my name is Ender. I am from Unye, Ordu, Turkey. After lived in Istanbul in 15 years, I relocated my hometown. I have been working in software industriy since 2011. I worked in lot of startups as a software engineer. I worked in <a href="https://parasut.com/">Paraşüt</a> as a software engineer between 2018-2020, after january of 2021 I have been going on working as a software development manager in the same company.
 </p>
 
@@ -19,3 +15,4 @@ title: About
   Except this blog, I write something about life and my experiences mostly in Turkish in my <a href="https://medium.com/@ndrx">Medium</a> blog.
 </p>
 
+:ET
