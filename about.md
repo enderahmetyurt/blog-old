@@ -4,7 +4,7 @@ title: About
 ---
 
 <p class="message">
-  Hi! My name is Ender. I am from Ünye, Ordu, Turkey. After lived in Istanbul in 15 years, I relocated my hometown. I have been working in software industriy since 2011. I worked in lot of startups as a software engineer. I am a software developer at <a href="https://teamtailor.com/">Teamtailor</a> since October 2021.
+  Hi! My name is Ender. I am from Ünye, Ordu, Turkey. After lived in Istanbul in 15 years, I relocated my hometown. I have been working in software industry since 2011. I worked in lot of startups as a software engineer. I am a software developer at <a href="https://teamtailor.com/">Teamtailor</a> since October 2021.
 </p>
 
 <p class="message">
