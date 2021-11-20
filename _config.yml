@@ -5,19 +5,18 @@ url: 'enderahmetyurt.github.io'
 baseurl: '/'
 tagline: Software Engineer
 google_analytics: 'UA-41510931-2'
-disqus_shortname: 'ndrx42'
 
 author:
   name: 'Ender Ahmet Yurt'
   email: enderyurt@gmail.com
   twitter_profile: https://twitter.com/eayurt
-  github_profile:  https://github.com/enderahmetyurt
+  github_profile: https://github.com/enderahmetyurt
   linkedin_profile: https://www.linkedin.com/in/enderahmetyurt/
-  medium_username: ndrx
+  medium_username: eayurt
 
 # Dependencies
-markdown:         kramdown
-highlighter:      rouge
+markdown: kramdown
+highlighter: rouge
 
 paginate: 15
 
@@ -32,7 +31,6 @@ image_base: /public/images/
 
 defaults:
   - scope:
-      path: "assets/img"
+      path: 'assets/img'
     values:
       image: true
-
