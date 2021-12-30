@@ -1,4 +1,4 @@
-I"�<p>Merhaba, Bundan önceki <a href="https://medium.com/@eayurt/2021-ve-belki-biraz-%C3%B6ncesi-f3ec22b6a9be">yazımda</a> 2020’nin biraz sonları ve 2021’ kendi hayatımı yorumlamıştım. Şimdi ise 2021 yılında Ruby dünyasında olup bitenleri yazmak istiyorum.</p>
+I"7)<p>Merhaba, Bundan önceki <a href="https://medium.com/@eayurt/2021-ve-belki-biraz-%C3%B6ncesi-f3ec22b6a9be">yazımda</a> 2020’nin biraz sonları ve 2021’ kendi hayatımı yorumlamıştım. Şimdi ise 2021 yılında Ruby dünyasında olup bitenleri yazmak istiyorum.</p>
 
 <p>Bu yazının benzerini 2017 yılında da <a href="https://medium.com/@eayurt/2017de-ruby-d1b79a3b8b4">yazmıştım</a>. Bu sene kendimce konuşmak Ruby’de ve Ruby Türkiye’de olup bitenleri de detaylı olarak yazmaya çalışacağım.</p>
 
@@ -17,11 +17,33 @@
 
 <p>Ruby büyük release’leri Christmas’da yaptığı için 2020 sonlarında Ruby 3 hayatımıza girdi ve gelişmesi 2021 boyunca sürdü. Ben bu yazıyı yazarken Ruby 3.1 çıktı. <strong><a href="https://www.ruby-lang.org/en/news/2020/12/25/ruby-3-0-0-released/">Ruby 3</a></strong> ile artık Ruby 2’deki yavaşlık konuları biraz olsun rafa kalkmaya başladı. Şimdilik çok fazla Ruby 3 kullanan duymuyoruz, ancak Ruby 3.1’in çıkması ve Rails 7’de Ruby 2.7 ve üstünün zorunlu olması ile kullanımı artacaktır. Ruby 3 temelde üç ana başlığa odaklandı: Performance, Concurrency ve Typing(Static Analysis). Bunların her biri için ayrı ayrı detaylar verilebilir ama hepsi için de ayrı yazılar yazmak gerekir. Biz Yakut’ta zaman zaman bu konulari detaylı olarak konuştuk, ve dilimiz döndüğünce anlatmaya çalıştık.</p>
 
-<h1 id="ruby-on-rails-700">Ruby on Rails 7.0.0</h1>
+<h2 id="ruby-on-rails-700">Ruby on Rails 7.0.0</h2>
 
 <p>Benim bu sene en çok beklediğim ve senenin sonuna doğru çıkan <strong><a href="https://rubyonrails.org/2021/12/15/Rails-7-fulfilling-a-vision">Ruby on Rails 7.0.0</a></strong> topluluğu bayağı mutlu etti diyebilirim. RoR, versiyonları bir günde bakın yeni versiyon çıktık şeklinde çıkarmıyor, topluluk neler yapıyorsa ve kabul görüyorsa main branch’lerine merge ediyor ve developer’lar için kullanıma direk açıyor. RoR 7’de de bu şekilde yaklaşık bir senedir geliştiriliyor ve biz Yakut’da bu konuların çoğuna yer vermeye çalışıyoruz.. RoR 7 bizlere diğer RoR versiyonlarından özellikle 6. versiyondan farklı birçok şey getiriyor. Bunların başında Webpacker’in kalkması ve import map’lerin kullanılmaya başlaması heyecan verici. Bu konu hakkında DHH’in güzel bir <a href="https://world.hey.com/dhh/modern-web-apps-without-javascript-bundling-or-transpiling-a20f2755">yazısı</a> var, incelemenizi tavsiye ederim. Single Page Application yaklaşımından uzaklaşmak ve buradaki karmaşıklığı çözmek adına Hotwire dedikleri bir yaklaşım ile karşımıza çıktılar. <strong><a href="https://hotwired.dev/">Hotwire</a></strong> kavram olaral çok yeni olmasa da <strong><a href="https://turbo.hotwired.dev/">Turbo</a></strong> ve <strong><a href="https://stimulus.hotwired.dev/">Stimulus</a></strong> ile bizlere web geliştirme yaparken daha az hatta belki hiç Javascript yazmadan web geliştirmeler yapma imkanı sunuyor. RoR 7 ile CSS bundling de artık daha kolay olmaya ve şuan desteklediği, Tailwind CSS, Bootstrap, Bulma, PostCSS, or Dart Sass’i projelerimizde kolayca entegre etme ve kullanma imkanı sunuyor. Backend tarafında ise daha güvenli ve daha hızlı bir web framework’ü yapabilmek adın yaptıkları geliştirmeleri de görebiliyoruz. Özellikle <a href="https://github.com/rails/rails/pull/41659">Active Record Encryption</a>, <a href="https://github.com/rails/rails/pull/41659">Asynchronous Query Loading</a> ve <a href="https://github.com/fxn/zeitwerk#introduction">Zeitwerk</a> bunlara örnek verilebilir.</p>
 
 <h2 id="the-one-person-framework">The One Person Framework</h2>
 
 <p>DHH’in Aralık ortalarında yazdığı bu <a href="https://world.hey.com/dhh/the-one-person-framework-711e6318">yazı</a> aslında biraz Ruby on Rails 7’nin arkasında yatan motivasyonu anlatıyor ve Rails 7’nin özetini yapıyor. Ancak burada dikkat edilmesi gereken Rails 7 ile sadece bir framework size yeterli ve bu framework ile web’de istediklerinizi yapabilirsiniz yaklaşımı. Daha fazlasına neden ihtyacınız var? Bu sorunun cevabını özellikle startup’lar Rails 4 ve bazen 5 zamanında vermişlerdi. Rails 7 ile daha fazla startup hatta bence scaleup’lar Rails ile güzel işleri, daha zahmetsiz ve hızlı bir şekilde yapmaya başlayacaklar.</p>
+
+<h2 id="konferanslar">Konferanslar</h2>
+
+<p>RailsConf 2021, Euroko2021, RubyKaigi ve RubyConf 2021 ile bu sene de dört önemli konferans görduk Ruby dünyasında. Bu konferanslardan önerebileceğim birkaç konuşmayı paylaşmak istiyorum.</p>
+
+<ul>
+  <li><a href="https://www.youtube.com/watch?v=FU9wz998-1k&amp;ab_channel=RubyCentral">RailsConf 2021 — Keynote: All the Things I Thought I Couldn’t Do by Eileen Uchitelle</a></li>
+  <li><a href="https://www.youtube.com/watch?v=AFpq1pDQagw&amp;ab_channel=RubyCentral">RailsConf 2021- Profiling to make your Rails app faster by Gannon McGibbon</a></li>
+  <li><a href="https://www.youtube.com/watch?v=lxczDssLYKA&amp;ab_channel=Euruko">Euroko 2021 - Building a Ruby web app using the Ruby Standard Library by Maple Ong</a></li>
+  <li><a href="https://www.youtube.com/watch?v=x_YhDCNeFQ8&amp;ab_channel=Euruko">Euroko 2021- Optimizing Ruby’s memory layout by Peter Zhu &amp; Matthew Valentine-House</a></li>
+  <li><a href="https://www.youtube.com/watch?v=zO9_uTaELCw&amp;ab_channel=RubyCentral">RubyConf 2021 - YJIT: Building a new JIT Compiler inside CRuby by Maxime Chevalier Boisvert</a></li>
+  <li><a href="https://www.youtube.com/watch?v=a3jfpSmikdg&amp;ab_channel=RubyCentral">RubyConf 2021 - Gradual Typing in Ruby, A Three Year by Ufuk Kayserilioglu, Alexandre Terrasa</a></li>
+</ul>
+
+<div id="dot">. . . .</div>
+
+<p>Ruby dünyasında 2021’de tabii ki benim bu yazdıklarım ile sınırlı değil. Son zamanlarda Ruby dünya da her ne kadar popüler bir dil olarak görülmese de hala eski gücünü koruyor. Bu sene yapılan yeni atılımlar ile 2022’yi Ruby için daha parlak görüyorum.</p>
+
+<p>2022 yılın için yeni bir programlama dili ve yeni insanlarla tanışma planlarınız varsa Ruby Türkiye’yi ziyaret etmenizi tavsiye ederim. Bizlere Slack, Twitter ve Email üzerinden ulaşabilir, yukarıda paylaştığım <a href="https://discuss.rubyturkiye.org/">Ruby Türkiye Discourse</a>’a gelip, kendinizi tanıtıp, nereden başlayabilirim diye sorabilirsiniz. Kapımız iyi yazılımcılar olmak isteyen herkese açık. Ruby’i sevmiyorsanız bile buluşmalarımıza bekliyoruz, kim bilir belki bizi seversiniz :)
+Sevgiler.</p>
+
+<p><small><em><b>Not:</b> Bu yazının orjinal haline Medium’daki <a href="https://medium.com/@eayurt/2021de-ruby-f3a534866cfb">yazım</a>‘dan ulaşabilirsiniz.</em></small></p>
 :ET
