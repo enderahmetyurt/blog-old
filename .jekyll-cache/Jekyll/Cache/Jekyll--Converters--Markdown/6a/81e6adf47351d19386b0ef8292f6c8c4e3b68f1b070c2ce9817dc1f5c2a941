@@ -1,0 +1,60 @@
+I"�<p>Merhaba 👋 Ruby’de Array’le ile çalışırken test yazmadığımız zaman sonuçları bize pahallıya patlayabilecek hatalar yapabiliyoruz. Bu hatalardan en çok yapılan bir tanesine değinmek ve ne yapabiliriz diye biraz anlatmak istiyorum.</p>
+
+<p>Senaryomuz şu şekilde olsun. Elimizde içinde Hash’ler olan bir Array var ve biz bu Array içinden Hash’lerin belirli key’lerini alıp yeni bir Array yapmak istiyoruz.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">people</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span> <span class="ss">fullname: </span><span class="s1">'Rees Mcloughlin'</span><span class="p">,</span> <span class="ss">age: </span><span class="mi">11</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="ss">fullname: </span><span class="s1">'Kylo Hale'</span><span class="p">,</span> <span class="ss">age: </span><span class="mi">15</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="ss">fullname: </span><span class="s1">'Aadam Bass'</span><span class="p">,</span> <span class="ss">age: </span><span class="mi">22</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="ss">fullname: </span><span class="s1">'Mikhail Healy'</span><span class="p">,</span> <span class="ss">age: </span><span class="mi">30</span> <span class="p">},</span>
+<span class="p">]</span>
+</code></pre></div></div>
+
+<p>Elimizdeki bu veriden yetişkin olanların adlarını almak istiyoruz. Aklımıza hızlıca şu yöntem gelebilir.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">ADULT_AGE</span> <span class="o">=</span> <span class="mi">18</span>
+
+<span class="n">adult_people</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">people</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">person</span><span class="o">|</span>
+  <span class="k">next</span> <span class="k">if</span> <span class="n">person</span><span class="p">[</span><span class="ss">:age</span><span class="p">]</span> <span class="o">&lt;</span> <span class="no">ADULT_AGE</span>
+
+  <span class="n">adult_people</span> <span class="o">&lt;&lt;</span>  <span class="n">person</span><span class="p">[</span><span class="ss">:fullname</span><span class="p">]</span>
+<span class="k">end</span>
+
+<span class="n">adult_people</span>
+<span class="c1"># =&gt; ["Aadam Bass", "Mikhail Healy"]</span>
+</code></pre></div></div>
+
+<p>Bu yöntem yanlış değil ancak daha <code class="language-plaintext highlighter-rouge">map</code> ile daha sade yazılabilir.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">ADULT_AGE</span> <span class="o">=</span> <span class="mi">18</span>
+
+<span class="n">adult_people</span> <span class="o">=</span> <span class="n">people</span><span class="p">.</span><span class="nf">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">person</span><span class="o">|</span>
+  <span class="k">next</span> <span class="k">if</span> <span class="n">person</span><span class="p">[</span><span class="ss">:age</span><span class="p">]</span> <span class="o">&lt;</span> <span class="no">ADULT_AGE</span>
+
+   <span class="n">person</span><span class="p">[</span><span class="ss">:fullname</span><span class="p">]</span>
+<span class="k">end</span>
+
+<span class="n">adult_people</span>
+<span class="c1"># =&gt; [nil, nil, "Aadam Bass", "Mikhail Healy"]</span>
+</code></pre></div></div>
+
+<p>Kodu <code class="language-plaintext highlighter-rouge">map</code> ile yazmak kodumuzu ne kadar okunaklı yapsa da <code class="language-plaintext highlighter-rouge">each</code> gibi belli bir duruma uymayan değerleri array dışında bırakmıyor, <code class="language-plaintext highlighter-rouge">nil</code> objesi olarak array’e ekliyor. Bu pek istediğimiz bir durum değil. Çözüm için Ruby’deki <code class="language-plaintext highlighter-rouge">Array#compact</code> metotunu kullanabiliriz. <code class="language-plaintext highlighter-rouge">map</code> ile bir dizi içersinde dönüyorsak ve dizideki <code class="language-plaintext highlighter-rouge">nil</code>‘leri kaldırmak istiyorsak <code class="language-plaintext highlighter-rouge">compact</code> ile bunu yapabiliriz.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">ADULT_AGE</span> <span class="o">=</span> <span class="mi">18</span>
+
+<span class="n">adult_people</span> <span class="o">=</span> <span class="n">people</span><span class="p">.</span><span class="nf">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">person</span><span class="o">|</span>
+  <span class="k">next</span> <span class="k">if</span> <span class="n">person</span><span class="p">[</span><span class="ss">:age</span><span class="p">]</span> <span class="o">&lt;</span> <span class="no">ADULT_AGE</span>
+
+   <span class="n">person</span><span class="p">[</span><span class="ss">:fullname</span><span class="p">]</span>
+<span class="k">end</span><span class="p">.</span><span class="nf">compact</span>
+
+<span class="n">adult_people</span>
+<span class="c1"># =&gt; ["Aadam Bass", "Mikhail Healy"]</span>
+</code></pre></div></div>
+
+<p>Sevgiler.</p>
+
+<p><small><b>Referanslar:</b> https://kaiwern.com/posts/2018/03/28/using-ruby-next-in-map/</small></p>
+:ET

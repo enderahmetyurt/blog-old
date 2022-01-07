@@ -4,13 +4,80 @@
  <title>Ender Ahmet Yurt</title>
  <link href="enderahmetyurt.github.io/atom.xml" rel="self"/>
  <link href="enderahmetyurt.github.io/"/>
- <updated>2021-12-30T15:53:49+03:00</updated>
+ <updated>2022-01-07T14:55:28+03:00</updated>
  <id>enderahmetyurt.github.io</id>
  <author>
    <name>Ender Ahmet Yurt</name>
    <email>enderyurt@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Ruby'de Array#compact Kullanımı</title>
+   <link href="enderahmetyurt.github.io/2022/01/07/ruby-de-compact-kullan%C4%B1m%C4%B1.html"/>
+   <updated>2022-01-07T14:02:00+03:00</updated>
+   <id>enderahmetyurt.github.io/2022/01/07/ruby-de-compact-kullanımı</id>
+   <content type="html">&lt;p&gt;Merhaba 👋 Ruby’de Array’ler ile çalışırken test yazmadığımız zaman sonuçları bize pahallıya patlayabilecek hatalar yapabiliyoruz. Bu hatalardan en çok yapılan bir tanesine değinmek ve ne yapabiliriz diye biraz anlatmak istiyorum.&lt;/p&gt;
+
+&lt;p&gt;Senaryomuz şu şekilde olsun. Elimizde içinde Hash’ler olan bir Array var ve biz bu Array içinden Hash’lerin belirli key’lerini alıp yeni bir Array yapmak istiyoruz.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;people&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;fullname: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Rees Mcloughlin'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;age: &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;fullname: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Kylo Hale'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;age: &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;fullname: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Aadam Bass'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;age: &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;22&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;fullname: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Mikhail Healy'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;age: &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Elimizdeki bu veriden yetişkin olanların adlarını almak istiyoruz. Aklımıza hızlıca şu yöntem gelebilir.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;no&quot;&gt;ADULT_AGE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;18&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;adult_people&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;people&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;next&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:age&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ADULT_AGE&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;adult_people&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:fullname&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;adult_people&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# =&amp;gt; [&quot;Aadam Bass&quot;, &quot;Mikhail Healy&quot;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Bu yöntem yanlış değil ancak daha &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;map&lt;/code&gt; ile daha sade yazılabilir.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;no&quot;&gt;ADULT_AGE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;18&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;adult_people&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;people&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;map&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;next&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:age&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ADULT_AGE&lt;/span&gt;
+
+   &lt;span class=&quot;n&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:fullname&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;adult_people&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# =&amp;gt; [nil, nil, &quot;Aadam Bass&quot;, &quot;Mikhail Healy&quot;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Kodu &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;map&lt;/code&gt; ile yazmak kodumuzu ne kadar okunaklı yapsa da &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;each&lt;/code&gt; gibi belli bir duruma uymayan değerleri array dışında bırakmıyor, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nil&lt;/code&gt; objesi olarak array’e ekliyor. Bu pek istediğimiz bir durum değil. Çözüm için Ruby’deki &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Array#compact&lt;/code&gt; metotunu kullanabiliriz. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;map&lt;/code&gt; ile bir dizi içersinde dönüyorsak ve dizideki &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nil&lt;/code&gt;‘leri kaldırmak istiyorsak &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;compact&lt;/code&gt; ile bunu yapabiliriz.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;no&quot;&gt;ADULT_AGE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;18&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;adult_people&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;people&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;map&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;next&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:age&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ADULT_AGE&lt;/span&gt;
+
+   &lt;span class=&quot;n&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:fullname&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;compact&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;adult_people&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# =&amp;gt; [&quot;Aadam Bass&quot;, &quot;Mikhail Healy&quot;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Sevgiler 🙋‍♂️&lt;/p&gt;
+
+&lt;p&gt;&lt;small&gt;&lt;b&gt;Referanslar:&lt;/b&gt; https://kaiwern.com/posts/2018/03/28/using-ruby-next-in-map/&lt;/small&gt;&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>2021'de Ruby</title>

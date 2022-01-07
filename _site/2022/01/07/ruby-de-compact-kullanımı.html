@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <meta property="og:image" content="/public/images/octocat.png">
+  <meta name="twitter:card" content="/public/images/octocat.png" />
+
+  <title>
+    
+      Ruby'de Array#compact Kullanımı &middot; Ender Ahmet Yurt
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+  
+
+  <body>
+
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>
+        <a href="/">
+          Ender Ahmet Yurt
+        </a>
+      </h1>
+      <p class="lead">Software Engineer</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="sidebar-nav-item" href="/">Home</a>
+
+      
+
+      
+      
+        
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/about.html">About</a>
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/speaking.html">Speaking</a>
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/talks.html">Talks</a>
+          
+        
+      
+        
+          
+        
+      
+
+      <a class="sidebar-nav-item" href="https://github.com/enderahmetyurt">GitHub</a>
+      <a class="sidebar-nav-item" href="https://twitter.com/eayurt">Twitter</a>
+      <a class="sidebar-nav-item" href="https://www.linkedin.com/in/enderahmetyurt/">Linkedin</a>
+    </nav>
+
+    <p>&copy; 2022. All rights reserved.</p>
+  </div>
+</div>
+
+
+    <div class="content container">
+      <div class="post">
+  <h1 class="post-title">Ruby'de Array#compact Kullanımı</h1>
+  <span class="post-date">07 Jan 2022</span>
+  <p>Merhaba 👋 Ruby’de Array’ler ile çalışırken test yazmadığımız zaman sonuçları bize pahallıya patlayabilecek hatalar yapabiliyoruz. Bu hatalardan en çok yapılan bir tanesine değinmek ve ne yapabiliriz diye biraz anlatmak istiyorum.</p>
+
+<p>Senaryomuz şu şekilde olsun. Elimizde içinde Hash’ler olan bir Array var ve biz bu Array içinden Hash’lerin belirli key’lerini alıp yeni bir Array yapmak istiyoruz.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">people</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span> <span class="ss">fullname: </span><span class="s1">'Rees Mcloughlin'</span><span class="p">,</span> <span class="ss">age: </span><span class="mi">11</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="ss">fullname: </span><span class="s1">'Kylo Hale'</span><span class="p">,</span> <span class="ss">age: </span><span class="mi">15</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="ss">fullname: </span><span class="s1">'Aadam Bass'</span><span class="p">,</span> <span class="ss">age: </span><span class="mi">22</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="ss">fullname: </span><span class="s1">'Mikhail Healy'</span><span class="p">,</span> <span class="ss">age: </span><span class="mi">30</span> <span class="p">},</span>
+<span class="p">]</span>
+</code></pre></div></div>
+
+<p>Elimizdeki bu veriden yetişkin olanların adlarını almak istiyoruz. Aklımıza hızlıca şu yöntem gelebilir.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">ADULT_AGE</span> <span class="o">=</span> <span class="mi">18</span>
+
+<span class="n">adult_people</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">people</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">person</span><span class="o">|</span>
+  <span class="k">next</span> <span class="k">if</span> <span class="n">person</span><span class="p">[</span><span class="ss">:age</span><span class="p">]</span> <span class="o">&lt;</span> <span class="no">ADULT_AGE</span>
+
+  <span class="n">adult_people</span> <span class="o">&lt;&lt;</span>  <span class="n">person</span><span class="p">[</span><span class="ss">:fullname</span><span class="p">]</span>
+<span class="k">end</span>
+
+<span class="n">adult_people</span>
+<span class="c1"># =&gt; ["Aadam Bass", "Mikhail Healy"]</span>
+</code></pre></div></div>
+
+<p>Bu yöntem yanlış değil ancak daha <code class="language-plaintext highlighter-rouge">map</code> ile daha sade yazılabilir.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">ADULT_AGE</span> <span class="o">=</span> <span class="mi">18</span>
+
+<span class="n">adult_people</span> <span class="o">=</span> <span class="n">people</span><span class="p">.</span><span class="nf">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">person</span><span class="o">|</span>
+  <span class="k">next</span> <span class="k">if</span> <span class="n">person</span><span class="p">[</span><span class="ss">:age</span><span class="p">]</span> <span class="o">&lt;</span> <span class="no">ADULT_AGE</span>
+
+   <span class="n">person</span><span class="p">[</span><span class="ss">:fullname</span><span class="p">]</span>
+<span class="k">end</span>
+
+<span class="n">adult_people</span>
+<span class="c1"># =&gt; [nil, nil, "Aadam Bass", "Mikhail Healy"]</span>
+</code></pre></div></div>
+
+<p>Kodu <code class="language-plaintext highlighter-rouge">map</code> ile yazmak kodumuzu ne kadar okunaklı yapsa da <code class="language-plaintext highlighter-rouge">each</code> gibi belli bir duruma uymayan değerleri array dışında bırakmıyor, <code class="language-plaintext highlighter-rouge">nil</code> objesi olarak array’e ekliyor. Bu pek istediğimiz bir durum değil. Çözüm için Ruby’deki <code class="language-plaintext highlighter-rouge">Array#compact</code> metotunu kullanabiliriz. <code class="language-plaintext highlighter-rouge">map</code> ile bir dizi içersinde dönüyorsak ve dizideki <code class="language-plaintext highlighter-rouge">nil</code>‘leri kaldırmak istiyorsak <code class="language-plaintext highlighter-rouge">compact</code> ile bunu yapabiliriz.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">ADULT_AGE</span> <span class="o">=</span> <span class="mi">18</span>
+
+<span class="n">adult_people</span> <span class="o">=</span> <span class="n">people</span><span class="p">.</span><span class="nf">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">person</span><span class="o">|</span>
+  <span class="k">next</span> <span class="k">if</span> <span class="n">person</span><span class="p">[</span><span class="ss">:age</span><span class="p">]</span> <span class="o">&lt;</span> <span class="no">ADULT_AGE</span>
+
+   <span class="n">person</span><span class="p">[</span><span class="ss">:fullname</span><span class="p">]</span>
+<span class="k">end</span><span class="p">.</span><span class="nf">compact</span>
+
+<span class="n">adult_people</span>
+<span class="c1"># =&gt; ["Aadam Bass", "Mikhail Healy"]</span>
+</code></pre></div></div>
+
+<p>Sevgiler 🙋‍♂️</p>
+
+<p><small><b>Referanslar:</b> https://kaiwern.com/posts/2018/03/28/using-ruby-next-in-map/</small></p>
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2021/12/30/2021-de-ruby.html">
+            2021'de Ruby
+            <small>30 Dec 2021</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2020/11/17/sorbet-ile-static-typing.html">
+            Sorbet ile Static Typing
+            <small>17 Nov 2020</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2020/09/29/ruby-3-ile-gelebilecek-%C3%B6zellikler.html">
+            Ruby 3 ile Gelebilecek Özellikler
+            <small>29 Sep 2020</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+    </div>
+  </body>
+</html>
