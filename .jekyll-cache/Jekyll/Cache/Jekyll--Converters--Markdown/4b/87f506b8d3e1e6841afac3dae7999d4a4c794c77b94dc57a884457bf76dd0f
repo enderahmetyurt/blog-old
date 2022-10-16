@@ -1,9 +1,4 @@
----
-layout: page
-title: About
----
-
-<p class="message">
+I"�<p class="message">
   Hi! My name is Ender. I am from Ünye, Ordu, Turkey. After lived in Istanbul in 15 years, I relocated my hometown. I have been working in software industry since 2011. I worked in lot of startups as a software engineer. I am a software developer at <a href="https://teamtailor.com/">Teamtailor</a> since October 2021.
 </p>
 
@@ -24,5 +19,6 @@ title: About
 </p>
 
 <p class="message">
-  I have a side project (for now it will be a startup later 🙏). It's called <a href="https://www.podiscover.me/">Podiscover.</a> It's a social media platform for podcast listeners. If you're interested in Podiscover, don't hesitate to reach me out by email, or my social media. Let's meet, and talk about podcast domain.
+  I have a side project (for now it will be a startup later 🙏). It's called <a href="https://www.podiscover.me/">Podiscover.</a> It's a social media platform for podcast listeners. If you interested in Podiscover, don't hesitate to reach me out by email, or my social media. Let's meet, and talk about podcast domain.
 </p>
+:ET
