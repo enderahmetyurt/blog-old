@@ -4,13 +4,76 @@
  <title>Ender Ahmet Yurt</title>
  <link href="enderahmetyurt.github.io/atom.xml" rel="self"/>
  <link href="enderahmetyurt.github.io/"/>
- <updated>2022-11-12T19:45:09+03:00</updated>
+ <updated>2023-02-02T20:30:53+03:00</updated>
  <id>enderahmetyurt.github.io</id>
  <author>
    <name>Ender Ahmet Yurt</name>
    <email>enderyurt@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>2022'de Ruby</title>
+   <link href="enderahmetyurt.github.io/2023/02/02/2022-de-ruby.html"/>
+   <updated>2023-02-02T20:14:00+03:00</updated>
+   <id>enderahmetyurt.github.io/2023/02/02/2022-de-ruby</id>
+   <content type="html">&lt;p&gt;Merhaba 🙋 2021’in Ruby için nasıl geçtiğine dair bir yazı yazmıştım. Şimdi sıra 2022’ye geldi. Bakalım 2022 Ruby için nasıl geçti.&lt;/p&gt;
+
+&lt;h2 id=&quot;ruby-32&quot;&gt;Ruby 3.2&lt;/h2&gt;
+
+&lt;p&gt;Bu sefer biraz tersten başlamak istiyorum. 24 Aralık’ta duyurulan &lt;strong&gt;Ruby 3.2&lt;/strong&gt; versiyonundan başlayacağım. Her sene Christmas’ta Ruby’nin yeni bir versiyonun çıkmasına zaten topluluktakiler alışık. Geçen sene Ruby 3.1’in release olması ile Ruby’de artık değişim başlıyor demiştik ve bu seneki yapılan çalışmalar ve sonunda Ruby 3.2’nin duyurulması da Ruby’nin o durağan günlerden çıkıp artık konuşulan bir programlama dili olacağını gösterir nitelikte. Özellikle performans tarafında yapılan geliştirmeler ve daha fazla developer friendly bir dil olmaya doğru gitmesi Ruby’nin geleceğinin parlak olacağını bize bu sene göstermeye başladı. Shopify CEO’su Tobb Lutke’nin bu &lt;a href=&quot;https://twitter.com/tobi/status/1605656985185226753&quot;&gt;Tweet’i&lt;/a&gt; zaten Ruby’nin bu seneki gelişimini açıkça gösteriyor. Ayrıca Ruby 3.2 ile artık deneysel olmaktan çıkan YJIT özelliği da bu performansın altında yatan neden diyebiliriz. Topluluktan da tanıdığımız Ufuk Kayserilioğlu’nun &lt;a href=&quot;https://twitter.com/paracycle/status/1605706228734238722&quot;&gt;Tweet flood’u&lt;/a&gt; konuyu daha detaylı anlatıyor. Daha fazla teknik detayları burada tek tek sıralamaktansa sizleri her cumartesi akşam yaptığımız Yakut yayınlarına davet ediyorum. Bütün sene boyunca yakından ve detaylı olarak Ruby’deki gelişmeleri konuştuk ve konuşmaya da devam edeceğiz gibi duruyor.&lt;/p&gt;
+
+&lt;h2 id=&quot;ruby-on-rails-7-ile-geçen-bir-sene&quot;&gt;Ruby on Rails 7 ile geçen bir sene&lt;/h2&gt;
+
+&lt;p&gt;2021’nin son günlerine doğru Ruby on Rails 7.0.0’ın çıkması ile çok heyecanlandığımı söyleyebilirim. Uzun bir zaman sonra yeni bir RoR versiyonuna heyecanlanmamıştım. Bütün sene boyunca şahsen tüm özelliklerini kullanamadım ama side projem &lt;a href=&quot;https://www.podiscover.me&quot;&gt;Podiscover&lt;/a&gt; sayesinde gerçek ortamda çalışan büyük projede RoR’un bu en taze versiyonunu kullanma ve deneyimleme şansı buldum (buluyorum).&lt;/p&gt;
+
+&lt;p&gt;Ruby ile web geliştirme tarafında bizi en çok üzen haberlerden biri bu sene Heroku’nun free dyno’ları kapatması &lt;a href=&quot;https://help.heroku.com/RSBRUH58/removal-of-heroku-free-product-plans-faq&quot;&gt;haberi&lt;/a&gt; oldu. RoR’nun en harika özelliklerinden biri olan pragmatik bir şekilde geliştirme yapmak ve yazılan web uygulamasının çok hızlı ve basit bir şekilde production ortamına atılmasıydı. Heroku bu anlamda birçok insana bedava olarak yardımcı olmuştur. Bu karar ile artık RoR uygulamalarının kolay yoldan nasıl deploy edileceğini konuşulmaya başlamışken ki zaten alternatifler hep vardı DHH, &lt;strong&gt;&lt;a href=&quot;https://github.com/rails/docked&quot;&gt;Docked Rails CLI’ı&lt;/a&gt;&lt;/strong&gt; duyurdu. Bu özellik sayesinde artık RoR uygulamaları kolayca dockerize edilebilir oldu ve en azından başlangıç aşamasında bu engeli de atlamış olduk. Senenin sonuna doğru gelen bu özellik biraz olsun yüzleri güldürdü diyebilirim.&lt;/p&gt;
+
+&lt;p&gt;Bu senenin RoR için en büyük olaylarından biri de &lt;strong&gt;Webpacker&lt;/strong&gt;’ın 5 sene sonra tamamen kaldırılması oldu. RoR 7 ile gelen yeni JS yaklaşımı ve diğer frontend geliştirme özellikleri zaten bunun sinyalini vermişti ve bu sene &lt;a href=&quot;https://github.com/rails/webpacker#webpacker-has-been-retired-&quot;&gt;Webpacker’a veda ettik&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Ruby on Rails her ne kadar DHH’in trademark’ı olsa da topluluk RoR özelindeki konularda konuşmaya ve karar vermeye açık. Bu vesile ile RoR topluluğu bu sene kendi &lt;a href=&quot;https://rubyonrails.org/2022/6/13/rails-discord-server-is-now-open-to-the-public&quot;&gt;Discord kanalı herkese açtı&lt;/a&gt;. Bu sayede artık RoR geliştiricileri arasında geçen konuşmaları okuyabilme ve oradaki konulara dahil olabilme şansı sağlandı. Bunun dışında bu sene &lt;strong&gt;&lt;a href=&quot;https://rubyonrails.org/foundation&quot;&gt;The Rails Foundation&lt;/a&gt;&lt;/strong&gt; adında kar amacı gütmeyen bir organizasyon kuruldu. RoR kullanan büyük şirketler bu derneğe bağış yaparak, Ruby on Rails’ın geliştirilmesine bir de bu yoldan katkı sağlamış oldular.&lt;/p&gt;
+
+&lt;h2 id=&quot;diğer-gelişmeler&quot;&gt;Diğer gelişmeler&lt;/h2&gt;
+
+&lt;p&gt;2022’de radarlara takılan birkaç gelişmeden de bahsedicek olursak; Bunlardan ilki &lt;strong&gt;&lt;a href=&quot;https://hanamirb.org/blog/2022/11/22/announcing-hanami-200/&quot;&gt;Hanami&lt;/a&gt;&lt;/strong&gt;’nin sonunda ikinci versiyonun çıkmış olması diyebiliriz. Bizim kanımıza göre Hanami biraz Ruby on Rails olma yolunda ilerlese de gene de Ruby ekosistemine farklılıklar getirdiğini söylemek mümkün.&lt;/p&gt;
+
+&lt;p&gt;Diğer gelişmeler arasında &lt;strong&gt;&lt;a href=&quot;https://www.mikeperham.com/2022/10/27/introducing-sidekiq-7.0/&quot;&gt;Sidekiq 7&lt;/a&gt;&lt;/strong&gt;‘nin release olmasını koymazsak olmaz gibi sanki. Ruby ekosisteminde en çok tercih edilen background job yönetme aracı olan Sidekiq, 2022’de sadece performans anlamında değil metrikleri gösterme anlamında da yenilere giderek 7. sürümünü duyurdu.&lt;/p&gt;
+
+&lt;h2 id=&quot;konferanslar&quot;&gt;Konferanslar&lt;/h2&gt;
+
+&lt;p&gt;Bu sene de geçen sene gibi RailsConf, Euroko, RubyKaigi ve RubyConf gibi konferanslar gördük. Bunlara ek olarak bu sene RubyConfMini adında daha çok ilk kez konuşma vereceklere yönelik yeni bir konferans daha görmüş olduk. Bu konferansların bazılarının videolarına şu an erişim olmasa da beğendiklerimden birkaçını sizlerle paylaşmak istiyorum.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=DzyGdOd_6-Y&amp;amp;list=PLbHJudTY1K0f1WgIbKCc0_M-XMraWwCmk&amp;amp;index=2&amp;amp;ab_channel=RubyCentral&quot;&gt;RailsConf 2022 — Opening Keynote: The Journey to Zeitwerk by Xavier Noria&lt;/a&gt; (bu sene ilk defa RailsConf’da açılış keynote’nu DHH yapmadı.)&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=5QgQicKHmeU&amp;amp;ab_channel=RubyCentral&quot;&gt;RailsConf 2022 — Keynote: RailsConf 2022 — It’s been a minute! by Aaron Patterson&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=gseo4vdmSjE&amp;amp;list=PLbFmgWm555yYwwmwMvpC-RaqnmUTKB2EO&amp;amp;index=10&amp;amp;t=1269s&amp;amp;ab_channel=RubyKaigi&quot;&gt;[EN]ruby/debug — The best investment for your productivity / Stan Lo @_st0012&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=gseo4vdmSjE&amp;amp;list=PLbFmgWm555yYwwmwMvpC-RaqnmUTKB2EO&amp;amp;index=10&amp;amp;t=1269s&amp;amp;ab_channel=RubyKaigi&quot;&gt;Implementing Object Shapes in CRuby by Jemma Issroff&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=gseo4vdmSjE&amp;amp;list=PLbFmgWm555yYwwmwMvpC-RaqnmUTKB2EO&amp;amp;index=10&amp;amp;t=1269s&amp;amp;ab_channel=RubyKaigi&quot;&gt;The Technical and Organizational Infrastructure of the Ruby Community by Adarsh Pandit&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;ruby-türkiye&quot;&gt;Ruby Türkiye&lt;/h2&gt;
+
+&lt;p&gt;Gelelim bize. Biz neler yaptık koca bir yıl diye bakacak olursak genel olarak geçen seneye göre bu sene biraz daha durgun geçti diyebiliriz. İkisi online bir tanesi de offline olmak üzere toplamda bu sene üç meetup yaptık. Özellikle offline yani yüzyüze yaptığımız meetup çok kalabalıktı ve birbirimizi tekrar görmek iyi geldi. Online meetuplara neden devam edemedik bilmiyorum ama topluluk olarak Ruby’nin de şahlanması ile gelecek yılları daha iyi geçireceğimizi düşünüyorum.&lt;/p&gt;
+
+&lt;p&gt;Topluluk bünyesinde gerçekleştirdiğimiz Yakut yayınlarına bu sene gümbür gümbür devam ettik. Bu sene yaklaşık 30–35 yayın yaptığımızı söyleyebilirim. Bu yayınlarda artık Ruby’e dair habeleri daha detaylı incelemeye ve kendi deneyimlerimizi de anlatmaya başladık. 2022 yılında Yakut’ta yeni yüzler de kendini zaman zaman gösterdi ama hep dediğimiz gibi bunun daha kalıcı olmasını istiyor ve aramızda daha fazla yeni yüzler görmek, yayınlarda onları ağırlamak istiyoruz. Bu sene Yakut bir sponsor aldı. &lt;a href=&quot;https://parasut.com/&quot;&gt;Paraşüt&lt;/a&gt; 2022 yılında Yakut’a sponsor olmaya başladı. Kendilerine bir kez daha teşekkür ederiyoruz.&lt;/p&gt;
+
+&lt;p&gt;Bu sene geçen seneye göre biraz daha az atraksiyonlu görünse de aslında bir takım işleri yerine oturduğumuz ve meyvelerini yavaş yavaş almaya başladığımız bir dönemin başlangıcı gibi geliyor bana. Geçen sene kurguladığımız çalışma şekli ve açtığımız Discourse gibi yeni kanallar sayesinde topluluk bu sene daha fazla büyüdü ve kendine öz bir sistem oturtmaya başladı diyebilirim. Ayrıca bu sene sonlarına doğru websitemize &lt;a href=&quot;https://lab2023.com/&quot;&gt;Lab2023&lt;/a&gt; sponsor oldu ve topluluk olarak ikinci sponsorumuzu da almış olduk. Kendilerine buradan tekrar teşekkür ediyoruz.&lt;/p&gt;
+
+&lt;p&gt;Euruko her sene bir sonraki sene nerede yapılsın diye oylama yapıyor. Euruko2022’de gelecek sene için İstanbul’u aday gösterdik. Sağ olsun Ufuk abi bu Helsinki’de neden İstanbul’da Euruko2023 yapılsın diye orada insanlara &lt;a href=&quot;https://youtu.be/JvVAtssjOu0?t=1898&quot;&gt;anlattı&lt;/a&gt;. Ancak çok minik bir fark ile kazanamadık. Olsun! Tekrar deneyip elbet bir gün Euruko’yu Türkiye’de yapacağız.&lt;/p&gt;
+
+&lt;p&gt;Bizler Ruby Türkiye olarak elimizden geleni topluluk adına yapmaya çalışıyoruz. Zaman zaman iş ve hayat yoğunluğu derken bazı şeylere yetişemiyor olsak da hep daha iyi olacağına inanıyor ve topluluğu bırakmıyoruz. Sizler de aramıza katılmak ve destek olmak isterseniz bizlere &lt;strong&gt;&lt;a href=&quot;https://rubytr.slack.com&quot;&gt;Slack kanalımız&lt;/a&gt;&lt;/strong&gt;’dan ulaşabilirsiniz. Ayrıca Ruby Türkiye’nin bütün hesaplarına da kendi &lt;strong&gt;&lt;a href=&quot;https://www.rubyturkiye.org/&quot;&gt;websitesi&lt;/a&gt;&lt;/strong&gt; üzerinden erişebilirsiniz.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Ruby dünyasında 2021’de tabii ki benim bu yazdıklarım ile sınırlı değil. Son zamanlarda Ruby dünya da her ne kadar popüler bir dil olarak görülmese de hala eski gücünü koruyor. Bu sene yapılan yeni atılımlar ile 2022’yi Ruby için daha parlak görüyorum.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Geçen sene bunu demişim ki 2022 cidden Ruby için yeni bir dönemin başlangıcı olduğunu düşünüyorum. Bunun sinyalleri 2021’de verilmişti zaten. Ruby’nin popüler bir dil olması ve daha fazla tercih edilmesi ile gelişmeler daha da artacaktır diye düşünüyorum. Ruby on Rails tarafında ise olan gelişmeler ve yenilikler ile daha fazla geliştiriciye ulaşacak ve web uygulama geliştirme framework’leri arasında eski gücüne kavuşacağını düşünüyorum.&lt;/p&gt;
+
+&lt;p&gt;Ruby ile tanışmak için 2023 iyi bir fırsat olabilir. Hiç yazılım bilmiyor olsanız bile bizlere ulaşabilir, istediğiniz soruları sorabilirsiniz. Kapımız her daim herkese açık.&lt;/p&gt;
+
+&lt;p&gt;❤️&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Ruby'de Array#compact Kullanımı</title>
