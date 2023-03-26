@@ -21,7 +21,7 @@
     <span class="na">database</span><span class="pi">:</span> <span class="s">my_primary_database</span>
     <span class="na">user</span><span class="pi">:</span> <span class="s">root_readonly</span>
     <span class="na">adapter</span><span class="pi">:</span> <span class="s">mysql</span>
-    <span class="na">replica</span><span class="pi">:</span> <span class="no">true</span>
+    <span class="na">replica</span><span class="pi">:</span> <span class="kc">true</span>
   <span class="na">cities</span><span class="pi">:</span>
     <span class="na">database</span><span class="pi">:</span> <span class="s">cities_database</span>
     <span class="na">user</span><span class="pi">:</span> <span class="s">cities_root</span>
@@ -31,7 +31,7 @@
     <span class="na">database</span><span class="pi">:</span> <span class="s">my_cities_database</span>
     <span class="na">user</span><span class="pi">:</span> <span class="s">cities_readonly</span>
     <span class="na">adapter</span><span class="pi">:</span> <span class="s">mysql</span>
-    <span class="na">replica</span><span class="pi">:</span> <span class="no">true</span>
+    <span class="na">replica</span><span class="pi">:</span> <span class="kc">true</span>
 </code></pre></div></div>
 
 <p>Bu noktada birkaç konuya değinmek ve dikkat etmek gerekiyor. Öncelikle bir veritabanı eğer replika bir veritabanı ise <code class="language-plaintext highlighter-rouge">replica: true</code> yazmak gerekiyor. Bunun yanında replika veritabanlarının adlarının aynı olması şart değil ancak aynı veri üzerinden çalışmalar olacağı için adlarının aynı olmasının faydası var.</p>

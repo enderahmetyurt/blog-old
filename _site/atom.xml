@@ -2,10 +2,10 @@
 <feed xmlns="https://www.w3.org/2005/Atom">
 
  <title>Ender Ahmet Yurt</title>
- <link href="enderahmetyurt.github.io/atom.xml" rel="self"/>
- <link href="enderahmetyurt.github.io/"/>
- <updated>2023-02-14T09:15:46+03:00</updated>
- <id>enderahmetyurt.github.io</id>
+ <link href="http://localhost:4000/atom.xml" rel="self"/>
+ <link href="http://localhost:4000/"/>
+ <updated>2023-03-26T10:11:39+03:00</updated>
+ <id>http://localhost:4000</id>
  <author>
    <name>Ender Ahmet Yurt</name>
    <email>enderyurt@gmail.com</email>
@@ -14,9 +14,9 @@
  
  <entry>
    <title>2022'de Ruby</title>
-   <link href="enderahmetyurt.github.io/2023/02/02/2022-de-ruby.html"/>
+   <link href="http://localhost:4000/2023/02/02/2022-de-ruby.html"/>
    <updated>2023-02-02T20:14:00+03:00</updated>
-   <id>enderahmetyurt.github.io/2023/02/02/2022-de-ruby</id>
+   <id>http://localhost:4000/2023/02/02/2022-de-ruby</id>
    <content type="html">&lt;p&gt;Merhaba 🙋 2021’in Ruby için nasıl geçtiğine dair bir yazı yazmıştım. Şimdi sıra 2022’ye geldi. Bakalım 2022 Ruby için nasıl geçti.&lt;/p&gt;
 
 &lt;h2 id=&quot;ruby-32&quot;&gt;Ruby 3.2&lt;/h2&gt;
@@ -77,18 +77,18 @@
  
  <entry>
    <title>Ruby'de Array#compact Kullanımı</title>
-   <link href="enderahmetyurt.github.io/2022/01/07/ruby-de-compact-kullan%C4%B1m%C4%B1.html"/>
+   <link href="http://localhost:4000/2022/01/07/ruby-de-compact-kullan%C4%B1m%C4%B1.html"/>
    <updated>2022-01-07T14:02:00+03:00</updated>
-   <id>enderahmetyurt.github.io/2022/01/07/ruby-de-compact-kullanımı</id>
+   <id>http://localhost:4000/2022/01/07/ruby-de-compact-kullanımı</id>
    <content type="html">&lt;p&gt;Merhaba 👋 Ruby’de Array’ler ile çalışırken test yazmadığımız zaman sonuçları bize pahallıya patlayabilecek hatalar yapabiliyoruz. Bu hatalardan en çok yapılan bir tanesine değinmek ve ne yapabiliriz diye biraz anlatmak istiyorum.&lt;/p&gt;
 
 &lt;p&gt;Senaryomuz şu şekilde olsun. Elimizde içinde Hash’ler olan bir Array var ve biz bu Array içinden Hash’lerin belirli key’lerini alıp yeni bir Array yapmak istiyoruz.&lt;/p&gt;
 
 &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;people&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;fullname: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Rees Mcloughlin'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;age: &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;fullname: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Kylo Hale'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;age: &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;fullname: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Aadam Bass'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;age: &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;22&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;fullname: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Mikhail Healy'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;age: &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;fullname: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;Rees Mcloughlin&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;age: &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;fullname: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;Kylo Hale&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;age: &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;fullname: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;Aadam Bass&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;age: &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;22&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;fullname: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;Mikhail Healy&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;age: &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
@@ -144,9 +144,9 @@
  
  <entry>
    <title>2021'de Ruby</title>
-   <link href="enderahmetyurt.github.io/2021/12/30/2021-de-ruby.html"/>
+   <link href="http://localhost:4000/2021/12/30/2021-de-ruby.html"/>
    <updated>2021-12-30T15:14:00+03:00</updated>
-   <id>enderahmetyurt.github.io/2021/12/30/2021-de-ruby</id>
+   <id>http://localhost:4000/2021/12/30/2021-de-ruby</id>
    <content type="html">&lt;p&gt;Merhaba, Bundan önceki &lt;a href=&quot;https://medium.com/@eayurt/2021-ve-belki-biraz-%C3%B6ncesi-f3ec22b6a9be&quot;&gt;yazımda&lt;/a&gt; 2020’nin biraz sonları ve 2021’ kendi hayatımı yorumlamıştım. Şimdi ise 2021 yılında Ruby dünyasında olup bitenleri yazmak istiyorum.&lt;/p&gt;
 
 &lt;p&gt;Bu yazının benzerini 2017 yılında da &lt;a href=&quot;https://medium.com/@eayurt/2017de-ruby-d1b79a3b8b4&quot;&gt;yazmıştım&lt;/a&gt;. Bu sene kendimce konuşmak Ruby’de ve Ruby Türkiye’de olup bitenleri de detaylı olarak yazmaya çalışacağım.&lt;/p&gt;
@@ -200,14 +200,14 @@ Sevgiler.&lt;/p&gt;
  
  <entry>
    <title>Sorbet ile Static Typing</title>
-   <link href="enderahmetyurt.github.io/2020/11/17/sorbet-ile-static-typing.html"/>
+   <link href="http://localhost:4000/2020/11/17/sorbet-ile-static-typing.html"/>
    <updated>2020-11-17T14:41:00+03:00</updated>
-   <id>enderahmetyurt.github.io/2020/11/17/sorbet-ile-static-typing</id>
+   <id>http://localhost:4000/2020/11/17/sorbet-ile-static-typing</id>
    <content type="html">&lt;p&gt;Merhaba, Ruby her ne kadar süper sevimli bir dil olsa da dinamik bir dil olduğu için yazılan kodlarda ortaya çıkan hatalar ancak runtime’da kendini gösterebiliyor.&lt;/p&gt;
 
 &lt;p&gt;Ancak statik programlama dillerinde kodlarda ortaya çıkan hataları compile time’da alabiliyoruz. Bu duruma bir örnek vermek gerekirse Ruby’de&lt;/p&gt;
 
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;animal&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Foo'&lt;/span&gt;
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;animal&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;Foo&apos;&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;animal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;greeting&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
@@ -218,7 +218,7 @@ Sevgiler.&lt;/p&gt;
 &lt;p&gt;Ruby için geliştirilmiş ve kodunuzdaki method tanımlarını, method signature kontrolleri ve değişken tiplerinin kontrolünü yapan bir Ruby Gem’i. Özünde normal Ruby gibi kodumuzu yazıyoruz ancak Sorbet kullanmak istiyor ve type check yapmak istiyorsak ile Sorbet’in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;T::Sig&lt;/code&gt; modulünü kullanarak kontrollerimizi yapabiliyoruz.&lt;/p&gt;
 
 &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# typed: true&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'sorbet-runtime'&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;sorbet-runtime&apos;&lt;/span&gt;
 
 &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;A&lt;/span&gt;
   &lt;span class=&quot;kp&quot;&gt;extend&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Sig&lt;/span&gt;
@@ -237,7 +237,7 @@ Sevgiler.&lt;/p&gt;
 
 &lt;p&gt;İlk olarak Sorbet’e statik tip kontrollerini ne şekilde raporlaması gerektiğini belirtmek gerekiyor. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# typed: true&lt;/code&gt; dediğimiz zaman normal type hatalarını raporla demek oluyor. Bu şekilde yapabileceğimiz tam beş adet level var. Bu tiplere ve detaylarına &lt;a href=&quot;https://sorbet.org/docs/static&quot;&gt;buradan&lt;/a&gt; ulaşabilirsiniz. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sorbet-runtime&lt;/code&gt;‘ı require ediyoruz çünku bu kod çalıştırıldığı zaman da hatayı bize döndürsün istiyoruz. Sonrasinda &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;A&lt;/code&gt; adında bir class’ımız var ve bu class’ın instance’ının bir &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bar&lt;/code&gt; adında bir methodu var. Ruby’de methodlara verilen parametlerin tipi ve method’ların döndürdüğü değelerin tiplerinin pek önemi olmazken Sorbet ile bunlari &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sig&lt;/code&gt; methodu ile belirleyebiliyoruz. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sig {params(x: Integer).returns(String)}&lt;/code&gt; ile bu method integer tipinde bir parametre alır ve String tipinde birşey döner diyoruz.&lt;/p&gt;
 
-&lt;p&gt;Siz de Sorbet’i hızlica denemek istiyorsaniz &lt;a href=&quot;https://sorbet.run/#%23%20typed%3A%20true%0Arequire%20'sorbet-runtime'%0A%0Aclass%20A%0A%20%20extend%20T%3A%3ASig%0A%0A%20%20sig%20%7Bparams(x%3A%20Integer).returns(String)%7D%0A%20%20def%20bar(x)%0A%20%20%20%20x.to_s%0A%20%20end%0Aend%0A%0Adef%20main%0A%20%20A.new.barr(91)%20%20%20%23%20error%3A%20Typo!%0A%20%20A.new.bar(%2291%22)%20%20%23%20error%3A%20Type%20mismatch!%0Aend&quot;&gt;buradan&lt;/a&gt; online Sorbet runtime aracını kullanabilirsiniz.&lt;/p&gt;
+&lt;p&gt;Siz de Sorbet’i hızlica denemek istiyorsaniz &lt;a href=&quot;https://sorbet.run/#%23%20typed%3A%20true%0Arequire%20&apos;sorbet-runtime&apos;%0A%0Aclass%20A%0A%20%20extend%20T%3A%3ASig%0A%0A%20%20sig%20%7Bparams(x%3A%20Integer).returns(String)%7D%0A%20%20def%20bar(x)%0A%20%20%20%20x.to_s%0A%20%20end%0Aend%0A%0Adef%20main%0A%20%20A.new.barr(91)%20%20%20%23%20error%3A%20Typo!%0A%20%20A.new.bar(%2291%22)%20%20%23%20error%3A%20Type%20mismatch!%0Aend&quot;&gt;buradan&lt;/a&gt; online Sorbet runtime aracını kullanabilirsiniz.&lt;/p&gt;
 
 &lt;h3 id=&quot;kurulum&quot;&gt;Kurulum&lt;/h3&gt;
 
@@ -245,8 +245,8 @@ Sevgiler.&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# -- Gemfile --
 
-gem 'sorbet', :group =&amp;gt; :development
-gem 'sorbet-runtime'
+gem &apos;sorbet&apos;, :group =&amp;gt; :development
+gem &apos;sorbet-runtime&apos;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ bundle install&lt;/code&gt; ile Gem’leri indirdikten sonra artık Sorbet kullanmaya başlayabiliriz.&lt;/p&gt;
@@ -281,9 +281,9 @@ gem 'sorbet-runtime'
  
  <entry>
    <title>Ruby 3 ile Gelebilecek Özellikler</title>
-   <link href="enderahmetyurt.github.io/2020/09/29/ruby-3-ile-gelebilecek-%C3%B6zellikler.html"/>
+   <link href="http://localhost:4000/2020/09/29/ruby-3-ile-gelebilecek-%C3%B6zellikler.html"/>
    <updated>2020-09-29T14:03:00+03:00</updated>
-   <id>enderahmetyurt.github.io/2020/09/29/ruby-3-ile-gelebilecek-özellikler</id>
+   <id>http://localhost:4000/2020/09/29/ruby-3-ile-gelebilecek-özellikler</id>
    <content type="html">&lt;p&gt;Merhaba, Ruby 3 2020 Aralık ayında yayına çıkmış olacak. Güzel özelliklerle geliyor olsa da bu özelliklerden hangilerinin hala Ruby 3 içerisinde olup olmayacağı tartışma konusu.&lt;/p&gt;
 
 &lt;p&gt;Deneysel özelliklerin bir kısmı Ruby 2.7 ile bizlerin kullanılımına sunuluyor ve deneme, test etme şansı buluyoruz. Bu yazıda Ruby 3’de görmemiz muhtemelen birkaçından bahsedeceğim.&lt;/p&gt;
@@ -303,7 +303,7 @@ gem 'sorbet-runtime'
 
 &lt;h2 id=&quot;ractor&quot;&gt;Ractor&lt;/h2&gt;
 
-&lt;p&gt;Eski adı Guild olan bir özellikte çalışan Koichi Sasada Matz’ın da önerisi ile adını Ractor’a çevirdi. Mantığının ise &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&quot;Ractor,&quot; Ruby's Actor-like feature (not an exact Actor-model)&lt;/code&gt; geldiğini söylüyor. Konu aslında MRI Ruby’nin kodu parallel çalıştırmasına izin vermemesinden geliyor. Guild yani yeni ismi ile Ractor, Ruby için yeni bir concurrency modeli öneriyor. Burada asıl amaç Ruby 3 ile bu modeli kurarken Ruby 2 ile uyumluluğu korumak ve parallel çalışabilecek parçaları ve objeleri hızlı bir şekilde paylaşımına izin vermek. Ruby’deki yaygın concurrency problemlerden biri thread’lerin race condition’lar oluşturup, oluşturmadığından emin olmaktır. Ruby’deki &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Thread::Mutex&lt;/code&gt; ile bunun önüne geçebilirsiniz fakat bu sefer de paralelliği ortadan kaldırmış ya da yavaşlatmış olursunuz.&lt;/p&gt;
+&lt;p&gt;Eski adı Guild olan bir özellikte çalışan Koichi Sasada Matz’ın da önerisi ile adını Ractor’a çevirdi. Mantığının ise &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&quot;Ractor,&quot; Ruby&apos;s Actor-like feature (not an exact Actor-model)&lt;/code&gt; geldiğini söylüyor. Konu aslında MRI Ruby’nin kodu parallel çalıştırmasına izin vermemesinden geliyor. Guild yani yeni ismi ile Ractor, Ruby için yeni bir concurrency modeli öneriyor. Burada asıl amaç Ruby 3 ile bu modeli kurarken Ruby 2 ile uyumluluğu korumak ve parallel çalışabilecek parçaları ve objeleri hızlı bir şekilde paylaşımına izin vermek. Ruby’deki yaygın concurrency problemlerden biri thread’lerin race condition’lar oluşturup, oluşturmadığından emin olmaktır. Ruby’deki &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Thread::Mutex&lt;/code&gt; ile bunun önüne geçebilirsiniz fakat bu sefer de paralelliği ortadan kaldırmış ya da yavaşlatmış olursunuz.&lt;/p&gt;
 
 &lt;p&gt;Ruby’de Thread ve Fiber olmak üzere iki tane sınıf var. Thread’ler işletim sistemi seviyesinde kodun parallel çalışmasını sağlarken, Fiber ise parallel çalışacak kodların manuel olarak planlamasının yapılmasına izin verir. Guild’ı ise bu ikisinin birlikte uygulanması ile ortaya çıkar. Şöyle diyebiliriz; Bir Guild içerisinde en az bir Thread ve onun da içerisinde en az bir Fiber bulunur. Guild içerisindeki Thread’ler paralel çalışamazken, farklı Guild’dekiler çalışabilir.&lt;/p&gt;
 
@@ -354,13 +354,13 @@ gem 'sorbet-runtime'
 
 &lt;p&gt;Neden diye sordurttan bir özellik daha. Soldan sağa kod okumaya alıştığımız için bu özellik bizlere biraz zor gelecektir.&lt;/p&gt;
 
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;s1&quot;&gt;'hello'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;foo&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# This is equivalent to foo = 'hello'&lt;/span&gt;
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;s1&quot;&gt;&apos;hello&apos;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;foo&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# This is equivalent to foo = &apos;hello&apos;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Burada çok anlamlı değil ama şu örnek için güzel duruyor.&lt;/p&gt;
 
 &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;full_name&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'foo'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'bar'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;foo&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;bar&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
 
 &lt;span class=&quot;n&quot;&gt;full_name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;surname&lt;/span&gt;
@@ -391,9 +391,9 @@ gem 'sorbet-runtime'
  
  <entry>
    <title>Ruby on Rails'da çoklu veritabanı</title>
-   <link href="enderahmetyurt.github.io/2019/06/22/ruby-on-rails-da-%C3%A7oklu-veritaban%C4%B1.html"/>
+   <link href="http://localhost:4000/2019/06/22/ruby-on-rails-da-%C3%A7oklu-veritaban%C4%B1.html"/>
    <updated>2019-06-22T20:01:00+03:00</updated>
-   <id>enderahmetyurt.github.io/2019/06/22/ruby-on-rails-da-çoklu-veritabanı</id>
+   <id>http://localhost:4000/2019/06/22/ruby-on-rails-da-çoklu-veritabanı</id>
    <content type="html">&lt;p&gt;Merhaba. Ruby on Rails’ın son versiyonu olan 6. versiyonu ile gelen &lt;a href=&quot;https://edgeguides.rubyonrails.org/active_record_multiple_databases.html&quot;&gt;&lt;strong&gt;multiple database&lt;/strong&gt;&lt;/a&gt; özelliği ile artık çoklu veritabanı yönetimi yapılabiliyor.&lt;/p&gt;
 
 &lt;p&gt;Bu durumun birçok anlamı var;&lt;/p&gt;
@@ -417,7 +417,7 @@ gem 'sorbet-runtime'
     &lt;span class=&quot;na&quot;&gt;database&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;my_primary_database&lt;/span&gt;
     &lt;span class=&quot;na&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;root_readonly&lt;/span&gt;
     &lt;span class=&quot;na&quot;&gt;adapter&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;mysql&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;replica&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;replica&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
   &lt;span class=&quot;na&quot;&gt;cities&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
     &lt;span class=&quot;na&quot;&gt;database&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;cities_database&lt;/span&gt;
     &lt;span class=&quot;na&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;cities_root&lt;/span&gt;
@@ -427,7 +427,7 @@ gem 'sorbet-runtime'
     &lt;span class=&quot;na&quot;&gt;database&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;my_cities_database&lt;/span&gt;
     &lt;span class=&quot;na&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;cities_readonly&lt;/span&gt;
     &lt;span class=&quot;na&quot;&gt;adapter&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;mysql&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;replica&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;replica&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Bu noktada birkaç konuya değinmek ve dikkat etmek gerekiyor. Öncelikle bir veritabanı eğer replika bir veritabanı ise &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;replica: true&lt;/code&gt; yazmak gerekiyor. Bunun yanında replika veritabanlarının adlarının aynı olması şart değil ancak aynı veri üzerinden çalışmalar olacağı için adlarının aynı olmasının faydası var.&lt;/p&gt;
@@ -472,9 +472,9 @@ $ rails g migration CreateTowns name:string –database cities
  
  <entry>
    <title>Ruby on AWS Lambda</title>
-   <link href="enderahmetyurt.github.io/2018/12/19/ruby-on-aws-lambda.html"/>
+   <link href="http://localhost:4000/2018/12/19/ruby-on-aws-lambda.html"/>
    <updated>2018-12-19T00:00:00+03:00</updated>
-   <id>enderahmetyurt.github.io/2018/12/19/ruby-on-aws-lambda</id>
+   <id>http://localhost:4000/2018/12/19/ruby-on-aws-lambda</id>
    <content type="html">&lt;p&gt;Merhaba. Yakın zamanda duyurulan Aws Lambda’dan bahsetmek istiyorum.&lt;/p&gt;
 
 &lt;p&gt;Aws Ruby SDK’sı Aws üzerinde işlemler yapmamıza yarıyor. Bu SDK ile Amazon’un Amazon EC2, S3, SQS, SNS gibi servislerini kullanabiliyoruz. Yeni gelişmeler ile Amazon Lambda servisini de artık kullanabilir oluyoruz. Bu geliştirme ile artık Lambda fonksiyonları Ruby gibi kullanabilir ve AWS üzerinde çalıştırabiliriz. Bu girişten sonra küçük bir örnek yapalım.&lt;/p&gt;
@@ -503,9 +503,9 @@ $ rails g migration CreateTowns name:string –database cities
  
  <entry>
    <title>Ruby State Design Pattern</title>
-   <link href="enderahmetyurt.github.io/2018/12/04/ruby-state-design-pattern.html"/>
+   <link href="http://localhost:4000/2018/12/04/ruby-state-design-pattern.html"/>
    <updated>2018-12-04T00:00:00+03:00</updated>
-   <id>enderahmetyurt.github.io/2018/12/04/ruby-state-design-pattern</id>
+   <id>http://localhost:4000/2018/12/04/ruby-state-design-pattern</id>
    <content type="html">&lt;p&gt;Merhaba. Bugün &lt;strong&gt;State Design Pattern&lt;/strong&gt;‘ın Ruby’deki kullanımından bahsetmek istiyorum.&lt;/p&gt;
 
 &lt;p&gt;State design pattern, behavior pattern altında tanımlanır. Bu pattern’da bir nesnenin farklı durumlarda farklı şekillerde çalışmasını düzenlenir. Yani bir nesnenin durumu değiştiğinde o nesnenin çalışma şekli değişir. Bu duruma en güzel örnek trafik ışıklarını verebiliriz. Görme engelliler için trafik ışıklarını düşünün, kırmızı, sarı ve yeşil yandığında, durun, bekleyin ve geçin diyor. Işıklar arası geçişlerde ise birkaç saniye boşluk vererek, diğer ışığa geçiyor. Bu durumda ışıkların state’leri değişiyor ve yapacakları eylemler de state’lere göre belli oluyor.&lt;/p&gt;
@@ -618,9 +618,9 @@ $ rails g migration CreateTowns name:string –database cities
  
  <entry>
    <title>Ruby 2.6 ile Gelenler</title>
-   <link href="enderahmetyurt.github.io/2018/11/28/ruby-2-6-ile-gelenler.html"/>
+   <link href="http://localhost:4000/2018/11/28/ruby-2-6-ile-gelenler.html"/>
    <updated>2018-11-28T00:00:00+03:00</updated>
-   <id>enderahmetyurt.github.io/2018/11/28/ruby-2-6-ile-gelenler</id>
+   <id>http://localhost:4000/2018/11/28/ruby-2-6-ile-gelenler</id>
    <content type="html">&lt;p&gt;Merhaba, Ruby’nin yeni versiyonu 2.6 25 Aralık 2018’de yayınlanacak. Öncesinde preview’dan yeni gelen özelliklerin bazılarına yakından bakalım.&lt;/p&gt;
 
 &lt;h3 id=&quot;arrayunion--arraydifference&quot;&gt;Array#union &amp;amp; Array#difference&lt;/h3&gt;
@@ -665,9 +665,9 @@ a.merge(b, c)
  
  <entry>
    <title>Gmail Eklenti Örneği</title>
-   <link href="enderahmetyurt.github.io/2018/01/23/gmail-eklenti-%C3%96rne%C4%9Fi.html"/>
+   <link href="http://localhost:4000/2018/01/23/gmail-eklenti-%C3%96rne%C4%9Fi.html"/>
    <updated>2018-01-23T11:52:00+03:00</updated>
-   <id>enderahmetyurt.github.io/2018/01/23/gmail-eklenti-Örneği</id>
+   <id>http://localhost:4000/2018/01/23/gmail-eklenti-Örneği</id>
    <content type="html">&lt;p&gt;Merhaba. Daha önce &lt;a href=&quot;https://enderahmetyurt.com/2018/01/09/gmail-e-eklenti-yazmak.html&quot;&gt;Gmail add-on&lt;/a&gt; nedir? Bu konudan biraz bahsetmiştim. Şimdi ise küçük bir uygulama ile giriş yapıp daha pratik birşeyler göstermek istiyorum.&lt;/p&gt;
 
 &lt;p&gt;Öncelikle ihtiyacımız olan add-on’u yazmak için gerekli olan bir ortam. Google bize bu ortamı &lt;a href=&quot;https://script.google.com/&quot;&gt;https://script.google.com/&lt;/a&gt; ile veriyor. Sonrasında ise uygulamanın ayarlarının ve kütüphanelerinin bağımlılıklarının bulunduğu &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;manifest&lt;/code&gt; dosyasını tanımlamak gerekiyor. Son olarak ise kodu yani &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CardService&lt;/code&gt;‘i yazmaya başlıyoruz.&lt;/p&gt;
@@ -691,30 +691,30 @@ a.merge(b, c)
 
 &lt;p&gt;Google bizim için &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Code.gs&lt;/code&gt; adında bir google script dosyası açıyor ve aslında uygulama için ilk çalışan dosya burası oluyor. Bu dosya içine uygulamamız ile alakalı kodları yazıyoruz. Manifest dosyasında belirttiğimiz &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;getContextualAddOn&lt;/code&gt; metodunu bu dosya içinde yazmaya başlıyoruz.&lt;/p&gt;
 
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;getContextualAddOn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getContextualAddOn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;c1&quot;&gt;// Activate temporary Gmail add-on scopes, in this case to allow&lt;/span&gt;
   &lt;span class=&quot;c1&quot;&gt;// message metadata to be read.&lt;/span&gt;
   &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;accessToken&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;messageMetadata&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;accessToken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;GmailApp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setCurrentMessageAccessToken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;accessToken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;GmailApp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;setCurrentMessageAccessToken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;accessToken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 
   &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;messageId&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;messageMetadata&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;messageId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;GmailApp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getMessageById&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;messageId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;subject&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getSubject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sender&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getFrom&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;GmailApp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;getMessageById&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;messageId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;subject&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;getSubject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sender&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;getFrom&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
 
   &lt;span class=&quot;c1&quot;&gt;// Create a card with a single card section and two widgets.&lt;/span&gt;
   &lt;span class=&quot;c1&quot;&gt;// Be sure to execute build() to finalize the card construction.&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;exampleCard&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;CardService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;newCardBuilder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setHeader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;CardService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;newCardHeader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-             &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setTitle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;Example card&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addSection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;CardService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;newCardSection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-              &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addWidget&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;CardService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;newKeyValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-                         &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setTopLabel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;Subject&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-                         &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setContent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;subject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-              &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addWidget&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;CardService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;newKeyValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-                         &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setTopLabel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;From&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-                         &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setContent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sender&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;// Don't forget to build the Card!&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;exampleCard&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;CardService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;newCardBuilder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;setHeader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;CardService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;newCardHeader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+             &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;setTitle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;Example card&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;addSection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;CardService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;newCardSection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+              &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;addWidget&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;CardService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;newKeyValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+                         &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;setTopLabel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;Subject&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                         &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;setContent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;subject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+              &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;addWidget&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;CardService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;newKeyValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+                         &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;setTopLabel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;From&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                         &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;setContent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sender&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;// Don&apos;t forget to build the Card!&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;exampleCard&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -751,9 +751,9 @@ a.merge(b, c)
  
  <entry>
    <title>Gmail'e Eklenti Yazmak</title>
-   <link href="enderahmetyurt.github.io/2018/01/09/gmail-e-eklenti-yazmak.html"/>
+   <link href="http://localhost:4000/2018/01/09/gmail-e-eklenti-yazmak.html"/>
    <updated>2018-01-09T00:00:00+03:00</updated>
-   <id>enderahmetyurt.github.io/2018/01/09/gmail-e-eklenti-yazmak</id>
+   <id>http://localhost:4000/2018/01/09/gmail-e-eklenti-yazmak</id>
    <content type="html">&lt;p&gt;Merhaba. Gmail’de işlerimizi halletmek adına birkaç tarayıcı eklentisi kullanıyoruz.&lt;/p&gt;
 
 &lt;p&gt;Fakat bu eklentiler kimi zaman tarayıcılar değişince iyi çalışmıyor ya da alternatifi bulunamıyor veya mobil uygulamalar üzerinde hiçbir şekilde var olmuyor. 2017 yılının sonuna doğru Google, Gmail için artık eklenti yazımını mümkün kıldı. İsteyenler artık tarayıcı eklentisi yazar gibi Gmail için eklenti yazabilecek. Peki bu Gmail eklentisi tam olarak ne anlama geliyor, ve bu iş nasıl yapılıyor?&lt;/p&gt;
@@ -776,9 +776,9 @@ a.merge(b, c)
  
  <entry>
    <title>Ruby 2.5 ile Gelenler</title>
-   <link href="enderahmetyurt.github.io/2017/12/30/ruby-2-5-ile-gelenler.html"/>
+   <link href="http://localhost:4000/2017/12/30/ruby-2-5-ile-gelenler.html"/>
    <updated>2017-12-30T00:00:00+03:00</updated>
-   <id>enderahmetyurt.github.io/2017/12/30/ruby-2-5-ile-gelenler</id>
+   <id>http://localhost:4000/2017/12/30/ruby-2-5-ile-gelenler</id>
    <content type="html">&lt;p&gt;Merhaba, Ruby en son versiyonu olan 2.5 ile yeni yıla girmeden karşımıza çıktı. Bu versiyon ile ne gibi özellikler geldi kısaca bakalım.&lt;/p&gt;
 
 &lt;h3 id=&quot;beginende-gerek-kalmadı&quot;&gt;Begin/End’e gerek kalmadı&lt;/h3&gt;
@@ -816,17 +816,17 @@ a.merge(b, c)
 &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# 2.4&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;hello &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
 
-&lt;span class=&quot;c1&quot;&gt;# NameError: undefined local variable or method `name' for main:Object&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# NameError: undefined local variable or method `name&apos; for main:Object&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;#   from (irb):1&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;#   from /Users/ender/.rvm/rubies/ruby-2.4.2/bin/irb:11:in `&amp;lt;main&amp;gt;'&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#   from /Users/ender/.rvm/rubies/ruby-2.4.2/bin/irb:11:in `&amp;lt;main&amp;gt;&apos;&lt;/span&gt;
 
 &lt;span class=&quot;c1&quot;&gt;# 2.5&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;hello &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
 
 &lt;span class=&quot;c1&quot;&gt;# Traceback (most recent call last):&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;#         2: from /Users/ender/.rvm/rubies/ruby-2.5.0/bin/irb:11:in `&amp;lt;main&amp;gt;'&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#         2: from /Users/ender/.rvm/rubies/ruby-2.5.0/bin/irb:11:in `&amp;lt;main&amp;gt;&apos;&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;#         1: from (irb):1&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;# NameError (undefined local variable or method `name' for main:Object)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# NameError (undefined local variable or method `name&apos; for main:Object)&lt;/span&gt;
 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
@@ -834,13 +834,13 @@ a.merge(b, c)
 
 &lt;p&gt;String sınıfı için iki yeni metot geldi. Gerekli bir metot mu bilemiyorum ama zaman zaman işe yarayabilir gibi duruyor.&lt;/p&gt;
 
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;ender&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;delete_prefix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'en'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;ender&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;delete_prefix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;en&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; &quot;der&quot;&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;minder&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;delete_prefix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'en'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;minder&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;delete_prefix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;en&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; &quot;minder&quot;&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;ender&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;delete_suffix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'er'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;ender&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;delete_suffix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;er&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; &quot;end&quot;&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;deriz&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;delete_suffix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'er'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;deriz&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;delete_suffix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;er&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;# =&amp;gt; &quot;deriz&quot;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
@@ -861,14 +861,14 @@ a.merge(b, c)
 
 &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;hash&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;a: &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;b: &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;hash&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;transform_keys&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;to_s&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;# =&amp;gt; { 'a' =&amp;gt; 1, 'b' =&amp;gt; 2 }&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# =&amp;gt; { &apos;a&apos; =&amp;gt; 1, &apos;b&apos; =&amp;gt; 2 }&lt;/span&gt;
 
 &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;hash&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;a: &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;b: &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;hash&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;transform_keys!&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;to_s&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;# =&amp;gt; { 'a' =&amp;gt; 1, 'b' =&amp;gt; 2 }&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# =&amp;gt; { &apos;a&apos; =&amp;gt; 1, &apos;b&apos; =&amp;gt; 2 }&lt;/span&gt;
 
 &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;hash&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;# =&amp;gt; { 'a' =&amp;gt; 1, 'b' =&amp;gt; 2 }&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# =&amp;gt; { &apos;a&apos; =&amp;gt; 1, &apos;b&apos; =&amp;gt; 2 }&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Tabiki bütün özellikler bunlarla sınırlı değil. Bütün detaylara buradan &lt;a href=&quot;https://github.com/ruby/ruby/blob/v2_5_0_preview1/NEWS&quot;&gt;ulaşabilirsiniz.&lt;/a&gt;&lt;/p&gt;
@@ -880,9 +880,9 @@ a.merge(b, c)
  
  <entry>
    <title>Ruby 2.4 Binding#irb</title>
-   <link href="enderahmetyurt.github.io/2016/11/10/ruby2-4-binding-irb.html"/>
+   <link href="http://localhost:4000/2016/11/10/ruby2-4-binding-irb.html"/>
    <updated>2016-11-10T00:00:00+03:00</updated>
-   <id>enderahmetyurt.github.io/2016/11/10/ruby2-4-binding-irb</id>
+   <id>http://localhost:4000/2016/11/10/ruby2-4-binding-irb</id>
    <content type="html">&lt;p&gt;Hello! &lt;a href=&quot;https://www.ruby-lang.org/en/news/2016/11/09/ruby-2-4-0-preview3-released/&quot;&gt;Ruby2.4.0.preview3&lt;/a&gt; was released yesterday. There are some really cool features in it. I will mention one of these.&lt;/p&gt;
 
 &lt;p&gt;It is about debugging or open a REPL session. As you know before that release, Ruby developers use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;p&lt;/code&gt; or other lovely gem &lt;a href=&quot;https://github.com/pry/pry&quot;&gt;pry&lt;/a&gt; to debug. For now &lt;a href=&quot;https://github.com/ruby/ruby/commit/493e48897421d176a8faf0f0820323d79ecdf94a&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;binding#irb&lt;/code&gt;&lt;/a&gt; provides to debug in your application.&lt;/p&gt;
@@ -899,7 +899,7 @@ a.merge(b, c)
 
 &lt;p&gt;Now we can test that feature with a small Ruby program.&lt;/p&gt;
 
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'irb'&lt;/span&gt;
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;irb&apos;&lt;/span&gt;
 
 &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Test&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;hello&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -908,7 +908,7 @@ a.merge(b, c)
   &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
 
-&lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;hello&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'ender'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;hello&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;ender&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ruby&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ruby24p3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;rb&lt;/span&gt;
@@ -924,17 +924,17 @@ a.merge(b, c)
  
  <entry>
    <title>Ruby 2.4 String#concat, Array#concat and String#prepend Multiple Arguments</title>
-   <link href="enderahmetyurt.github.io/2016/11/05/ruby-2-4-string-concat-array-concat-and-string-prepend-multiple-arguments.html"/>
+   <link href="http://localhost:4000/2016/11/05/ruby-2-4-string-concat-array-concat-and-string-prepend-multiple-arguments.html"/>
    <updated>2016-11-05T00:00:00+03:00</updated>
-   <id>enderahmetyurt.github.io/2016/11/05/ruby-2-4-string-concat-array-concat-and-string-prepend-multiple-arguments</id>
+   <id>http://localhost:4000/2016/11/05/ruby-2-4-string-concat-array-concat-and-string-prepend-multiple-arguments</id>
    <content type="html">&lt;p&gt;Merhaba. Ruby 2.4’den önceki sürümler String ve Array için tanımlı #concat metotu birleştirme işlemini parametre almadan yapıyor.&lt;/p&gt;
 
 &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my_string&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hello&quot;&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my_string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;concat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot; World&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;#=&amp;gt; &quot;Hello World&quot;&lt;/span&gt;
 
-&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my_array&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'a'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'s'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'l'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my_array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;concat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'e'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my_array&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;a&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;s&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;l&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my_array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;concat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;e&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;#=&amp;gt; [&quot;a&quot;, &quot;s&quot;, &quot;l&quot;, &quot;e&quot;]&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
@@ -960,8 +960,8 @@ a.merge(b, c)
 &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my_string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;concat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot; World&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;#=&amp;gt; &quot;Hello World!&quot;&lt;/span&gt;
 
-&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my_array&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'a'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'s'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'l'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my_array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;concat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'e'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'f'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my_array&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;a&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;s&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;l&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my_array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;concat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;e&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;f&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;#=&amp;gt; [&quot;a&quot;, &quot;s&quot;, &quot;l&quot;, &quot;e&quot;, &quot;f&quot;]&lt;/span&gt;
 
 &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my_string&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;World!&quot;&lt;/span&gt;
@@ -981,9 +981,9 @@ a.merge(b, c)
  
  <entry>
    <title>Ruby 2.4 Hash#compact</title>
-   <link href="enderahmetyurt.github.io/2016/11/05/ruby-2-4-hash-compact.html"/>
+   <link href="http://localhost:4000/2016/11/05/ruby-2-4-hash-compact.html"/>
    <updated>2016-11-05T00:00:00+03:00</updated>
-   <id>enderahmetyurt.github.io/2016/11/05/ruby-2-4-hash-compact</id>
+   <id>http://localhost:4000/2016/11/05/ruby-2-4-hash-compact</id>
    <content type="html">&lt;p&gt;Merhaba. Ruby 2.4 yazılarına devam ediyoruz.&lt;/p&gt;
 
 &lt;p&gt;Ruby’de nil value’e sahip bir key ile hash oluşturduğunuzda Ruby bu değeri hash’den kaldırıyor.&lt;/p&gt;
@@ -1011,9 +1011,9 @@ a.merge(b, c)
  
  <entry>
    <title>Ruby 2.4 Enumerable#sum</title>
-   <link href="enderahmetyurt.github.io/2016/11/02/ruby-2-4-enumerable-sum.html"/>
+   <link href="http://localhost:4000/2016/11/02/ruby-2-4-enumerable-sum.html"/>
    <updated>2016-11-02T00:00:00+03:00</updated>
-   <id>enderahmetyurt.github.io/2016/11/02/ruby-2-4-enumerable-sum</id>
+   <id>http://localhost:4000/2016/11/02/ruby-2-4-enumerable-sum</id>
    <content type="html">&lt;p&gt;Merhaba! &lt;a href=&quot;https://www.ruby-lang.org/en/news/2016/09/08/ruby-2-4-0-preview2-released/&quot;&gt;Ruby 2.4 previewleri&lt;/a&gt; bundan yakın bir zaman önce çıktı ve bir takım yenilikler ile birlikte geldiler.&lt;/p&gt;
 
 &lt;p&gt;Kısa kısa Ruby 2.4 ile gelen yeniliklerden ve değişikliklerden bahsedelim. Bir Array’de ya da Hash’de elementleri toplamak yapmak için Active Support’da tanımlı olan &lt;a href=&quot;https://github.com/rails/rails/blob/3d716b9e66e334c113c98fb3fc4bcf8a945b93a1/activesupport/lib/active_support/core_ext/enumerable.rb#L2-L27&quot;&gt;Enumerable#sum&lt;/a&gt;‘ı kullanıyoruz.&lt;/p&gt;
@@ -1021,13 +1021,13 @@ a.merge(b, c)
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;1,2,3].sum
 &lt;span class=&quot;c&quot;&gt;#=&amp;gt; 6&lt;/span&gt;
 
-&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'e'&lt;/span&gt;, &lt;span class=&quot;s1&quot;&gt;'a'&lt;/span&gt;, &lt;span class=&quot;s1&quot;&gt;'y'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;.sum
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;e&apos;&lt;/span&gt;, &lt;span class=&quot;s1&quot;&gt;&apos;a&apos;&lt;/span&gt;, &lt;span class=&quot;s1&quot;&gt;&apos;y&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;.sum
 &lt;span class=&quot;c&quot;&gt;#=&amp;gt; &quot;eay&quot;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Ancak bundan sonra bu metotu Ruby 2.4 birlikte Active Support’a ihtiyacımız kalmadan kullanabileceğiniz. Fakat sadece integer için geçerli olan bu metot Active Support’daki gibi string ya da karakteler için geçerli değil. Üzülmeyelim bu metota parametre geçilebildiği için eğer işimiz sayılar ile değilse,&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'e'&lt;/span&gt;, &lt;span class=&quot;s1&quot;&gt;'a'&lt;/span&gt;, &lt;span class=&quot;s1&quot;&gt;'y'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;.sum&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;e&apos;&lt;/span&gt;, &lt;span class=&quot;s1&quot;&gt;&apos;a&apos;&lt;/span&gt;, &lt;span class=&quot;s1&quot;&gt;&apos;y&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;.sum&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;#=&amp;gt; &quot;eay&quot;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
@@ -1045,9 +1045,9 @@ a.merge(b, c)
  
  <entry>
    <title>Block, Proc, Lambda</title>
-   <link href="enderahmetyurt.github.io/2016/05/19/block-proc-lambda.html"/>
+   <link href="http://localhost:4000/2016/05/19/block-proc-lambda.html"/>
    <updated>2016-05-19T00:00:00+03:00</updated>
-   <id>enderahmetyurt.github.io/2016/05/19/block-proc-lambda</id>
+   <id>http://localhost:4000/2016/05/19/block-proc-lambda</id>
    <content type="html">&lt;p&gt;Merhaba! Ruby’nin en güçlü özelliklerinden biri bloklardır. Diğer dillerin aksine Ruby’de blokları anlamak ve kullanmak kolay ve basittir.&lt;/p&gt;
 
 &lt;p&gt;Ruby’de bloklarını kullanmak için iki yöntemimiz var,&lt;/p&gt;
@@ -1133,9 +1133,9 @@ a.merge(b, c)
 &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; 6
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; wtp &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; -&amp;gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; puts &lt;span class=&quot;s2&quot;&gt;&quot;What's up?&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; wtp &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; -&amp;gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; puts &lt;span class=&quot;s2&quot;&gt;&quot;What&apos;s up?&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; wtp.call
-&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; What&lt;span class=&quot;s1&quot;&gt;'s up?
+&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; What&lt;span class=&quot;s1&quot;&gt;&apos;s up?
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Ruby’de Block, Yield, Proc ve Lambda kullanımları oldukça yaygın olduğunu unutmayalım. Özellikle kodları daha okunur ve kendini tekrar etmeyecek şekilde yazmak istediğimizde bu özellikleri kullanabiliriz.&lt;/p&gt;
@@ -1146,9 +1146,9 @@ a.merge(b, c)
  
  <entry>
    <title>Debugging with Pry</title>
-   <link href="enderahmetyurt.github.io/2016/05/15/debugging-with-pry.html"/>
+   <link href="http://localhost:4000/2016/05/15/debugging-with-pry.html"/>
    <updated>2016-05-15T00:00:00+03:00</updated>
-   <id>enderahmetyurt.github.io/2016/05/15/debugging-with-pry</id>
+   <id>http://localhost:4000/2016/05/15/debugging-with-pry</id>
    <content type="html">&lt;p&gt;Merhaba! Kod yazarken bir bir şeylerin yolunda gitmediği veya kod içinde neler olduğunu anlamak istediğimiz anlar oluyor. Bu gibi durumlarda debugging yapıyoruz.&lt;/p&gt;
 
 &lt;p&gt;Ruby’de eğer IDE kullanıyorsunuz debugging yapmak bir nebze kolay olabiliyor. Ancak benim gibi Sublime vb bir text editör kullanıcısıysanız imdadımıza PRY yetişiyor.&lt;/p&gt;
@@ -1163,7 +1163,7 @@ a.merge(b, c)
 &lt;p&gt;Sonrasında ise artık kodumuzda hangi noktada durmasını istiyorsak oraya &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;binding.pry&lt;/code&gt; komutu yazıyoruz. Örneğin,&lt;/p&gt;
 
 &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# person.rb&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'pry'&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;pry&apos;&lt;/span&gt;
 
 &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Person&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;say_hello&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -1199,13 +1199,13 @@ a.merge(b, c)
 
 &lt;p&gt;Yukardaki örnek üzerinden devam edecek olursak,&lt;/p&gt;
 
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'pry'&lt;/span&gt;
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;pry&apos;&lt;/span&gt;
 
 &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Person&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;say_hello&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
     &lt;span class=&quot;nb&quot;&gt;binding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;pry&lt;/span&gt;
     &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hello &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Execution will stop here.&lt;/span&gt;
-    &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Age: &quot;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Run 'step' or 'next' in the console to move here.&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Age: &quot;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Run &apos;step&apos; or &apos;next&apos; in the console to move here.&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;ask_age&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
 
@@ -1226,9 +1226,9 @@ a.merge(b, c)
  
  <entry>
    <title>Ruby Enumerable</title>
-   <link href="enderahmetyurt.github.io/2016/05/06/ruby-enumerable.html"/>
+   <link href="http://localhost:4000/2016/05/06/ruby-enumerable.html"/>
    <updated>2016-05-06T00:00:00+03:00</updated>
-   <id>enderahmetyurt.github.io/2016/05/06/ruby-enumerable</id>
+   <id>http://localhost:4000/2016/05/06/ruby-enumerable</id>
    <content type="html">&lt;p&gt;Merhaba! Bugün Ruby’de hemen hemen her gün kullandığımız &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Enumerable&lt;/code&gt; metotlarından bahsetmek istiyorum.&lt;/p&gt;
 
 &lt;p&gt;Bu yazıda kullanılan örnekleri daha iyi anlayabilmek için öncelikle Ruby’de Array ve Hash kavramlarını biraz olsun bilmeniz gerekiyor.&lt;/p&gt;
