@@ -2,7 +2,7 @@
 layout: post
 title: Ruby on Rails'da çoklu veritabanı
 date: 2019-06-22 20:01 +0300
-tags: [ruby_on_rails]
+tags: [ruby-on-rails]
 ---
 
 Merhaba. Ruby on Rails'ın son versiyonu olan 6. versiyonu ile gelen [**multiple database**](https://edgeguides.rubyonrails.org/active_record_multiple_databases.html) özelliği ile artık çoklu veritabanı yönetimi yapılabiliyor.

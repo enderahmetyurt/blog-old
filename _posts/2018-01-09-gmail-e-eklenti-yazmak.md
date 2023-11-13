@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Gmail'e Eklenti Yazmak
-tags: [gmail-addons]
+tags: [gmail-addon]
 ---
 
 Merhaba. Gmail'de işlerimizi halletmek adına birkaç tarayıcı eklentisi kullanıyoruz.

@@ -2,6 +2,7 @@
 layout: post
 title: Gmail Eklenti Örneği
 date: 2018-01-23 11:52 +0300
+tags: [gmail-addon]
 ---
 
 Merhaba. Daha önce [Gmail add-on](https://enderahmetyurt.com/2018/01/09/gmail-e-eklenti-yazmak.html) nedir? Bu konudan biraz bahsetmiştim. Şimdi ise küçük bir uygulama ile giriş yapıp daha pratik birşeyler göstermek istiyorum.

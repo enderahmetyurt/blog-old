@@ -30,6 +30,8 @@ plugins:
 # Image settings
 image_base: /public/images/
 
+tags:
+
 defaults:
   - scope:
       path: 'assets/img'

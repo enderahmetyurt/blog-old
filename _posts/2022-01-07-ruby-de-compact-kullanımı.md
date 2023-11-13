@@ -2,6 +2,7 @@
 layout: post
 title: Ruby'de Array#compact Kullanımı
 date: 2022-01-07 14:02 +0300
+tags: [ruby]
 ---
 
 Merhaba 👋 Ruby'de Array'ler ile çalışırken test yazmadığımız zaman sonuçları bize pahallıya patlayabilecek hatalar yapabiliyoruz. Bu hatalardan en çok yapılan bir tanesine değinmek ve ne yapabiliriz diye biraz anlatmak istiyorum.
