@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <meta property="og:image" content="/public/images/octocat.png">
+  <meta name="twitter:card" content="/public/images/octocat.png" />
+
+  <title>
+    
+      Jekyll'da Tag Ekleme &middot; Ender Ahmet Yurt
+    
+  </title>
+
+  
+    
+
+
+
+
+
+
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+  
+
+  <body>
+
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>
+        <a href="/">
+          Ender Ahmet Yurt
+        </a>
+      </h1>
+      <p class="lead">Software Engineer</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="sidebar-nav-item" href="/">Home</a>
+
+      
+
+      
+      
+        
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/about.html">About</a>
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/speaking.html">Speaking</a>
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/talks.html">Talks</a>
+          
+        
+      
+        
+          
+        
+      
+    </nav>
+
+    <div>
+      <a href="https://www.supportturkey.org/" style=" text-align: center; margin: 0; background: #DC2638; width: 150px; color: #fff; padding: 5px 20px; border-radius: 5px 5px 0px 0px; text-decoration: none; font-size: 16px; position: fixed; top: calc(50vh - 150px); right: 0px; transform: rotate(-90deg); transform-origin: bottom right; z-index: 1001; " target="_blank" rel="noopener noreferrer" >#SupportTurkey</a >
+    </div>
+
+    <p>&copy; 2023. All rights reserved.</p>
+  </div>
+</div>
+
+
+    <div class="content container">
+      <div class="post">
+  <h1 class="post-title">Jekyll'da Tag Ekleme</h1>
+  <span class="post-date">14 Nov 2023</span>
+  <p>Merhaba 🙋 Bir süredir yazı yazamıyordum. Daha doğrusu Medium tarafına yazsam bile bu siteye pek yazı yazmıyordum. Bu siteyi sadece teknik yazılar için kullanmaya karar verdiğim için buraya pek yazı yazamadım. O da benim eksikliğim olsun.</p>
+
+<p>Geçenlerde düşünürken iki tarafta yazmak yerine bir yerde yazılarımı yazayım ve bu yazdığım yer de benim kontrolümde olsun dedim. Böylelikle bu site üzerinde yazılarıma ister hayata dair olsun, ister teknik olsun devam edeyim dedim. Yazıları bir yerde yayımlama kararı verdikten sonra yazılara tag ya da kategory ekleme fikri aklıma geldi. Diğer türlü yazılar ileride karışmaya başlayacak ve okuması, sonradan bulması zor bir hal alacaktı. Ancak kullandığım Jeykll teması tag özelliğini desteklemiyordu (bunu daha önceden biliyordum.) Yeni tema ile uğraşmak istemediğim için var olan temaya nasıl tag özelliği eklerim diye baktım.</p>
+
+<p>Internette bir temaya nasıl tag ya da kategori özelliğinin ekleneceği ile alakalı bolca yazı var. Hatta bazı kütüphaneler de var bu işi yapan. Benim araştırmalarım sonucunda Long Qian’ın <a href="https://longqian.me/2017/02/09/github-jekyll-tag/">Jekyll Tags on Github Pages</a> başlıklı yazısı hoşuma gitti. Yazıda geçen adımları kendi blog’um için uyguladım ve tag sistemi istediğim şekilde çalışıyor durumuna geldi. Siteyi deploy ettikten sonra yazının orjinalini alıp, biraz da kendi tecrübelerimi ekleyerek Türkçe bir içerik oluşturayım dedim.</p>
+
+<p>Eğer herhangi bir Jeykll blog kullanıyor ve bunu Github Pages’da yayınlıyorsanız tag özelliğini blog’unuza eklemek için adım adım yapılacakları anlatayım.</p>
+
+<h2 id="1-postlara-tag-alanı-eklemek">1. Post’lara tag alanı eklemek</h2>
+<p>Eğer bir post’u <code class="language-plaintext highlighter-rouge">jekyll post "Hello World"</code> komudu ile oluşturursanız size.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>layout: post
+title: Hello World
+date: 2023-11-14 18:57 +0300
+</code></pre></div></div>
+
+<p>şeklinde bir Markdown dosyası oluşturacaktır. Buraya <code class="language-plaintext highlighter-rouge">tags</code> alanını ekleyerek şu şekilde günceleyebilirsiniz.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>layout: post
+title: Hello World
+date: 2023-11-14 18:57 +0300
+tags: [foo, bar]
+</code></pre></div></div>
+
+<p>Tag’leri virgül ile ayırıyoruz. Eğer bir tag bir kelimeden fazlaysa, onu da <code class="language-plaintext highlighter-rouge">-</code> ile kelimeleri bağlıyoruz. Örneğin, <code class="language-plaintext highlighter-rouge">ruby-on-rails</code></p>
+
+<h2 id="2-tagleri-bir-postta-toparlamak">2. Tag’leri bir Post’ta toparlamak</h2>
+<p>Tag’leri post içerinde toparlamak için <code class="language-plaintext highlighter-rouge">_site</code> klasörü altında <code class="language-plaintext highlighter-rouge">tag</code> klasörüne ihtiyacımız var. Bunun da oluşturabilmesi için <code class="language-plaintext highlighter-rouge">_includes</code> klasörü altında <code class="language-plaintext highlighter-rouge">collecttags.html</code> adında bir dosya açıyor ve
+içine alttaki kod bloğunu yapıştırıyoruz.</p>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">rawtags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">""</span><span class="w"> </span><span class="p">%}</span>
+<span class="p">{%</span><span class="w"> </span><span class="nt">for</span><span class="w"> </span><span class="nv">post</span><span class="w"> </span><span class="nt">in</span><span class="w"> </span><span class="nv">site.posts</span><span class="w"> </span><span class="p">%}</span>
+  <span class="p">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">ttags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">post</span><span class="p">.</span><span class="nv">tags</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">join</span><span class="p">:</span><span class="s1">'|'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">append</span><span class="p">:</span><span class="s1">'|'</span><span class="w"> </span><span class="p">%}</span>
+  <span class="p">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">rawtags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">rawtags</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">append</span><span class="p">:</span><span class="nv">ttags</span><span class="w"> </span><span class="p">%}</span>
+<span class="p">{%</span><span class="w"> </span><span class="nt">endfor</span><span class="w"> </span><span class="p">%}</span>
+<span class="p">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">rawtags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">rawtags</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">split</span><span class="p">:</span><span class="s1">'|'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">sort</span><span class="w"> </span><span class="p">%}</span>
+
+<span class="p">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">site</span><span class="p">.</span><span class="nv">tags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">""</span><span class="w"> </span><span class="p">%}</span>
+<span class="p">{%</span><span class="w"> </span><span class="nt">for</span><span class="w"> </span><span class="nv">tag</span><span class="w"> </span><span class="nt">in</span><span class="w"> </span><span class="nv">rawtags</span><span class="w"> </span><span class="p">%}</span>
+  <span class="p">{%</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="nv">tag</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s2">""</span><span class="w"> </span><span class="p">%}</span>
+    <span class="p">{%</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="nv">tags</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">""</span><span class="w"> </span><span class="p">%}</span>
+      <span class="p">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">tags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">tag</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">split</span><span class="p">:</span><span class="s1">'|'</span><span class="w"> </span><span class="p">%}</span>
+    <span class="p">{%</span><span class="w"> </span><span class="kr">endif</span><span class="w"> </span><span class="p">%}</span>
+    <span class="p">{%</span><span class="w"> </span><span class="kr">unless</span><span class="w"> </span><span class="nv">tags</span><span class="w"> </span><span class="ow">contains</span><span class="w"> </span><span class="nv">tag</span><span class="w"> </span><span class="p">%}</span>
+      <span class="p">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">tags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">tags</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">join</span><span class="p">:</span><span class="s1">'|'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">append</span><span class="p">:</span><span class="s1">'|'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">append</span><span class="p">:</span><span class="nv">tag</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nf">split</span><span class="p">:</span><span class="s1">'|'</span><span class="w"> </span><span class="p">%}</span>
+    <span class="p">{%</span><span class="w"> </span><span class="kr">endunless</span><span class="w"> </span><span class="p">%}</span>
+  <span class="p">{%</span><span class="w"> </span><span class="kr">endif</span><span class="w"> </span><span class="p">%}</span>
+<span class="p">{%</span><span class="w"> </span><span class="nt">endfor</span><span class="w"> </span><span class="p">%}</span>
+</code></pre></div></div>
+
+<h2 id="3-tagleri-oluşturmak">3. Tag’leri oluşturmak</h2>
+<p><code class="language-plaintext highlighter-rouge">collecttags.html</code> dosyasındaki kodu çalıştırabilmek için bir yerlerde çağırmamız lazım. <code class="language-plaintext highlighter-rouge">head.html</code> içinde bunu yapmak ve herhangi sayfa yüklendiğinde halletmek iyi gibi duruyor. O yüzden sizler de
+kendi <code class="language-plaintext highlighter-rouge">_includes/head.html</code> dosyanız içine aşağıdaki kodu koyabilirisiniz.</p>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{%</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="nv">site</span><span class="p">.</span><span class="nv">tags</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s2">""</span><span class="w"> </span><span class="p">%}</span>
+  <span class="p">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span>collecttags.html<span class="w"> </span><span class="p">%}</span>
+<span class="p">{%</span><span class="w"> </span><span class="kr">endif</span><span class="w"> </span><span class="p">%}</span>
+</code></pre></div></div>
+
+<h2 id="4-bir-postta-tagleri-göstermek">4. Bir Post’ta Tag’leri göstermek</h2>
+<p>Post içinde tag’leri görüntüleyebilmek için <code class="language-plaintext highlighter-rouge">_layouts/post</code> içine aşağıdaki kodu koyuyoruz.</p>
+
+<figure class="highlight highlight-left"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;span&gt;</span>[
+  {% for tag in page.tags %}
+    {% capture tag_name %}{{ tag }}{% endcapture %}
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/tag/{{ tag_name }}"</span><span class="nt">&gt;&lt;code</span> <span class="na">class=</span><span class="s">"highligher-rouge"</span><span class="nt">&gt;&lt;nobr&gt;</span>{{ tag_name }}<span class="nt">&lt;/nobr&gt;&lt;/code&gt;</span><span class="ni">&amp;nbsp;</span><span class="nt">&lt;/a&gt;</span>
+  {% endfor %}
+]<span class="nt">&lt;/span&gt;</span></code></pre></figure>
+
+<p>Burada istediğiniz tasarım değişikliklerini yapabilirsiniz.</p>
+
+<h2 id="5-tagpage-oluşturmak">5. TagPage oluşturmak</h2>
+<p>Tag’lerin kendi sayfaları olması için <code class="language-plaintext highlighter-rouge">_layouts/tagpage.html</code> oluşturuyoruz ve alttaki kodu içine yapıştırıyoruz.</p>
+
+<figure class="highlight highlight-left"><pre><code class="language-html" data-lang="html">---
+layout: default
+---
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"post"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;h1&gt;</span>Tag: {{ page.tag }}<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;ul&gt;</span>
+{% for post in site.tags[page.tag] %}
+  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"{{ post.url }}"</span><span class="nt">&gt;</span>{{ post.title }}<span class="nt">&lt;/a&gt;</span> ({{ post.date | date_to_string }})<span class="nt">&lt;br&gt;</span>
+    {{ post.description }}
+  <span class="nt">&lt;/li&gt;</span>
+{% endfor %}
+<span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;hr&gt;</span></code></pre></figure>
+
+<p>Buradaki amaç tamamen bir sayfa şeklinde Tag’leri ve ilgili tag’e ait post’ları göstermek.</p>
+
+<p>Her tag’in kendi sayfası olması işini manuel de yapabiliriz ancak ben otomatik olması istediğim için <a href="https://github.com/qian256/qian256.github.io/blob/master/tag_generator.py">tag generator</a> adlı script’i
+ana dosya dizinine ekledim. Burada unutmamız gereken bu script’i yeni bir post ekledikten sonra deploy çıkmadan önce çalıştırmak.</p>
+
+<h2 id="6-tagleri-bir-arada-göstermek">6. Tag’leri bir arada göstermek</h2>
+<p>Bu adımı yapmak zorunda değilsiniz ancak ben bütün tag’leri bir arada göstermek istediğim için <code class="language-plaintext highlighter-rouge">_includes/archive.html</code> dosyası içine</p>
+
+<figure class="highlight highlight-left"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;h2&gt;</span>Archive<span class="nt">&lt;/h2&gt;</span>
+{% capture temptags %}
+  {% for tag in site.tags %}
+    {{ tag[1].size | plus: 1000 }}#{{ tag[0] }}#{{ tag[1].size }}
+  {% endfor %}
+{% endcapture %}
+{% assign sortedtemptags = temptags | split:' ' | sort | reverse %}
+{% for temptag in sortedtemptags %}
+  {% assign tagitems = temptag | split: '#' %}
+  {% capture tagname %}{{ tagitems[1] }}{% endcapture %}
+  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/tag/{{ tagname }}"</span><span class="nt">&gt;&lt;code</span> <span class="na">class=</span><span class="s">"highligher-rouge"</span><span class="nt">&gt;&lt;nobr&gt;</span>{{ tagname }}<span class="nt">&lt;/nobr&gt;&lt;/code&gt;&lt;/a&gt;</span>
+{% endfor %}</code></pre></figure>
+
+<p>kodlarını ekledim ve bu dosyayı da istediğim yerde</p>
+
+<p><code class="language-plaintext highlighter-rouge">{% include archive.html %}</code></p>
+
+<p>şeklinde çağırdım.</p>
+
+<h2 id="7-sonuç">7. Sonuç</h2>
+
+<p>Evet artık sadece yapılması gerek kodu Github’a göndermek ve production ortamında görmek kalıyor.</p>
+
+<p>Bu yazıya ilham olduğu için Long Qian’a teşekkür ediyorum. Thank you Long Qian 🙏</p>
+
+<p>Sevgiler ❤️</p>
+
+<p><small><b>Referanslar:</b> <a href="https://longqian.me/2017/02/09/github-jekyll-tag">https://longqian.me/2017/02/09/github-jekyll-tag</a></small></p>
+
+</div>
+
+<span>[
+  
+    
+    <a href="/tag/jekyll"><code class="highligher-rouge"><nobr>jekyll</nobr></code>&nbsp;</a>
+  
+    
+    <a href="/tag/github-pages"><code class="highligher-rouge"><nobr>github-pages</nobr></code>&nbsp;</a>
+  
+]</span>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2023/02/02/2022-de-ruby.html">
+            2022'de Ruby
+            <small>02 Feb 2023</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2022/01/07/ruby-de-compact-kullan%C4%B1m%C4%B1.html">
+            Ruby'de Array#compact Kullanımı
+            <small>07 Jan 2022</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2021/12/30/2021-de-ruby.html">
+            2021'de Ruby
+            <small>30 Dec 2021</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+    </div>
+    <a rel="me" href="https://ruby.social/@eayurt"></a>
+  </body>
+</html>
