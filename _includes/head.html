@@ -7,7 +7,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
   <meta property="og:image" content="/public/images/octocat.png">
-  <meta name="twitter:card" content="/public/images/octocat.png" />
+
+  <!-- Twitter cards -->
+  <meta name="twitter:site"    content="@eayurt">
+  <meta name="twitter:creator" content="@eayurt">
+  <meta name="twitter:title"   content="{{ page.title }}">
+
+  {% if page.summary %}
+  <meta name="twitter:description" content="{{ page.summary }}">
+  {% else %}
+  <meta name="twitter:description" content="{{ site.description }}">
+  {% endif %}
+
+  {% if page.image %}
+  <meta name="twitter:card"  content="summary_large_image">
+  <meta name="twitter:image" content="{{ site.url }}{{ page.image }}">
+  {% else %}
+  <meta name="twitter:card"  content="/public/images/octocat.png">
+  <meta name="twitter:image" content="/public/images/octocat.png">
+  {% endif %}
+  <!-- end of Twitter cards -->
 
   <title>
     {% if page.title == "Home" %}
