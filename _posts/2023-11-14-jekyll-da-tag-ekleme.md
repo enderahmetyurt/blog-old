@@ -2,6 +2,8 @@
 layout: post
 title: Jekyll'da Tag Ekleme
 date: 2023-11-14 18:57 +0300
+image: /public/images/tags.jpg
+summary: Jekyll ile Github Pages kullanılan blog'lara Tag özellğinin eklenmesi.
 tags: [jekyll, github-pages]
 ---
 Merhaba 🙋 Bir süredir yazı yazamıyordum. Daha doğrusu Medium tarafına yazsam bile bu siteye pek yazı yazmıyordum. Bu siteyi sadece teknik yazılar için kullanmaya karar verdiğim için buraya pek yazı yazamadım. O da benim eksikliğim olsun.
