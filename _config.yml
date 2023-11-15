@@ -5,6 +5,7 @@ url: 'enderahmetyurt.github.io'
 baseurl: '/'
 tagline: Software Engineer
 google_analytics: 'UA-41510931-2'
+domain: 'https://enderahmetyurt.com'
 
 author:
   name: 'Ender Ahmet Yurt'
