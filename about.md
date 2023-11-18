@@ -3,26 +3,30 @@ layout: page
 title: About
 ---
 
+<div class="circular_image">
+  <img src="/public/images/eayurt.JPG" />
+</div>
+
 <p class="message">
-  Hi! My name is Ender. I am from Ünye, Ordu, Turkey. After lived in Istanbul in 15 years, I relocated my hometown. I have been working in software industry since 2011. I worked in lot of startups as a software engineer. I am a software developer at <a href="https://teamtailor.com/">Teamtailor</a> since October 2021.
+  Hi! My name is Ender and I am from Ünye, Ordu, Turkey. After living in Istanbul for 15 years, I decided to relocate to my hometown. I have been working in the software industry since 2011 and have gained experience in various startups as a software engineer. Currently, I am employed as a software developer at <a href="https://teamtailor.com/">Teamtailor</a> since October 2021.
 </p>
 
 <p class="message">
-  I like developing web applications especially but I try to contribute different open source projects on Github. I lead a local community which is called Ruby Turkey since 2014. You can reach more information about me from my <a href="https://www.linkedin.com/in/enderahmetyurt/">Linkedin</a> and you can follow me on <a href="https://github.com/enderahmetyurt">Github</a> and <a href="https://twitter.com/eayurtTwitter">Twitter</a>.
+  I enjoy developing web applications, especially focusing on contributing to various open-source projects on GitHub. Since 2014, I have been leading a local community called Ruby Turkey. For more information about me, you can visit my <a href="https://www.linkedin.com/in/enderahmetyurt/">Linkedin</a> profile, and you can also follow me on <a href="https://github.com/enderahmetyurt">Github</a> and <a href="https://twitter.com/eayurtTwitter">Twitter</a>
 </p>
 
 <p class="message">
-  I have been making a podcast called <a href="https://uretimbandi.com/teknik">Üretim Bandı:Teknik</a>. It is about technology and software development. It's mostly in Turkish but I also have been recording english episodes.
+  I have been producing a podcast called <a href="https://uretimbandi.com/teknik">Üretim Bandı:Teknik</a>. It focuses on technology and software development. While the majority of the episodes are in Turkish, I have also recorded episodes in English.
 </p>
 
 <p class="message">
-  Except this blog, I write something about life and my experiences mostly in Turkish in my <a href="https://medium.com/@eayurt">Medium</a> blog.
+  Except for this blog, I have mostly written in Turkish about life and my experiences on my <a href="https://medium.com/@eayurt">Medium</a> blog. I will continue writing there.
 </p>
 
 <p class="message">
-  I also making videos about my life, and some educational videos in my <a href="https://www.youtube.com/@eayurt">Youtube Channel</a>
+  I also create videos about my life, as well as educational videos on my <a href="https://www.youtube.com/@eayurt">Youtube Channel</a>
 </p>
 
 <p class="message">
-  I have a side project (for now it will be a startup later 🙏). It's called <a href="https://www.podiscover.me/">Podiscover.</a> It's a social media platform for podcast listeners. If you're interested in Podiscover, don't hesitate to reach me out by email, or my social media. Let's meet, and talk about podcast domain.
+  I have a side project (which I hope to turn into a startup later 🙏). It's called  <a href="https://www.podiscover.me/">Podiscover</a> and it's a social media platform for podcast listeners. If you're interested in Podiscover, feel free to contact me via email or through my social media. Let's meet and discuss the podcast industry!
 </p>

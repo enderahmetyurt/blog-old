@@ -424,3 +424,25 @@ a.pagination-item:hover {
     border-bottom-right-radius: 4px;
   }
 }
+
+.circular_image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: blue;
+  /* commented for demo
+  float: left;
+  margin-left: 125px;
+  margin-top: 20px;
+  */
+
+  /*for demo*/
+  display:inline-block;
+  vertical-align:middle;
+  margin-bottom: 20px;
+
+}
+.circular_image img{
+  width:100%;
+}
