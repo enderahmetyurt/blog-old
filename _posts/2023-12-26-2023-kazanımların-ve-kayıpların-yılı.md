@@ -2,7 +2,7 @@
 layout: post
 title: 2023, Kazanımların ve Kayıpların Yılı
 date: 2023-12-26 16:12 +0300
-summary: Jekyll ile Github Pages kullanılan blog'lara Tag özellğinin eklenmesi.
+summary: 2023 yılı özeti ve genel değerlendirmeler
 tags: [personal, recap]
 image: /public/images/2023bye.jpg
 ---
