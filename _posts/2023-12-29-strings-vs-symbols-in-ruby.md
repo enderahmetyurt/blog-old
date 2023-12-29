@@ -4,7 +4,6 @@ title: Strings vs Symbols in Ruby
 date: 2023-12-29 19:13 +0300
 summary: Ruby'de string ve symbol sınıflarının farkları
 tags: [ruby, tips]
-image: /public/images/symbol.jpg
 ---
 
 Merhaba! Ruby programlama dilinde, diğer dillerde pek olayan adı `Symbol` olan sınıf vardır.
