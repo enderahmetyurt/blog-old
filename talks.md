@@ -6,6 +6,7 @@ title: Talks
 I really like to share my knowledge and meet new people. I give a plenty of talks.
 
 <ul>
+  <li><i>2023 December</i> -  Özgür Yazılım Topluluğu <a href="https://www.youtube.com/watch?v=c486F7vwdq4">Haaave you met Ruby on Rails (Online)</a></li>
   <li><i>2020 September - 2020 November</i><a href="https://www.kodluyoruz.org/bootcamp/istanbul-ruby-on-rails-bootcamp/" target="_blank">- Kodluyoruzorg Ruby on Rails Bootcamp - </a>Ruby on Rails Tutor (70 hours)</li>
   <li><i>2020 June</i> - ACM Hacettepe - <a href="https://www.youtube.com/watch?v=9p74XLrshEA" target="_blank">Pandemide Yazılımcı Olmak (Online)</a></li>
   <li><i>2019 July</i> - Özgür Yazılım Kampı - Ruby on Rails Sınıfı Eğitmeni (4 Days)</li>

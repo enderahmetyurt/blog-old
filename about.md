@@ -28,5 +28,5 @@ title: About
 </p>
 
 <p class="message">
-  I have a side project (which I hope to turn into a startup later 🙏). It's called  <a href="https://www.podiscover.me/">Podiscover</a> and it's a social media platform for podcast listeners. If you're interested in Podiscover, feel free to contact me via email or through my social media. Let's meet and discuss the podcast industry!
+  <s>I have a side project (which I hope to turn into a startup later 🙏). It's called  <a href="https://www.podiscover.me/">Podiscover</a> and it's a social media platform for podcast listeners. If you're interested in Podiscover, feel free to contact me via email or through my social media. Let's meet and discuss the podcast industry!</s> [It closed.]
 </p>
