@@ -1,4 +1,60 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-12-29T13:14:25+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Ender Ahmet Yurt</title><subtitle>Software Engineer</subtitle><author><name>Ender Ahmet Yurt</name><email>enderyurt@gmail.com</email></author><entry><title type="html">2023, Kazanımların ve Kayıpların Yılı</title><link href="http://localhost:4000/2023/12/26/2023-kazan%C4%B1mlar%C4%B1n-ve-kay%C4%B1plar%C4%B1n-y%C4%B1l%C4%B1.html" rel="alternate" type="text/html" title="2023, Kazanımların ve Kayıpların Yılı" /><published>2023-12-26T16:12:00+03:00</published><updated>2023-12-26T16:12:00+03:00</updated><id>http://localhost:4000/2023/12/26/2023-kazan%C4%B1mlar%C4%B1n-ve-kay%C4%B1plar%C4%B1n-y%C4%B1l%C4%B1</id><content type="html" xml:base="http://localhost:4000/2023/12/26/2023-kazan%C4%B1mlar%C4%B1n-ve-kay%C4%B1plar%C4%B1n-y%C4%B1l%C4%B1.html"><![CDATA[<p>Merhaba, Kocaman bir yıl daha bitti ve bu koca yılda neler yapıldı bakma, ifade verme zamanı geldi.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-12-29T19:50:50+03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Ender Ahmet Yurt</title><subtitle>Software Engineer</subtitle><author><name>Ender Ahmet Yurt</name><email>enderyurt@gmail.com</email></author><entry><title type="html">Strings vs Symbols in Ruby</title><link href="http://localhost:4000/2023/12/29/strings-vs-symbols-in-ruby.html" rel="alternate" type="text/html" title="Strings vs Symbols in Ruby" /><published>2023-12-29T19:13:00+03:00</published><updated>2023-12-29T19:13:00+03:00</updated><id>http://localhost:4000/2023/12/29/strings-vs-symbols-in-ruby</id><content type="html" xml:base="http://localhost:4000/2023/12/29/strings-vs-symbols-in-ruby.html"><![CDATA[<p>Merhaba! Ruby programlama dilinde, diğer dillerde pek olayan adı <code class="language-plaintext highlighter-rouge">Symbol</code> olan sınıf vardır.</p>
+
+<p>Ruby’e yeni başlayanlar <code class="language-plaintext highlighter-rouge">String</code> ve <code class="language-plaintext highlighter-rouge">Symbol</code>‘ü genelde karıştırırlar. Her ne kadar benzer şeyler gibi görünseler de özünde ve kullanımında aslında ikisi de
+birbirinden farklı iki Ruby sınıflarıdır.</p>
+
+<p><code class="language-plaintext highlighter-rouge">String</code> ve <code class="language-plaintext highlighter-rouge">Symbol</code>‘ler genelde karşımıza hash tanımlamalarında çıkarlar. Ruby’de hash’leri tanımlarken key’leri string olarak verebiliriz.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nb">hash</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="s2">"ender"</span><span class="p">,</span>
+    <span class="s2">"age"</span> <span class="o">=&gt;</span> <span class="mi">37</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+<p><img src="https://enderahmetyurt.com/public/images/hash-ex.png" /></p>
+
+<p>Ancak bu kullanım Ruby’nin son sürümlerinde pek tavsiye edilmemektedir. Bu kullanıma ayrıca <strong>hash rocket</strong> da denmektedir.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nb">hash</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">name: </span><span class="s2">"ender"</span><span class="p">,</span>
+    <span class="ss">age: </span><span class="mi">37</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+
+<p>Yukarıdaki tavsiye edilen key’lerde symbol kullanımı ile hash’lerin okunması ve yazımı daha kolay bir hale gelmiştir.</p>
+
+<h2 id="farkı-içinde-saklı">Farkı içinde saklı</h2>
+
+<p>Aralarındaki temel farka gelecek olursak <code class="language-plaintext highlighter-rouge">Symbol</code> immutable iken <code class="language-plaintext highlighter-rouge">String</code> değildir. Yani <code class="language-plaintext highlighter-rouge">Symbol</code>lerin memory’deki değerleri değişmez.
+Bu da Ruby kodumuzun daha hızlı olmasına yarar.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; foo = "hello"
+&gt; bar = "hello"
+&gt; foo.object_id == bar.object_id
+  =&gt; false
+&gt; foo = :hello
+&gt; bar = :hello
+&gt; foo.object_id == bar.object_id
+  =&gt; true
+</code></pre></div></div>
+
+<h2 id="dönüştürmece">Dönüştürmece</h2>
+
+<p><code class="language-plaintext highlighter-rouge">String</code>‘ler ve <code class="language-plaintext highlighter-rouge">Symbol</code>‘ler birbirlerine hızlıca dönüştürebilir ve istenilen durumlarda kullanılabilir.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; foo = :hello
+ =&gt; :hello
+&gt; foo.to_s
+ =&gt; "hello"
+&gt; bar = "hello"
+ =&gt; "hello"
+&gt; bar.to_sym
+ =&gt; :hello
+</code></pre></div></div>
+
+<p>Ruby projelerinizde <code class="language-plaintext highlighter-rouge">String</code> ve <code class="language-plaintext highlighter-rouge">Symbol</code> istediğiniz gibi kullanabilirsiniz ancak takımınızda bir kullanıma karar verip, herkesin aynı yazım kuralına uymasını
+sağlamanızı tavsiye ederim.</p>
+
+<p>Sevgiler. ❤️</p>]]></content><author><name>Ender Ahmet Yurt</name><email>enderyurt@gmail.com</email></author><category term="ruby" /><category term="tips" /><summary type="html"><![CDATA[Merhaba! Ruby programlama dilinde, diğer dillerde pek olayan adı Symbol olan sınıf vardır.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/public/images/symbol.jpg" /><media:content medium="image" url="http://localhost:4000/public/images/symbol.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">2023, Kazanımların ve Kayıpların Yılı</title><link href="http://localhost:4000/2023/12/26/2023-kazan%C4%B1mlar%C4%B1n-ve-kay%C4%B1plar%C4%B1n-y%C4%B1l%C4%B1.html" rel="alternate" type="text/html" title="2023, Kazanımların ve Kayıpların Yılı" /><published>2023-12-26T16:12:00+03:00</published><updated>2023-12-26T16:12:00+03:00</updated><id>http://localhost:4000/2023/12/26/2023-kazan%C4%B1mlar%C4%B1n-ve-kay%C4%B1plar%C4%B1n-y%C4%B1l%C4%B1</id><content type="html" xml:base="http://localhost:4000/2023/12/26/2023-kazan%C4%B1mlar%C4%B1n-ve-kay%C4%B1plar%C4%B1n-y%C4%B1l%C4%B1.html"><![CDATA[<p>Merhaba, Kocaman bir yıl daha bitti ve bu koca yılda neler yapıldı bakma, ifade verme zamanı geldi.</p>
 
 <p>Son birkaç senedir yaptığım geleneği bozmak istemedim ve oturdum klavye başına. Önceki yıllardaki yazılarımı okumadıysan aşağıdan ulaşabilirsin.</p>
 
@@ -588,110 +644,4 @@ $ rails g migration CreateTowns name:string –database cities
 
 <div style="display: flex; justify-content: center;"><img src="/assets/img/aws2.png" /></div>
 
-<p>Sevgiler.</p>]]></content><author><name>Ender Ahmet Yurt</name><email>enderyurt@gmail.com</email></author><category term="ruby" /><summary type="html"><![CDATA[Merhaba. Yakın zamanda duyurulan Aws Lambda’dan bahsetmek istiyorum.]]></summary></entry><entry><title type="html">Ruby State Design Pattern</title><link href="http://localhost:4000/2018/12/04/ruby-state-design-pattern.html" rel="alternate" type="text/html" title="Ruby State Design Pattern" /><published>2018-12-04T00:00:00+03:00</published><updated>2018-12-04T00:00:00+03:00</updated><id>http://localhost:4000/2018/12/04/ruby-state-design-pattern</id><content type="html" xml:base="http://localhost:4000/2018/12/04/ruby-state-design-pattern.html"><![CDATA[<p>Merhaba. Bugün <strong>State Design Pattern</strong>‘ın Ruby’deki kullanımından bahsetmek istiyorum.</p>
-
-<p>State design pattern, behavior pattern altında tanımlanır. Bu pattern’da bir nesnenin farklı durumlarda farklı şekillerde çalışmasını düzenlenir. Yani bir nesnenin durumu değiştiğinde o nesnenin çalışma şekli değişir. Bu duruma en güzel örnek trafik ışıklarını verebiliriz. Görme engelliler için trafik ışıklarını düşünün, kırmızı, sarı ve yeşil yandığında, durun, bekleyin ve geçin diyor. Işıklar arası geçişlerde ise birkaç saniye boşluk vererek, diğer ışığa geçiyor. Bu durumda ışıkların state’leri değişiyor ve yapacakları eylemler de state’lere göre belli oluyor.</p>
-
-<p>State design pattern’ın 3 ana component’dan oluşuyor.</p>
-
-<ul>
-  <li>Context Class: Mevcut durumu bilen class.</li>
-  <li>State Class: tanımlanmış state’lerin yapacağı işleri bilen class.</li>
-  <li>State class’ından türetilmiş bütün durumlar için olan class’lar.</li>
-</ul>
-
-<p>Peki bu durumun yararı nedir? Bütün state’ler kendi durumlarını yapacakları işi ve sonraki state’i biliyor. Mevcut state’in ne olduğuyla ilgilenmiyor. Aslında bu design yerine if/else de kullanıbilir ancak hem mimari olarak hem de kodu okumak anlamında if/else kullanmak daha zor olacaktır.</p>
-
-<p>Şimdi bu tanımları Ruby’de trafik ışıkları örneği ile nasıl yazabiliriz, ona bakalım.</p>
-
-<p>Öncelikle bir context class’ına ihtiyacımız var. TrafficLight class’ını context olarak belirliyoruz.</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">TrafficLight</span>
-  <span class="k">def</span> <span class="nf">initialize</span>
-    <span class="vi">@state</span> <span class="o">=</span> <span class="kp">nil</span>
-  <span class="k">end</span>
-
-  <span class="k">def</span> <span class="nf">next_state</span><span class="p">(</span><span class="n">klass</span> <span class="o">=</span> <span class="no">Green</span><span class="p">)</span>
-    <span class="vi">@state</span> <span class="o">=</span> <span class="n">klass</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="nb">self</span><span class="p">)</span>
-    <span class="vi">@state</span><span class="p">.</span><span class="nf">beep</span>
-    <span class="vi">@state</span><span class="p">.</span><span class="nf">start_timer</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-</code></pre></div></div>
-
-<p>Sonrasında ise bir State class’ı tanımlıyoruz.</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">State</span>
-  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">light</span><span class="p">)</span>
-    <span class="vi">@light</span> <span class="o">=</span> <span class="n">light</span>
-  <span class="k">end</span>
-
-  <span class="k">def</span> <span class="nf">beep</span>
-  <span class="k">end</span>
-
-  <span class="k">def</span> <span class="nf">next_state</span>
-  <span class="k">end</span>
-
-  <span class="k">def</span> <span class="nf">start_timer</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-</code></pre></div></div>
-
-<p>Green state ve diğerleri için şu şekilde bir class tanımlayabiliriz.</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Green</span> <span class="o">&lt;</span> <span class="no">State</span>
-  <span class="k">def</span> <span class="nf">beep</span>
-    <span class="nb">puts</span> <span class="s2">"Color is now green"</span>
-  <span class="k">end</span>
-
-  <span class="k">def</span> <span class="nf">next_state</span>
-    <span class="vi">@light</span><span class="p">.</span><span class="nf">next_state</span><span class="p">(</span><span class="no">Yellow</span><span class="p">)</span>
-  <span class="k">end</span>
-
-  <span class="k">def</span> <span class="nf">start_timer</span>
-    <span class="nb">sleep</span> <span class="mi">5</span><span class="p">;</span> <span class="n">next_state</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-</code></pre></div></div>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Yellow</span> <span class="o">&lt;</span> <span class="no">State</span>
-  <span class="k">def</span> <span class="nf">beep</span>
-    <span class="nb">puts</span> <span class="s2">"Color is now yellow"</span>
-  <span class="k">end</span>
-
-  <span class="k">def</span> <span class="nf">next_state</span>
-    <span class="vi">@light</span><span class="p">.</span><span class="nf">next_state</span><span class="p">(</span><span class="no">Red</span><span class="p">)</span>
-  <span class="k">end</span>
-
-  <span class="k">def</span> <span class="nf">start_timer</span>
-    <span class="nb">sleep</span> <span class="mi">5</span><span class="p">;</span> <span class="n">next_state</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-</code></pre></div></div>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Red</span> <span class="o">&lt;</span> <span class="no">State</span>
-  <span class="k">def</span> <span class="nf">beep</span>
-    <span class="nb">puts</span> <span class="s2">"Color is now red"</span>
-  <span class="k">end</span>
-
-  <span class="k">def</span> <span class="nf">next_state</span>
-    <span class="vi">@light</span><span class="p">.</span><span class="nf">next_state</span><span class="p">(</span><span class="n">green</span><span class="p">)</span>
-  <span class="k">end</span>
-
-  <span class="k">def</span> <span class="nf">start_timer</span>
-    <span class="nb">sleep</span> <span class="mi">5</span><span class="p">;</span> <span class="n">next_state</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-</code></pre></div></div>
-
-<p>Artık her state ne yapacağı ve kendisinden sonra hangi state’in geleceğini biliyor.</p>
-
-<p>Daha gerçekçi ve çalışan örnek için <a href="https://github.com/ryanb/ruby-warrior">RubyWarrior</a>‘ı inceleyebilirsiniz.</p>
-
-<p>Eğer Ruby projelerinizde state machine kullanmak istiyorsanız <a href="https://github.com/aasm/aasm">AASM</a> deneyebilirsiniz. Bu gem ile state’lerin durumlarını takip edebilir, callback’ler ile event’leri yönetebilirsiniz.</p>
-
-<p>Sevgiler.</p>
-
-<p><small><strong>Referanslar:</strong></small></p>
-
-<p><small><em>https://www.rubyguides.com/2018/12/state-machines/?tl_inbound=1&amp;tl_target_all=1&amp;tl_form_type=1&amp;tl_period_type=1</em></small></p>]]></content><author><name>Ender Ahmet Yurt</name><email>enderyurt@gmail.com</email></author><category term="ruby" /><summary type="html"><![CDATA[Merhaba. Bugün State Design Pattern‘ın Ruby’deki kullanımından bahsetmek istiyorum.]]></summary></entry></feed>
+<p>Sevgiler.</p>]]></content><author><name>Ender Ahmet Yurt</name><email>enderyurt@gmail.com</email></author><category term="ruby" /><summary type="html"><![CDATA[Merhaba. Yakın zamanda duyurulan Aws Lambda’dan bahsetmek istiyorum.]]></summary></entry></feed>

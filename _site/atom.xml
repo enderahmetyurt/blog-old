@@ -4,13 +4,78 @@
  <title>Ender Ahmet Yurt</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2023-12-29T13:14:25+03:00</updated>
+ <updated>2023-12-29T19:50:50+03:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Ender Ahmet Yurt</name>
    <email>enderyurt@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Strings vs Symbols in Ruby</title>
+   <link href="http://localhost:4000/2023/12/29/strings-vs-symbols-in-ruby.html"/>
+   <updated>2023-12-29T19:13:00+03:00</updated>
+   <id>http://localhost:4000/2023/12/29/strings-vs-symbols-in-ruby</id>
+   <content type="html">&lt;p&gt;Merhaba! Ruby programlama dilinde, diğer dillerde pek olayan adı &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Symbol&lt;/code&gt; olan sınıf vardır.&lt;/p&gt;
+
+&lt;p&gt;Ruby’e yeni başlayanlar &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;String&lt;/code&gt; ve &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Symbol&lt;/code&gt;‘ü genelde karıştırırlar. Her ne kadar benzer şeyler gibi görünseler de özünde ve kullanımında aslında ikisi de
+birbirinden farklı iki Ruby sınıflarıdır.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;String&lt;/code&gt; ve &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Symbol&lt;/code&gt;‘ler genelde karşımıza hash tanımlamalarında çıkarlar. Ruby’de hash’leri tanımlarken key’leri string olarak verebiliriz.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nb&quot;&gt;hash&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;ender&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;age&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;37&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;https://enderahmetyurt.com/public/images/hash-ex.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Ancak bu kullanım Ruby’nin son sürümlerinde pek tavsiye edilmemektedir. Bu kullanıma ayrıca &lt;strong&gt;hash rocket&lt;/strong&gt; da denmektedir.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nb&quot;&gt;hash&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;name: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;ender&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;age: &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;37&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Yukarıdaki tavsiye edilen key’lerde symbol kullanımı ile hash’lerin okunması ve yazımı daha kolay bir hale gelmiştir.&lt;/p&gt;
+
+&lt;h2 id=&quot;farkı-içinde-saklı&quot;&gt;Farkı içinde saklı&lt;/h2&gt;
+
+&lt;p&gt;Aralarındaki temel farka gelecek olursak &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Symbol&lt;/code&gt; immutable iken &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;String&lt;/code&gt; değildir. Yani &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Symbol&lt;/code&gt;lerin memory’deki değerleri değişmez.
+Bu da Ruby kodumuzun daha hızlı olmasına yarar.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; foo = &quot;hello&quot;
+&amp;gt; bar = &quot;hello&quot;
+&amp;gt; foo.object_id == bar.object_id
+  =&amp;gt; false
+&amp;gt; foo = :hello
+&amp;gt; bar = :hello
+&amp;gt; foo.object_id == bar.object_id
+  =&amp;gt; true
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;dönüştürmece&quot;&gt;Dönüştürmece&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;String&lt;/code&gt;‘ler ve &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Symbol&lt;/code&gt;‘ler birbirlerine hızlıca dönüştürebilir ve istenilen durumlarda kullanılabilir.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; foo = :hello
+ =&amp;gt; :hello
+&amp;gt; foo.to_s
+ =&amp;gt; &quot;hello&quot;
+&amp;gt; bar = &quot;hello&quot;
+ =&amp;gt; &quot;hello&quot;
+&amp;gt; bar.to_sym
+ =&amp;gt; :hello
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Ruby projelerinizde &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;String&lt;/code&gt; ve &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Symbol&lt;/code&gt; istediğiniz gibi kullanabilirsiniz ancak takımınızda bir kullanıma karar verip, herkesin aynı yazım kuralına uymasını
+sağlamanızı tavsiye ederim.&lt;/p&gt;
+
+&lt;p&gt;Sevgiler. ❤️&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>2023, Kazanımların ve Kayıpların Yılı</title>

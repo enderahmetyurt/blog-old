@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+
+  <!-- Twitter cards -->
+  <meta name="twitter:site"    content="@eayurt">
+  <meta name="twitter:creator" content="@eayurt">
+  <meta name="twitter:title"   content="Strings vs Symbols in Ruby">
+
+  
+    <meta name="twitter:description" content="Ruby'de string ve symbol sınıflarının farkları">
+  
+
+  
+  <meta property="og:image" content="https://enderahmetyurt.com/public/images/symbol.jpg">
+    <meta name="twitter:card"  content="summary_large_image">
+    <meta name="twitter:image" content="https://enderahmetyurt.com/public/images/symbol.jpg">
+  
+  <!-- end of Twitter cards -->
+
+  <title>
+    
+      Strings vs Symbols in Ruby &middot; Ender Ahmet Yurt
+    
+  </title>
+
+  
+    
+
+
+
+
+
+
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+  
+
+  <body>
+
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>
+        <a href="/">
+          Ender Ahmet Yurt
+        </a>
+      </h1>
+      <p class="lead">Software Engineer</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="sidebar-nav-item" href="/">Home</a>
+
+      
+
+      
+      
+        
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/about.html">About</a>
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/speaking.html">Speaking</a>
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/talks.html">Talks</a>
+          
+        
+      
+        
+      
+        
+          
+        
+      
+    </nav>
+
+    <div>
+      <a href="https://www.supportturkey.org/" style=" text-align: center; margin: 0; background: #DC2638; width: 150px; color: #fff; padding: 5px 20px; border-radius: 5px 5px 0px 0px; text-decoration: none; font-size: 16px; position: fixed; top: calc(50vh - 150px); right: 0px; transform: rotate(-90deg); transform-origin: bottom right; z-index: 1001; " target="_blank" rel="noopener noreferrer" >#SupportTurkey</a >
+    </div>
+
+    <p>&copy; 2023. All rights reserved.</p>
+  </div>
+</div>
+
+
+    <div class="content container">
+      <div class="post">
+  <h1 class="post-title">Strings vs Symbols in Ruby</h1>
+  <span class="post-date">29 Dec 2023</span>
+  <img src="https://enderahmetyurt.com/public/images/symbol.jpg">
+  <p>Merhaba! Ruby programlama dilinde, diğer dillerde pek olayan adı <code class="language-plaintext highlighter-rouge">Symbol</code> olan sınıf vardır.</p>
+
+<p>Ruby’e yeni başlayanlar <code class="language-plaintext highlighter-rouge">String</code> ve <code class="language-plaintext highlighter-rouge">Symbol</code>‘ü genelde karıştırırlar. Her ne kadar benzer şeyler gibi görünseler de özünde ve kullanımında aslında ikisi de
+birbirinden farklı iki Ruby sınıflarıdır.</p>
+
+<p><code class="language-plaintext highlighter-rouge">String</code> ve <code class="language-plaintext highlighter-rouge">Symbol</code>‘ler genelde karşımıza hash tanımlamalarında çıkarlar. Ruby’de hash’leri tanımlarken key’leri string olarak verebiliriz.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nb">hash</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="s2">"ender"</span><span class="p">,</span>
+    <span class="s2">"age"</span> <span class="o">=&gt;</span> <span class="mi">37</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+<p><img src="https://enderahmetyurt.com/public/images/hash-ex.png" /></p>
+
+<p>Ancak bu kullanım Ruby’nin son sürümlerinde pek tavsiye edilmemektedir. Bu kullanıma ayrıca <strong>hash rocket</strong> da denmektedir.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nb">hash</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="ss">name: </span><span class="s2">"ender"</span><span class="p">,</span>
+    <span class="ss">age: </span><span class="mi">37</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+
+<p>Yukarıdaki tavsiye edilen key’lerde symbol kullanımı ile hash’lerin okunması ve yazımı daha kolay bir hale gelmiştir.</p>
+
+<h2 id="farkı-içinde-saklı">Farkı içinde saklı</h2>
+
+<p>Aralarındaki temel farka gelecek olursak <code class="language-plaintext highlighter-rouge">Symbol</code> immutable iken <code class="language-plaintext highlighter-rouge">String</code> değildir. Yani <code class="language-plaintext highlighter-rouge">Symbol</code>lerin memory’deki değerleri değişmez.
+Bu da Ruby kodumuzun daha hızlı olmasına yarar.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; foo = "hello"
+&gt; bar = "hello"
+&gt; foo.object_id == bar.object_id
+  =&gt; false
+&gt; foo = :hello
+&gt; bar = :hello
+&gt; foo.object_id == bar.object_id
+  =&gt; true
+</code></pre></div></div>
+
+<h2 id="dönüştürmece">Dönüştürmece</h2>
+
+<p><code class="language-plaintext highlighter-rouge">String</code>‘ler ve <code class="language-plaintext highlighter-rouge">Symbol</code>‘ler birbirlerine hızlıca dönüştürebilir ve istenilen durumlarda kullanılabilir.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; foo = :hello
+ =&gt; :hello
+&gt; foo.to_s
+ =&gt; "hello"
+&gt; bar = "hello"
+ =&gt; "hello"
+&gt; bar.to_sym
+ =&gt; :hello
+</code></pre></div></div>
+
+<p>Ruby projelerinizde <code class="language-plaintext highlighter-rouge">String</code> ve <code class="language-plaintext highlighter-rouge">Symbol</code> istediğiniz gibi kullanabilirsiniz ancak takımınızda bir kullanıma karar verip, herkesin aynı yazım kuralına uymasını
+sağlamanızı tavsiye ederim.</p>
+
+<p>Sevgiler. ❤️</p>
+
+</div>
+
+<span>[
+  
+    
+    <a href="/tag/ruby"><code class="highligher-rouge"><nobr>ruby</nobr></code>&nbsp;</a>
+  
+    
+    <a href="/tag/tips"><code class="highligher-rouge"><nobr>tips</nobr></code>&nbsp;</a>
+  
+]</span>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2023/12/26/2023-kazan%C4%B1mlar%C4%B1n-ve-kay%C4%B1plar%C4%B1n-y%C4%B1l%C4%B1.html">
+            2023, Kazanımların ve Kayıpların Yılı
+            <small>26 Dec 2023</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2023/11/14/jekyll-da-tag-ekleme.html">
+            Jekyll'da Tag Ekleme
+            <small>14 Nov 2023</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2023/02/02/2022-de-ruby.html">
+            2022'de Ruby
+            <small>02 Feb 2023</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+    </div>
+    <a rel="me" href="https://ruby.social/@eayurt"></a>
+  </body>
+</html>
