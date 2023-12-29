@@ -8,4 +8,5 @@ gem "pygments.rb"
 group :jekyll_plugins do
    gem "jekyll-gist"
    gem "jekyll-compose"
+   gem 'jekyll-feed'
 end

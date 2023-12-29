@@ -27,6 +27,7 @@ paginate: 15
 
 plugins:
   - jekyll-paginate
+  - jekyll-feed
 
 # Image settings
 image_base: /public/images/
