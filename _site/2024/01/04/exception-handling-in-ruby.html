@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+
+  <!-- Twitter cards -->
+  <meta name="twitter:site"    content="@eayurt">
+  <meta name="twitter:creator" content="@eayurt">
+  <meta name="twitter:title"   content="Exception Handling in Ruby">
+
+  
+    <meta name="twitter:description" content="Ruby'de exception handling">
+  
+
+  
+  <meta property="og:image" content="/public/images/octocat.png">
+    <meta name="twitter:card"  content="summary_large_image">
+    <meta name="twitter:image" content="https://enderahmetyurt.com/public/images/octocat.png">
+  
+  <!-- end of Twitter cards -->
+
+  <title>
+    
+      Exception Handling in Ruby &middot; Ender Ahmet Yurt
+    
+  </title>
+
+  
+    
+
+
+
+
+
+
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+  
+
+  <body>
+
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>
+        <a href="/">
+          Ender Ahmet Yurt
+        </a>
+      </h1>
+      <p class="lead">Software Engineer</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="sidebar-nav-item" href="/">Home</a>
+
+      
+
+      
+      
+        
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/about.html">About</a>
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/speaking.html">Speaking</a>
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/talks.html">Talks</a>
+          
+        
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+    </nav>
+
+    <div>
+      <a href="https://www.supportturkey.org/" style=" text-align: center; margin: 0; background: #DC2638; width: 150px; color: #fff; padding: 5px 20px; border-radius: 5px 5px 0px 0px; text-decoration: none; font-size: 16px; position: fixed; top: calc(50vh - 150px); right: 0px; transform: rotate(-90deg); transform-origin: bottom right; z-index: 1001; " target="_blank" rel="noopener noreferrer" >#SupportTurkey</a >
+    </div>
+
+    <p>&copy; 2024. All rights reserved.</p>
+  </div>
+</div>
+
+
+    <div class="content container">
+      <div class="post">
+  <h1 class="post-title">Exception Handling in Ruby</h1>
+  <span class="post-date">04 Jan 2024</span>
+
+  
+
+  <p>Merhaba. Biz yazılım geliştiricileri her ne kadar programları genelde kötü senaryoları düşünerek yazsak da bazen işler hiç beklemediğimiz gibi gidebiliyor.</p>
+
+<p>Bu gibi durumlarda tabiki yazdığımız kodlar da istediğimiz şekilde çalışamayabiliyor ya da hiç çalışamıyor ve kodun asıl yapması gereken, vermesi gereken çıktı
+ortaya çıkamayabiliyor. Bu durumların üstesinden gelebilmek için programlamada genel bir konsept olan ve çokça kullanılan
+<strong>Exception Handling</strong> kavramının Ruby’de nasıl olduğundan biraz bahsedeyim.</p>
+
+<p>Ruby’de herşey birer class olduğu için exception’lar için ayrılmış bir class da var. <code class="language-plaintext highlighter-rouge">Exception</code> class’ı bize Ruby’de hataları yakalamamız ve bu durumlarda
+neler yapmak istiyorsak ona yardım ediyor.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">begin</span>
+  <span class="c1"># ...</span>
+<span class="k">rescue</span> <span class="o">=&gt;</span> <span class="n">e</span>
+  <span class="c1"># ...</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Yukarıda görülen basit Ruby kod bloğuna <code class="language-plaintext highlighter-rouge">begin-rescue</code> hata yakalama bloğu deniyor. <code class="language-plaintext highlighter-rouge">begin</code> ile başlayan kısıma çalışmasını istediğiniz kodları yazıyorsunuz,
+eğer bir hata olursa <code class="language-plaintext highlighter-rouge">rescue</code> kısmı hatayı yakalayıp kendi bloğundaki kısımdaki kodu çalıştırıyor.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">begin</span>
+  <span class="mi">3</span> <span class="o">/</span> <span class="mi">0</span>
+<span class="k">rescue</span> <span class="no">ZeroDivisionError</span> <span class="o">=&gt;</span> <span class="n">e</span>
+  <span class="nb">puts</span> <span class="s2">"</span><span class="si">#{</span><span class="n">e</span><span class="p">.</span><span class="nf">class</span><span class="si">}</span><span class="s2">: </span><span class="si">#{</span><span class="n">e</span><span class="p">.</span><span class="nf">message</span><span class="si">}</span><span class="s2">"</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Normal şartlarda bir integer, sıfıra bölünmeyeceği için program hata fırlatıcak ve <code class="language-plaintext highlighter-rouge">rescue</code> ile yakalanan hata ile <code class="language-plaintext highlighter-rouge">ZeroDivisionError: divided by 0</code>
+mesajı ekrana basılacak.</p>
+
+<p>Bunu biraz daha gerçek örnek senaryosuna çevirirsek, mesela kullanıcıdan dışardan iki sayı alıyoruz ve ilk sayıyı, ikinci sayıya bölüyoruz.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">puts</span> <span class="s2">"Enter first number"</span>
+<span class="n">number1</span> <span class="o">=</span> <span class="nb">gets</span><span class="p">.</span><span class="nf">chomp</span><span class="p">.</span><span class="nf">to_i</span>
+<span class="nb">puts</span> <span class="s2">"Enter second number"</span>
+<span class="n">number2</span> <span class="o">=</span> <span class="nb">gets</span><span class="p">.</span><span class="nf">chomp</span><span class="p">.</span><span class="nf">to_i</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">number1</span> <span class="o">/</span> <span class="n">number2</span>
+
+<span class="nb">puts</span> <span class="s2">"</span><span class="si">#{</span><span class="n">number1</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="n">number2</span><span class="si">}</span><span class="s2">=</span><span class="si">#{</span><span class="n">result</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div></div>
+
+<p><img src="https://enderahmetyurt.com/public/images/error-1.png" /></p>
+
+<p>Normal şartlar bu kod güzel güzel çalışır ancak ya ikinci sayı yerine sıfır girilirse?</p>
+
+<p><img src="https://enderahmetyurt.com/public/images/error-2.png" /></p>
+
+<p>Kodumu hata fırlatır ve program kapanır. Bunu aşabilmek için kodu güncelemek istersek</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">puts</span> <span class="s2">"Enter first number"</span>
+<span class="n">number1</span> <span class="o">=</span> <span class="nb">gets</span><span class="p">.</span><span class="nf">chomp</span><span class="p">.</span><span class="nf">to_i</span>
+<span class="nb">puts</span> <span class="s2">"Enter second number"</span>
+<span class="n">number2</span> <span class="o">=</span> <span class="nb">gets</span><span class="p">.</span><span class="nf">chomp</span><span class="p">.</span><span class="nf">to_i</span>
+
+<span class="k">begin</span>
+  <span class="n">result</span> <span class="o">=</span> <span class="n">number1</span> <span class="o">/</span> <span class="n">number2</span>
+  <span class="nb">puts</span> <span class="s2">"</span><span class="si">#{</span><span class="n">number1</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="n">number2</span><span class="si">}</span><span class="s2">=</span><span class="si">#{</span><span class="n">result</span><span class="si">}</span><span class="s2">"</span>
+<span class="k">rescue</span> <span class="no">ZeroDivisionError</span> <span class="o">=&gt;</span> <span class="n">e</span>
+  <span class="nb">puts</span> <span class="s2">"Please don't enter 0"</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><img src="https://enderahmetyurt.com/public/images/error-3.png" /></p>
+
+<p>Sıfır girilse bile kodumuz çalışır ama ekrana bizim istediğimiz hata mesajı yazılır.</p>
+
+<p>Basit olarak Ruby’de hata yakalamayı bu şekilde yapabiliriz. Tabiki bu iş, bu kadar ile kalmıyor. Daha farklı yöntemler ile de Ruby’de hata yakalama
+genişletilebilir.</p>
+
+<p>Sevgiler ❤️</p>
+
+</div>
+
+<span>[
+  
+    
+    <a href="/tag/ruby"><code class="highligher-rouge"><nobr>ruby</nobr></code>&nbsp;</a>
+  
+]</span>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2023/12/29/strings-vs-symbols-in-ruby.html">
+            Strings vs Symbols in Ruby
+            <small>29 Dec 2023</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2023/12/26/2023-kazan%C4%B1mlar%C4%B1n-ve-kay%C4%B1plar%C4%B1n-y%C4%B1l%C4%B1.html">
+            2023, Kazanımların ve Kayıpların Yılı
+            <small>26 Dec 2023</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2023/11/14/jekyll-da-tag-ekleme.html">
+            Jekyll'da Tag Ekleme
+            <small>14 Nov 2023</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+    </div>
+    <a rel="me" href="https://ruby.social/@eayurt"></a>
+  </body>
+</html>

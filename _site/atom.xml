@@ -4,13 +4,91 @@
  <title>Ender Ahmet Yurt</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2023-12-29T22:36:05+03:00</updated>
+ <updated>2024-01-04T18:00:26+03:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Ender Ahmet Yurt</name>
    <email>enderyurt@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Exception Handling in Ruby</title>
+   <link href="http://localhost:4000/2024/01/04/exception-handling-in-ruby.html"/>
+   <updated>2024-01-04T17:31:00+03:00</updated>
+   <id>http://localhost:4000/2024/01/04/exception-handling-in-ruby</id>
+   <content type="html">&lt;p&gt;Merhaba. Biz yazılım geliştiricileri her ne kadar programları genelde kötü senaryoları düşünerek yazsak da bazen işler hiç beklemediğimiz gibi gidebiliyor.&lt;/p&gt;
+
+&lt;p&gt;Bu gibi durumlarda tabiki yazdığımız kodlar da istediğimiz şekilde çalışamayabiliyor ya da hiç çalışamıyor ve kodun asıl yapması gereken, vermesi gereken çıktı
+ortaya çıkamayabiliyor. Bu durumların üstesinden gelebilmek için programlamada genel bir konsept olan ve çokça kullanılan
+&lt;strong&gt;Exception Handling&lt;/strong&gt; kavramının Ruby’de nasıl olduğundan biraz bahsedeyim.&lt;/p&gt;
+
+&lt;p&gt;Ruby’de herşey birer class olduğu için exception’lar için ayrılmış bir class da var. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Exception&lt;/code&gt; class’ı bize Ruby’de hataları yakalamamız ve bu durumlarda
+neler yapmak istiyorsak ona yardım ediyor.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;begin&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# ...&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;rescue&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# ...&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Yukarıda görülen basit Ruby kod bloğuna &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;begin-rescue&lt;/code&gt; hata yakalama bloğu deniyor. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;begin&lt;/code&gt; ile başlayan kısıma çalışmasını istediğiniz kodları yazıyorsunuz,
+eğer bir hata olursa &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rescue&lt;/code&gt; kısmı hatayı yakalayıp kendi bloğundaki kısımdaki kodu çalıştırıyor.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;begin&lt;/span&gt;
+  &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;rescue&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ZeroDivisionError&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;: &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Normal şartlarda bir integer, sıfıra bölünmeyeceği için program hata fırlatıcak ve &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rescue&lt;/code&gt; ile yakalanan hata ile &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ZeroDivisionError: divided by 0&lt;/code&gt;
+mesajı ekrana basılacak.&lt;/p&gt;
+
+&lt;p&gt;Bunu biraz daha gerçek örnek senaryosuna çevirirsek, mesela kullanıcıdan dışardan iki sayı alıyoruz ve ilk sayıyı, ikinci sayıya bölüyoruz.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Enter first number&quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;number1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;gets&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;chomp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;to_i&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Enter second number&quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;number2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;gets&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;chomp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;to_i&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;number1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;number2&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;number1&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;number2&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://enderahmetyurt.com/public/images/error-1.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Normal şartlar bu kod güzel güzel çalışır ancak ya ikinci sayı yerine sıfır girilirse?&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://enderahmetyurt.com/public/images/error-2.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Kodumu hata fırlatır ve program kapanır. Bunu aşabilmek için kodu güncelemek istersek&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Enter first number&quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;number1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;gets&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;chomp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;to_i&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Enter second number&quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;number2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;gets&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;chomp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;to_i&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;begin&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;number1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;number2&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;number1&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;number2&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;rescue&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ZeroDivisionError&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Please don&apos;t enter 0&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://enderahmetyurt.com/public/images/error-3.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Sıfır girilse bile kodumuz çalışır ama ekrana bizim istediğimiz hata mesajı yazılır.&lt;/p&gt;
+
+&lt;p&gt;Basit olarak Ruby’de hata yakalamayı bu şekilde yapabiliriz. Tabiki bu iş, bu kadar ile kalmıyor. Daha farklı yöntemler ile de Ruby’de hata yakalama
+genişletilebilir.&lt;/p&gt;
+
+&lt;p&gt;Sevgiler ❤️&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Strings vs Symbols in Ruby</title>
