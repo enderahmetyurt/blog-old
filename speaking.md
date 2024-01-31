@@ -6,6 +6,7 @@ title: Speaking
 Some of speakings I have been a guest of.
 
 <ul>
+  <li><i>2024 January</i><a href="https://www.youtube.com/watch?v=-xK5T7bUM0k" target="_blank"> Ürün Geliştiricisi | PeaksOnTheBack #1</a></li>
   <li><i>2022 November</i><a href="https://www.youtube.com/watch?v=rgdXnq1fMSw" target="_blank"> Çay Kahve İnsan</a></li>
   <li><i>2022 October</i><a href="https://open.spotify.com/episode/1JgWKjg4Izn9neaYtzS6rO?si=6841930a2b3942c1" target="_blank"> Kırılma Noktası</a></li>
   <li><i>2022 August</i><a href="https://open.spotify.com/episode/3Ym99zkzFTPhDh1qSKYKTE?si=dd23f2edec1d4075" target="_blank"> Kod Adı: techcareer.net</a></li>
